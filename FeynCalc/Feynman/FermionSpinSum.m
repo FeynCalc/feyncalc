@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FermionSpinSum						*)
+(* :Title: FermionSpinSum													*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +11,10 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Do the trace-formation (i.e. fermionic spin-sums) *)
+(* :Summary:  Do the trace-formation (i.e. fermionic spin-sums) 
+
+	Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -40,7 +43,7 @@ End[]
 
 Begin["`FermionSpinSum`Private`"]
 
-fssVerbose::usage="";
+optVerbose::usage="";
 
 Options[FermionSpinSum] = {
 	Collecting				-> True,
@@ -48,6 +51,7 @@ Options[FermionSpinSum] = {
 	ExtraFactor				-> 1,
 	FCE						-> False,
 	FCI						-> False,
+	FCParallelize			-> False,
 	FCTraceFactor			-> True,
 	FCVerbose				-> False,
 	Factoring				-> Factor,
@@ -56,10 +60,33 @@ Options[FermionSpinSum] = {
 	SpinorChainTranspose	-> True
 };
 
-FermionSpinSum[expr_List, opts:OptionsPattern[]]:=
-	Map[FermionSpinSum[#, opts]&, expr];
+FermionSpinSum[expr_List, opts:OptionsPattern[]] :=
+	Block[{optVerbose, res, time},
 
-FermionSpinSum[expr_, OptionsPattern[]] :=
+		If [OptionValue[FCVerbose]===False,
+			optVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				optVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		time=AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+			FCPrint[1,"FermionSpinSum: Applying FermionSpinSum in parallel.", FCDoControl->optVerbose];
+			res = ParallelMap[FermionSpinSum[#, FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr,
+			DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+			FCPrint[1, "FermionSpinSum: Done applying FermionSpinSum in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose],
+
+			FCPrint[1,"FermionSpinSum: Applying FermionSpinSum.", FCDoControl->optVerbose];
+			res = Map[FermionSpinSum[#, FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr];
+			FCPrint[1, "FermionSpinSum: Done applying FermionSpinSum, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
+		];
+
+		res
+	];
+
+FermionSpinSum[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 	Block[ {spinPolarizationSum,extraFactor,moms, ex, spChain, ssIso, time,
 			optSpinorChainTranspose, optSpinPolarizationSum},
 
@@ -69,9 +96,9 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 		optSpinPolarizationSum 	= OptionValue[Head];
 
 		If [OptionValue[FCVerbose]===False,
-			fssVerbose=$VeryVerbose,
+			optVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-				fssVerbose=OptionValue[FCVerbose]
+				optVerbose=OptionValue[FCVerbose]
 			];
 		];
 
@@ -84,35 +111,35 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 			Return[extraFactor ex]
 		];
 
-		FCPrint[3, "FermionSpinSum: Entering with ",ex, FCDoControl->fssVerbose];
+		FCPrint[3, "FermionSpinSum: Entering with ",ex, FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FermionSpinSum: Collecting terms w.r.t spinors.", FCDoControl->fssVerbose];
+		FCPrint[1, "FermionSpinSum: Collecting terms w.r.t spinors.", FCDoControl->optVerbose];
 		ex = FCDiracIsolate[ex, DiracTrace->False,DiracGamma->False,FCI->True,Isolate->True, IsolateFast->True, IsolateNames->ssIso,Head->spChain];
-		FCPrint[1,"FermionSpinSum: collecting done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
-		FCPrint[3, "FermionSpinSum: After collecting terms w.r.t spinors: ",ex, FCDoControl->fssVerbose];
+		FCPrint[1,"FermionSpinSum: collecting done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+		FCPrint[3, "FermionSpinSum: After collecting terms w.r.t spinors: ",ex, FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FermionSpinSum: Applying the spin sum formula.", FCDoControl->fssVerbose];
+		FCPrint[1, "FermionSpinSum: Applying the spin sum formula.", FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FermionSpinSum: Checking the spinor syntax.", FCDoControl->fssVerbose];
+		FCPrint[1, "FermionSpinSum: Checking the spinor syntax.", FCDoControl->optVerbose];
 		If[	FeynCalc`Package`spinorSyntaxCorrectQ[ex]=!=True,
 			Message[FermionSpinSum::failmsg, "The input contains Spinor objects with incorrect syntax."];
 			Abort[]
 		];
-		FCPrint[1,"FermionSpinSum: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
+		FCPrint[1,"FermionSpinSum: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
 
 		ex = ex //. {
 		(* Product of two spinor chains, Dirac spinors *)
-		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], Y_, ___], a___, Spinor[t_. Momentum[q_,d_:4], Z_, ___]]] *
-		spChain[DOT[Spinor[t_. Momentum[q_,d_:4], Z_, ___], b___, Spinor[s_. Momentum[p_,d_:4], Y_, ___]]]/;
+		spChain[DOT[Spinor[s_. * Momentum[p_,d_:4], Y_, ___], a___, Spinor[t_. * Momentum[q_,d_:4], Z_, ___]]] *
+		spChain[DOT[Spinor[t_. * Momentum[q_,d_:4], Z_, ___], b___, Spinor[s_. * Momentum[p_,d_:4], Y_, ___]]]/;
 		FreeQ[{a,b},Spinor] && (moms===All || (MemberQ[moms,p] && MemberQ[moms,q] )) :>
 			DiracTrace[DOT[spinPolarizationSum[(DiracGamma[Momentum[p,d],d] + s Y)], a,
 				spinPolarizationSum[(DiracGamma[Momentum[q,d],d] + t Z)], b]],
 
-		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], m_, ___], a___, Spinor[t_. Momentum[q_,d_:4], Y_, W___]]] *
-		spChain[DOT[Spinor[u_. Momentum[r_,d_:4], Z_, X___], b___, Spinor[s_. Momentum[p_,d_:4], m_, ___]]]/;
+		spChain[DOT[Spinor[s_. * Momentum[p_,d_:4], m_, ___], a___, Spinor[t_. * Momentum[q_,d_:4], Y_, W___]]] *
+		spChain[DOT[Spinor[u_. * Momentum[r_,d_:4], Z_, X___], b___, Spinor[s_. * Momentum[p_,d_:4], m_, ___]]]/;
 		FreeQ[{a,b},Spinor] && (moms===All || MemberQ[moms,p]) :>
 			spChain[DOT[Spinor[u Momentum[r,d], Z, X], b,
 				spinPolarizationSum[(DiracGamma[Momentum[p,d],d] + s m)], a,
@@ -120,8 +147,8 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 
 		(*	Product of two spinor chains, Majorana spinors, ubar(p).X vbar(p).Y.
 			The -1 in front of spChain comes from switching the spinors after having transposed the second chain 	*)
-		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], m_,___], a___, Spinor[t_. Momentum[q_,d_:4], Y___]]] *
-		spChain[DOT[Spinor[u_. Momentum[p_,d_:4], m_,___], b___, Spinor[v_. Momentum[r_,d_:4], Z___]]]/;
+		spChain[DOT[Spinor[s_. * Momentum[p_,d_:4], m_,___], a___, Spinor[t_. * Momentum[q_,d_:4], Y___]]] *
+		spChain[DOT[Spinor[u_. * Momentum[p_,d_:4], m_,___], b___, Spinor[v_. * Momentum[r_,d_:4], Z___]]]/;
 		FreeQ[{a,b},Spinor] && (optSpinorChainTranspose && moms===All || (MemberQ[moms,p] && (-u===s) )) :>
 			-1*spChain[DOT[Spinor[- v Momentum[r,d], Z],
 				If[	TrueQ[{b}==={}],
@@ -132,8 +159,8 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 
 		(* Product of two spinor chains, Majorana spinors, X.u(p) Y.v(p).
 			The -1 in front of spChain comes from switching the spinors after having transposed the second chain	*)
-		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], Y___], a___, Spinor[t_. Momentum[q_,d_:4], m_,___]]] *
-		spChain[DOT[Spinor[u_. Momentum[r_,d_:4], Z___], b___, Spinor[v_. Momentum[q_,d_:4], m_, ___]]]/;
+		spChain[DOT[Spinor[s_. * Momentum[p_,d_:4], Y___], a___, Spinor[t_. * Momentum[q_,d_:4], m_,___]]] *
+		spChain[DOT[Spinor[u_. * Momentum[r_,d_:4], Z___], b___, Spinor[v_. * Momentum[q_,d_:4], m_, ___]]]/;
 		FreeQ[{a,b},Spinor] && (optSpinorChainTranspose && moms===All || (MemberQ[moms,q] && (-v===t) )) :>
 			-1*spChain[DOT[Spinor[s Momentum[p,d], Y], a ,
 				spinPolarizationSum[(DiracGamma[Momentum[q,d],d] + t m)],
@@ -143,22 +170,22 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 				], Spinor[-u Momentum[r,d], Z]]],
 
 		(* A spinor chain with one spin sum inside *)
-		spChain[DOT[Spinor[s_. Momentum[p_,d_:4], mass_, ___], x___, Spinor[s_. Momentum[p_,d_:4], m_, ___]]] /;
+		spChain[DOT[Spinor[s_. * Momentum[p_,d_:4], mass_, ___], x___, Spinor[s_. * Momentum[p_,d_:4], m_, ___]]] /;
 		FreeQ[{x},Spinor] && (moms===All || MemberQ[moms,p])  :>
 			DiracTrace[DOT[spinPolarizationSum[(DiracGamma[Momentum[p,d],d] + s m)], x]]
 		};
 
-		FCPrint[1,"FermionSpinSum: Applying the spin sum formula done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
-		FCPrint[3,"FermionSpinSum: After applying the spin sum formula: ", ex, FCDoControl->fssVerbose];
+		FCPrint[1,"FermionSpinSum: Applying the spin sum formula done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+		FCPrint[3,"FermionSpinSum: After applying the spin sum formula: ", ex, FCDoControl->optVerbose];
 
 		If[	!FreeQ[ex,FCChargeConjugateTransposed],
 			ex = ex /. FCChargeConjugateTransposed[spinPolarizationSum[x_],r___]:>
 				spinPolarizationSum[FCChargeConjugateTransposed[x,Explicit->True,r]];
 			If[ OptionValue[DotSimplify],
-				FCPrint[1, "FermionSpinSum: Applying DotSimplify to FCCCTs.", FCDoControl->fssVerbose];
+				FCPrint[1, "FermionSpinSum: Applying DotSimplify to FCCCTs.", FCDoControl->optVerbose];
 				ex = ex /. FCChargeConjugateTransposed[x_,r__] :> FCChargeConjugateTransposed[x,DotSimplify->True,Explicit->True,r];
-				FCPrint[1,"FermionSpinSum: Applying DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
-				FCPrint[3,"FermionSpinSum: After DotSimplify: ", ex, FCDoControl->fssVerbose];
+				FCPrint[1,"FermionSpinSum: Applying DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+				FCPrint[3,"FermionSpinSum: After DotSimplify: ", ex, FCDoControl->optVerbose];
 				If[ !FreeQ[ex,FCChargeConjugateTransposed],
 					Message[FermionSpinSum::fcctleft]
 				]
@@ -167,19 +194,19 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 
 		If[ OptionValue[DotSimplify],
 			time=AbsoluteTime[];
-			FCPrint[1, "FermionSpinSum: Applying DotSimplify.", FCDoControl->fssVerbose];
+			FCPrint[1, "FermionSpinSum: Applying DotSimplify.", FCDoControl->optVerbose];
 			ex = ex /. spinPolarizationSum[x_]:> spinPolarizationSum[DotSimplify[x,Expanding->False,FCI->True]];
-			FCPrint[1,"FermionSpinSum: Applying DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
-			FCPrint[3,"FermionSpinSum: After DotSimplify: ", ex, FCDoControl->fssVerbose]
+			FCPrint[1,"FermionSpinSum: Applying DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			FCPrint[3,"FermionSpinSum: After DotSimplify: ", ex, FCDoControl->optVerbose]
 
 		];
 
 		If[ optSpinPolarizationSum===Identity && OptionValue[FCTraceFactor],
 			time=AbsoluteTime[];
-			FCPrint[1, "FermionSpinSum: Applying FCTraceFactor.", FCDoControl->fssVerbose];
+			FCPrint[1, "FermionSpinSum: Applying FCTraceFactor.", FCDoControl->optVerbose];
 			ex = ex /. DiracTrace[x_]/;!FreeQ[x,spinPolarizationSum] :> FCTraceFactor[DiracTrace[(x/.spinPolarizationSum->Identity)],FCI->True];
-			FCPrint[1,"FermionSpinSum: Applying FCTraceFactor done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
-			FCPrint[3,"FermionSpinSum: After FCTraceFactor: ", ex, FCDoControl->fssVerbose]
+			FCPrint[1,"FermionSpinSum: Applying FCTraceFactor done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			FCPrint[3,"FermionSpinSum: After FCTraceFactor: ", ex, FCDoControl->optVerbose]
 		];
 
 		If[	!FreeQ[ex,spinPolarizationSum],
@@ -195,10 +222,10 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 
 		If [OptionValue[Collecting],
 			time=AbsoluteTime[];
-			FCPrint[1, "FermionSpinSum: Collecting w.r.t DiracTrace", FCDoControl->fssVerbose];
+			FCPrint[1, "FermionSpinSum: Collecting w.r.t DiracTrace", FCDoControl->optVerbose];
 			ex = Collect2[ex, DiracTrace, Factoring->OptionValue[Factoring]];
-			FCPrint[1,"FermionSpinSum: Collecting w.r.t DiracTrace done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
-			FCPrint[3,"FermionSpinSum: After collecting w.r.t DiracTrace: ", ex, FCDoControl->fssVerbose];
+			FCPrint[1,"FermionSpinSum: Collecting w.r.t DiracTrace done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			FCPrint[3,"FermionSpinSum: After collecting w.r.t DiracTrace: ", ex, FCDoControl->optVerbose];
 		];
 
 
@@ -209,7 +236,7 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 		];
 
 		ex
-	]/; Head[expr]=!=List;
+	];
 
 FCPrint[1,"FermionSpinSum.m loaded."];
 End[]

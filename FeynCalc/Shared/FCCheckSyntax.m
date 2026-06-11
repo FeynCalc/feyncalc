@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCCheckSyntax											*)
+(* :Title: FCCheckSyntax													*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary: Checks if the expression contains dummy indices		*)
+(* :Summary: Checks if the expression contains dummy indices				*)
 
 (* ------------------------------------------------------------------------ *)
 

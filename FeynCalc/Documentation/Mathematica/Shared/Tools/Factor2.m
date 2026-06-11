@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*`Factor2` uses `Factor` internally and is in general slower than `Factor`. There are four possible settings of the option `Method` (`0`,`1`,`2`,`3`). In general, `Factor` will work faster than `Factor2`.*)
+(*`Factor2` uses `Factor` internally and is in general slower than `Factor`. *)
 
 
 (* ::Subsection:: *)
@@ -43,6 +43,3 @@ Factor[ex]
 
 
 Factor2[ex]
-
-
-Factor2[ex,FactorFull->True]

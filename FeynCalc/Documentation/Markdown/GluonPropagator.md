@@ -14,7 +14,7 @@ The gauge and the dimension are determined by the options `Gauge` and `Dimension
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [GluonSelfEnergy](GluonSelfEnergy.md), [GluonVertex](GluonVertex.md), [GluonGhostVertex](GluonGhostVertex.md), [GhostPropagator](GhostPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).
+[Overview](Extra/FeynCalc.md), [GluonVertex](GluonVertex.md), [GluonGhostVertex](GluonGhostVertex.md), [GhostPropagator](GhostPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).
 
 ### Examples
 
@@ -42,7 +42,7 @@ $$\frac{i \delta ^{ab} \left(\frac{(1-\alpha ) p^{\mu } p^{\nu }}{p^2}-g^{\mu \n
 GluonPropagator[p, \[Mu], a, \[Nu], b, Gauge -> {Momentum[n], 1}, Explicit -> True]
 ```
 
-$$\frac{i \delta ^{ab} \left(\frac{p^{\mu } \overline{n}^{\nu }+p^{\nu } \overline{n}^{\mu }}{(\overline{n}\cdot \overline{p}+i \eta )}-\frac{\overline{n}^2 p^{\mu } p^{\nu }-p^2 \overline{n}^{\mu } \overline{n}^{\nu }}{(\overline{n}\cdot \overline{p}+i \eta )^{21}}-g^{\mu \nu }\right)}{p^2}$$
+$$\frac{i \delta ^{ab} \left(\frac{p^{\mu } \overline{n}^{\nu }+p^{\nu } \overline{n}^{\mu }}{(\overline{n}\cdot \overline{p}+i \eta )}-\frac{\overline{n}^2 p^{\mu } p^{\nu }-p^2 \overline{n}^{\mu } \overline{n}^{\nu }}{(\overline{n}\cdot \overline{p}+i \eta )^2}-g^{\mu \nu }\right)}{p^2}$$
 
 ```mathematica
 GP[p, \[Mu], \[Nu]]
@@ -55,33 +55,3 @@ Explicit[%]
 ```
 
 $$-\frac{i g^{\mu \nu }}{p^2}$$
-
-```mathematica
-GluonPropagator[p, \[Mu], a, \[Nu], b, CounterTerm -> 1] // Explicit
-```
-
-$$-\frac{i C_A g_s^2 S_n \delta ^{ab} \left(\frac{11 p^{\mu } p^{\nu }}{3}-\frac{19}{6} p^2 g^{\mu \nu }\right)}{\varepsilon }$$
-
-```mathematica
-GluonPropagator[p, \[Mu], a, \[Nu], b, CounterTerm -> 2] // Explicit
-```
-
-$$-\frac{i C_A g_s^2 S_n \delta ^{ab} \left(-\frac{1}{6} p^2 g^{\mu \nu }-\frac{1}{3} p^{\mu } p^{\nu }\right)}{\varepsilon }$$
-
-```mathematica
-GluonPropagator[p, \[Mu], a, \[Nu], b, CounterTerm -> 3] // Explicit
-```
-
-$$-\frac{2 i T_f g_s^2 S_n \delta ^{ab} \left(\frac{4}{3} p^2 g^{\mu \nu }-\frac{4 p^{\mu } p^{\nu }}{3}\right)}{\varepsilon }$$
-
-```mathematica
-GluonPropagator[p, \[Mu], a, \[Nu], b, CounterTerm -> 4] // Explicit
-```
-
-$$-\frac{i C_A g_s^2 S_n \delta ^{ab} \left(\frac{10 p^{\mu } p^{\nu }}{3}-\frac{10}{3} p^2 g^{\mu \nu }\right)}{\varepsilon }$$
-
-```mathematica
-GluonPropagator[p, \[Mu], a, \[Nu], b, CounterTerm -> 5] // Explicit
-```
-
-$$\frac{i C_A g_s^2 S_n \delta ^{ab} \left(\frac{10 p^{\mu } p^{\nu }}{3}-\frac{10}{3} p^2 g^{\mu \nu }\right)}{\varepsilon }+\frac{i T_f g_s^2 S_n \delta ^{ab} \left(\frac{4}{3} p^2 g^{\mu \nu }-\frac{4 p^{\mu } p^{\nu }}{3}\right)}{\varepsilon }$$

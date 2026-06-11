@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [ExplicitSUNIndex](ExplicitSUNIndex.md), [SD](SD.md), [SUNF](SUNF.md), [SUNIndex](SUNIndex.md), [SUNSimplify](SUNSimplify.md), [Trick](Trick.md).
+[Overview](Extra/FeynCalc.md), [ExplicitSUNIndex](ExplicitSUNIndex.md), [SD](SD.md), [SUNF](SUNF.md), [SUNIndex](SUNIndex.md), [SUNSimplify](SUNSimplify.md).
 
 ### Examples
 

@@ -35,8 +35,6 @@ If[	$OnlySubTest=!="",
 
 FCClearScalarProducts[];
 
-SetOptions[Tdec,Parallelize->False];
-SetOptions[CTdec,Parallelize->False];
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]], EquivalenceFunction -> fcCompare]&,
 	Join@@(ToExpression/@Select[Names["Tests`LoopIntegrals`*"],
 	!StringMatchQ[#, Join[{"*fcstLogDivergentScaleless"}]] &])];

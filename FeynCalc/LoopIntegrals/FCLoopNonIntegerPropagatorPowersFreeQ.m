@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopNonIntegerPropagatorPowersFreeQ										*)
+(* :Title: FCLoopNonIntegerPropagatorPowersFreeQ							*)
 
 (*
 	This software is covered by the GNU General Public License 3.

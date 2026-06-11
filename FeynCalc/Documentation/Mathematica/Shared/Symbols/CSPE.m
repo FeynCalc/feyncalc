@@ -33,7 +33,7 @@ CSPE[p,q] + CSPE[q]
 CSPE[p-q,q+2p]
 
 
-Calc[ CSPE[p-q,q+2p] ]
+ExpandScalarProduct[ CSPE[p-q,q+2p] ]
 
 
 ExpandScalarProduct[CSPE[p-q]]

@@ -141,7 +141,7 @@ ampFinal=ampPreFinal//DiracSimplify[#,FCParallelize->True]&//Collect2[#,Dirac,FC
 ints=Cases2[ampFinal,GLI]
 
 
-dir=FileNameJoin[{$TemporaryDirectory,"Reduction-ElToGaEl"}];
+dir=FileNameJoin[{$TemporaryDirectory,"Reduction-1L-ElToGaEl"}];
 Quiet[CreateDirectory[dir]];
 
 
@@ -155,7 +155,7 @@ KiraCreateConfigFiles[topos, ints, dir, KiraMassDimensions -> {me -> 1}];
 
 
 KiraRunReduction[dir, topos, 
- KiraBinaryPath -> FileNameJoin[{$HomeDirectory, "bin", "kira"}],
+ KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local","bin", "kira"}],
  KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
 
 

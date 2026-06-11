@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopGetKinematicInvariants												*)
+(* :Title: FCLoopGetKinematicInvariants										*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:	Extracts kinematic invariants.
+(*	:Summary:	Extracts kinematic invariants.
 
 				Supports parallel evaluation [X]
 *)

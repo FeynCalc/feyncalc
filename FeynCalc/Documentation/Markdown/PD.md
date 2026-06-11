@@ -4,6 +4,6 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [PropagatorDenominator](PropagatorDenominator.md), [IFPD](IFPD.md).
+[Overview](Extra/FeynCalc.md), [PropagatorDenominator](PropagatorDenominator.md).
 
 ### Examples

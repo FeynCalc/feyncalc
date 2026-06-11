@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: PaVeOrder                                                       	*)
+(* :Title: PaVeOrder														*)
 
 (*
 	This software is covered by the GNU General Public License 3.

@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:  	Obtains a canonical (Pak) representation of the given
+(*	:Summary:  	Obtains a canonical (Pak) representation of the given
 				FeynCalc integral
 
 				Supports parallel evaluation [X]

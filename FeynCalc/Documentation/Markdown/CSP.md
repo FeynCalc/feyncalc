@@ -23,7 +23,7 @@ CSP[p - q, q + 2 p]
 $$(\overline{p}-\overline{q})\cdot (2 \overline{p}+\overline{q})$$
 
 ```mathematica
-Calc[ CSP[p - q, q + 2 p] ]
+ExpandScalarProduct[ CSP[p - q, q + 2 p] ]
 ```
 
 $$-\overline{p}\cdot \overline{q}+2 \overline{p}^2-\overline{q}^2$$

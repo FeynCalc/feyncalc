@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*The option `Pair -> All` uncontracts all momenta except `OPEDelta`.*)
+(*The option `Pair -> All` uncontracts all momenta.*)
 
 
 (* ::Subsection:: *)

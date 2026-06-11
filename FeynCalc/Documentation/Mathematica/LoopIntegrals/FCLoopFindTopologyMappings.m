@@ -8,7 +8,15 @@
 
 
 (* ::Text:: *)
-(*`FCLoopFindTopologyMappings[{topo1, topo2, ...}]` finds mappings between topologies (written as `FCTopology` objects) `topo1, topo2, ...`. For each source topology the function returns a list of loop momentum shifts and a `GLI` replacement rule needed to map it to the given target topology. If you need to map everything to a particular set of target topologies, you can specify them via the `PreferredTopologies` option.*)
+(*`FCLoopFindTopologyMappings[{topo1, topo2, ...}]` finds mappings between topologies (written as `FCTopology` objects) `topo1, topo2, ...`. For each source topology the function returns a list of loop momentum shifts and a `GLI` replacement rule needed to map it to the given target topology.*)
+
+
+(* ::Text:: *)
+(*The mappings are being identified using Pak's algorithm. Once a group of identical topologies has been found, the algorithm will try to map all of them to the first topology in the list. All topologies that have been successfully mapped to the first topology are then removed from the list (including the target topology) and the same procedure is repeated for the remaining topologies until there are no topologies left in the group. *)
+
+
+(* ::Text:: *)
+(*Notice that not every Pak mapping between topologies can be converted to a mapping in terms of loop momentum shifts. Some of the identified mappings only exist on the level of loop integrals but not topologies.*)
 
 
 (* ::Text:: *)
@@ -16,7 +24,35 @@
 
 
 (* ::Text:: *)
-(*To enable shifts in the external momenta you need to set the option `Momentum` to `All`.*)
+(*To enable exchanges of external momenta (e.g. $p_i \leftrightarrow p_j$) you need to set the option `Momentum` to `All`. Notice that this usually makes sense only for a very specific set of processes (e.g. QCD diagrams with massless partons). Exchanging the momenta of say a massive and a massless particle will obviously lead to inconsistent results.*)
+
+
+(* ::Text:: *)
+(*If you need to map everything to a particular set of target topologies, you can specify them via the `PreferredTopologies` option.  The usage of this option may have some side effects that one should be aware of.*)
+
+
+(* ::Text:: *)
+(*- If a topology `topo1` appears in the input but not in the preferred topologies list, it can be mapped to one of the preferred topologies or otherwise to some other input topologies. This usually happens when preferred topologies and input topologies are completely distinct.*)
+
+
+(* ::Text:: *)
+(*- If a topology `topo1` appears only in the preferred topologies list, then some other topologies from the input can be mapped to it. However, any mappings between `topo1` and other preferred topologies will be automatically discarded. This behavior is intentional  and helps to keep the code logic simple and straightforward. Therefore, the list of preferred topologies is tacitly expected to contain only unique topologies. Supplying a list with topologies that can be mapped to each other will not cause errors but it may result in mappings that include more topologies than necessary.*)
+
+
+(* ::Text:: *)
+(*- If a topology `topo1` appears both in the input and in the preferred topologies list, then it will be regarded as a preferred topology only. This means that only some other topologies from the input can be mapped to it. However, `topo1` will not be mapped to other preferred topologies, even though such mappings may exist. This is why it is better to avoid situations where the same topologies appear in both lists.*)
+
+
+(* ::Text:: *)
+(*In real life the output of `FCLoopFindSubtopologies` is often used as the value for the `PreferredTopologies` option with the aim of finding mappings between smaller and larger topologies. In this case one has to distinguish between the following situations*)
+
+
+(* ::Text:: *)
+(*- `FCLoopFindSubtopologies` is applied to the same list of topologies that is passed as input to `FCLoopFindTopologyMappings`. Here `FCLoopFindSubtopologies` removes the original input topologies from its output by default. Hence, there are no topologies appearing both in the input and preferred topologies lists.*)
+
+
+(* ::Text:: *)
+(*- `FCLoopFindSubtopologies` is applied to a list of preferred topologies that are distinct from the input topologies. In this case one should set the option `Remove` to `False` to ensure that the original preferred topologies are kept in the output.*)
 
 
 (* ::Subsection:: *)
@@ -24,7 +60,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopFindTopologies](FCLoopFindTopologies.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopFindSubtopologies](FCLoopFindSubtopologies.md), [FCLoopFindTopologies](FCLoopFindTopologies.md).*)
 
 
 (* ::Subsection:: *)
@@ -185,6 +221,11 @@ SFAD[{{l2, 0}, {0, 1}, 1}]}, {l1, l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] 
 mappings4=FCLoopFindTopologyMappings[topos4,Momentum->All];
 
 
+(* ::Text:: *)
+(*Of course, one has  to check that the suggested shift of external momenta is consistent! By default, amplitudes are not guaranteed to*)
+(*remain invariant under such shifts.*)
+
+
 mappings4[[1]]
 
 
@@ -243,6 +284,4 @@ IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->2}];
 
 
 eikMappings=FCLoopFindTopologyMappings[toposNew];
-
-
 

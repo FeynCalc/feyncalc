@@ -69,5 +69,12 @@ nb] -> 2}, {}], FCTopology[\"preTopoDia1PFR24\", {SFAD[{{k1, 0}, {0, \
 1}, 1}], SFAD[{{k1, 2*gkin*meta*u0b*k1 . n}, {0, 1}, 1}], SFAD[{{k1, \
 2*gkin*meta*u0b*k1 . n - meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b^2, 1}, \
 1}]}, {k1}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, \
-Hold[SPD][n, nb] -> 2}, {}]}}"}
+Hold[SPD][n, nb] -> 2}, {}]}}"},
+{"fcstFCLoopCreatePartialFractioningRules-ID4",
+"FCLoopCreatePartialFractioningRules[{GLI[fctopology1, {0, 0, 0}],
+GLI[fctopology1, {0, 0, 2}]}, {FCTopology[
+fctopology1, {SFAD[{{l, 0}, {0, 1}, 1}],
+	SFAD[{{l - p, 0}, {0, 1}, 1}],
+	SFAD[{{l, 0}, {auxm^2, 1}, 1}]}, {l}, {p}, {Hold[Pair][
+	Momentum[p, D], Momentum[p, D]] -> pp}, {}]}]", "{{}, {}}"}
 })

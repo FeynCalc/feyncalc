@@ -76,13 +76,12 @@ Options[Tdec] =	{
 	Dimension 			-> D,
 	DeleteFile			-> True,
 	FCE					-> True,
-	FCParallelize		-> False,
 	FCVerbose 			-> False,
 	Factoring 			-> {Factor2, Factor},
 	FinalSubstitutions	-> {},
 	Head				-> Identity,
 	List 				-> True,
-	Parallelize			-> True,
+	FCParallelize		-> False,
 	Solve				-> Solve3,
 	Symmetrize			-> True,
 	UseTIDL 			-> True
@@ -355,7 +354,7 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			Which[
 				(*Solve3*)
 				optSolve===Solve3,
-					sol = Solve3[linearSystemAbbreviated, tensorCoeffs, Factoring -> optFactoring, ParallelMap->OptionValue[Parallelize]],
+					sol = Solve3[linearSystemAbbreviated, tensorCoeffs, Factoring -> optFactoring, FCParallelize->optFCParallelize],
 
 				(*FerSolve*)
 				optSolve===FeynCalc`FerSolve,

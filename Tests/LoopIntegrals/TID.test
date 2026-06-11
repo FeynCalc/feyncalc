@@ -1066,6 +1066,7 @@ TensorReductionBasisChange -> {{-p} -> {-p, n}},
 AuxiliaryMomenta -> {n}, FCE -> True];
 FCClearScalarProducts[]; tmp",
 "-1/2*(FAD[{k, m}]*FVD[n, mu])/SPD[n, p] + (FAD[k, {k - p, m}]*(m^2*FVD[n,
-mu] - 2*FVD[p, mu]*SPD[k, n] + 2*FVD[p, mu]*SPD[n, p]))/(2*SPD[n, p])"}
-
+mu] - 2*FVD[p, mu]*SPD[k, n] + 2*FVD[p, mu]*SPD[n, p]))/(2*SPD[n, p])"},
+{"fcstTID-ID68","TID[FVD[q, mu] FAD[{q, 0, 2}, {q - p, 0, 2}], q, FCE -> True]",
+"(FAD[q, q, -p + q, -p + q]*FVD[p, mu])/2"}
 };

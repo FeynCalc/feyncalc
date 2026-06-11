@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: CoreOptions														*)
+(* :Title: SharedOptions													*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -40,13 +40,8 @@ apply the isolating function again to pull out the simplified expressions out
 of the old heads.";
 
 Collecting::usage =
-"Collecting is an option of ScalarProductCancel, Series2, TID and related
-functions. Setting it to True will trigger some kind of collecting of the
-result.";
-
-CounterT::usage =
-"CounterT is a factor used by GluonPropagator and QuarkPropagator when
-CounterTerms is set to All.";
+"Collecting is an option of various functions. Setting it to True will trigger
+some kind of collecting of the result.";
 
 CouplingConstant::usage =
 "CouplingConstant is an option for several Feynman rule functions and for
@@ -89,10 +84,6 @@ DiracTraceEvaluate::usage =
 functions. If set to False, Dirac traces remain unevaluated. For more details,
 see the documentation for DiracTrace and DiracSimplify.";
 
-Divideout::usage =
-"Divideout is an option for OPEInt and OPEIntegrate. The setting is divided out
-at the end.";
-
 DropScaleless::usage =
 "DropScaleless is an option for FCLoopIsolate, ApartFF, FourDivergence and
 other functions. When set to True, all loop integrals that do not contain a
@@ -103,10 +94,6 @@ EpsExpand::usage =
 "EpsExpand is an option for EpsEvaluate and other functions that use
 EpsEvaluate internally. When set to False, sums of momenta in the Eps tensor
 will not be rewritten as a sum of Eps tensors.";
-
-EpsilonOrder::usage =
-"EpsilonOrder is an option of OPEIntegrateDelta and other functions. The
-setting determines the order n (Epsilon^n) which should be kept.";
 
 EtaSign::usage =
 "EtaSign is an option for SFAD, GFAD, CFAD and other objects representing
@@ -124,11 +111,13 @@ For example, ExceptHeads -> {DiracGamma} in FCLoopIsolate blocks loop
 integrals where loop momenta are contracted with Dirac matrices.";
 
 Expanding::usage =
-"Expanding is an option for Calc, Contract, DiracSimplify, DotSimplify,
-SUNSimplify etc. As option for Contract it specifies whether expansion w.r.t.
-LorentzIndex is done _before_ contraction. If set to False in DiracSimplify or
-SUNSimplify, only a limited set of simplifications (multiplicative linearity
-etc.) is performed.";
+"Expanding is an option for Contract, DiracSimplify, DotSimplify, SUNSimplify
+etc. 
+
+As option for Contract it specifies whether expansion w.r.t. LorentzIndex is
+done _before_ contraction. If set to False in DiracSimplify or SUNSimplify,
+only a limited set of simplifications (multiplicative linearity etc.) is
+performed.";
 
 Factoring::usage =
 "Factoring is an option for Collect2, Contract and more functions. If set to
@@ -138,9 +127,6 @@ this function will be used.";
 ExtraFactor::usage=
 "ExtraFactor is an option for FermionSpinSum. The setting ExtraFactor -> fa 
 multiplies the whole amplitude with the factor fa before squaring.";
-
-Factorout::usage =
-"Factorout is an option for OPEInt and OPEIntegrate.";
 
 FCJoinDOTs::usage =
 "FCJoinDOTs is an option for DotSimplify and other functions that use
@@ -189,8 +175,8 @@ loop if the integral is Euclidean or Cartesian respectively.
 The standard value is \"Multiloop1\".";
 
 FinalSubstitutions::usage =
-"FinalSubstitutions is an option for OneLoop and OneLoopSum and Write2. All
-substitutions indicated hereby are done at the end of the calculation.";
+"FinalSubstitutions is an option for various functions. All substitutions
+indicated hereby are done at the end of the calculation.";
 
 Gauge::usage =
 "Gauge is an option for GluonPropagator. If set to 1 the 't Hooft Feynman gauge
@@ -203,12 +189,8 @@ graph so that a path that starts and ends on edges from this set does not
 prevent us from cutting the integral.";
 
 InitialSubstitutions::usage =
-"InitialSubstitutions is an option for OneLoop and OneLoopSum and Write2. All
-substitutions indicated hereby are done at the end of the calculation.";
-
-IntegralTable::usage=
-"IntegralTable is an option of OneLoopSimplify and FeynAmpDenominatorSimplify.
-It may be set to a list of the form {FCIntegral[ ... ] :> bla, ...}.";
+"InitialSubstitutions is an option for various functions. All substitutions
+indicated hereby are done before the calculation.";
 
 IntermediateSubstitutions::usage =
 "IntermediateSubstitutions is an option of various FeynCalc functions. All
@@ -259,10 +241,6 @@ algorithm](https://arxiv.org/pdf/1111.0868.pdf) we keep only the first matrix
 in the vector, so that the next iteration step generates significantly less
 matrices than in the full version.";
 
-Loop::usage=
-"Loop is an option for functions related to FeynArts integration, indicating
-the number of (virtual) loops.";
-
 LorentzIndexNames::usage =
 "LorentzIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices and
 other functions. It renames the generic dummy Lorentz indices to the indices
@@ -278,11 +256,10 @@ whether a chain of Pauli matrices should be reduced to at most one matrix by
 rewriting every pair of matrices in terms of commutator and anticommutator.";
 
 Mandelstam::usage =
-"Mandelstam is an option for DiracTrace, OneLoop, OneLoopSum and
-TrickMandelstam.  A typical setting is Mandelstam -> {s, t, u,
-m1^2+m2^2+m3^2+m4^2}, which implies $s + t + u = m_1^2+m_2^2+m_3^2+m_4^2$. If
-other than four-particle processes are calculated, the setting should be
-Mandelstam -> {}.";
+"Mandelstam is an option for DiracTrace, TrickMandelstam and other functions. 
+A typical setting is Mandelstam -> {s, t, u, m1^2+m2^2+m3^2+m4^2}, which
+implies $s + t + u = m_1^2+m_2^2+m_3^2+m_4^2$. If other than four-particle
+processes are calculated, the setting should be Mandelstam -> {}.";
 
 PairCollect::usage =
 "PairCollect is an option for DiracTrace specifying if the result is collected
@@ -312,6 +289,11 @@ PaVeOrderList::usage=
 "PaVeOrderList is an option for PaVeOrder and PaVeReduce, specifying in which
 order the arguments of D0 are to be permuted.";
 
+Prefactor::usage =
+"Prefactor is an option for various functions. It usually specifies that the
+expression should be multiplied by global Prefactor before or after
+calculation.";
+
 PreferredTopologies::usage =
 "PreferredTopologies is an option for FCLoopFindTopologies,
 FCLoopFindTopologyMappings and other related functions. It allows to specify a
@@ -322,9 +304,6 @@ PreferredIntegrals::usage =
 "PreferredIntegrals is an option for FCLoopFindIntegralMappings and other
 related functions. It allows to specify a list of GLIs onto which the
 occurring loop integrals should be preferably mapped.";
-
-QuarkMass::usage=
-"QuarkMass is an option of Amplitude and CounterTerm.";
 
 SchoutenAllowZeroGain::usage=
 "SchoutenAllowZeroGain is an option for FCSchoutenBruteForce and other
@@ -384,7 +363,9 @@ fundamental representation to the indices in the supplied list.";
 SUNNToCACF::usage=
 "SUNNToCACF is an option of SUNSimplify and CalcColorFactor. If set to True,
 the Casimir operator eigenvalues CA ($=n_c$) and CF ($=(n_c^2-1)/(2 n_c)$) are
-introduced.";
+reconstructed from the result in terms of $n_c$ using heuristics. The
+reconstruction is not always perfect, but mostly sufficient at tree and
+one-loop level.";
 
 TensorReductionBasisChange::usage =
 "TensorReductionBasisChange is an option for FCLoopTensorReduce and other
@@ -411,19 +392,11 @@ setting), such traces are computed according to formula  (A.5) from Comp.
 Phys. Comm 77 (1993) 286-298, which is also known as West's formula. For more
 details, see the documentation of DiracTrace.";
 
-WriteOut::usage =
-"WriteOut is an option for OneLoop. If set to True, the result of OneLoop will
-be written to a file called \"name.res\", where name is the first argument of
-OneLoop.";
-
 WriteOutPaVe::usage=
-"WriteOutPaVe is an option for PaVeReduce and OneLoopSum. If set to a string,
-the results of all Passarino-Veltman PaVe's are stored in files with names
-generated from this string and the arguments of PaVe.";
+"WriteOutPaVe is an option for PaVeReduce. If set to a string, the results of
+all Passarino-Veltman PaVe's are stored in files with names generated from
+this string and the arguments of PaVe.";
 
-ZeroMomentumInsertion::usage=
-"ZeroMomentumInsertion is an option of FeynRule, Twist2GluonOperator and
-Twist2QuarkOperator.";
 
 (* ------------------------------------------------------------------------ *)
 

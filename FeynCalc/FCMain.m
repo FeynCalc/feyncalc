@@ -15,14 +15,9 @@
 
 (* ------------------------------------------------------------------------ *)
 
-$Abbreviations::usage =
-"$Abbreviations are a list of string substitution rules used when generating
-names for storing intermediate results. It is used by OneLoop and PaVeReduce.
-The elements of the list should be of the form \"name\" -> \"abbreviation\".";
-
 $AL::usage =
-"$AL is the head for dummy indices which may be introduced by Amputate and
-Uncontract. By default it is unset, but may be set to anything.";
+"$AL is the head for dummy indices which may be introduced by different
+functions. By default it is unset, but may be set to anything.";
 
 $Containers::usage =
 "$Containers is a set of heads over which FieldDerivative should distribute, in
@@ -162,8 +157,7 @@ $KeepLogDivergentScalelessIntegrals::usage =
 "$KeepLogDivergentScalelessIntegrals is an experimental global option that
 forces FeynCalc not to set 1-loop integrals of type $\\frac{1}/{q^4}$ to zero.
 This is useful when one has to explicitly distinguish between IR- and
-UV-divergences in dimensional regularization. Notice that OneLoop is not
-guaranteed to respect this option.";
+UV-divergences in dimensional regularization.";
 
 $LeviCivitaSign::usage =
 "$LeviCivitaSign is a global variable that determines the sign in the result of
@@ -241,8 +235,6 @@ $ScalarProducts::usage =
 "$ScalarProducts contains a list of all vector pairs for which a scalar product
 value has been defined.";
 
-$OPEWard::usage =
-"$OPEWard is experimental.";
 
 $RenameFeynCalcObjects::usage =
 "$RenameFeynCalcObjects specifies a list of replacement rules that allow to
@@ -407,20 +399,6 @@ End[]
 
 Begin["`Private`"];
 
-
-
-$Abbreviations /:
-	Set[$Abbreviations , val_] :=
-		(
-		If[	$ParallelizeFeynCalc && ($KernelID===0),
-			With[{xxx=val},	ParallelEvaluate[OwnValues[$Abbreviations] = {HoldPattern[$Abbreviations] :> xxx};,DistributedContexts -> None]];
-		];
-
-		With[{xxx=val},	OwnValues[$Abbreviations] = {HoldPattern[$Abbreviations] :> xxx}];
-
-		val
-		);
-
 $Containers /:
 	Set[$Containers , val_] :=
 		(
@@ -541,18 +519,6 @@ $Multiplications /:
 		val
 		);
 
-$OPEWard /:
-	Set[$OPEWard , val_] :=
-		(
-		If[	$ParallelizeFeynCalc && ($KernelID===0),
-			With[{xxx=val},	ParallelEvaluate[OwnValues[$OPEWard] = {HoldPattern[$OPEWard] :> xxx};,DistributedContexts -> None]];
-		];
-
-		With[{xxx=val},	OwnValues[$OPEWard] = {HoldPattern[$OPEWard] :> xxx}];
-
-		val
-		);
-
 $NonComm /:
 	Set[$NonComm , val_] :=
 		(
@@ -614,21 +580,7 @@ $FCDefaultLightconeVectorNB /:
 		val
 		);
 
-$Abbreviations = {
-	", "->"",
-	"^"->"",
-	"{"->"",
-	"/" -> "",
-	"Subscript"->"su",
-	"SmallVariable"->"sma",
-	"}"->"",
-	"["->"",
-	"]"->"",
-	"*" -> "",
-	" " -> "" ,
-	"\n" -> "",
-	"\r" -> ""
-};
+
 
 $ParallelizeFeynCalc				= False;
 $Containers							= {};
@@ -641,7 +593,7 @@ $LimitTo4							= False;
 $LimitTo4IRUnsafe					= False;
 $FCMemoryAvailable					= Floor[$SystemMemory/10^6/4];
 $Multiplications					= {Times, DOT};
-$OPEWard							= False;
+
 
 
 $ParallelizeFeynCalc/:

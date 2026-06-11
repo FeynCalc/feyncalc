@@ -1,9 +1,18 @@
-(* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
+(* ::Package:: *)
 
-(* :Summary: FeynCalcForm[expr] formats expr in a short form.
-						In FeynCalc.m  $PrePrint can be set to
-						$PrePrint = FeynCalcForm
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: FeynCalcForm														*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:	FeynCalcForm[expr] formats expr in a short form.
+				$PrePrint can be set to	$PrePrint = FeynCalcForm
 *)
 
 (* ------------------------------------------------------------------------ *)
@@ -198,9 +207,6 @@ diracslm[a_, b__, rul_Rule] :=
 diracslm[a_, b__] :=
 	SequenceForm @@ Map[DiracSlash[#]&, {a, b}];
 
-plusdi[a_] :=
-	Subscript[SequenceForm["(", a, ")"], " + "];
-
 feynCalcForm[x_,opt___Rule]:=
 	Block[{xxxx = Evaluate[x], subs, fcdot, diracsldid},
 		subs = FinalSubstitutions /. {opt} /. Options[FeynCalcForm];
@@ -238,8 +244,7 @@ feynCalcForm[x_,opt___Rule]:=
 					DiracGamma[6] /.
 				ChiralityProjector[-1] :>
 					DiracGamma[7] /.
-				OPEDelta :>
-					"De"/.
+
 				DiracMatrix[6] :> DiracGamma[6] /.
 				{
 					DiracGamma[LorentzIndex[v_]] :>
@@ -317,13 +322,7 @@ feynCalcForm[x_,opt___Rule]:=
 				{
 				SUNT[a_] :>  "T"[a],
 				SUNT[a_,b__] :> (fcdot2 @@ Map["T"[#]&,{a, b}])
-				} /.
-				OPEm :> "m" /.
-				OPEi :> "i" /.
-				OPEj :> "j" /.
-				OPEl :> "l" /.
-				OPEk :> "k" /.
-				{
+				} /. {
 					QuantumField[a_] :>
 						a,
 					QuantumField[a_, lori___Momentum, suni___SUNIndex][p___] :>
@@ -354,16 +353,8 @@ feynCalcForm[x_,opt___Rule]:=
 				QuantumField[v__] :>
 					"Q"[v] /.
 				FCPartialD[v_] :> "P"[v] /.
-				PlusDistribution[v_] :>
-					plusdi[v] /.
 				SUNIndex[i_] :>
 					sunident[i]/.
-				OPESum :>
-					"OPESum"/.
-				DeltaFunction :>
-					"delta" /.
-				Twist2GluonOperator:>
-					"GO"/.
 				sunident :>
 					SUNIndex /.
 				FeynAmpDenominator[v__] :>

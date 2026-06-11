@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopCreatePartialFractioningRules											*)
+(* :Title: FCLoopCreatePartialFractioningRules								*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,10 +11,9 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:	Creates GLI-replacement rules for subtopologies
+(*	:Summary:	Creates GLI-replacement rules for subtopologies
 
-					Supports parallel evaluation [X]
+				Supports parallel evaluation [X]
 
 *)
 
@@ -43,6 +42,7 @@ cpfVerbose::usage="";
 Options[FCLoopCreatePartialFractioningRules] = {
 	Numerator		-> Identity,
 	Denominator		-> Identity,
+	"KeepApartHead"	-> False,
 	FCI				-> False,
 	FCParallelize	-> False,
 	FCVerbose		-> False,
@@ -82,20 +82,13 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 
 		time=AbsoluteTime[];
 
+
 		If[	$ParallelizeFeynCalc && optFCParallelize,
-
-
+			FCPrint[1, "FCLoopCreatePartialFractioningRules: Applying ApartFF in parallel.", FCDoControl -> cpfVerbose];
 			topoPerGLI = FCLoopSelectTopology[glis, topos,"OneToOneCorrespondence" -> True];
 			blocks = Transpose[{glis, topoPerGLI}];
-
-			FCPrint[1, "FCLoopCreatePartialFractioningRules: Applying ApartFF in parallel.", FCDoControl -> cpfVerbose];
-			With[{xxx= topos},
-				ParallelEvaluate[( FCParallelContext`FCLoopCreatePartialFractioningRules`topos =xxx;), DistributedContexts -> None]];
-			tmp = ParallelMap[ApartFF[#[[1]],#[[2]](*FCParallelContext`FCLoopCreatePartialFractioningRules`topos*),
-				FDS -> False, DropScaleless -> False, Head -> {Identity, apartHead}]&, blocks,
-				DistributedContexts -> None,
-				(*ethod -> "CoarsestGrained"*)
-				Method->"ItemsPerEvaluation" -> Ceiling[N[Length[blocks]/$KernelCount]/10]
+			tmp = ParallelMap[ApartFF[#[[1]],#[[2]],FDS -> False, DropScaleless -> False, Head -> {Identity, apartHead}]&, blocks,
+				DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[blocks]/$KernelCount]/10]
 				];
 				tmp = Flatten[tmp];
 				,
@@ -108,12 +101,12 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 
 		FCPrint[3, "FCLoopCreatePartialFractioningRules: After ApartFF: ", tmp , FCDoControl->cpfVerbose];
 
-		tmp = Thread[rule[glis, tmp]] /. rule[a_, apartHead[1, a_]] | rule[0,0] :> Unevaluated[Sequence[]];
+		tmp = Thread[rule[glis, tmp]] /. rule[a_, apartHead[1, a_]] | rule[_,0] :> Unevaluated[Sequence[]];
 
 		FCPrint[3, "FCLoopCreatePartialFractioningRules: Raw partial fractioning rules: ", tmp , FCDoControl->cpfVerbose];
 
 		If[	tmp==={},
-			FCPrint[1,"FCLoopCreatePartialFractioningRules: None of the GLIs requires partial fractioning. Leaving.", FCDoControl->cpfVerbose];
+			FCPrint[1,"FCLoopCreatePartialFractioningRules: None of the GLIs require partial fractioning. Leaving.", FCDoControl->cpfVerbose];
 			Return[{{},{}}]
 		];
 
@@ -142,9 +135,12 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 
 		rhs =  rhs /. Dispatch[idRepRule];
 
-		If[	TrueQ[optNumerator===Identity && optDenominator===Identity],
-			rhs = rhs/.apartHead->Times,
-			rhs = rhs/.apartHead[pref_,gli_]:> optNumerator[Numerator[pref]]*optDenominator[Denominator[pref]]*gli
+		If[TrueQ[OptionValue["KeepApartHead"]===False],
+			If[	TrueQ[optNumerator===Identity && optDenominator===Identity],
+				rhs = rhs/.apartHead->Times,
+				rhs = rhs/.apartHead[pref_,gli_]:> optNumerator[Numerator[pref]]*optDenominator[Denominator[pref]]*gli
+			],
+			rhs = rhs/.apartHead->FCGV["ApartHead"]
 		];
 
 		repRule = Thread[Rule[lhs,rhs]];

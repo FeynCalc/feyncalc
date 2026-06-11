@@ -27,7 +27,7 @@ If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2,
  ]
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 15:58:48 +02:00, 1a8e687c). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -39,7 +39,7 @@ $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
 
-$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynHelpers }\;\text{2.0.0 (2026-02-05 17:03:01 +02:00, 5db84fbb). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
@@ -83,7 +83,7 @@ Contracting both amplitudes with I*(k+p)^mu we can check the non-conservation of
 amps[1] = Contract[I*FVD[k + p, mu] (amps[0]), FCParallelize -> True] // FCTraceFactor[#, FCParallelize -> True] &
 ```
 
-$$\left\{\frac{\text{e}^2 \;\text{tr}\left((\gamma \cdot (k+p)).\bar{\gamma }^5.(\gamma \cdot (l-k)).\gamma ^{\lambda }.(\gamma \cdot l).\gamma ^{\nu }.(\gamma \cdot (l+p))\right)}{l^2 (l-k)^2 (l+p)^2},\frac{\text{e}^2 \;\text{tr}\left((\gamma \cdot (k+p)).\bar{\gamma }^5.(\gamma \cdot (l-p)).\gamma ^{\nu }.(\gamma \cdot l).\gamma ^{\lambda }.(\gamma \cdot (k+l))\right)}{l^2 (k+l)^2 (l-p)^2}\right\}$$
+$$\left\{-\frac{\text{e}^2 \;\text{tr}\left((\gamma \cdot (k+p)).\bar{\gamma }^5.(\gamma \cdot (k-l)).\gamma ^{\lambda }.(\gamma \cdot l).\gamma ^{\nu }.(\gamma \cdot (l+p))\right)}{l^2 (k-l)^2 (l+p)^2},\frac{\text{e}^2 \;\text{tr}\left((\gamma \cdot (k+p)).\bar{\gamma }^5.(\gamma \cdot (l-p)).\gamma ^{\nu }.(\gamma \cdot l).\gamma ^{\lambda }.(\gamma \cdot (k+l))\right)}{l^2 (k+l)^2 (l-p)^2}\right\}$$
 
 For this calculation it is crucial to use a correct scheme for gamma^5. As in the book, we use the 
 Breitenlohner-Maison-t'Hooft-Veltman prescription.
@@ -114,6 +114,8 @@ $$\text{FCLoopFindTopologies: Number of the preferred topologies among the uniqu
 
 $$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
 
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of found topologies: }2$$
+
 ```mathematica
 subtopos = FCLoopFindSubtopologies[topos, FCParallelize -> True];
 ```
@@ -136,20 +138,20 @@ toposFinal = mappings[[2]];
 AbsoluteTiming[ampReduced = FCLoopTensorReduce[amps[3], topos, FCParallelize -> True];]
 ```
 
-$$\{0.243342,\text{Null}\}$$
+$$\{0.425396,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[ampPreFinal = FCLoopApplyTopologyMappings[ampReduced, mappings, FCParallelize -> True];]
 ```
 
-$$\{0.139798,\text{Null}\}$$
+$$\{0.093989,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[ampFinal = ampPreFinal // DiracSimplify[#, FCParallelize -> True] & // 
       FeynAmpDenominatorExplicit // Collect2[#, DOT, FCParallelize -> True] &;]
 ```
 
-$$\{0.037262,\text{Null}\}$$
+$$\{0.037217,\text{Null}\}$$
 
 ```mathematica
 ints = Cases2[ampFinal, GLI]
@@ -180,7 +182,7 @@ KiraCreateConfigFiles[toposFinal, ints, dir, KiraMassDimensions -> {kp -> 2}];
 
 ```mathematica
 KiraRunReduction[dir, toposFinal, 
-  KiraBinaryPath -> FileNameJoin[{$HomeDirectory, "bin", "kira"}], 
+  KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local", "bin", "kira"}], 
   KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
 ```
 
@@ -222,10 +224,11 @@ knownResult = 2 (SMP["e"]^2/(4 Pi^2) LC[al, la, be, nu] FV[k, al] FV[p, be]) // 
 FCCompareResults[res, knownResult, 
    Text -> {"\tCompare to Peskin and Schroeder, An Introduction to QFT, Eq 19.59:", 
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
-Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
+Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."]; 
+ 
 
 ```mathematica
 
 $$\text{$\backslash $tCompare to Peskin and Schroeder, An Introduction to QFT, Eq 19.59:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }19.967\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }35.571\text{ s.}$$

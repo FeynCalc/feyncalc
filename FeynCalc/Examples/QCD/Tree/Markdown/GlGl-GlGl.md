@@ -16,20 +16,20 @@ If[ $Notebooks === False,
   ];
 $LoadAddOns = {"FeynArts"};
 << FeynCalc`
-$FAVerbose = 0; 
+$FAVerbose = 0;
+LaunchKernels[8]; 
  
-FCCheckVersion[9, 3, 1];
+$ParallelizeFeynCalc = True; 
+FCCheckVersion[10, 2, 0];
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2023-12-20 22:40:59 +01:00, dff3b835). For help, use the }\underline{\text{online} \;\text{documentation}}\;\text{, check out the }\underline{\text{wiki}}\;\text{ or visit the }\underline{\text{forum}.}$$
-
-$$\text{Please check our }\underline{\text{FAQ}}\;\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-06-09 14:14:02 +02:00, 96f9ea07). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
 
-$$\text{FeynArts }\;\text{3.11 (3 Aug 2020) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
 
 $$\text{If you use FeynArts in your research, please cite}$$
 
@@ -40,131 +40,83 @@ $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:he
 Nicer typesetting
 
 ```mathematica
-MakeBoxes[k1, TraditionalForm] := "\!\(\*SubscriptBox[\(k\), \(1\)]\)";
-MakeBoxes[k2, TraditionalForm] := "\!\(\*SubscriptBox[\(k\), \(2\)]\)";
-MakeBoxes[k3, TraditionalForm] := "\!\(\*SubscriptBox[\(k\), \(3\)]\)";
-MakeBoxes[k4, TraditionalForm] := "\!\(\*SubscriptBox[\(k\), \(4\)]\)";
+FCAttachTypesettingRule[k1, {SubscriptBox, k, 1}]
+FCAttachTypesettingRule[k2, {SubscriptBox, k, 2}]
+FCAttachTypesettingRule[k3, {SubscriptBox, k, 3}]
+FCAttachTypesettingRule[k4, {SubscriptBox, k, 4}]
 ```
 
 ```mathematica
 diags = InsertFields[CreateTopologies[0, 2 -> 2], {V[5], V[5]} -> 
      		{V[5], V[5]}, InsertionLevel -> {Classes}, Model -> "SMQCD"]; 
  
-Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple, 
-  	SheetHeader -> None, ImageSize -> {512, 256}];
+Paint[diags, ColumnsXRows -> {4, 1}, Numbering -> Simple, 
+  	SheetHeader -> None, ImageSize -> 128 {4, 1}];
 ```
 
-![18zdhyjg2qrmr](img/18zdhyjg2qrmr.svg)
-
-![1684q24zsrp7y](img/1684q24zsrp7y.svg)
+![0b7v1xmsigxkx](img/0b7v1xmsigxkx.svg)
 
 ## Obtain the amplitude
 
 ```mathematica
-amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta -> {k1, k2}, 
-  	OutgoingMomenta -> {k3, k4}, UndoChiralSplittings -> True, ChangeDimension -> 4, 
-  	TransversePolarizationVectors -> {k1, k2, k3, k4}, List -> True, SMP -> True, 
-  	Contract -> True, DropSumOver -> True]
+amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta -> {p1, p2},
+   	OutgoingMomenta -> {q1, q2}, UndoChiralSplittings -> True, ChangeDimension -> D, 
+   	TransversePolarizationVectors -> {p1, p2, q1, q2}, List -> True, SMP -> True, 
+   	Contract -> True, DropSumOver -> True];
 ```
-
-$$\left\{-i \left(-i \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\bar{\varepsilon }^*\left(k_3\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(f^{\text{Glu1}\;\text{Glu4}\;\text{\$AL\$13693}} f^{\text{Glu2}\;\text{Glu3}\;\text{\$AL\$13693}}+f^{\text{Glu1}\;\text{Glu3}\;\text{\$AL\$13692}} f^{\text{Glu2}\;\text{Glu4}\;\text{\$AL\$13692}}\right) g_s^2-i \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(-f^{\text{Glu1}\;\text{Glu3}\;\text{\$AL\$13691}} f^{\text{Glu2}\;\text{Glu4}\;\text{\$AL\$13691}}-f^{\text{Glu1}\;\text{Glu2}\;\text{\$AL\$13690}} f^{\text{Glu3}\;\text{Glu4}\;\text{\$AL\$13690}}\right) g_s^2-i \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(f^{\text{Glu1}\;\text{Glu2}\;\text{\$AL\$13694}} f^{\text{Glu3}\;\text{Glu4}\;\text{\$AL\$13694}}-f^{\text{Glu1}\;\text{Glu4}\;\text{\$AL\$13695}} f^{\text{Glu2}\;\text{Glu3}\;\text{\$AL\$13695}}\right) g_s^2\right),\frac{2 \left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_3\right)-\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\overline{k_3}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }\left(k_2\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu2}\;\text{Glu5}} f^{\text{Glu3}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_3}+\overline{k_4}){}^2}-\frac{2 \left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_4\right)-\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\overline{k_4}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }\left(k_2\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu2}\;\text{Glu5}} f^{\text{Glu3}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_3}+\overline{k_4}){}^2}+\frac{2 \left(\overline{k_3}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\overline{k_1}\cdot \bar{\varepsilon }\left(k_2\right)+\overline{k_3}\cdot \bar{\varepsilon }\left(k_2\right)+\overline{k_4}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu2}\;\text{Glu5}} f^{\text{Glu3}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_3}+\overline{k_4}){}^2}-\frac{2 \left(\overline{k_1}\cdot \bar{\varepsilon }\left(k_2\right)+\overline{k_3}\cdot \bar{\varepsilon }\left(k_2\right)+\overline{k_4}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\overline{k_4}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu2}\;\text{Glu5}} f^{\text{Glu3}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_3}+\overline{k_4}){}^2}+\frac{2 \left(\overline{k_3}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(-\left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)\right)-\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu2}\;\text{Glu5}} f^{\text{Glu3}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_3}+\overline{k_4}){}^2}-\frac{2 \left(-\left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)\right)-\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\overline{k_4}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu2}\;\text{Glu5}} f^{\text{Glu3}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_3}+\overline{k_4}){}^2}-\frac{\left(-\left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)\right)-\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\overline{k_3}\cdot \bar{\varepsilon }\left(k_2\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\bar{\varepsilon }^*\left(k_3\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu2}\;\text{Glu5}} f^{\text{Glu3}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_3}+\overline{k_4}){}^2}-\frac{\left(\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\overline{k_1}\cdot \bar{\varepsilon }\left(k_2\right)+\overline{k_3}\cdot \bar{\varepsilon }\left(k_2\right)+\overline{k_4}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\bar{\varepsilon }^*\left(k_3\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu2}\;\text{Glu5}} f^{\text{Glu3}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_3}+\overline{k_4}){}^2}-\frac{\left(-\left(\overline{k_1}\cdot \overline{k_3}\right)+\overline{k_1}\cdot \overline{k_4}+\overline{k_2}\cdot \overline{k_3}-\overline{k_2}\cdot \overline{k_4}\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\bar{\varepsilon }^*\left(k_3\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu2}\;\text{Glu5}} f^{\text{Glu3}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_3}+\overline{k_4}){}^2},-\frac{2 \left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_3\right)-\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_3\right)+\overline{k_4}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }\left(k_2\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_4}-\overline{k_2}){}^2}-\frac{2 \left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(-\left(\overline{k_1}\cdot \bar{\varepsilon }\left(k_2\right)\right)-\overline{k_3}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_4}-\overline{k_2}){}^2}-\frac{2 \left(-\left(\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_4\right)\right)-\overline{k_3}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\overline{k_4}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_4}-\overline{k_2}){}^2}-\frac{2 \left(\overline{k_4}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_3\right)-\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_3\right)+\overline{k_4}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_4}-\overline{k_2}){}^2}-\frac{2 \left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)+\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_4}-\overline{k_2}){}^2}-\frac{\left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)+\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(-\left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_3\right)\right)-\overline{k_4}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_4}-\overline{k_2}){}^2}-\frac{\left(-\left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_3\right)-\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_3\right)+\overline{k_4}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_4}-\overline{k_2}){}^2}-\frac{\left(\overline{k_1}\cdot \overline{k_2}+\overline{k_1}\cdot \overline{k_4}+\overline{k_2}\cdot \overline{k_3}+\overline{k_3}\cdot \overline{k_4}\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_4}-\overline{k_2}){}^2}-\frac{2 \left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)+\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\overline{k_4}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\bar{\varepsilon }^*\left(k_3\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}}{(\overline{k_4}-\overline{k_2}){}^2},-\frac{2 \left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_4\right)-\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_4\right)+\overline{k_3}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }\left(k_2\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu4}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu5}}}{(\overline{k_3}-\overline{k_2}){}^2}-\frac{2 \left(\overline{k_3}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_4\right)-\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_4\right)+\overline{k_3}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu4}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu5}}}{(\overline{k_3}-\overline{k_2}){}^2}-\frac{2 \left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(-\left(\overline{k_1}\cdot \bar{\varepsilon }\left(k_2\right)\right)-\overline{k_4}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu4}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu5}}}{(\overline{k_3}-\overline{k_2}){}^2}-\frac{2 \left(\overline{k_3}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(-\left(\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_3\right)\right)-\overline{k_4}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu4}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu5}}}{(\overline{k_3}-\overline{k_2}){}^2}-\frac{\left(-\left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)\right)-\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\overline{k_1}\cdot \bar{\varepsilon }^*\left(k_4\right)-\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_4\right)+\overline{k_3}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu4}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu5}}}{(\overline{k_3}-\overline{k_2}){}^2}-\frac{\left(-\left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_4\right)\right)-\overline{k_3}\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)+\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu4}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu5}}}{(\overline{k_3}-\overline{k_2}){}^2}-\frac{\left(\overline{k_1}\cdot \overline{k_2}+\overline{k_1}\cdot \overline{k_3}+\overline{k_2}\cdot \overline{k_4}+\overline{k_3}\cdot \overline{k_4}\right) \left(\bar{\varepsilon }\left(k_1\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_3\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu4}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu5}}}{(\overline{k_3}-\overline{k_2}){}^2}-\frac{2 \left(\overline{k_2}\cdot \bar{\varepsilon }^*\left(k_3\right)\right) \left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)+\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\bar{\varepsilon }\left(k_2\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu4}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu5}}}{(\overline{k_3}-\overline{k_2}){}^2}-\frac{2 \left(\overline{k_3}\cdot \bar{\varepsilon }\left(k_2\right)\right) \left(\overline{k_2}\cdot \bar{\varepsilon }\left(k_1\right)-\overline{k_3}\cdot \bar{\varepsilon }\left(k_1\right)+\overline{k_4}\cdot \bar{\varepsilon }\left(k_1\right)\right) \left(\bar{\varepsilon }^*\left(k_3\right)\cdot \bar{\varepsilon }^*\left(k_4\right)\right) g_s^2 f^{\text{Glu1}\;\text{Glu4}\;\text{Glu5}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu5}}}{(\overline{k_3}-\overline{k_2}){}^2}\right\}$$
 
 ## Fix the kinematics
 
 ```mathematica
 FCClearScalarProducts[];
-SetMandelstam[s, t, u, k1, k2, -k3, -k4, 0, 0, 0, 0];
+SetMandelstam[s, t, u, p1, p2, -q1, -q2, 0, 0, 0, 0];
 ```
 
 ## Square the amplitude
 
 ```mathematica
-polsums[x_, vec_, aux_, spinfac_] := x // Collect2[#, Pair[_, 
-         Momentum[Polarization[vec, __]]]] & // Isolate[#, {Polarization[vec, __]}] & // 
-    DoPolarizationSums[#, vec, aux, ExtraFactor -> spinfac] & // FixedPoint[ReleaseHold, #] &
+ampSquared[0] = SquareAmplitude[amp[0], ComplexConjugate[amp[0]], Real -> True];
 ```
 
 ```mathematica
-ClearAll[re];
-Table[Print["    calculating color factors in products of the amplitudes ", i, 
-    " and ", j, " (CC), time = ", 
-    Timing[re[i, j] = (amp[0][[i]] ComplexConjugate[amp[0]][[j]] // 
-          FeynAmpDenominatorExplicit // 
-         SUNSimplify[#, Explicit -> True, SUNNToCACF -> False] &)][[1]]]; re[i, j], {i, 4}, {j, i}];
+AbsoluteTiming[ampSquared[1] = FeynAmpDenominatorExplicit[ampSquared[0], FCParallelize -> True] //SUNSimplify[#, FCParallelize -> True] &;]
 ```
 
-$$\text{    calculating color factors in products of the amplitudes }1\text{ and }1\text{ (CC), time = }0.235391$$
-
-$$\text{    calculating color factors in products of the amplitudes }2\text{ and }1\text{ (CC), time = }0.194861$$
-
-$$\text{    calculating color factors in products of the amplitudes }2\text{ and }2\text{ (CC), time = }0.130752$$
-
-$$\text{    calculating color factors in products of the amplitudes }3\text{ and }1\text{ (CC), time = }0.185037$$
-
-$$\text{    calculating color factors in products of the amplitudes }3\text{ and }2\text{ (CC), time = }0.138698$$
-
-$$\text{    calculating color factors in products of the amplitudes }3\text{ and }3\text{ (CC), time = }0.132859$$
-
-$$\text{    calculating color factors in products of the amplitudes }4\text{ and }1\text{ (CC), time = }0.185816$$
-
-$$\text{    calculating color factors in products of the amplitudes }4\text{ and }2\text{ (CC), time = }0.133119$$
-
-$$\text{    calculating color factors in products of the amplitudes }4\text{ and }3\text{ (CC), time = }0.133023$$
-
-$$\text{    calculating color factors in products of the amplitudes }4\text{ and }4\text{ (CC), time = }0.13281$$
+$$\{1.25141,\text{Null}\}$$
 
 ```mathematica
-ClearAll[pre];
-Table[Print["    calculating product of the amplitudes ", i, " and ", j, 
-    " (CC), time = ", Timing[pre[i, j] = re[i, j] // polsums[#, k1, k2, 
-              1/2] & // polsums[#, k2, k1, 1/2] & // polsums[#, k3, k4, 1] & // 
-         polsums[#, k4, k3, 1] & // Simplify][[1]]]; pre[i, j], {i, 4}, {j, i}];
+AbsoluteTiming[ampSquared[2] = ampSquared[1] // DoPolarizationSums[#, p1, p2, FCParallelize -> True, ExtraFactor -> 1/2] &;]
 ```
 
-$$\text{    calculating product of the amplitudes }1\text{ and }1\text{ (CC), time = }0.496876$$
-
-$$\text{    calculating product of the amplitudes }2\text{ and }1\text{ (CC), time = }0.557545$$
-
-$$\text{    calculating product of the amplitudes }2\text{ and }2\text{ (CC), time = }1.30451$$
-
-$$\text{    calculating product of the amplitudes }3\text{ and }1\text{ (CC), time = }0.959513$$
-
-$$\text{    calculating product of the amplitudes }3\text{ and }2\text{ (CC), time = }2.00888$$
-
-$$\text{    calculating product of the amplitudes }3\text{ and }3\text{ (CC), time = }1.78583$$
-
-$$\text{    calculating product of the amplitudes }4\text{ and }1\text{ (CC), time = }0.884629$$
-
-$$\text{    calculating product of the amplitudes }4\text{ and }2\text{ (CC), time = }1.71058$$
-
-$$\text{    calculating product of the amplitudes }4\text{ and }3\text{ (CC), time = }1.9904$$
-
-$$\text{    calculating product of the amplitudes }4\text{ and }4\text{ (CC), time = }1.79517$$
+$$\{2.87501,\text{Null}\}$$
 
 ```mathematica
-fpre[i_, j_] := pre[i, j] /; (i >= j);
-fpre[i_, j_] := ComplexConjugate[pre[j, i]] /; (i < j);
-ampSquared[0] = 1/((SUNN^2 - 1)^2) (Sum[fpre[i, j], {i, 1, 4}, {j, 1, 4}]) // 
-    TrickMandelstam[#, {s, t, u, 0}] & // Simplify
+AbsoluteTiming[ampSquared[3] = ampSquared[2] // DoPolarizationSums[#, p2, p1, FCParallelize -> True, ExtraFactor -> 1/2] &;]
 ```
 
-$$\frac{4 N^2 g_s^4 \left(t^2+t u+u^2\right)^3}{\left(N^2-1\right) s^2 t^2 u^2}$$
+$$\{1.61495,\text{Null}\}$$
 
 ```mathematica
-ampSquaredSUNN3[0] = ampSquared[0] /. SUNN -> 3
+AbsoluteTiming[ampSquared[4] = ampSquared[3] // DoPolarizationSums[#, q1, q2, FCParallelize -> True] &;]
 ```
 
-$$\frac{9 g_s^4 \left(t^2+t u+u^2\right)^3}{2 s^2 t^2 u^2}$$
+$$\{1.50372,\text{Null}\}$$
 
 ```mathematica
-ampSquaredMassless[0] = ampSquared[0] // ReplaceAll[#, {SMP["m_u"] -> 0}] & // 
-  	TrickMandelstam[#, {s, t, u, 0}] &
+AbsoluteTiming[ampSquared[5] = ampSquared[4] // DoPolarizationSums[#, q2, q1, FCParallelize -> True] &;]
 ```
 
-$$-\frac{4 N^2 g_s^4 \left(t^2+t u+u^2\right)^3}{\left(1-N^2\right) s^2 t^2 u^2}$$
+$$\{0.477498,\text{Null}\}$$
 
 ```mathematica
-ampSquaredMasslessSUNN3[0] = ampSquaredMassless[0] /. SUNN -> 3
+ampSquared[6] = SUNSimplify[1/((SUNN^2 - 1)^2) ampSquared[5], FCParallelize -> True, SUNNToCACF -> False] // TrickMandelstam[#, {s, t, u, 0}, FCParallelize -> True] & // Total // Collect2[#, D, FCParallelize -> True] & // 
+   TrickMandelstam[#, {s, t, u, 0}] &
+```
+
+$$-\frac{(2-D)^2 N^2 g_s^4 \left(t^2+t u+u^2\right)^3}{\left(1-N^2\right) s^2 t^2 u^2}$$
+
+```mathematica
+ampSquaredSUNN3[0] = ampSquared[6] /. D -> 4 /. SUNN -> 3
 ```
 
 $$\frac{9 g_s^4 \left(t^2+t u+u^2\right)^3}{2 s^2 t^2 u^2}$$
@@ -175,7 +127,7 @@ $$\frac{9 g_s^4 \left(t^2+t u+u^2\right)^3}{2 s^2 t^2 u^2}$$
 knownResults = {
    	(9/2) SMP["g_s"]^4 (3 - t u/s^2 - s u/t^2 - s t/u^2) 
    };
-FCCompareResults[{ampSquaredMasslessSUNN3[0]}, {knownResults}, 
+FCCompareResults[{ampSquaredSUNN3[0]}, {knownResults}, 
   Text -> {"\tCompare to Ellis, Stirling and Weber, QCD and Collider Physics, Table 7.1:", "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}, Factoring -> 
    Function[x, Simplify[TrickMandelstam[x, {s, t, u, 0}]]]]
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 3], 0.001], " s."];
@@ -186,4 +138,4 @@ $$\text{$\backslash $tCompare to Ellis, Stirling and Weber, QCD and Collider Phy
 
 $$\text{True}$$
 
-$$\text{$\backslash $tCPU Time used: }44.42\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }48.517\text{ s.}$$

@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: ToStandardMatrixElement															*)
+(* :Title: ToStandardMatrixElement											*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:			*)
+(* :Summary: Conversion to Denner's Standard matrix elements				*)
 
 (* ------------------------------------------------------------------------ *)
 

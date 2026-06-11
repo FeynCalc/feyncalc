@@ -35,8 +35,10 @@ If[ $Notebooks === False,
 $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
+LaunchKernels[8];
 
-FCCheckVersion[9,3,1];
+$ParallelizeFeynCalc = True; 
+FCCheckVersion[10,2,0];
 
 
 (* ::Section:: *)
@@ -47,29 +49,29 @@ FCCheckVersion[9,3,1];
 (*Nicer typesetting*)
 
 
-MakeBoxes[p1,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(1\)]\)";
-MakeBoxes[p2,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(2\)]\)";
-MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
-MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
+FCAttachTypesettingRule[p1,{SubscriptBox,p,1}]
+FCAttachTypesettingRule[p2,{SubscriptBox,p,2}]
+FCAttachTypesettingRule[q1,{SubscriptBox,q,1}]
+FCAttachTypesettingRule[q2,{SubscriptBox,q,2}]
 
 
 diags = InsertFields[CreateTopologies[0, 2 -> 2], {F[3, {1}], -F[3, {1}]} ->
 		{V[5], V[5]}, InsertionLevel -> {Classes}, Model -> "SMQCD"];
 
-Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
-	SheetHeader->None,ImageSize->{512,256}];
+Paint[diags, ColumnsXRows -> {4, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->128 {4, 1}];
 
 
 diagsGh1 = InsertFields[CreateTopologies[0, 2 -> 2], {F[3, {1}], -F[3, {1}]} ->
 		{-U[5], U[5]}, InsertionLevel -> {Classes}, Model -> "SMQCD"];
-Paint[diagsGh1, ColumnsXRows -> {2, 1}, Numbering -> Simple,
-	SheetHeader->None,ImageSize->{512,256}];
+Paint[diagsGh1, ColumnsXRows -> {1, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->128{1,1}];
 
 
 diagsGh2 = InsertFields[CreateTopologies[0, 2 -> 2], {F[3, {1}], -F[3, {1}]} ->
 		{U[5], -U[5]}, InsertionLevel -> {Classes}, Model -> "SMQCD"];
-Paint[diagsGh2, ColumnsXRows -> {2, 1}, Numbering -> Simple,
-	SheetHeader->None,ImageSize->{512,256}];
+Paint[diagsGh2, ColumnsXRows -> {1, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->128{1,1}];
 
 
 (* ::Section:: *)
@@ -77,18 +79,18 @@ Paint[diagsGh2, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 
 
 amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
-	OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,
-	List->False, SMP->True, Contract->True,DropSumOver->True]
+	OutgoingMomenta->{q1,q2},UndoChiralSplittings->True,ChangeDimension->4,
+	List->True, SMP->True, Contract->True,DropSumOver->True];
 
 
 ampGh1[0] = FCFAConvert[CreateFeynAmp[diagsGh1], IncomingMomenta->{p1,p2},
-	OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,
-	List->False, SMP->True, Contract->True,DropSumOver->True]
+	OutgoingMomenta->{q1,q2},UndoChiralSplittings->True,ChangeDimension->4,
+	List->True, SMP->True, Contract->True,DropSumOver->True]
 
 
 ampGh2[0] = FCFAConvert[CreateFeynAmp[diagsGh2], IncomingMomenta->{p1,p2},
-	OutgoingMomenta->{k1,k2},UndoChiralSplittings->True,ChangeDimension->4,
-	List->False, SMP->True, Contract->True,DropSumOver->True]
+	OutgoingMomenta->{q1,q2},UndoChiralSplittings->True,ChangeDimension->4,
+	List->True, SMP->True, Contract->True,DropSumOver->True]
 
 
 (* ::Section:: *)
@@ -96,47 +98,58 @@ ampGh2[0] = FCFAConvert[CreateFeynAmp[diagsGh2], IncomingMomenta->{p1,p2},
 
 
 FCClearScalarProducts[];
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_u"], SMP["m_u"], 0, 0];
+SetMandelstam[s, t, u, p1, p2, -q1, -q2, SMP["m_u"], SMP["m_u"], 0, 0];
 
 
 (* ::Section:: *)
 (*Square the amplitudes*)
 
 
-ampSquaredUnphys[0] = 1/(SUNN^2)(amp[0] (ComplexConjugate[amp[0]]))//
-	FeynAmpDenominatorExplicit//SUNSimplify[#,Explicit->True,
-	SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
-	DiracSimplify//DoPolarizationSums[#,k1,0]&//
-	DoPolarizationSums[#,k2,0]&//TrickMandelstam[#,{s,t,u,2  SMP["m_u"]^2}]&//
-	Simplify
+ampSquaredUnphys[0]=SquareAmplitude[amp[0],ComplexConjugate[amp[0]],Real->True];
+
+
+AbsoluteTiming[ampSquaredUnphys[1]=FeynAmpDenominatorExplicit[ampSquaredUnphys[0],FCParallelize->True]//
+SUNSimplify[#,FCParallelize->True]&;]
+
+
+AbsoluteTiming[ampSquaredUnphys[2]=ampSquaredUnphys[1]//DoPolarizationSums[#,q1,0,
+FCParallelize->True]&//DoPolarizationSums[#,q2,0,FCParallelize->True]&;]
+
+
+AbsoluteTiming[ampSquaredUnphys[3]=ampSquaredUnphys[2]//FermionSpinSum[#,ExtraFactor -> 1/2^2,FCParallelize->True]&//DiracSimplify[#,FCParallelize->True]&;]
+
+
+AbsoluteTiming[ampSquaredUnphys[4]=1/(SUNN^2)ampSquaredUnphys[3]//TrickMandelstam[#,{s,t,u,2  SMP["m_u"]^2},FCParallelize->True]&;]
+
+
+ampSquaredUnphys[5]=Collect2[ampSquaredUnphys[4]//Total,CA,CF,D,
+Factoring->Function[{x},TrickMandelstam[x,{s,t,u,2  SMP["m_u"]^2}]]]
 
 
 ampSquaredGh1[0] = 1/(SUNN^2)(ampGh1[0] (ComplexConjugate[ampGh1[0]]))//
 	FeynAmpDenominatorExplicit//SUNSimplify[#,Explicit->True,
 	SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
-	DiracSimplify//TrickMandelstam[#,{s,t,u,2  SMP["m_u"]^2}]&//
-	Simplify
+	DiracSimplify//TrickMandelstam[#,{s,t,u,2  SMP["m_u"]^2}]&//Total
 
 
 ampSquaredGh2[0] = 1/(SUNN^2)(ampGh1[0] (ComplexConjugate[ampGh1[0]]))//
 	FeynAmpDenominatorExplicit//SUNSimplify[#,Explicit->True,
 	SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2^2]&//
-	DiracSimplify//TrickMandelstam[#,{s,t,u,2  SMP["m_u"]^2}]&//
-	Simplify
+	DiracSimplify//TrickMandelstam[#,{s,t,u,2  SMP["m_u"]^2}]&//Total
 
 
 (* ::Text:: *)
 (*Subtract unphysical degrees of freedom using ghost contributions*)
 
 
-ampSquared[0]=ampSquaredUnphys[0]-ampSquaredGh1[0]-ampSquaredGh2[0]//Together
+ampSquared[0]=ampSquaredUnphys[5]-ampSquaredGh1[0]-ampSquaredGh2[0]//Together
 
 
 ampSquaredMassless[0] = ampSquared[0]//ReplaceAll[#,{SMP["m_u"] -> 0}]&//
 	TrickMandelstam[#,{s,t,u,0}]&
 
 
-ampSquaredMasslessSUNN3[0] = ampSquaredMassless[0]/.SUNN->3
+ampSquaredMasslessSUNN3[0] = SUNSimplify[ampSquaredMassless[0],SUNNToCACF->False]/.SUNN->3
 
 
 (* ::Section:: *)
@@ -151,3 +164,6 @@ Text->{"\tCompare to Ellis, Stirling and Weber, QCD and Collider Physics, \
 Table 7.1:","CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->
 Function[x,Simplify[TrickMandelstam[x,{s,t,u,0}]]]]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+

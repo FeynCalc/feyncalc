@@ -1,10 +1,10 @@
 ## SUNN
 
-`SUNN` denotes the number of colors. `Trick[SUNDelta[a, a]]` yields $n_c^2 -1$.
+`SUNN` denotes the number of colors. `SUNSimplify[SUNDelta[a, a]]` yields $n_c^2 -1$.
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [SUNSimplify](SUNSimplify.md), [Trick](Trick.md), [SUNIndex](SUNIndex.md), [CA](CA.md), [CF](CF.md).
+[Overview](Extra/FeynCalc.md), [SUNSimplify](SUNSimplify.md), [SUNIndex](SUNIndex.md), [CA](CA.md), [CF](CF.md).
 
 ### Examples
 

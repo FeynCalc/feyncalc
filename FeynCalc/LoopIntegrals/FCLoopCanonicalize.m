@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Canonicalizes indices of 1-loop integrals						*)
+(* :Summary:  Canonicalizes indices of multiloop integrals					*)
 
 (* ------------------------------------------------------------------------ *)
 

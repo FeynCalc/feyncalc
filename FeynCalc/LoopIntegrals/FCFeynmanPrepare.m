@@ -96,6 +96,7 @@ Options[FCFeynmanPrepare] = {
 	Indexed					-> True,
 	"IgnoreNumerator"		-> False,
 	"MarkNonUnitNumerators"	-> False,
+	"AddLoopMomentaAndKinematics" -> False,
 	LoopMomenta				-> Function[{x,y},FCGV["lmom"][x,y]],
 	LorentzIndexNames		-> FCGV["mu"],
 	Names					-> FCGV["x"],
@@ -124,6 +125,8 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 		lmomsHead 			= Head[optLoopMomenta[1,1]];
 
 		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False, FCParallelize->OptionValue[FCParallelize]];
+
+		FCPrint[1, "FCFeynmanPrepare: After FCLoopFromGLI: ",int, FCDoControl -> fcszVerbose];
 
 		optFinalSubstitutions = Join[OptionValue[FinalSubstitutions],topo[[5]]];
 
@@ -165,6 +168,7 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False, FCParallelize->optFCParallelize];
 		FCPrint[1, "FCFeynmanPrepare: Done applying FCLoopFromGLI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
+		FCPrint[3, "FCFeynmanPrepare: After FCLoopFromGLI: ",ints, FCDoControl -> fcszVerbose];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCFeynmanPrepare: Applying FCLoopSelectTopology.", FCDoControl -> fcszVerbose];
@@ -288,6 +292,11 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 			{ex,optFinalSubstitutions} = FCI[{expr,optFinalSubstitutions}]
 		];
 
+		If[	expr===0,
+			FCPrint[1, "FCFeynmanPrepare: The integral vanishes, leaving.", FCDoControl->fcszVerbose];
+			Return[{0, 0, {{0,1,0}}, {{}}, {0}, 0, 0, 0}]
+		];
+
 		FCPrint[1,"FCFeynmanPrepare: Entering. ", FCDoControl->fcszVerbose];
 		FCPrint[3,"FCFeynmanPrepare: Entering  with: ", ex, FCDoControl->fcszVerbose];
 		FCPrint[3,"FCFeynmanPrepare: Final substitutions: ", optFinalSubstitutions, FCDoControl->fcszVerbose];
@@ -385,7 +394,7 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 
 		FCPrint[1, "FCFeynmanPrepare: Calling FCLoopBasisExtract.", FCDoControl -> fcszVerbose];
 
-		tmp = FCLoopBasisExtract[scalarPart, lmoms, SetDimensions->{dim}, SortBy -> sortBy];
+		tmp = FCLoopBasisExtract[scalarPart, lmoms, SetDimensions->{dim}, SortBy -> sortBy,Pair->False,CartesianPair->False];
 		(* We don't need this list of scalar products here and removing it makes the output a transposable matrix *)
 		tmp[[2]] = ConstantArray[0,Length[tmp[[1]]]];
 
@@ -403,6 +412,11 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		FCPrint[1, "FCFeynmanPrepare: FCLoopBasisExtract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
 		FCPrint[3,"FCFeynmanPrepare: List of denominators: ", tmp, FCDoControl->fcszVerbose];
+
+		If[	tmp==={},
+			FCPrint[1, "FCFeynmanPrepare: The integral vanishes, leaving.", FCDoControl->fcszVerbose];
+			Return[{0, 0, {{0,1,0}}, {{}}, {0}, 0, 0, 0}]
+		];
 
 		If[	OptionValue[FCLoopGetEtaSigns],
 			etaSigns = FCLoopGetEtaSigns[tmp[[4]]];
@@ -577,6 +591,11 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		(*This is needed only for FCLoopScalelessQ, so breaking the convention is not an issue.*)
 		If[	OptionValue["MarkNonUnitNumerators"],
 			res = Join[res,{nonUnitNum}]
+		];
+
+		(*This is needed only for FCLoopFactorizingSplit, so breaking the convention is not an issue.*)
+		If[	OptionValue["AddLoopMomentaAndKinematics"],
+			res = Join[res,{lmoms},{optFinalSubstitutions}]
 		];
 
 		FCPrint[1,"FCFeynmanPrepare: Leaving.", FCDoControl->fcszVerbose];

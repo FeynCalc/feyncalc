@@ -10,7 +10,7 @@ Notice that older Mathematica versions have numerous shortcomings in the graph d
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [FCLoopIntegralToGraph](FCLoopIntegralToGraph.md).
+[Overview](Extra/FeynCalc.md), [FCLoopFactorizingSplit](FCLoopFactorizingSplit.md), [FCLoopIntegralToGraph](FCLoopIntegralToGraph.md).
 
 ### Examples
 
@@ -30,7 +30,7 @@ $$\left\{\{1\to 1\},\left(
 \end{array}
 \right),\left\{\frac{1}{(p^2-m^2+i \eta )}\right\},1\right\}$$
 
-![17vbh4fnbai7p](img/17vbh4fnbai7p.svg)
+![0qdxji44p0yd5](img/0qdxji44p0yd5.svg)
 
 1-loop massless bubble
 
@@ -42,7 +42,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2\},\{-q,q,\{p,1,0\},\{p-q,1,0\}\},\left\{0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p-q)^2+i \eta )}\right\},1\right\}$$
 
-![0l6c2ciizqzvx](img/0l6c2ciizqzvx.svg)
+![18bj3w17lna49](img/18bj3w17lna49.svg)
 
 1-loop massive bubble
 
@@ -54,7 +54,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2\},\left\{-q,q,\left\{p,1,-\text{m1}^2\right\},\left\{p-q,1,-\text{m2}^2\right\}\right\},\left\{0,0,\frac{1}{(p^2-\text{m1}^2+i \eta )},\frac{1}{((p-q)^2-\text{m2}^2+i \eta )}\right\},1\right\}$$
 
-![0x6jroffsp4jx](img/0x6jroffsp4jx.svg)
+![0n8x8eyn601v0](img/0n8x8eyn601v0.svg)
 
 1-loop massless triangle
 
@@ -66,7 +66,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 3,-2\to 1,-1\to 2,1\to 2,1\to 3,2\to 3\},\{\text{q1}+\text{q2},\text{q2},\text{q1},\{p+\text{q1},1,0\},\{p+\text{q1}+\text{q2},1,0\},\{p,1,0\}\},\left\{0,0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2+i \eta )}\right\},1\right\}$$
 
-![1jp0um4afemua](img/1jp0um4afemua.svg)
+![087pse2la5hdb](img/087pse2la5hdb.svg)
 
 1-loop massless box
 
@@ -78,7 +78,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-4\to 4,-3\to 1,-2\to 2,-1\to 3,1\to 2,1\to 4,2\to 3,3\to 4\},\{\text{q1}+\text{q2}+\text{q3},\text{q3},\text{q2},\text{q1},\{p+\text{q1}+\text{q2},1,0\},\{p+\text{q1}+\text{q2}+\text{q3},1,0\},\{p+\text{q1},1,0\},\{p,1,0\}\},\left\{0,0,0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3})^2+i \eta )}\right\},1\right\}$$
 
-![1x2rfo5q5c9ih](img/1x2rfo5q5c9ih.svg)
+![0kse8cjbybt01](img/0kse8cjbybt01.svg)
 
 1-loop massless pentagon
 
@@ -90,7 +90,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-5\to 5,-4\to 1,-3\to 2,-2\to 3,-1\to 4,1\to 2,1\to 5,2\to 3,3\to 4,4\to 5\},\{\text{q1}+\text{q2}+\text{q3}+\text{q4},\text{q4},\text{q3},\text{q2},\text{q1},\{p+\text{q1}+\text{q2}+\text{q3},1,0\},\{p+\text{q1}+\text{q2}+\text{q3}+\text{q4},1,0\},\{p+\text{q1}+\text{q2},1,0\},\{p+\text{q1},1,0\},\{p,1,0\}\},\left\{0,0,0,0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3}+\text{q4})^2+i \eta )}\right\},1\right\}$$
 
-![1ursotjug53dt](img/1ursotjug53dt.svg)
+![0iyf5nw43uhpy](img/0iyf5nw43uhpy.svg)
 
 2-loop massless self-energy
 
@@ -102,7 +102,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 3,1\to 4,2\to 3,2\to 4,3\to 4\},\{-Q,Q,\{\text{p2},1,0\},\{Q-\text{p2},1,0\},\{Q-\text{p1},1,0\},\{\text{p1},1,0\},\{-\text{p1}-\text{p2}+Q,1,0\}\},\left\{0,0,\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((Q-\text{p2})^2+i \eta )},\frac{1}{((Q-\text{p1})^2+i \eta )},\frac{1}{((-\text{p1}-\text{p2}+Q)^2+i \eta )}\right\},1\right\}$$
 
-![1oop4iid3t4s1](img/1oop4iid3t4s1.svg)
+![1r730ukytygg4](img/1r730ukytygg4.svg)
 
 Same topology as before but now fully massive and with some dots
 
@@ -114,7 +114,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 3,1\to 4,2\to 3,2\to 4,3\to 4\},\left\{-Q,Q,\left\{\text{p2},1,-\text{m2}^2\right\},\left\{Q-\text{p2},2,-m^2\right\},\left\{Q-\text{p1},2,-m^2\right\},\left\{\text{p1},1,-m^2\right\},\left\{-\text{p1}-\text{p2}+Q,1,-m^2\right\}\right\},\left\{0,0,\frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )},\frac{1}{(\text{p1}^2-m^2+i \eta )},\frac{1}{((Q-\text{p2})^2-m^2+i \eta )},\frac{1}{((Q-\text{p1})^2-m^2+i \eta )},\frac{1}{((-\text{p1}-\text{p2}+Q)^2-m^2+i \eta )}\right\},1\right\}$$
 
-![1tcohebgvnxj5](img/1tcohebgvnxj5.svg)
+![0lytjtm9mn5ji](img/0lytjtm9mn5ji.svg)
 
 3-loop massless self-energy
 
@@ -126,7 +126,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 5,1\to 6,2\to 3,2\to 5,3\to 4,3\to 6,4\to 5,4\to 6\},\{-Q,Q,\{\text{p2},1,0\},\{Q-\text{p2},1,0\},\{\text{p1},1,0\},\{Q-\text{p1},1,0\},\{\text{p3},1,0\},\{\text{p1}+\text{p3},1,0\},\{-\text{p1}-\text{p2}+Q,1,0\},\{-\text{p1}-\text{p2}-\text{p3}+Q,1,0\}\},\left\{0,0,\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p1}+\text{p3})^2+i \eta )},\frac{1}{((Q-\text{p2})^2+i \eta )},\frac{1}{((Q-\text{p1})^2+i \eta )},\frac{1}{((-\text{p1}-\text{p2}+Q)^2+i \eta )},\frac{1}{((-\text{p1}-\text{p2}-\text{p3}+Q)^2+i \eta )}\right\},1\right\}$$
 
-![0h5tic9nxwh1v](img/0h5tic9nxwh1v.svg)
+![0ep0x3inp5ays](img/0ep0x3inp5ays.svg)
 
 3-loop self-energy with two massive lines
 
@@ -141,7 +141,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 3,1\to 4,2\to 5,2\to 6,3\to 4,3\to 5,4\to 6,5\to 6\},\left\{-Q,Q,\{\text{p2},1,0\},\{\text{p2}-Q,1,0\},\left\{\text{p1}-Q,1,-m^2\right\},\left\{\text{p1},1,-m^2\right\},\{\text{p3},1,0\},\{\text{p2}+\text{p3},1,0\},\{\text{p2}+\text{p3}-Q,1,0\},\{\text{p1}+\text{p2}+\text{p3}-Q,1,0\}\right\},\left\{0,0,\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{(\text{p1}^2-m^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}-Q)^2-m^2+i \eta )}\right\},1\right\}$$
 
-![07ug1r8wo00tz](img/07ug1r8wo00tz.svg)
+![0vlqr9vscwz64](img/0vlqr9vscwz64.svg)
 
 2-loop triangle
 
@@ -153,7 +153,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 3,-2\to 1,-1\to 2,1\to 2,1\to 5,2\to 4,3\to 4,3\to 5,4\to 5\},\{\text{Q1}+\text{Q2},\text{Q2},\text{Q1},\{\text{p1},1,0\},\{\text{Q2}-\text{p1},1,0\},\{\text{p1}+\text{Q1},1,0\},\{\text{p1}+\text{p2}+\text{Q1},1,0\},\{-\text{p1}-\text{p2}+\text{Q2},1,0\},\{\text{p2},1,0\}\},\left\{0,0,0,\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p1}+\text{Q1})^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{Q1})^2+i \eta )},\frac{1}{((\text{Q2}-\text{p1})^2+i \eta )},\frac{1}{((-\text{p1}-\text{p2}+\text{Q2})^2+i \eta )}\right\},1\right\}$$
 
-![128eenfkkx168](img/128eenfkkx168.svg)
+![117g9omfk0twb](img/117g9omfk0twb.svg)
 
 #### Special cases
 
@@ -174,7 +174,7 @@ Here `FCLoopIntegralToGraph` has no way to know that the actual momentum is Q1+Q
 FCLoopIntegralToGraph[topo]
 ```
 
-![11zrqyeu1me9r](img/11zrqyeu1me9r.svg)
+![1e9uck3a527dm](img/1e9uck3a527dm.svg)
 
 $$\text{False}$$
 
@@ -188,7 +188,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 3,1\to 4,2\to 3,2\to 4,3\to 4\},\{-\text{Q1}-\text{Q2},\text{Q1}+\text{Q2},\{\text{p1}+\text{Q1},1,0\},\{\text{Q2}-\text{p1},1,0\},\{\text{p1}+\text{p2}+\text{Q1},1,0\},\{-\text{p1}-\text{p2}+\text{Q2},1,0\},\{\text{p2},1,0\}\},\left\{0,0,\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{((\text{p1}+\text{Q1})^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{Q1})^2+i \eta )},\frac{1}{((\text{Q2}-\text{p1})^2+i \eta )},\frac{1}{((-\text{p1}-\text{p2}+\text{Q2})^2+i \eta )}\right\},1\right\}$$
 
-![0uie34cszj25t](img/0uie34cszj25t.svg)
+![1dea45xvpot3f](img/1dea45xvpot3f.svg)
 
 And here is another example. This NRQCD integral from [arXiv:1907.08227](https://arxiv.org/abs/1907.08227) looks like as if it has only one external momentum flowing in
 
@@ -196,7 +196,7 @@ And here is another example. This NRQCD integral from [arXiv:1907.08227](https:/
 FCLoopIntegralToGraph[FAD[{k, m}, l + p, l - p, k + l], {k, l}]
 ```
 
-![0f1bipa98qh74](img/0f1bipa98qh74.svg)
+![0bnbd646jxz9c](img/0bnbd646jxz9c.svg)
 
 $$\text{False}$$
 
@@ -211,7 +211,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-4\to 3,-2\to 2,-1\to 1,1\to 2,1\to 3,2\to 3,2\to 3\},\left\{p,p,2 p,\{l+p,1,0\},\{l-p,1,0\},\{k+l,1,0\},\left\{k,1,-m^2\right\}\right\},\left\{0,0,0,\frac{1}{((l+p)^2+i \eta )},\frac{1}{((k+l)^2+i \eta )},\frac{1}{((l-p)^2+i \eta )},\frac{1}{(k^2-m^2+i \eta )}\right\},1\right\}$$
 
-![141t4dbpsuxrz](img/141t4dbpsuxrz.svg)
+![1ohdv109k255k](img/1ohdv109k255k.svg)
 
 In this case the correct form of the external momentum can be deduced upon performing some elementary shifts. The direct application of the function fails
 
@@ -226,7 +226,7 @@ $$\text{FCTopology}\left(\text{topo1X12679},\left\{\frac{1}{(\text{p1}^2+i \eta 
 FCLoopIntegralToGraph[ex]
 ```
 
-![1u54vfjptyg1s](img/1u54vfjptyg1s.svg)
+![04p8txniwpqpz](img/04p8txniwpqpz.svg)
 
 $$\text{False}$$
 
@@ -248,10 +248,9 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2,1\to 2,1\to 2\},\{-2 Q,2 Q,\{\text{p1},1,0\},\{\text{p2},1,0\},\{\text{p1}+\text{p2}-\text{p3}-2 Q,1,0\},\{\text{p3},1,0\}\},\left\{0,0,\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}-\text{p3}-2 Q)^2+i \eta )},\frac{1}{(\text{p3}^2+i \eta )}\right\},1\right\}$$
 
-![1j08yoipllmf3](img/1j08yoipllmf3.svg)
+![0udjvihu0c0dl](img/0udjvihu0c0dl.svg)
 
-When dealing with products of tadpole integrals, the function may not always recognize that the appearing external momenta are spurious. For example, here there is no `q` momentum flowing
-through any of the lines
+When dealing with factorizing integrals, one should always split them into simpler integrals first.
 
 ```mathematica
 int = SFAD[{{ p1, 0}, {mg^2, 1}, 1}] SFAD[{{ p3, -2 p3 . q}, {0, 1}, 1}] 
@@ -261,26 +260,45 @@ FCLoopIntegralToGraph[int, {p1, p3}]
 
 $$\frac{1}{(\text{p1}^2-\text{mg}^2+i \eta ) (\text{p3}^2-2 (\text{p3}\cdot q)+i \eta )}$$
 
-![1f2h2gla59jny](img/1f2h2gla59jny.svg)
+![1hgjags3ucoh4](img/1hgjags3ucoh4.svg)
 
-$$\text{False}$$
-
-In this case we may explicitly tell the function that this integral doesn't depend on any external momenta
+$$\text{\$Aborted}$$
 
 ```mathematica
-FCLoopIntegralToGraph[int, {p1, p3}, Momentum -> {}] 
- 
-FCLoopGraphPlot[%]
+aux = FCLoopFactorizingSplit[int, {p1, p3}]
 ```
 
-$$\left\{\{1\to 1,1\to 1\},\left(
+$$\left(
 \begin{array}{ccc}
- \;\text{p1} & 1 & -\text{mg}^2 \\
- \;\text{p3}-q & 1 & 0 \\
+ \frac{1}{(\text{p1}^2-\text{mg}^2+i \eta )} & \{\text{p1}\} & \{\} \\
+ \frac{1}{(\text{p3}^2-2 (\text{p3}\cdot q)+i \eta )} & \{\text{p3}\} & \{\} \\
 \end{array}
-\right),\left\{\frac{1}{(\text{p1}^2-\text{mg}^2+i \eta )},\frac{1}{(\text{p3}^2-2 (\text{p3}\cdot q)+i \eta )}\right\},1\right\}$$
+\right)$$
 
-![07slxnrgofd0x](img/07slxnrgofd0x.svg)
+```mathematica
+FCLoopGraphPlot /@ (FCLoopIntegralToGraph[#[[1]], #[[2]]] & /@ aux)
+```
+
+![1x49jchiki0fy](img/1x49jchiki0fy.svg)
+
+```mathematica
+aux = FCLoopFactorizingSplit[FAD[{p1, m1}] FAD[{p2, m2}] FAD[p3, p3 + q] FAD[{p4, m4}], {p1, p2, p3, p4}]
+```
+
+$$\left(
+\begin{array}{ccc}
+ \frac{1}{\text{p1}^2-\text{m1}^2} & \{\text{p1}\} & \{\} \\
+ \frac{1}{\text{p2}^2-\text{m2}^2} & \{\text{p2}\} & \{\} \\
+ \frac{1}{\text{p4}^2-\text{m4}^2} & \{\text{p4}\} & \{\} \\
+ \frac{1}{\text{p3}^2 (\text{p3}+q)^2} & \{\text{p3}\} & \{\} \\
+\end{array}
+\right)$$
+
+```mathematica
+FCLoopGraphPlot /@ (FCLoopIntegralToGraph[#[[1]], #[[2]]] & /@ aux)
+```
+
+![0o3m87fao7y5d](img/0o3m87fao7y5d.svg)
 
 #### Eye candy
 
@@ -291,44 +309,6 @@ OptionValue[FCLoopGraphPlot, Style]
 ```
 
 $$\{\{\text{InternalLine},\_,\_,0\}:\to \{\text{Dashed},\text{Thick},\text{Black}\},\{\text{InternalLine},\_,\_,\text{FeynCalc$\grave{ }$FCLoopGraphPlot$\grave{ }$Private$\grave{ }$mm$\_$}\;\text{/;}\;\text{FeynCalc$\grave{ }$FCLoopGraphPlot$\grave{ }$Private$\grave{ }$mm}\;\text{=!=}0\}:\to \{\text{Thick},\text{Black}\},\{\text{ExternalLine},\_\}:\to \{\text{Thick},\text{Black}\}\}$$
-
-When dealing with factorizing integral it might be necessary to increase `VertexDegree` to `7` or `8` (or even a higher value, depending on the integrals)
-
-```mathematica
-FCLoopIntegralToGraph[FAD[{p1, m1}] FAD[{p2, m2}], {p1, p2}]
-FCLoopGraphPlot[%]
-```
-
-$$\left\{\{1\to 1,1\to 1\},\left(
-\begin{array}{ccc}
- \;\text{p2} & 1 & -\text{m2}^2 \\
- \;\text{p1} & 1 & -\text{m1}^2 \\
-\end{array}
-\right),\left\{\frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )},\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )}\right\},1\right\}$$
-
-![03f4j2xk2i2if](img/03f4j2xk2i2if.svg)
-
-```mathematica
-FCLoopIntegralToGraph[FAD[{p1, m1}] FAD[{p2, m2}] FAD[p3, p3 + q], {p1, p2, p3}, 
-   VertexDegree -> 7] 
- 
-FCLoopGraphPlot[%]
-```
-
-$$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2,2\to 2,2\to 2\},\left\{-q,q,\{\text{p3},1,0\},\{\text{p3}+q,1,0\},\left\{\text{p2},1,-\text{m2}^2\right\},\left\{\text{p1},1,-\text{m1}^2\right\}\right\},\left\{0,0,\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{((\text{p3}+q)^2+i \eta )},\frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )},\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )}\right\},1\right\}$$
-
-![0oh6kznveqek7](img/0oh6kznveqek7.svg)
-
-```mathematica
-FCLoopIntegralToGraph[FAD[{p1, m1}] FAD[{p2, m2}] FAD[p3, p3 + q] FAD[{p4, m4}], 
-   {p1, p2, p3, p4}, VertexDegree -> 9] 
- 
-FCLoopGraphPlot[%]
-```
-
-$$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2,2\to 2,2\to 2,2\to 2\},\left\{-q,q,\{\text{p3},1,0\},\{\text{p3}+q,1,0\},\left\{\text{p4},1,-\text{m4}^2\right\},\left\{\text{p2},1,-\text{m2}^2\right\},\left\{\text{p1},1,-\text{m1}^2\right\}\right\},\left\{0,0,\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{((\text{p3}+q)^2+i \eta )},\frac{1}{(\text{p4}^2-\text{m4}^2+i \eta )},\frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )},\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )}\right\},1\right\}$$
-
-![197y9zyue9u14](img/197y9zyue9u14.svg)
 
 Here we choose to use thick dashed blue and red lines for massive lines containing `mc` and `mg` respectively. The massless lines are black an dashed.
 
@@ -342,7 +322,7 @@ Magnify[FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True},
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2,1\to 3,2\to 3,2\to 3\},\left\{-q,q,\left\{\text{k1}-q,1,-\text{mc}^2\right\},\left\{\text{k1}-\text{k2},1,-\text{mc}^2\right\},\left\{\text{k2},1,-\text{mb}^2\right\},\{\text{k3},1,0\},\{\text{k2}-\text{k3},1,0\}\right\},\left\{0,0,\frac{1}{(\text{k3}^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2+i \eta )},\frac{1}{(\text{k2}^2-\text{mb}^2+i \eta )},\frac{1}{((\text{k1}-q)^2-\text{mc}^2+i \eta )},\frac{1}{((\text{k1}-\text{k2})^2-\text{mc}^2+i \eta )}\right\},1\right\}$$
 
-![01oh594h7q2tr](img/01oh594h7q2tr.svg)
+![12n7wdpb4tcfk](img/12n7wdpb4tcfk.svg)
 
 ```mathematica
 FCLoopIntegralToGraph[ FAD[{k2, mg}, {k3, mc}, {k1, q}, {k1 - k2}, {k2 - k3, mc}], {k1, k2,k3}] 
@@ -362,7 +342,7 @@ $$\left\{\{1\to 2,1\to 3,1\to 3,2\to 3,2\to 3\},\left(
 \end{array}
 \right),\left\{\frac{1}{(\text{k3}^2-\text{mc}^2+i \eta )},\frac{1}{(\text{k2}^2-\text{mg}^2+i \eta )},\frac{1}{((\text{k1}-\text{k2})^2+i \eta )},\frac{1}{(\text{k1}^2-q^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2-\text{mc}^2+i \eta )}\right\},1\right\}$$
 
-![1smoj49tufwtt](img/1smoj49tufwtt.svg)
+![115u41lfd051a](img/115u41lfd051a.svg)
 
 ```mathematica
 FCLoopIntegralToGraph[ FAD[{k2, mg}, {k3, mc}, {k1 - q}, {k2 - q, mb}, {k1 - k2}, {k2 - k3,mc}], 
@@ -375,7 +355,7 @@ Magnify[FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True},
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 3,1\to 4,2\to 3,2\to 3,2\to 4,2\to 4\},\left\{-q,q,\left\{\text{k2}-q,1,-\text{mb}^2\right\},\left\{\text{k2},1,-\text{mg}^2\right\},\{\text{k1}-q,1,0\},\{\text{k1}-\text{k2},1,0\},\left\{\text{k3},1,-\text{mc}^2\right\},\left\{\text{k2}-\text{k3},1,-\text{mc}^2\right\}\right\},\left\{0,0,\frac{1}{((\text{k1}-q)^2+i \eta )},\frac{1}{(\text{k3}^2-\text{mc}^2+i \eta )},\frac{1}{(\text{k2}^2-\text{mg}^2+i \eta )},\frac{1}{((\text{k1}-\text{k2})^2+i \eta )},\frac{1}{((\text{k2}-q)^2-\text{mb}^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2-\text{mc}^2+i \eta )}\right\},1\right\}$$
 
-![0ojspr0481s8i](img/0ojspr0481s8i.svg)
+![0w0hcbs2y00wu](img/0w0hcbs2y00wu.svg)
 
 ```mathematica
 FCLoopIntegralToGraph[ FAD[{k2, 0, 2}, {k1 - q}, {k1 - k3, mc}, {k2 - k3, mc}], {k1, k2, k3}] 
@@ -387,7 +367,7 @@ Magnify[FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True},
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2,1\to 2,1\to 2\},\left\{-q,q,\{\text{k2},2,0\},\{\text{k1}-q,1,0\},\left\{\text{k2}-\text{k3},1,-\text{mc}^2\right\},\left\{\text{k1}-\text{k3},1,-\text{mc}^2\right\}\right\},\left\{0,0,\frac{1}{(\text{k2}^2+i \eta )},\frac{1}{((\text{k1}-q)^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2-\text{mc}^2+i \eta )},\frac{1}{((\text{k1}-\text{k3})^2-\text{mc}^2+i \eta )}\right\},1\right\}$$
 
-![0ick2585357k9](img/0ick2585357k9.svg)
+![0osaxjdx4tyjh](img/0osaxjdx4tyjh.svg)
 
 We can style a fully massive 1-loop box in a very creative way
 
@@ -404,7 +384,7 @@ FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True}, Style -
 
 $$\left\{\{-4\to 4,-3\to 1,-2\to 2,-1\to 3,1\to 2,1\to 4,2\to 3,3\to 4\},\left\{\text{q1}+\text{q2}+\text{q3},\text{q3},\text{q2},\text{q1},\left\{p+\text{q1}+\text{q2},1,-\text{m3}^2\right\},\left\{p+\text{q1}+\text{q2}+\text{q3},1,-\text{m4}^2\right\},\left\{p+\text{q1},1,-\text{m2}^2\right\},\left\{p,1,-\text{m1}^2\right\}\right\},\left\{0,0,0,0,\frac{1}{(p^2-\text{m1}^2+i \eta )},\frac{1}{((p+\text{q1})^2-\text{m2}^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2-\text{m3}^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3})^2-\text{m4}^2+i \eta )}\right\},1\right\}$$
 
-![0uj086yxpjbhz](img/0uj086yxpjbhz.svg)
+![0xn073imfahml](img/0xn073imfahml.svg)
 
 The same goes for a 2-loop box with 3 massive lines
 
@@ -423,7 +403,7 @@ FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True}, Style -
 
 $$\left\{\{-4\to 4,-3\to 1,-2\to 2,-1\to 3,1\to 4,1\to 6,2\to 3,2\to 6,3\to 5,4\to 5,5\to 6\},\left\{\text{Q1}+\text{Q2}+\text{Q3},\text{Q3},\text{Q2},\text{Q1},\{-\text{p1}-\text{p2}+\text{Q2}+\text{Q3},1,0\},\{-\text{p1}-\text{p2}+\text{Q2},1,0\},\left\{\text{p1},1,-\text{m1}^2\right\},\{\text{Q2}-\text{p1},1,0\},\left\{\text{p1}+\text{Q1},1,-\text{m3}^2\right\},\{\text{p1}+\text{p2}+\text{Q1},1,0\},\left\{\text{p2},1,-\text{m2}^2\right\}\right\},\left\{0,0,0,0,\frac{1}{((\text{p1}+\text{p2}+\text{Q1})^2+i \eta )},\frac{1}{((\text{Q2}-\text{p1})^2+i \eta )},\frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )},\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )},\frac{1}{((\text{p1}+\text{Q1})^2-\text{m3}^2+i \eta )},\frac{1}{((-\text{p1}-\text{p2}+\text{Q2})^2+i \eta )},\frac{1}{((-\text{p1}-\text{p2}+\text{Q2}+\text{Q3})^2+i \eta )}\right\},1\right\}$$
 
-![0dj2zs15imvb6](img/0dj2zs15imvb6.svg)
+![1i51tc6582d2g](img/1i51tc6582d2g.svg)
 
 One can also (sort of) visualize the momentum flow, where we use powers to denote the dots
 
@@ -436,7 +416,8 @@ FCLoopIntegralToGraph[FCTopology[topo1X1, {SFAD[{{p2, 0}, {m1^2, 1}, 2}],
 FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True}, Labeled -> {
     {"InternalLine", x_, pow_, _} :> x^pow, 
     {"ExternalLine", _} :> {}}]
-```
+
+```mathematica
 
 $$\left\{\{1\to 2,1\to 3,1\to 3,2\to 3,2\to 3\},\left(
 \begin{array}{ccc}
@@ -448,4 +429,4 @@ $$\left\{\{1\to 2,1\to 3,1\to 3,2\to 3,2\to 3\},\left(
 \end{array}
 \right),\left\{\frac{1}{(\text{p2}^2-\text{m1}^2+i \eta )},\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p1}+\text{p3})^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3})^2+i \eta )}\right\},1\right\}$$
 
-![1d4z3vrsllip7](img/1d4z3vrsllip7.svg)
+![0n2ykfq1517k7](img/0n2ykfq1517k7.svg)

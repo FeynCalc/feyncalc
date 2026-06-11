@@ -17,8 +17,7 @@ Tests`Lorentz`fcstContractContractionsIn4dims = {
 {"fcstContractContractionsIn4dims-ID2","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, k, m]]",
 		"-6 Pair[LorentzIndex[l], LorentzIndex[m]]"},
 {"fcstContractContractionsIn4dims-ID3","Contract[LeviCivita[i, j, k, l].LeviCivita[i, j, m, n]]",
-	"2 Pair[LorentzIndex[k], LorentzIndex[n]] Pair[LorentzIndex[l], LorentzIndex[m]] -
-	2 Pair[LorentzIndex[k], LorentzIndex[m]] Pair[LorentzIndex[l],LorentzIndex[n]]"},
+	"2*(Pair[LorentzIndex[k], LorentzIndex[n]]*Pair[LorentzIndex[l], LorentzIndex[m]] - Pair[LorentzIndex[k], LorentzIndex[m]]*Pair[LorentzIndex[l], LorentzIndex[n]])"},
 {"fcstContractContractionsIn4dims-ID4", "Contract[MetricTensor[mu, mu] ]","4"},
 {"fcstContractContractionsIn4dims-ID5", "Contract[MetricTensor[mu, mu, Dimension -> D]]","D"},
 {"fcstContractContractionsIn4dims-ID6", "Contract[MetricTensor[a, b] FourVector[p, b]]",
@@ -65,86 +64,36 @@ Pair[Momentum[q], Momentum[r]])"},
 {"fcstContractContractionsIn4dims-ID23","Contract[DiracSimplify[DiracReduce[DiracMatrix[mu, nu,
 	rho, sigma]].DiracReduce[DiracMatrix[mu, nu, rho, sigma]]]]","-128"},
 {"fcstContractContractionsIn4dims-ID24","LC[][a, b, c, d]^3 // Contract //FCE",
-	"(-SP[a, d]^2 SP[b, c]^2 + 2 SP[a, c] SP[a, d] SP[b, c] SP[b, d] -
-SP[a, c]^2 SP[b, d]^2 + SP[a, d]^2 SP[b, b] SP[c, c] -
-2 SP[a, b] SP[a, d] SP[b, d] SP[c, c] +
-SP[a, a] SP[b, d]^2 SP[c, c] -
-2 SP[a, c] SP[a, d] SP[b, b] SP[c, d] +
-2 SP[a, b] SP[a, d] SP[b, c] SP[c, d] +
-2 SP[a, b] SP[a, c] SP[b, d] SP[c, d] -
-2 SP[a, a] SP[b, c] SP[b, d] SP[c, d] - SP[a, b]^2 SP[c, d]^2 +
-SP[a, a] SP[b, b] SP[c, d]^2 + SP[a, c]^2 SP[b, b] SP[d, d] -
-2 SP[a, b] SP[a, c] SP[b, c] SP[d, d] +
-SP[a, a] SP[b, c]^2 SP[d, d] + SP[a, b]^2 SP[c, c] SP[d, d] -
-SP[a, a] SP[b, b] SP[c, c] SP[d, d]) LC[][a, b, c, d]"},
+	"-((SP[a, d]^2*SP[b, c]^2 - 2*SP[a, c]*SP[a, d]*SP[b, c]*SP[b, d] + SP[a, c]^2*SP[b, d]^2 - SP[a, d]^2*SP[b, b]*SP[c, c] +
+	2*SP[a, b]*SP[a, d]*SP[b, d]*SP[c, c] - SP[a, a]*SP[b, d]^2*SP[c, c] + 2*SP[a, c]*SP[a, d]*SP[b, b]*SP[c, d] -
+	2*SP[a, b]*SP[a, d]*SP[b, c]*SP[c, d] - 2*SP[a, b]*SP[a, c]*SP[b, d]*SP[c, d] + 2*SP[a, a]*SP[b, c]*SP[b, d]*SP[c, d] +
+	SP[a, b]^2*SP[c, d]^2 - SP[a, a]*SP[b, b]*SP[c, d]^2 - SP[a, c]^2*SP[b, b]*SP[d, d] + 2*SP[a, b]*SP[a, c]*SP[b, c]*SP[d, d] -
+	SP[a, a]*SP[b, c]^2*SP[d, d] - SP[a, b]^2*SP[c, c]*SP[d, d] + SP[a, a]*SP[b, b]*SP[c, c]*SP[d, d])*LC[][a, b, c, d])"},
 {"fcstContractContractionsIn4dims-ID25","LC[][a, b, c, d]^4 // Contract //FCE","
-(-SP[a, d]^2 SP[b, c]^2 + 2 SP[a, c] SP[a, d] SP[b, c] SP[b, d] -
-SP[a, c]^2 SP[b, d]^2 + SP[a, d]^2 SP[b, b] SP[c, c] -
-2 SP[a, b] SP[a, d] SP[b, d] SP[c, c] +
-SP[a, a] SP[b, d]^2 SP[c, c] -
-2 SP[a, c] SP[a, d] SP[b, b] SP[c, d] +
-2 SP[a, b] SP[a, d] SP[b, c] SP[c, d] +
-2 SP[a, b] SP[a, c] SP[b, d] SP[c, d] -
-2 SP[a, a] SP[b, c] SP[b, d] SP[c, d] - SP[a, b]^2 SP[c, d]^2 +
-SP[a, a] SP[b, b] SP[c, d]^2 + SP[a, c]^2 SP[b, b] SP[d, d] -
-2 SP[a, b] SP[a, c] SP[b, c] SP[d, d] +
-SP[a, a] SP[b, c]^2 SP[d, d] + SP[a, b]^2 SP[c, c] SP[d, d] -
-SP[a, a] SP[b, b] SP[c, c] SP[d, d])^2"},
+(SP[a, d]^2*SP[b, c]^2 - 2*SP[a, c]*SP[a, d]*SP[b, c]*SP[b, d] +
+SP[a, c]^2*SP[b, d]^2 - SP[a, d]^2*SP[b, b]*SP[c, c] +
+2*SP[a, b]*SP[a, d]*SP[b, d]*SP[c, c] -
+SP[a, a]*SP[b, d]^2*SP[c, c] +
+2*SP[a, c]*SP[a, d]*SP[b, b]*SP[c, d] -
+2*SP[a, b]*SP[a, d]*SP[b, c]*SP[c, d] -
+2*SP[a, b]*SP[a, c]*SP[b, d]*SP[c, d] +
+2*SP[a, a]*SP[b, c]*SP[b, d]*SP[c, d] + SP[a, b]^2*SP[c, d]^2 -
+SP[a, a]*SP[b, b]*SP[c, d]^2 - SP[a, c]^2*SP[b, b]*SP[d, d] +
+2*SP[a, b]*SP[a, c]*SP[b, c]*SP[d, d] -
+SP[a, a]*SP[b, c]^2*SP[d, d] - SP[a, b]^2*SP[c, c]*SP[d, d] +
+SP[a, a]*SP[b, b]*SP[c, c]*SP[d, d])^2"},
 {"fcstContractContractionsIn4dims-ID26","Contract[LC[i1, i2, i3, dum1] LC[i4, i5, i6, dum1] LC[i10, i11, i12,
 	dum2] LC[i7, i8, i9, dum2]] // FCE",
-	"MT[i1, i6] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i5] MT[i3, i4] -
-MT[i1, i6] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i5] MT[i3,
-i4] - MT[i1, i6] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i5] MT[
-i3, i4] +
-MT[i1, i6] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i5] MT[i3,
-i4] + MT[i1, i6] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i5] MT[
-i3, i4] -
-MT[i1, i6] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i5] MT[i3,
-i4] - MT[i1, i5] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i6] MT[
-i3, i4] +
-MT[i1, i5] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i6] MT[i3,
-i4] + MT[i1, i5] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i6] MT[
-i3, i4] -
-MT[i1, i5] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i6] MT[i3,
-i4] - MT[i1, i5] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i6] MT[
-i3, i4] +
-MT[i1, i5] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i6] MT[i3,
-i4] - MT[i1, i6] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i4] MT[
-i3, i5] +
-MT[i1, i6] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i4] MT[i3,
-i5] + MT[i1, i6] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i4] MT[
-i3, i5] -
-MT[i1, i6] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i4] MT[i3,
-i5] - MT[i1, i6] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i4] MT[
-i3, i5] +
-MT[i1, i6] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i4] MT[i3,
-i5] + MT[i1, i4] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i6] MT[
-i3, i5] -
-MT[i1, i4] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i6] MT[i3,
-i5] - MT[i1, i4] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i6] MT[
-i3, i5] +
-MT[i1, i4] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i6] MT[i3,
-i5] + MT[i1, i4] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i6] MT[
-i3, i5] -
-MT[i1, i4] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i6] MT[i3,
-i5] + MT[i1, i5] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i4] MT[
-i3, i6] -
-MT[i1, i5] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i4] MT[i3,
-i6] - MT[i1, i5] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i4] MT[
-i3, i6] +
-MT[i1, i5] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i4] MT[i3,
-i6] + MT[i1, i5] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i4] MT[
-i3, i6] -
-MT[i1, i5] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i4] MT[i3,
-i6] - MT[i1, i4] MT[i10, i9] MT[i11, i8] MT[i12, i7] MT[i2, i5] MT[
-i3, i6] +
-MT[i1, i4] MT[i10, i8] MT[i11, i9] MT[i12, i7] MT[i2, i5] MT[i3,
-i6] + MT[i1, i4] MT[i10, i9] MT[i11, i7] MT[i12, i8] MT[i2, i5] MT[
-i3, i6] -
-MT[i1, i4] MT[i10, i7] MT[i11, i9] MT[i12, i8] MT[i2, i5] MT[i3,
-i6] - MT[i1, i4] MT[i10, i8] MT[i11, i7] MT[i12, i9] MT[i2, i5] MT[
-i3, i6] +
-MT[i1, i4] MT[i10, i7] MT[i11, i8] MT[i12, i9] MT[i2, i5] MT[i3, i6]"},
+	"(MT[i10, i9]*MT[i11, i8]*MT[i12, i7] -
+MT[i10, i8]*MT[i11, i9]*MT[i12, i7] -
+MT[i10, i9]*MT[i11, i7]*MT[i12, i8] +
+MT[i10, i7]*MT[i11, i9]*MT[i12, i8] +
+MT[i10, i8]*MT[i11, i7]*MT[i12, i9] -
+MT[i10, i7]*MT[i11, i8]*MT[i12, i9])*(MT[i1, i6]*MT[i2, i5]*
+	MT[i3, i4] - MT[i1, i5]*MT[i2, i6]*MT[i3, i4] -
+MT[i1, i6]*MT[i2, i4]*MT[i3, i5] +
+MT[i1, i4]*MT[i2, i6]*MT[i3, i5] +
+MT[i1, i5]*MT[i2, i4]*MT[i3, i6] - MT[i1, i4]*MT[i2, i5]*MT[i3, i6])"},
 {"fcstContractContractionsIn4dims-ID27","Contract[PairContract[LorentzIndex[i], Momentum[p]]] // FCE","FV[p, i]"},
 {"fcstContractContractionsIn4dims-ID28","Contract[LC[mu, nu, rho, sigma] FV[k, mu] FV[P, rho]] // FCE","-LC[nu, sigma][k, P]"},
 {"fcstContractContractionsIn4dims-ID29","Contract[Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c],
@@ -162,12 +111,28 @@ DiracChain[GA[mu].(GS[p] + m).GA[nu], DiracIndex[i],
 be] LC[xi, ka, om, ep] FV[p1, mu] FV[p2, nu] FV[p3 - p4, be] FV[p1,
 	ka] FV[p2, om] FV[p3 - p4, ep], EpsExpand -> False,
 ExpandScalarProduct -> False, FCE -> True]",
-	"-((SP[P, p3 - p4]^2*SP[p1, p2]^2)/M^2) + (2*SP[P, p2]*SP[P, p3 - p4]*SP[p1, p2]*SP[p1, p3 - p4])/M^2 - (SP[P, p2]^2*SP[p1, p3 - p4]^2)/M^2 + (SP[P, p3 - p4]^2*SP[p1, p1]*SP[p2, p2])/M^2 -
-(2*SP[P, p1]*SP[P, p3 - p4]*SP[p1, p3 - p4]*SP[p2, p2])/M^2 - SP[p1, p3 - p4]^2*SP[p2, p2] + (SP[P, P]*SP[p1, p3 - p4]^2*SP[p2, p2])/M^2 - (2*SP[P, p2]*SP[P, p3 - p4]*SP[p1, p1]*SP[p2, p3 - p4])/M^2 +
-(2*SP[P, p1]*SP[P, p3 - p4]*SP[p1, p2]*SP[p2, p3 - p4])/M^2 + (2*SP[P, p1]*SP[P, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4])/M^2 + 2*SP[p1, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4] -
-(2*SP[P, P]*SP[p1, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4])/M^2 - (SP[P, p1]^2*SP[p2, p3 - p4]^2)/M^2 - SP[p1, p1]*SP[p2, p3 - p4]^2 + (SP[P, P]*SP[p1, p1]*SP[p2, p3 - p4]^2)/M^2 + (SP[P, p2]^2*SP[p1, p1]*SP[p3 - p4, p3 - p4])/M^2 -
-(2*SP[P, p1]*SP[P, p2]*SP[p1, p2]*SP[p3 - p4, p3 - p4])/M^2 - SP[p1, p2]^2*SP[p3 - p4, p3 - p4] + (SP[P, P]*SP[p1, p2]^2*SP[p3 - p4, p3 - p4])/M^2 + (SP[P, p1]^2*SP[p2, p2]*SP[p3 - p4, p3 - p4])/M^2 +
-SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4] - (SP[P, P]*SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4])/M^2"},
+	"-((SP[P, p3 - p4]^2*SP[p1, p2]^2 -
+	2*SP[P, p2]*SP[P, p3 - p4]*SP[p1, p2]*SP[p1, p3 - p4] +
+	SP[P, p2]^2*SP[p1, p3 - p4]^2 -
+	SP[P, p3 - p4]^2*SP[p1, p1]*SP[p2, p2] +
+	2*SP[P, p1]*SP[P, p3 - p4]*SP[p1, p3 - p4]*SP[p2, p2] +
+	M^2*SP[p1, p3 - p4]^2*SP[p2, p2] -
+	SP[P, P]*SP[p1, p3 - p4]^2*SP[p2, p2] +
+	2*SP[P, p2]*SP[P, p3 - p4]*SP[p1, p1]*SP[p2, p3 - p4] -
+	2*SP[P, p1]*SP[P, p3 - p4]*SP[p1, p2]*SP[p2, p3 - p4] -
+	2*SP[P, p1]*SP[P, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4] -
+	2*M^2*SP[p1, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4] +
+	2*SP[P, P]*SP[p1, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4] +
+	SP[P, p1]^2*SP[p2, p3 - p4]^2 +
+	M^2*SP[p1, p1]*SP[p2, p3 - p4]^2 -
+	SP[P, P]*SP[p1, p1]*SP[p2, p3 - p4]^2 -
+	SP[P, p2]^2*SP[p1, p1]*SP[p3 - p4, p3 - p4] +
+	2*SP[P, p1]*SP[P, p2]*SP[p1, p2]*SP[p3 - p4, p3 - p4] +
+	M^2*SP[p1, p2]^2*SP[p3 - p4, p3 - p4] -
+	SP[P, P]*SP[p1, p2]^2*SP[p3 - p4, p3 - p4] -
+	SP[P, p1]^2*SP[p2, p2]*SP[p3 - p4, p3 - p4] -
+	M^2*SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4] +
+	SP[P, P]*SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4])/M^2)"},
 {"fcstContractContractionsIn4dims-ID35","Contract[P (FV[p, mu] SP[k, p] + FV[k, mu]) . (FV[k, mu] -
 FV[p, mu] SP[k, p]), FCE -> True]","P*(SP[k, k] - SP[k, p]^2*SP[p, p])"},
 {"fcstContractContractionsIn4dims-ID36","Contract[P (FV[p, mu] SP[k, p] + FV[k, mu]) . (FV[k, mu] -
@@ -181,26 +146,12 @@ ExpandAll[(CVD[p, ci2] - CVD[q1, ci2]) (CVD[p, ciMinus2] -
 	CartesianIndex[ci2, -1 + D], LorentzIndex[QGILor3, D]] QMCHN[
 	r[CartesianIndex[hold[ciMinus2], -1 + D]] . FMKet[n1] .
 	FMBra[n1] .1, QGIQiMinus2, QGIQiMinus1]], FCE -> True]",
-	"-flagGauge CSPD[p, q1] CVD[p,
-ciMinus2] FAD[{-q1, QGMassV}] GFAD[{{-EN[\"n1\"] + TC[p - q1], 1},
-	1}] QMCHN[
-0.1 FMBra[n1] FMKet[n1] r[CartesianIndex[hold[ciMinus2], -1 + D]],
-QGIQiMinus2, QGIQiMinus1] TC[q1] +
-flagGauge CSPD[q1, q1] CVD[p,
-ciMinus2] FAD[{-q1, QGMassV}] GFAD[{{-EN[\"n1\"] + TC[p - q1], 1},
-	1}] QMCHN[
-0.1 FMBra[n1] FMKet[n1] r[CartesianIndex[hold[ciMinus2], -1 + D]],
-QGIQiMinus2, QGIQiMinus1] TC[q1] +
-flagGauge CSPD[p, q1] CVD[q1,
-ciMinus2] FAD[{-q1, QGMassV}] GFAD[{{-EN[\"n1\"] + TC[p - q1], 1},
-	1}] QMCHN[
-0.1 FMBra[n1] FMKet[n1] r[CartesianIndex[hold[ciMinus2], -1 + D]],
-QGIQiMinus2, QGIQiMinus1] TC[q1] -
-flagGauge CSPD[q1, q1] CVD[q1,
-ciMinus2] FAD[{-q1, QGMassV}] GFAD[{{-EN[\"n1\"] + TC[p - q1], 1},
-	1}] QMCHN[
-0.1 FMBra[n1] FMKet[n1] r[CartesianIndex[hold[ciMinus2], -1 + D]],
-QGIQiMinus2, QGIQiMinus1] TC[q1]"}
+	"-(flagGauge*(CSPD[p, q1] - CSPD[q1, q1])*(CVD[p, ciMinus2] -
+	CVD[q1, ciMinus2])*FAD[{-q1, QGMassV}]*
+GFAD[{{-EN[\"n1\"] + TC[p - q1], 1}, 1}]*
+QMCHN[0.1*FMBra[n1]*FMKet[n1]*
+	r[CartesianIndex[hold[ciMinus2], -1 + D]], QGIQiMinus2,
+	QGIQiMinus1]*TC[q1])"}
 };
 
 Tests`Lorentz`fcstContractDDims = {
@@ -337,20 +288,19 @@ EpsExpand -> False, FCE -> True]","-6 SP[p1 + p2 + p3, q1 + q2 + q3]"},
 {"fcstContractDDims-ID17","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[p,
 mu] (MTD[r, a] MTD[s, b] FVD[l, la] FVD[l, la] +
 	MTD[r, b] MTD[s, a] FVD[l, la] FVD[l, la]), FCE -> True]",
-	"2*D*FVD[p, mu]*SPD[l, l] + 2*D^2*FVD[p, mu]*SPD[l, l]"},
+	"2*D*(1 + D)*FVD[p, mu]*SPD[l, l]"},
 {"fcstContractDDims-ID18","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[p,
 mu] (MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[l, la] FVD[l,
 la], FCE -> True]",
-	"2 D FVD[p, mu] SPD[l, l] + 2 D^2 FVD[p, mu] SPD[l, l]"},
+	"2*D*(1 + D)*FVD[p, mu]*SPD[l, l]"},
 {"fcstContractDDims-ID19","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[p,
 mu] (MTD[r, a] MTD[s, b] +
 	MTD[r, b] MTD[s, a] FVD[l, la] FVD[l, la]), FCE -> True]",
-	"D*FVD[p, mu] + D^2*FVD[p, mu] + D*FVD[p, mu]*SPD[l, l] + D^2*FVD[p, mu]*SPD[l, l]"},
+	"D*(1 + D)*FVD[p, mu]*(1 + SPD[l, l])"},
 {"fcstContractDDims-ID20","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) MTD[mu,
 nu] (MTD[r, a] MTD[s, b] +
 	MTD[r, b] MTD[s, a] FVD[l, la] FVD[l, la]), FCE -> True]",
-	"D*MTD[mu, nu] + D^2*MTD[mu, nu] + D*MTD[mu, nu]*SPD[l, l] +
-	D^2*MTD[mu, nu]*SPD[l, l]"}
+	"D*(1 + D)*MTD[mu, nu]*(1 + SPD[l, l])"}
 };
 
 
@@ -412,17 +362,17 @@ Tests`Lorentz`fcstContractBMHV = {
 {"fcstContractBMHV-ID55","Contract[MTD[Lor1, Lor2] MTD[Lor1,i] (FVD[k, Lor6] MTD[Lor2, Lor4] +
 	FVD[k, Lor4] MTD[Lor2, Lor6]) MTD[Lor3, Lor4] MTD[Lor5,
 Lor6] (FVE[k, Lor5] MTE[Lor3, i] + FVD[k, Lor3] MTE[Lor5, i])]//FCE",
-"(-4 + D) SPD[k, k] + 2 SPE[k, k] + (-4 + D) SPE[k, k]"},
+"-4*SPD[k, k] + D*SPD[k, k] - 2*SPE[k, k] + D*SPE[k, k]"},
 {"fcstContractBMHV-ID56","Contract[(MTD[loor2, lora] MTD[lor1, lor2] MTE[loor1, lorb] -
 	D MTD[loor1, lora] MTD[lor1, lor2] MTE[loor2, lorb]) (FVD[q,
 	loor1] FVD[q, lor2] MTD[loor2, lor1] MTD[lora, lorb] +
 	FVD[q, loor1] FVD[q, lor1] MTD[loor2, lor2] MTD[lora, lorb]),
-FCE -> True]","2 SPE[q, q] - 2 D SPE[q, q]"},
+FCE -> True]","2*(1 - D)*SPE[q, q]"},
 {"fcstContractBMHV-ID57","Contract[ExpandAll[(MTD[loor2, lora] MTD[lor1, lor2] MTE[loor1, lorb] -
 	D MTD[loor1, lora] MTD[lor1, lor2] MTE[loor2, lorb]) (FVD[q,
 	loor1] FVD[q, lor2] MTD[loor2, lor1] MTD[lora, lorb] +
 	FVD[q, loor1] FVD[q, lor1] MTD[loor2, lor2] MTD[lora, lorb])],
-FCE -> True]","2 SPE[q, q] - 2 D SPE[q, q]"}
+FCE -> True]","2*(1 - D)*SPE[q, q]"}
 };
 
 Tests`Lorentz`fcstContractCartesian = {
@@ -435,7 +385,7 @@ Contract[LC[0][p1, p2, p3] LC[0][q1, q2, q3]]] - Contract[EpsEvaluate[LC[0][p1, 
 {"fcstContractCartesian-ID5","Contract[(CVD[q, loor1] CVD[q, lor2] KDD[loor2, lor1] KDD[lora,
 	lorb] + CVD[q, loor1] CVD[q, lor1] KDD[loor2, lor2] KDD[lora,
 	lorb]) (KDD[loor2, lora] KDD[lor1, lor2] KDE[loor1, lorb] -
-	D KDD[loor1, lora] KDD[lor1, lor2] KDE[loor2, lorb]), FCE -> True]","2 CSPE[q, q] - 2 D CSPE[q, q]"}
+	D KDD[loor1, lora] KDD[lor1, lor2] KDE[loor2, lorb]), FCE -> True]","2*(1 - D)*CSPE[q, q]"}
 }
 
 

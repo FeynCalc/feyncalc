@@ -6,21 +6,15 @@
 
 The default setting is `DataType[__, _] := False`.
 
-To assign a certain data-type, do, e.g., `DataType[x, PositiveInteger] = True`. Currently used `DataTypes`: 
+To assign a certain data-type, do, e.g., `DataType[x, FCVariable] = True`. Currently used `DataTypes`: 
 
 - `NonCommutative`
 
-- `PositiveInteger`
-
-- `NegativeInteger`
-
-- `PositiveNumber`
-
 - `FreeIndex`
 
-- `GrassmannParity`
-
 - `FCTensor`
+
+- `FCVariable`
 
 - `ImplicitDiracIndex`
 
@@ -28,11 +22,9 @@ To assign a certain data-type, do, e.g., `DataType[x, PositiveInteger] = True`. 
 
 - `ImplicitSUNFIndex`
 
-If loaded, PHI adds the `DataTypes`: `UMatrix`, `UScalar`.
-
 ### See also
 
-[Overview](Extra/FeynCalc.md), [DeclareNonCommutative](DeclareNonCommutative.md), [NonCommutative](NonCommutative.md), [PositiveInteger](PositiveInteger.md), [NegativeInteger](NegativeInteger.md), [PositiveNumber](PositiveNumber.md), [FreeIndex](FreeIndex.md), [GrassmannParity](GrassmannParity.md), [FCTensor](FCTensor.md), [ImplicitDiracIndex](ImplicitDiracIndex.md), [ImplicitPauliIndex](ImplicitPauliIndex.md), [ImplicitSUNFIndex](ImplicitSUNFIndex.md).
+[Overview](Extra/FeynCalc.md), [DeclareNonCommutative](DeclareNonCommutative.md), [NonCommutative](NonCommutative.md), [FreeIndex](FreeIndex.md), [FCVariable](FCVariable.md), [FCTensor](FCTensor.md), [ImplicitDiracIndex](ImplicitDiracIndex.md), [ImplicitPauliIndex](ImplicitPauliIndex.md), [ImplicitSUNFIndex](ImplicitSUNFIndex.md).
 
 ### Examples
 
@@ -105,25 +97,3 @@ DataType[f, g, NonCommutative] = False;
  
 DataType[m, odd] = DataType[a, even] = False;
 ```
-
-Certain FeynCalc objects have `DataType` `PositiveInteger` set to `True`.
-
-```mathematica
-DataType[OPEm, PositiveInteger]
-```
-
-$$\text{True}$$
-
-PowerSimplify uses the DataType information.
-
-```mathematica
-PowerSimplify[ (-1)^(2 OPEm)]
-```
-
-$$1$$
-
-```mathematica
-PowerSimplify[ (- SO[q])^OPEm]
-```
-
-$$(\Delta \cdot q)^m e^{2 i \pi  m \left\lfloor -\frac{\arg (\Delta \cdot q)}{2 \pi }\right\rfloor +i \pi  m}$$

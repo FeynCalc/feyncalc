@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`Explicit[exp]` inserts explicit expressions of `GluonVertex`, `Twist2GluonOperator`, `SUNF` etc. in `exp`.*)
+(*`Explicit[exp]` inserts explicit expressions of `GluonVertex`, `SUNF` etc. in `exp`.*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*`Explicit` is also an option for `FieldStrength`, `GluonVertex`, `SUNF`,  `Twist2GluonOperator` etc. If set to `True` the full form of the operator is inserted.*)
+(*`Explicit` is also an option for `FieldStrength`, `GluonVertex`, `SUNF`  etc. If set to `True` the full form of the operator is inserted.*)
 
 
 (* ::Subsection:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [GluonVertex](GluonVertex.md), [Twist2GluonOperator](Twist2GluonOperator.md).*)
+(*[Overview](Extra/FeynCalc.md), [GluonVertex](GluonVertex.md).*)
 
 
 (* ::Subsection:: *)
@@ -38,11 +38,6 @@ Explicit[gv]
 
 
 Explicit[gv,SUNF->True]
-
-
-Twist2GluonOperator[p,\[Mu],a,\[Nu],b]
-
-Explicit[%]
 
 
 FieldStrength[\[Mu],\[Nu],a]

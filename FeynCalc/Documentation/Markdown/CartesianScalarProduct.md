@@ -69,12 +69,6 @@ ExpandScalarProduct[ CartesianScalarProduct[Subscript[p, 1] - q, Subscript[p, 2]
 $$-\overline{k}\cdot \overline{p}_1+\overline{k}\cdot \overline{q}-\overline{q}\cdot \overline{p}_2+\frac{s}{2}$$
 
 ```mathematica
-Calc[ CartesianScalarProduct[Subscript[p, 1] - q, Subscript[p, 2] - k]]
-```
-
-$$-\overline{k}\cdot \overline{p}_1+\overline{k}\cdot \overline{q}-\overline{q}\cdot \overline{p}_2+\frac{s}{2}$$
-
-```mathematica
 CartesianScalarProduct[q1] = qq;
 ```
 

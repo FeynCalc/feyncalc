@@ -142,9 +142,6 @@ ScalarProductExpand::usage =
 The shortcut ScalarProductExpand is deprecated, please use ExpandScalarProduct
 instead!";
 
-IFPD::usage =
-"IFPD[p, m] denotes (p^2 - m^2).";
-
 DiracMatrix::noint =
 "DiracMatrix[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
 arguments can be 0, 1, 2, 3, 5, 6 and 7. Evaluation aborted!";
@@ -227,10 +224,6 @@ FourVector[a_,b_, OptionsPattern[]] :=
 	Pair[Momentum[a, OptionValue[Dimension]],
 	LorentzIndex[b, OptionValue[Dimension]]]/; OptionValue[FCI];
 
-
-IFPD[Momentum[OPEDelta,___],0] :=
-	0;
-
 LeviCivita[x:Except[_?OptionQ].., opts:OptionsPattern[LeviCivita]][y:Except[_?OptionQ]..,
 		opts:OptionsPattern[LeviCivita]]/; (Length[{x,y}] =!= 4) && (FCPatternFreeQ[{x,y,opts}]) :=
 	Message[LeviCivita::argrx, "LeviCivita["<>ToString[{x,opts}]<>"]["<>ToString[{y,opts}]<>"]", Length[{x,y}], 4];
@@ -281,13 +274,6 @@ DiracSlash /:
 	MakeBoxes[DiracSlash[x_, opts:OptionsPattern[]], TraditionalForm]:=
 		ToBoxes[DiracGamma[Momentum[x,OptionValue[DiracSlash, {opts},Dimension]],
 			OptionValue[DiracSlash, {opts},Dimension]],TraditionalForm]/; !OptionValue[{opts},FCI];
-
-IFPD /:
-	MakeBoxes[IFPD[a_,c_], TraditionalForm]:=
-		If[ c === 0,
-			TBox[a^2],
-			TBox["(", a^2," - ", c^2, ")"]
-		];
 
 LeviCivita /:
 	MakeBoxes[LeviCivita[(a:Except[_?OptionQ]..)/; Length[{a}] === 4, opts:OptionsPattern[LeviCivita]/;!OptionValue[LeviCivita,{opts},FCI]],

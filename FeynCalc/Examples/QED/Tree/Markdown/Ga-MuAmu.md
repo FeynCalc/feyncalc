@@ -1,6 +1,5 @@
 ---
-title: Muon production from the decay of a
-virtual photon
+title: Muon production from the decay of a virtual photon
 ---
 
 

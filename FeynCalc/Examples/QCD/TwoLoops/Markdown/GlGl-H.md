@@ -27,7 +27,7 @@ If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2,
  ]
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 14:09:14 +02:00, 9ab9d838). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -39,7 +39,7 @@ $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
 
-$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynHelpers }\;\text{2.0.0 (2026-02-05 17:03:01 +02:00, 5db84fbb). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
@@ -84,7 +84,7 @@ AbsoluteTiming[ampSimp = (ampRaw) // Contract[#, FCParallelize -> True] & //
       DiracSimplify[#, FCParallelize -> True] & // SUNSimplify[#, FCParallelize -> True] &;]
 ```
 
-$$\{21.1422,\text{Null}\}$$
+$$\{31.6256,\text{Null}\}$$
 
 ## Rewrite the amplitude in terms of GLIs
 
@@ -99,6 +99,8 @@ $$\text{FCLoopFindTopologies: Number of the identified unique topologies: }12$$
 $$\text{FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: }0$$
 
 $$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of found topologies: }12$$
 
 ```mathematica
 mappings = FCLoopFindTopologyMappings[topos, FCParallelize -> True];
@@ -124,20 +126,20 @@ mappings2 = {mappings[[1]] /. basisCompletionRules, completedTopos};
 AbsoluteTiming[ampReduced = FCLoopTensorReduce[amp, topos, FCParallelize -> True];]
 ```
 
-$$\{15.7984,\text{Null}\}$$
+$$\{19.4593,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[ampPreFinal = FCLoopApplyTopologyMappings[ampReduced /. basisCompletionRules, mappings2, FCParallelize -> True];]
 ```
 
-$$\{11.5527,\text{Null}\}$$
+$$\{9.92357,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[ampFinal = (ampPreFinal(*/.GaugeXi[g]->- gxi+ 1*)) // DiracSimplify[#, FCParallelize -> True] & // 
      SUNSimplify[#, FCParallelize -> True] &;]
 ```
 
-$$\{2.62234,\text{Null}\}$$
+$$\{3.05322,\text{Null}\}$$
 
 ```mathematica
 dir = FileNameJoin[{$TemporaryDirectory, "Reduction-GlGlToH-2L"}];
@@ -162,7 +164,7 @@ $$\text{KiraCreateIntegralFile: Number of loop integrals: }60$$
 
 $$\text{KiraCreateIntegralFile: Number of loop integrals: }103$$
 
-$$\text{KiraCreateIntegralFile: Number of loop integrals: }100$$
+$$\text{KiraCreateIntegralFile: Number of loop integrals: }101$$
 
 $$\text{KiraCreateIntegralFile: Number of loop integrals: }206$$
 
@@ -403,7 +405,28 @@ rhs = StringCases[StringReplace[tmp, "\\epsilon" -> " ep "], "\\" ~~ Shortest[x_
 tmp2 = ToExpression[StringReplace[StringReplace[tmp, Thread[Rule[lhs, rhs]]], {"N" -> "{CA}", "CF" -> "{CF}"}], TeXForm];
 ```
 
-$$\text{resLit}=\text{tmp2}\;\text{/.}\epsilon \;\text{-$>$}\;\text{ep}\;\text{/.}\{\text{dt}[\_]\text{-$>$}\;\text{mastersLit}[[1]]\text{mark}[1],\text{db}[\_]\text{-$>$}\;\text{mastersLit}[[2]]\text{mark}[2],\text{bttwo}[\_]\text{-$>$}\;\text{mastersLit}[[4]]\text{mark}[3],\text{tritad}[\_]\text{-$>$}\;\text{mastersLit}[[5]]\text{mark}[4],\text{tribub}[\_]\text{-$>$}\;\text{mastersLit}[[7]]\text{mark}[6],\text{glasses}[\_]\text{-$>$}\;\text{mastersLit}[[6]]\text{mark}[5],\text{ssonetwotwo}[\_]\text{-$>$}\;\text{mastersLit}[[8]]\text{mark}[7],\text{sstwoonetwo}[\_]\text{-$>$}\;\text{mastersLit}[[9]]\text{mark}[8],\text{mpfour}[\_]\text{-$>$}\;\text{mastersLit}[[10]]\text{mark}[9],\text{tria}[\_]\text{-$>$}\;\text{mastersLit}[[11]]\text{mark}[10],\text{triathree}[\_]\text{-$>$}\;\text{mastersLit}[[13]]\text{mark}[11],\text{dtria}[\_]\text{-$>$}\;\text{mastersLit}[[15]]\text{mark}[12],\text{mpsix}[\_]\text{-$>$}\;\text{mastersLit}[[16]]\text{mark}[13],\text{xtria}[\_]\text{-$>$}\;\text{mastersLit}[[17]]\text{mark}[14],\text{(*}\;\text{dtria}[\_]\text{-$>$}\;\text{mastersLit}[17],\text{*)}\;\text{triatwo}[\_]\text{-$>$}\;\text{intWithNumerators} \;\text{mark}[15]\};$$
+```mathematica
+resLit = tmp2 /. \[Epsilon] -> ep /. {
+     dt[_] -> mastersLit[[1]] mark[1], 
+     db[_] -> mastersLit[[2]] mark[2], 
+     bttwo[_] -> mastersLit[[4]] mark[3], 
+     tritad[_] -> mastersLit[[5]] mark[4], 
+     tribub[_] -> mastersLit[[7]] mark[6], 
+     
+     glasses[_] -> mastersLit[[6]] mark[5], 
+     \!\(TraditionalForm\` ssonetwotwo\)[_] -> mastersLit[[8]] mark[7],
+     \!\(TraditionalForm\` sstwoonetwo\)[_] -> mastersLit[[9]] mark[8],
+     mpfour[_] -> mastersLit[[10]] mark[9], 
+     tria[_] -> mastersLit[[11]] mark[10], 
+     triathree[_] -> mastersLit[[13]] mark[11], 
+     
+     dtria[_] -> mastersLit[[15]] mark[12], 
+     mpsix[_] -> mastersLit[[16]] mark[13], 
+     xtria[_] -> mastersLit[[17]] mark[14], 
+    (*dtria[_]->mastersLit[17],*) 
+     triatwo[_] -> intWithNumerators mark[15] 
+    };
+```
 
 ```mathematica
 resLit2 = (resLit //. {ep[x_] :> ep x, x[y_] :> x y, Power[x, n_][y_] :> x^n y, 
@@ -471,4 +494,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001],
 
 $$\text{$\backslash $tCompare to Anastasiou, Beerli, Bucherer, Daleo, Kunszt,     arXiv:hep-ph/0611236, A.3:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }102.876\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }129.202\text{ s.}$$

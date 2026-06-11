@@ -1,7 +1,20 @@
-(* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
+(* ::Package:: *)
 
-(* :Summary: DataType is just a data type *)
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: DataType															*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(*	:Summary:	DataType is just a data type
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -10,23 +23,6 @@ FreeIndex::usage =
 
 Possible use: DataType[mu, FreeIndex] = True.";
 
-GrassmannParity::usage =
-"GrassmannParity is a data type.
-
-E.g. DataType[F, GrassmannParity] = 1 declares F to be of bosonic type and
-DataType[F, GrassmannParity] = -1 of fermionic one.";
-
-NegativeInteger::usage =
-"NegativeInteger is a data type. E.g. DataType[n, NegativeInteger] can be set
-to True.";
-
-PositiveInteger::usage =
-"PositiveInteger is a data type. E.g. DataType[OPEm, PositiveInteger] gives
-True.";
-
-PositiveNumber::usage =
-"PositiveNumber is a data type. E.g. DataType[Epsilon, PositiveNumber] = True
-(by default).";
 
 FCTensor::usage =
 "FCTensor is a data type. E.g. DataType[R, FCTensor] = True.";
@@ -81,30 +77,22 @@ data-type type.
 
 The default setting is DataType[__, _] := False.
 
-To assign a certain data-type, do, e.g., DataType[x, PositiveInteger] = True.
+To assign a certain data-type, do, e.g., DataType[x, FCVariable] = True.
 Currently used DataTypes: 
 
 - NonCommutative
 
-- PositiveInteger
-
-- NegativeInteger
-
-- PositiveNumber
-
 - FreeIndex
 
-- GrassmannParity
-
 - FCTensor
+
+- FCVariable
 
 - ImplicitDiracIndex
 
 - ImplicitPauliIndex
 
-- ImplicitSUNFIndex
-
-If loaded, PHI adds the DataTypes: UMatrix, UScalar.";
+- ImplicitSUNFIndex";
 
 DataType::notsync =
 "You are using FeynCalc in the parallel mode, but the DataType values \
@@ -130,10 +118,6 @@ Options[DataType] = {
 
 DataType[] = {
 	FreeIndex,
-	GrassmannParity,
-	NegativeInteger,
-	PositiveInteger,
-	PositiveNumber,
 	FCTensor,
 	FCVariable
 };

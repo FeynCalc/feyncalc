@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: PaVeReduce														*)
 
@@ -541,10 +541,6 @@ pavitp[xXX_PaVe, dir_, opts:OptionsPattern[]] :=
 			PaVe[xy,C,p,C,m,paveopts];
 		xxx = paV@@xXX;
 
-		(*Changed 18/9-2000, F.Orellana*)
-		abbs = DownValues[Abbreviation] /. Abbreviation -> Identity /. HoldPattern -> Identity;
-
-		nx = StringReplace[ ToString[InputForm[xxx/.abbs], PageWidth -> 222], $Abbreviations];
 		nx = StringJoin[dir, nx, ".s"];
 
 		FCPrint[2,"nx  =", nx,FCDoControl->pvrVerbose];
@@ -574,23 +570,6 @@ pavitp[xXX_PaVe, dir_, opts:OptionsPattern[]] :=
 		];
 		temp
 	];
-
-(*
-pavereduce[0,___]:=0;
-pavereduce[w_,___]:=w/;NTerms[w]===1 && FreeQ[w,PaVe];
-
-(*
-pavereduce[ a_ b_,ops___ ]:=cancel[ a pavereduce[ b,ops] ]/;
-													FreeQ[a,PaVe]&&!FreeQ[a,StandardMatrixElement];
-*)
-
-pavereduce[a_Times, ops___] :=
-	cancel[ SelectFree[SelectNotFree[a,StandardMatrixElement],PaVe] *
-pavereduce[a/SelectFree[SelectNotFree[a,StandardMatrixElement],PaVe]
-				]  ] /;
-		SelectFree[SelectNotFree[a,StandardMatrixElement],PaVe] =!= 1;
-*)
-
 
 (* ********************************************************************** *)
 
@@ -636,8 +615,8 @@ pavereduce[w_ , opts:OptionsPattern[]] :=
 			For[i = 1, i<=nn, i++,
 				FCPrint[2,"breaking down # ", i, " / ", nn];
 				If[ nn===1,
-					pre = PartitHead[nw,StandardMatrixElement],
-					pre = PartitHead[nw[[i]],StandardMatrixElement]
+					pre = FCSplit[nw,{StandardMatrixElement}],
+					pre = FCSplit[nw[[i]],{StandardMatrixElement}]
 				];
 				re = re + pre[[2]] pavereduce[ pre[[1]], opts]
 			];

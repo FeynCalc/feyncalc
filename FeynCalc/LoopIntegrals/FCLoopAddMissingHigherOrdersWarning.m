@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopAddMissingHigherOrdersWarning										*)
+(* :Title: FCLoopAddMissingHigherOrdersWarning								*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  	Add scalings of masses and momenta							*)
+(* :Summary:  	Add warnings for missing ep-orders							*)
 
 (* ------------------------------------------------------------------------ *)
 

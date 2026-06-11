@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: NPointTo4Point													*)
 
@@ -12,7 +12,7 @@
 *)
 
 (* :Summary:	Reduction of IR finite scalar 5-point functions to
-				scalar 4-point functions according to arXiv:0709.1075	*)
+				scalar 4-point functions according to arXiv:0709.1075		*)
 
 (* ------------------------------------------------------------------------ *)
 

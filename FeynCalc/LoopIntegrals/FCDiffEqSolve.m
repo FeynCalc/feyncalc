@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Solve systems of ODEs in the canonical form			*)
+(* :Summary:	Solve systems of ODEs in the canonical form					*)
 
 (* ------------------------------------------------------------------------ *)
 

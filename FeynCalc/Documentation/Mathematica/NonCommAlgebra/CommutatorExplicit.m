@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [DotSimplify](DotSimplify.md).*)
+(*[Overview](Extra/FeynCalc.md), [DotSimplify](DotSimplify.md).*)
 
 
 (* ::Subsection:: *)

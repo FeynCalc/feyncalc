@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [SUND](SUND.md), [SUNDelta](SUNDelta.md), [SUNIndex](SUNIndex.md), [SUNSimplify](SUNSimplify.md), [SUNT](SUNT.md), [Trick](Trick.md).*)
+(*[Overview](Extra/FeynCalc.md), [SUND](SUND.md), [SUNDelta](SUNDelta.md), [SUNIndex](SUNIndex.md), [SUNSimplify](SUNSimplify.md), [SUNT](SUNT.md).*)
 
 
 (* ::Subsection:: *)
@@ -25,14 +25,12 @@
 
 SUNF[a,b,c]x+SUNF[b,a,c]
 
-Calc[%]
-
-SUNSimplify[%%]
+SUNSimplify[%]
 
 
 SUNF[a,a,b]
 
-%//Calc
+SUNSimplify[%]
 
 
 (* ::Text:: *)

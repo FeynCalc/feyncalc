@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCFeynmanParametrize											*)
+(* :Title: FCFeynmanParametrize												*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -122,6 +122,8 @@ Options[FCFeynmanParametrize] = {
 	Variables					-> {}
 };
 
+FCFeynmanParametrize[expr_, topo_FCTopology, opts:OptionsPattern[]]:=
+	FCFeynmanParametrize[expr, 1, {topo}, opts];
 
 FCFeynmanParametrize[expr_, lmoms_List /; ! OptionQ[lmoms], opts:OptionsPattern[]]:=
 	FCFeynmanParametrize[expr, 1, lmoms, opts];

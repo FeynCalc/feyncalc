@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [TID](TID.md), [TIDL](TIDL.md), [OneLoopSimplify](OneLoopSimplify.md).*)
+(*[Overview](Extra/FeynCalc.md), [TID](TID.md), [TIDL](TIDL.md).*)
 
 
 (* ::Subsection:: *)

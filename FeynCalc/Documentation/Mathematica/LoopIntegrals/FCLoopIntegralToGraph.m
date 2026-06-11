@@ -28,7 +28,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCLoopGraphPlot](FCLoopGraphPlot.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCLoopFactorizingSplit](FCLoopFactorizingSplit.md), [FCLoopGraphPlot](FCLoopGraphPlot.md).*)
 
 
 (* ::Subsection:: *)
@@ -70,9 +70,45 @@ FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}]]
 (*If the second argument contains multiple topologies, the function will automatically select the relevant ones.*)
 
 
-FCLoopIntegralToGraph[GLI[topo1,{1,1,1,0,0,0}],
+FCLoopIntegralToGraph[GLI[topo1,{1,1,1,1,1,1}],
 {FCTopology[topo1,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
 FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}],
 FCTopology[topo2,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
 FAD[{k2-k3,mg}],FAD[{k1-k3,mg}]},{k1,k2,k3},{q},{},{}]
 }]
+
+
+(* ::Text:: *)
+(*Factorizing integrals cannot be reliably converted to graphs, so once such integrals are detected, the evaluation automatically halts. In this case the user should employ `FCLoopFactorizingSplit` or `FCLoopCreateFactorizingRules` to split the integrals into simpler ones and graph those.*)
+
+
+(* ::Input:: *)
+(*int=SFAD[p1,Q-p1,p2,Q-p2]*)
+
+
+(* ::Input:: *)
+(*FCLoopIntegralToGraph[int,{p1,p2}]*)
+
+
+(* ::Input:: *)
+(*aux=FCLoopFactorizingSplit[int,{p1,p2}]*)
+
+
+(* ::Input:: *)
+(*FCLoopIntegralToGraph[#[[1]],#[[2]]]&/@aux*)
+
+
+(* ::Input:: *)
+(*aux=FCLoopFactorizingSplit[SFAD[p1,Q-p1,p3,Q-p3],{p1,p3}]*)
+
+
+(* ::Input:: *)
+(*FCLoopIntegralToGraph[#[[1]],#[[2]]]&/@aux*)
+
+
+(* ::Input:: *)
+(*aux=FCLoopFactorizingSplit[FAD[{q-k1},k1,{k2,mg},{k3,mb},{k2-k3,mb}],{k1,k2,k3}]*)
+
+
+(* ::Input:: *)
+(*FCLoopIntegralToGraph[#[[1]],#[[2]]]&/@aux*)

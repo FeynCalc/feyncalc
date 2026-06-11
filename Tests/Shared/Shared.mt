@@ -13,7 +13,7 @@
 
 Needs["FeynCalc`"];
 
-(*TODO Need tests for Factor1, FeynCalcForm, ILimit, Series3,  MemSet, XYT, TimedIntegrate*)
+(*TODO Need tests for FeynCalcForm, MemSet*)
 
 ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "Shared"}]]

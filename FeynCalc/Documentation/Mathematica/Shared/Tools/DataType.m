@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*To assign a certain data-type, do, e.g., `DataType[x, PositiveInteger] = True`. Currently used `DataTypes`: *)
+(*To assign a certain data-type, do, e.g., `DataType[x, FCVariable] = True`. Currently used `DataTypes`: *)
 
 
 (* ::Text:: *)
@@ -28,27 +28,15 @@
 
 
 (* ::Text:: *)
-(*- `PositiveInteger`*)
-
-
-(* ::Text:: *)
-(*- `NegativeInteger`*)
-
-
-(* ::Text:: *)
-(*- `PositiveNumber`*)
-
-
-(* ::Text:: *)
 (*- `FreeIndex`*)
 
 
 (* ::Text:: *)
-(*- `GrassmannParity`*)
+(*- `FCTensor`*)
 
 
 (* ::Text:: *)
-(*- `FCTensor`*)
+(*- `FCVariable`*)
 
 
 (* ::Text:: *)
@@ -63,16 +51,12 @@
 (*- `ImplicitSUNFIndex`*)
 
 
-(* ::Text:: *)
-(*If loaded, PHI adds the `DataTypes`: `UMatrix`, `UScalar`.*)
-
-
 (* ::Subsection:: *)
 (*See also*)
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [DeclareNonCommutative](DeclareNonCommutative.md), [NonCommutative](NonCommutative.md), [PositiveInteger](PositiveInteger.md), [NegativeInteger](NegativeInteger.md), [PositiveNumber](PositiveNumber.md), [FreeIndex](FreeIndex.md), [GrassmannParity](GrassmannParity.md), [FCTensor](FCTensor.md), [ImplicitDiracIndex](ImplicitDiracIndex.md), [ImplicitPauliIndex](ImplicitPauliIndex.md), [ImplicitSUNFIndex](ImplicitSUNFIndex.md).*)
+(*[Overview](Extra/FeynCalc.md), [DeclareNonCommutative](DeclareNonCommutative.md), [NonCommutative](NonCommutative.md), [FreeIndex](FreeIndex.md), [FCVariable](FCVariable.md), [FCTensor](FCTensor.md), [ImplicitDiracIndex](ImplicitDiracIndex.md), [ImplicitPauliIndex](ImplicitPauliIndex.md), [ImplicitSUNFIndex](ImplicitSUNFIndex.md).*)
 
 
 (* ::Subsection:: *)
@@ -128,20 +112,3 @@ Clear[f,test];
 DataType[f,g, NonCommutative] = False;
 
 DataType[m,odd]=DataType[a,even]=False;
-
-
-(* ::Text:: *)
-(*Certain FeynCalc objects have `DataType` `PositiveInteger` set to `True`.*)
-
-
-DataType[OPEm,PositiveInteger]
-
-
-(* ::Text:: *)
-(*PowerSimplify uses the DataType information.*)
-
-
-PowerSimplify[ (-1)^(2OPEm)]
-
-
-PowerSimplify[ (- SO[q])^OPEm]

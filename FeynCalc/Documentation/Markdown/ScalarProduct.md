@@ -16,7 +16,7 @@ It is highly recommended to set `ScalarProduct`s before any calculation. This im
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [FCClearScalarProducts](FCClearScalarProducts.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProductCancel](ScalarProductCancel.md), [Pair](Pair.md), [SP](SP.md), [SPD](SPD.md).
+[Overview](Extra/FeynCalc.md), [FCClearScalarProducts](FCClearScalarProducts.md), [ExpandScalarProduct](ExpandScalarProduct.md), [Pair](Pair.md), [SP](SP.md), [SPD](SPD.md).
 
 ### Examples
 
@@ -64,12 +64,6 @@ $$\frac{s}{2}$$
 
 ```mathematica
 ExpandScalarProduct[ ScalarProduct[Subscript[p, 1] - q, Subscript[p, 2] - k]]
-```
-
-$$-\overline{k}\cdot \overline{p}_1+\overline{k}\cdot \overline{q}-\overline{q}\cdot \overline{p}_2+\frac{s}{2}$$
-
-```mathematica
-Calc[ ScalarProduct[Subscript[p, 1] - q, Subscript[p, 2] - k]]
 ```
 
 $$-\overline{k}\cdot \overline{p}_1+\overline{k}\cdot \overline{q}-\overline{q}\cdot \overline{p}_2+\frac{s}{2}$$

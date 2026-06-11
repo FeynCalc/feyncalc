@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`$AL` is the head for dummy indices which may be introduced by `Amputate` and `Uncontract`. By default it is unset, but may be set to anything.*)
+(*`$AL` is the head for dummy indices which may be introduced by different functions. By default it is unset, but may be set to anything.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Amputate](Amputate.md), [Uncontract](Uncontract.md).*)
+(*[Overview](Extra/FeynCalc.md), [Uncontract](Uncontract.md).*)
 
 
 (* ::Subsection:: *)

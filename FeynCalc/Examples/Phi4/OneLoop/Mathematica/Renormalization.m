@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Renormalization, phi^4, MS and MSbar, 1-loop					*)
+(* :Summary:  Renormalization, phi^4, MSbar, 1-loop							*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -24,11 +24,10 @@
 
 
 (* ::Text:: *)
-(*This example uses a custom phi^4 model created with FeynRules. Please evaluate the file*)
-(*FeynCalc/Examples/FeynRules/Phi4/GenerateModelPhi4.m before running it for the first time.*)
+(*This example uses a custom phi^4 model created with FeynRules.*)
 
 
-description="Renormalization, phi^4, MS and MSbar, 1-loop";
+description="Renormalization, phi^4, MSbar, 1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -36,93 +35,131 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadAddOns={"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
 
 
 (* ::Section:: *)
 (*Configure some options*)
 
 
+modelName="Phi4";
+
+
+modelDir=FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","Examples","Models",modelName}];
+
+
+FAPatch[PatchModelsOnly->True,FAModelsDirectory->modelDir];
+
+
 (* ::Text:: *)
-(*We keep scaleless B0 functions, since otherwise the UV part would not come out right.*)
+(*Here we define all Z-factors for renormalization constants present in the Lagrangian*)
 
 
-$KeepLogDivergentScalelessIntegrals=True;
-
-
-FAPatch[PatchModelsOnly->True];
+renConstants=Zg|Zphi|Zmphi
 
 
 (* ::Section:: *)
 (*Generate Feynman diagrams*)
 
 
-params={InsertionLevel->{Particles},Model -> FileNameJoin[{"Phi4","Phi4"}],
-GenericModel -> FileNameJoin[{"Phi4","Phi4"}]};
-top[i_,j_]:=CreateTopologies[1, i -> j];
-topCT[i_,j_]:=CreateCTTopologies[1, i ->j];
-topVertex[i_,j_]:=CreateTopologies[1, i ->j,
-	ExcludeTopologies->{WFCorrections}];
-topVertexCT[i_,j_]:=CreateCTTopologies[1, i ->j,
-	ExcludeTopologies->{WFCorrectionCTs}];
-
-{diagPhi4SE,diagPhi4SECT} = InsertFields[#, {S[1]} -> {S[1]},
-Sequence@@params]&/@{top[1,1],topCT[1,1]};
-{diagVertex,diagVertexCT} = InsertFields[#,  {S[1],S[1]}->{S[1],S[1]},
-Sequence@@params]&/@{topVertex[2,2],topVertexCT[2,2]};
+diagScalarSE=InsertFields[CreateTopologies[1, 1 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {S[1]} -> {S[1]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,modelName}],
+GenericModel -> FileNameJoin[{modelDir,"Phi4"}]];
 
 
-diag1[0]=diagPhi4SE[[0]][Sequence@@diagPhi4SE,
-	Sequence@@diagPhi4SECT];
-diag2[0]=diagVertex[[0]][Sequence@@diagVertex,
-	Sequence@@diagVertexCT];
+diagScalar4VTX=InsertFields[CreateTopologies[1, 2 -> 2,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {S[1],S[1]} -> {S[1],S[1]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,modelName}],
+GenericModel -> FileNameJoin[{modelDir,"Phi4"}]];
 
 
-Paint[diag1[0], ColumnsXRows -> {2, 1},SheetHeader->None,
-Numbering -> Simple, ImageSize->{512,256}];
+diagScalarSECT=InsertFields[CreateCTTopologies[1, 1 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {S[1]} -> {S[1]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,modelName}],
+GenericModel -> FileNameJoin[{modelDir,"Phi4"}]];
 
 
-Paint[diag2[0], ColumnsXRows -> {2, 1},SheetHeader->None,
-Numbering -> Simple, ImageSize->{512,256}];
+diagScalar4VTXCT=InsertFields[CreateCTTopologies[1, 2 -> 2,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {S[1],S[1]} -> {S[1],S[1]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,modelName}],
+GenericModel -> FileNameJoin[{modelDir,"Phi4"}]];
+
+
+(* ::Text:: *)
+(*Self-energy and vertex diagrams*)
+
+
+Paint[diagScalarSE, ColumnsXRows -> {4, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+Paint[diagScalar4VTX, ColumnsXRows -> {4,1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+
+
+(* ::Text:: *)
+(*Counter-term diagrams*)
+
+
+Paint[diagScalarSECT, ColumnsXRows -> {4, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+Paint[diagScalar4VTXCT, ColumnsXRows -> {4,1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+
+
+(* ::Section:: *)
+(*Master integrals*)
+
+
+(* ::Text:: *)
+(*The only required masters are 1-loop tadpoles*)
+(**)
+
+
+tadpoleMaster=Get[FileNameJoin[{$FeynCalcDirectory,"Examples","MasterIntegrals","Tadpoles","tad1LxFx1x1xxEp999x.m"}]];
+
+
+tadpoleMaster1=tadpoleMaster/.m1->mx/.tad1LxFx1x1xxEp999x->"tad1Lv1";
+tadpoleMaster2=tadpoleMaster/.m1-> mphi/.tad1LxFx1x1xxEp999x->"tad1Lv2";
+
+
+tadpoleMaster1
+
+
+tadpoleMaster2
 
 
 (* ::Section:: *)
 (*Obtain the amplitudes*)
 
 
-(* ::Text:: *)
-(*The 1/(2Pi)^D prefactor is implicit.*)
-
-
-(* ::Text:: *)
-(*Self-energy including the counter-term*)
-
-
-amp1[0] = FCFAConvert[CreateFeynAmp[diag1[0],Truncated->True,
-	GaugeRules->{},PreFactor->1],
+{scalarSE$RawAmp,scalarSECT$RawAmp} = 
+FCFAConvert[CreateFeynAmp[#,Truncated->True,PreFactor->1],
 	IncomingMomenta->{p}, OutgoingMomenta->{p},
-	LorentzIndexNames->{mu},
-	LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
-	FinalSubstitutions->{Zm->SMP["Z_m"], Zphi->SMP["Z_phi"],
-	GaugeXi[S[1]]->1,Mphi->m}]
+	DropSumOver->True,
+	LoopMomenta->{k}, UndoChiralSplittings->True,
+	ChangeDimension->D, SMP->True,
+	FinalSubstitutions->{}]&/@{
+	diagScalarSE,diagScalarSECT};
 
 
-(* ::Text:: *)
-(*Quartic vertex including the counter-term*)
-
-
-amp2[0] = FCFAConvert[CreateFeynAmp[diag2[0],Truncated->True,
-	GaugeRules->{}, PreFactor->1],
-	IncomingMomenta->{p1,p2}, OutgoingMomenta->{p3,p4},
-	LorentzIndexNames->{mu}, LoopMomenta->{l},
-	UndoChiralSplittings->True, ChangeDimension->D,
-	List->False, SMP->True,FinalSubstitutions->{Zg->SMP["Z_g"],
-	Zphi->SMP["Z_phi"], GaugeXi[S[1]]->1,Mphi->m}]
+{scalar4VTX$RawAmp,scalar4VTXCT$RawAmp} = 
+FCFAConvert[CreateFeynAmp[#,Truncated->True,PreFactor->1],
+	IncomingMomenta->{p1,p2}, OutgoingMomenta->{q1,q2},
+	DropSumOver->True,
+	LoopMomenta->{k}, UndoChiralSplittings->True,
+	ChangeDimension->D, SMP->True,
+	FinalSubstitutions->{}]&/@{
+	diagScalar4VTX,diagScalar4VTXCT};
 
 
 (* ::Section:: *)
@@ -130,100 +167,234 @@ amp2[0] = FCFAConvert[CreateFeynAmp[diag2[0],Truncated->True,
 
 
 (* ::Subsection:: *)
-(*Self-energy*)
-
-
-amp1[1] = amp1[0]//ReplaceAll[#,{SMP["Z_phi"]->1+alpha SMP["d_phi"],
-SMP["Z_m"]->1+alpha SMP["d_m"]}]&//Series[#,{alpha,0,1}]&//
-Normal//ReplaceAll[#,alpha->1]&
+(*Scalar self-energy*)
 
 
 (* ::Text:: *)
-(*Express the self-energy in tems of the Passarino-Veltman coefficient functions.*)
+(*The 1-loop scalar self-energy has superficial degree of divergence equal to 2.*)
 
 
-amp1[2]=ToPaVe[amp1[1],l]
+FCClearScalarProducts[];
+divDegree=2;
+aux1=FCLoopGetFeynAmpDenominators[scalarSE$RawAmp/.k->k-p,{k},denHead,Momentum->{p},"Massless"->True];
+aux2=FCLoopAddAuxiliaryMass[aux1[[2]],{k},-mxt^2,0,Head->denHead]
+
+
+scalarSE$StrName=StringReplace[ToString[Hold[scalarSE$Amp]],{"Hold["->"","]"->""}]
+
+
+AbsoluteTiming[scalarSE$Amp=(aux1[[1]]/.aux2);]
+
+
+AbsoluteTiming[scalarSE$Amp1=Collect2[scalarSE$Amp,p,IsolateNames->KK];]
+AbsoluteTiming[scalarSE$Amp2=FourSeries[scalarSE$Amp1,{p,0,divDegree},FCParallelize->True];]
+AbsoluteTiming[scalarSE$Amp3=Collect2[FRH[scalarSE$Amp2],FeynAmpDenominator,FCParallelize->True];]
 
 
 (* ::Text:: *)
-(*Discard all the finite pieces of the 1-loop amplitude*)
+(*The rest of the calculation follows the standard multiloop template*)
 
 
-amp1Div[0]=PaVeUVPart[amp1[2],Prefactor->1/(2Pi)^D]//
-FCReplaceD[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//
-FCHideEpsilon//SelectNotFree2[#,{SMP["Delta"],SMP["d_m"],
-SMP["d_phi"]}]&//Simplify
+FCClearScalarProducts[];
+SPD[p]=pp;
+
+
+{scalarSE$Amp4,scalarSE$Topos}=FCLoopFindTopologies[scalarSE$Amp3,{k},FCParallelize->True,
+FCLoopBasisOverdeterminedQ->True,FinalSubstitutions->{Hold[SPD][p]->pp},Names->scalarSEtopo];
+
+
+AbsoluteTiming[scalarSE$Amp5=FCLoopTensorReduce[scalarSE$Amp4,scalarSE$Topos,FCParallelize->True];]
+
+
+{scalarSE$Amp6,scalarSE$Topos2}=FCLoopRewriteOverdeterminedTopologies[scalarSE$Amp5,scalarSE$Topos];
+
+
+scalarSE$SubTopos=FCLoopFindSubtopologies[scalarSE$Topos2,Flatten->True,Remove->True]
+
+
+{scalarSE$TopoMappings,scalarSE$FinalTopos}=FCLoopFindTopologyMappings[scalarSE$Topos2,PreferredTopologies->scalarSE$SubTopos];
+
+
+scalarSE$AmpGLI=FCLoopApplyTopologyMappings[scalarSE$Amp6,{scalarSE$TopoMappings,scalarSE$FinalTopos},FCParallelize->True];
+
+
+scalarSE$GLIs=Cases2[scalarSE$AmpGLI,GLI];
+
+
+scalarSE$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>modelName<>"-"<>scalarSE$StrName<>"-1L"}];
+Quiet[CreateDirectory[scalarSE$dir]];
+
+
+KiraCreateJobFile[scalarSE$FinalTopos, scalarSE$GLIs, scalarSE$dir]
+
+
+KiraCreateIntegralFile[scalarSE$GLIs, scalarSE$FinalTopos, scalarSE$dir]
+KiraCreateConfigFiles[scalarSE$FinalTopos, scalarSE$GLIs, scalarSE$dir, 
+ KiraMassDimensions -> {pp -> 2,mphi->1}]
+
+
+KiraRunReduction[scalarSE$dir, scalarSE$FinalTopos, 
+ KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local", "bin", "kira"}],
+ KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
+
+
+scalarSE$ReductionTables=KiraImportResults[scalarSE$FinalTopos, scalarSE$dir]//Flatten;
+
+
+scalarSE$resPreFinal=Collect2[Total[scalarSE$AmpGLI/.Dispatch[scalarSE$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,D,FCParallelize->True];
+
+
+scalarSE$masters=Cases2[scalarSE$resPreFinal,GLI];
+
+
+scalarSE$MIMappings=FCLoopFindIntegralMappings[scalarSE$masters,Join[tadpoleMaster1[[2]],tadpoleMaster2[[2]],
+scalarSE$FinalTopos],PreferredIntegrals->{tadpoleMaster1[[1]][[1]],tadpoleMaster2[[1]][[1]]}]
 
 
 (* ::Text:: *)
-(*Equating the result to zero and solving for d_phi and d_m we obtain  the renormalization constants in  the minimal subtraction schemes.*)
+(*Our master integrals are calculated using the standard multiloop normalization. To convert it back to the textbook normalization*)
+(*we need to multiply by I*(4 Pi)^(ep-2)*)
 
 
-sol[1]=Solve[SelectNotFree2[amp1Div[0], p]==0,
-	SMP["d_phi"]]//Flatten//Simplify;
-sol[2]=Solve[(SelectFree2[amp1Div[0], p]==0)/.sol[1],
-	SMP["d_m"]]//Flatten//Simplify;
-solMS1=Join[sol[1],sol[2]]/.{
-	SMP["d_phi"]->SMP["d_phi^MS"],
-	SMP["d_m"]->SMP["d_m^MS"],SMP["Delta"]->1/Epsilon
-}
-solMSbar1=Join[sol[1],sol[2]]/.{
-	SMP["d_phi"]->SMP["d_phi^MSbar"],
-	SMP["d_m"]->SMP["d_m^MSbar"]
-}
+scalarSE$resFinal=Collect2[scalarSE$resPreFinal,D,GLI,IsolateNames->KK]//FCReplaceD[#,D->4-2ep]&//
+ReplaceAll[#,scalarSE$MIMappings[[1]]]&//ReplaceAll[#,{tadpoleMaster1[[1]],tadpoleMaster2[[1]]}]&//If[!FreeQ[#,GLI],Print["Unsubstituted GLIs!"];Abort[],#]&//
+Collect2[#,ep,IsolateNames->KK2]&//Series[(I*(4*Pi)^(-2 + ep)) #,{ep,0,-1}]&//Normal//FRH//Collect2[#,DiracGamma]&
+
+
+scalarSE$RenConstants=(scalarSE$resFinal+Total[scalarSECT$RawAmp])//ReplaceRepeated[#,{
+	(h:renConstants):>1+g rc[ToExpression["del"<>ToString[h]],1]}]&//
+	Series[#,{g,0,1}]&//Normal//Collect2[#,pp,Pair]&//FCMatchSolve[#,{ep,g,mphi,pp}]&//ExpandAll
 
 
 (* ::Subsection:: *)
-(*Quartic vertex*)
-
-
-amp2[1] = amp2[0]//ReplaceRepeated[#,{SMP["Z_g"]->1+alpha SMP["d_g"],
-SMP["Z_phi"]->1+alpha SMP["d_phi"]}]&//
-Series[#,{alpha,0,1}]&//Normal//ReplaceAll[#,alpha->1]&
+(*Four-scalar vertex*)
 
 
 (* ::Text:: *)
-(*Express the quartic vertex in tems of the Passarino-Veltman coefficient functions.*)
+(*The 1-loop four-scalar-vertex has superficial degree of divergence equal to 0. We set q1=q2=0, so that p1+p2=0 yields p1=-p2*)
 
 
-amp2[2]=ToPaVe[amp2[1],l]
+FCClearScalarProducts[];
+divDegree=0;
+aux1=FCLoopGetFeynAmpDenominators[scalar4VTX$RawAmp/.q1|q2->0/.p2->-p1/.p1->p,{k},denHead,Momentum->{p},"Massless"->True];
+aux2=FCLoopAddAuxiliaryMass[aux1[[2]],{k},-mxt^2,0,Head->denHead]
+
+
+scalar4VTX$StrName=StringReplace[ToString[Hold[scalar4VTX$Amp]],{"Hold["->"","]"->""}]
+
+
+AbsoluteTiming[scalar4VTX$Amp=(aux1[[1]]/.aux2);]
+
+
+AbsoluteTiming[scalar4VTX$Amp1=Collect2[scalar4VTX$Amp,p,IsolateNames->KK];]
+AbsoluteTiming[scalar4VTX$Amp2=FourSeries[scalar4VTX$Amp1,{p,0,divDegree},FCParallelize->True];]
+AbsoluteTiming[scalar4VTX$Amp3=Collect2[FRH[scalar4VTX$Amp2],FeynAmpDenominator,FCParallelize->True];]
 
 
 (* ::Text:: *)
-(*Discard all the finite pieces of the 1-loop amplitude*)
+(*The rest of the calculation follows the standard multiloop template*)
 
 
-amp2Div[0]=PaVeUVPart[amp2[2],Prefactor->1/(2Pi)^D]//
-FCReplaceD[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal//
-FCHideEpsilon//SelectNotFree2[#,{SMP["Delta"],SMP["d_g"],SMP["d_phi"]}]&//Simplify
+FCClearScalarProducts[];
+SPD[p]=pp;
 
 
-sol[3]=Solve[(amp2Div[0]==0)/.sol[1],
-	SMP["d_g"]]//Flatten//Simplify;
-solMS2=sol[3]/.{
-	SMP["d_g"]->SMP["d_g^MS"],
-	SMP["Delta"]->1/Epsilon
-}
-solMSbar2=sol[3]/.{
-	SMP["d_g"]->SMP["d_g^MSbar"]
-}
+{scalar4VTX$Amp4,scalar4VTX$Topos}=FCLoopFindTopologies[scalar4VTX$Amp3,{k},FCParallelize->True,
+FCLoopBasisOverdeterminedQ->True,FinalSubstitutions->{Hold[SPD][p]->pp},Names->scalar4VTXtopo];
+
+
+AbsoluteTiming[scalar4VTX$Amp5=FCLoopTensorReduce[scalar4VTX$Amp4,scalar4VTX$Topos,FCParallelize->True];]
+
+
+{scalar4VTX$Amp6,scalar4VTX$Topos2}=FCLoopRewriteOverdeterminedTopologies[scalar4VTX$Amp5,scalar4VTX$Topos];
+
+
+scalar4VTX$SubTopos=FCLoopFindSubtopologies[scalar4VTX$Topos2,Flatten->True,Remove->True]
+
+
+{scalar4VTX$TopoMappings,scalar4VTX$FinalTopos}=FCLoopFindTopologyMappings[scalar4VTX$Topos2,PreferredTopologies->scalar4VTX$SubTopos];
+
+
+scalar4VTX$AmpGLI=FCLoopApplyTopologyMappings[scalar4VTX$Amp6,{scalar4VTX$TopoMappings,scalar4VTX$FinalTopos},FCParallelize->True];
+
+
+scalar4VTX$GLIs=Cases2[scalar4VTX$AmpGLI,GLI];
+
+
+scalar4VTX$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>modelName<>"-"<>scalar4VTX$StrName<>"-1L"}];
+Quiet[CreateDirectory[scalar4VTX$dir]];
+
+
+KiraCreateJobFile[scalar4VTX$FinalTopos, scalar4VTX$GLIs, scalar4VTX$dir]
+
+
+KiraCreateIntegralFile[scalar4VTX$GLIs, scalar4VTX$FinalTopos, scalar4VTX$dir]
+KiraCreateConfigFiles[scalar4VTX$FinalTopos, scalar4VTX$GLIs, scalar4VTX$dir, 
+ KiraMassDimensions -> {pp -> 2,mphi->1}]
+
+
+KiraRunReduction[scalar4VTX$dir, scalar4VTX$FinalTopos, 
+ KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local", "bin", "kira"}],
+ KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
+
+
+scalar4VTX$ReductionTables=KiraImportResults[scalar4VTX$FinalTopos, scalar4VTX$dir]//Flatten;
+
+
+scalar4VTX$resPreFinal=Collect2[Total[scalar4VTX$AmpGLI/.Dispatch[scalar4VTX$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
+GaugeXi,D,DiracGamma,FCParallelize->True];
+
+
+scalar4VTX$masters=Cases2[scalar4VTX$resPreFinal,GLI];
+
+
+scalar4VTX$MIMappings=FCLoopFindIntegralMappings[scalar4VTX$masters,Join[tadpoleMaster1[[2]],tadpoleMaster2[[2]],
+scalar4VTX$FinalTopos],PreferredIntegrals->{tadpoleMaster1[[1]][[1]],tadpoleMaster2[[1]][[1]]}]
+
+
+(* ::Text:: *)
+(*Our master integrals are calculated using the standard multiloop normalization. To convert it back to the textbook normalization*)
+(*we need to multiply by I*(4 Pi)^(ep-2)*)
+
+
+scalar4VTX$resFinal=Collect2[scalar4VTX$resPreFinal,D,GLI,IsolateNames->KK]//FCReplaceD[#,D->4-2ep]&//
+ReplaceAll[#,scalar4VTX$MIMappings[[1]]]&//ReplaceAll[#,{tadpoleMaster1[[1]],tadpoleMaster2[[1]]}]&//If[!FreeQ[#,GLI],Print["Unsubstituted GLIs!"];Abort[],#]&//
+Collect2[#,ep,IsolateNames->KK2]&//Series[(I*(4*Pi)^(-2 + ep)) #,{ep,0,-1}]&//Normal//FRH//Collect2[#,DiracGamma]&
+
+
+scalar4VTX$RenConstants=(scalar4VTX$resFinal+Total[scalar4VTXCT$RawAmp])//ReplaceRepeated[#,{
+	(h:renConstants):>1+g rc[ToExpression["del"<>ToString[h]],1]}]&//
+	Series[#,{g,0,1}]&//Normal//ReplaceAll[#,Join[scalarSE$RenConstants,scalarSE$RenConstants]]&//Collect2[#,pp,Pair]&//
+	FCMatchSolve[#,{ep,g,mphi,pp}]&//ExpandAll
 
 
 (* ::Section:: *)
 (*Check the final results*)
 
 
-knownResult = {
-	SMP["d_phi^MS"] -> 0,
-	SMP["d_m^MS"] -> (g*1/Epsilon)/(32*Pi^2),
-	SMP["d_g^MS"] -> (3*g*1/Epsilon)/(32*Pi^2),
+(* ::Text:: *)
+(*Our final phi^4 1-loop renormalization constants*)
 
-	SMP["d_phi^MSbar"] -> 0,
-	SMP["d_m^MSbar"] -> (g*SMP["Delta"])/(32*Pi^2),
-	SMP["d_g^MSbar"] -> (3*g*SMP["Delta"])/(32*Pi^2)
-	};
-FCCompareResults[Join[solMS1,solMS2,solMSbar1,solMSbar2],knownResult,
-Text->{"\tCompare to Bailin and Love, Introduction to Gauge Field Theory, \
-Eqs. 7.73-7.74 and Eqs. 7.76-7.77:",
-"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
+
+finalResults=Thread[Rule[List@@renConstants,
+(List@@renConstants/.(h:renConstants):>1+ rc[ToExpression["del"<>ToString[h]],1])//ReplaceAll[#,Join[scalarSE$RenConstants,
+scalar4VTX$RenConstants]]&]]
+
+
+Join[scalarSE$RenConstants,scalar4VTX$RenConstants]//InputForm
+
+
+knownResult ={rc[delZphi, 1] -> 0, rc[delZmphi, 1] -> 1/(32*ep*Pi^2), rc[delZg, 1] -> (3)/(32*ep*Pi^2)};
+
+
+(* ::Text:: *)
+(*Compare to the literature results*)
+
+
+FCCompareResults[Join[scalarSE$RenConstants,scalar4VTX$RenConstants]/.Rule->Equal,knownResult/.Rule->Equal,
+Text->{"\tCompare to Bailin and Love, Introduction to Gauge Field Theory, Eqs. 7.73-7.74 and Eqs. 7.76-7.77:",
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

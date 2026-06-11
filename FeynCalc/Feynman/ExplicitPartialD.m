@@ -48,12 +48,6 @@ ExplicitPartialD[expr_, OptionsPattern[]] :=
 			LeftRightNablaD2[a__]^n_Integer :>
 				(DOT @@ Table[(RightNablaD[a] + LeftNablaD[a]), {j, n}])
 		} /. {
-			LeftRightPartialD[a__]^n_ /; Head[n] =!= Integer :>
-				(i =  Unique["k"]; OPESum[DOT[1/2^n, Binomial[n, i], (-1)^(n-i), (LeftPartialD[a]^(n-i)), (RightPartialD[a]^i)], {i, 0, n}]),
-
-			LeftRightPartialD2[a__]^n_ /; Head[n] =!= Integer :>
-				(i =  Unique["k"]; OPESum[DOT[Binomial[n, i], (LeftPartialD[a]^(n-i)), (RightPartialD[a]^i)], {i, 0, n}])
-		} /. {
 			LeftRightPartialD[a__] :>
 				(1/2 (RightPartialD[a] - LeftPartialD[a])),
 			LeftRightPartialD2[a__] :>

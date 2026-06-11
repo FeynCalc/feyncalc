@@ -28,7 +28,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCLoopIntegralToGraph](FCLoopIntegralToGraph.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCLoopFactorizingSplit](FCLoopFactorizingSplit.md), [FCLoopIntegralToGraph](FCLoopIntegralToGraph.md).*)
 
 
 (* ::Subsection:: *)
@@ -216,8 +216,7 @@ FCLoopGraphPlot[%]
 
 
 (* ::Text:: *)
-(*When dealing with products of tadpole integrals, the function may not always recognize that the appearing external momenta are spurious. For example, here there is no `q` momentum flowing*)
-(*through any of the lines*)
+(*When dealing with factorizing integrals, one should always split them into simpler integrals first.*)
 
 
 int=SFAD[{{ p1,0},{mg^2,1},1}] SFAD[{{ p3,-2 p3 . q},{0,1},1}]
@@ -225,13 +224,16 @@ int=SFAD[{{ p1,0},{mg^2,1},1}] SFAD[{{ p3,-2 p3 . q},{0,1},1}]
 FCLoopIntegralToGraph[int,{p1,p3}]
 
 
-(* ::Text:: *)
-(*In this case we may explicitly tell the function that this integral doesn't depend on any external momenta*)
+aux=FCLoopFactorizingSplit[int,{p1,p3}]
 
 
-FCLoopIntegralToGraph[int,{p1,p3},Momentum->{}]
+FCLoopGraphPlot/@(FCLoopIntegralToGraph[#[[1]],#[[2]]]&/@aux)
 
-FCLoopGraphPlot[%]
+
+aux=FCLoopFactorizingSplit[FAD[{p1,m1}]FAD[{p2,m2}]FAD[p3,p3+q]FAD[{p4,m4}],{p1,p2,p3,p4}]
+
+
+FCLoopGraphPlot/@(FCLoopIntegralToGraph[#[[1]],#[[2]]]&/@aux)
 
 
 (* ::Subsubsection:: *)
@@ -243,26 +245,6 @@ FCLoopGraphPlot[%]
 
 
 OptionValue[FCLoopGraphPlot,Style]
-
-
-(* ::Text:: *)
-(*When dealing with factorizing integral it might be necessary to increase `VertexDegree` to `7` or `8` (or even a higher value, depending on the integrals)*)
-
-
-FCLoopIntegralToGraph[FAD[{p1,m1}]FAD[{p2,m2}],{p1,p2}]
-FCLoopGraphPlot[%]
-
-
-FCLoopIntegralToGraph[FAD[{p1,m1}]FAD[{p2,m2}]FAD[p3,p3+q],{p1,p2,p3},
-VertexDegree->7]
-
-FCLoopGraphPlot[%]
-
-
-FCLoopIntegralToGraph[FAD[{p1,m1}]FAD[{p2,m2}]FAD[p3,p3+q]FAD[{p4,m4}],
-{p1,p2,p3,p4},VertexDegree->9]
-
-FCLoopGraphPlot[%]
 
 
 (* ::Text:: *)
@@ -340,3 +322,6 @@ SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p1+p2+p3,0},{0,1},1}]},{p1,p2,p3},{},{},{}]]
 FCLoopGraphPlot[%,GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Labeled->{
 {"InternalLine",x_,pow_,_}:>x^pow,
 {"ExternalLine",_}:>{}}]
+
+
+

@@ -6,7 +6,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [MomentumExpand](MomentumExpand.md), [MomentumCombine](MomentumCombine.md), [FCVariable](FCVariable.md)
+[Overview](Extra/FeynCalc.md), [MomentumExpand](MomentumExpand.md), [MomentumCombine](MomentumCombine.md), [FCVariable](FCVariable.md)
 
 ### Examples
 

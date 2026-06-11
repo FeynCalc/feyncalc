@@ -5,6 +5,20 @@ _FeynCalc_.
 
 # Generating markdown
 
+For single directories
+
+```
+
+export exDir=QCD/Tree
+cd /media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Scripts/
+export feynCalcDir="/media/Data/Projects/VS/FeynCalc"; export MAKE_DO_NOT_LOAD_FEYNCALC="True" MAKE_DOCU_LOAD_ADDONS="{}"; export DOCU_SOURCE_DIR="${feynCalcDir}/FeynCalc/Examples/${exDir}"; export FILES_TO_SKIP="Reduction|Validate|Raw"; ./exportToMD.sh math14.3 "$DOCU_SOURCE_DIR"/Markdown
+
+
+export MAKE_CHANGE_CSS_PATH="../../../FeynCalcBookDev/css/feyncalc.css" MAKE_CHANGE_KATEX_PATH="../../../FeynCalcBookDev/js/" DOCU_SOURCE_DIR="${feynCalcDir}/FeynCalc/Examples/${exDir}"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcExamples/${exDir}
+
+```
+
+
 ```
 
 bash

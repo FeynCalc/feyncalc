@@ -179,12 +179,12 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 
 				time1=AbsoluteTime[];
 				FCPrint[1,"FCLoopFromGLI: Applying conversion rules on parallel kernels", FCDoControl->fgliVerbose];
-				listGLIEval = ParallelMap[(#/. FCContextFCLoopFromGLI`fromGliRule /. powerHold->power)&,Partition[listGLI, UpTo[Ceiling[Length[listGLI]/Length[Kernels[]]]]],
+				listGLIEval = ParallelMap[(#/. FCContextFCLoopFromGLI`fromGliRule /. powerHold->power/. list[]-> 0)&,Partition[listGLI, UpTo[Ceiling[Length[listGLI]/Length[Kernels[]]]]],
 					DistributedContexts->None, Method -> "CoarsestGrained"];
 				listGLIEval = Flatten[listGLIEval];
 				FCPrint[1,"FCLoopFromGLI: Done applying conversion rules on parallel, timing: ", N[AbsoluteTime[] - time1, 4] , FCDoControl->fgliVerbose];,
 
-				listGLIEval = listGLI /. Dispatch[fromGliRule] /. powerHold->power
+				listGLIEval = listGLI /. Dispatch[fromGliRule] /. powerHold->power/. list[]-> 0;
 			]
 		];
 		FCPrint[1,"FCLoopFromGLI: Done applying conversion rules, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];

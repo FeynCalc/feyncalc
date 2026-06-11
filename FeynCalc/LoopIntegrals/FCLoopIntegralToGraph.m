@@ -46,7 +46,6 @@ End[]
 
 Begin["`FCLoopIntegralToGraph`Private`"]
 
-factorizingIntegral::usage="";
 optSelect::usage="";
 lbtgVerbose::usage="";
 mark::usage="";
@@ -59,7 +58,6 @@ Options[FCLoopIntegralToGraph] = {
 	FCI 					-> False,
 	FCProductSplit			-> True,
 	FCVerbose 				-> False,
-	Factoring				-> Automatic,
 	InitialSubstitutions	-> {},
 	Momentum				-> Automatic,
 	Select					-> 1,
@@ -138,10 +136,10 @@ FCLoopIntegralToGraph[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 (*Except: List of propagators to ignore, GFAD, EEC*)
 FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	ex, props, allmoms, extmoms, lmoms, lineMomenta, intEdgesList,
-			extEdgesList, numExtMoms,	numEdges, optFactoring,	auxExtEdgesList,
+			extEdgesList, numExtMoms,	numEdges, auxExtEdgesList,
 			numIntVertices, numExtVertices, auxExternalMoms, numVertices,
 			res, aux, dots, optAuxiliaryMomenta, time, pref=1, massTerms, optMomentum,
-			timeLimit, optInitialSubstitutions, hold},
+			timeLimit, optInitialSubstitutions, hold, nOfIntEdgeCopies},
 
 		If [OptionValue[FCVerbose]===False,
 			lbtgVerbose=$VeryVerbose,
@@ -151,7 +149,6 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		];
 
 		maxVertexDegree 		= OptionValue[VertexDegree];
-		optFactoring 			= OptionValue[Factoring];
 		optSelect 				= OptionValue[Select];
 		optAuxiliaryMomenta 	= OptionValue[AuxiliaryMomenta];
 		optMomentum				= OptionValue[Momentum];
@@ -220,6 +217,13 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 
 		FCPrint[3, "FCLoopIntegralToGraph: After FCFeynmanPrepare: ", aux, FCDoControl->lbtgVerbose];
 
+		(*Check if the U-polynomial factorizes *)
+		If[	Head[Factor[aux[[1]]]]===Times,
+			Message[FCLoopIntegralToGraph::failmsg,"The given integral factorizes. Factorizing integrals cannot be"<>
+				" reliably visualized. Please split the integral into simpler integrals using FCLoopFactorizingSplit or FCLoopCreateFactorizingRules."];
+				Abort[];
+		];
+
 		(*Check if the F-polynomial corresponds to a tadpole *)
 		If[	FreeQ2[ExpandScalarProduct[aux[[2]],FCI->True],{Momentum,CartesianMomentum,TemporalMomentum}],
 			(*tadpole!*)
@@ -278,6 +282,8 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		FCPrint[2, "FCLoopIntegralToGraph: Number of edges: ", numEdges, FCDoControl->lbtgVerbose];
 		FCPrint[2, "FCLoopIntegralToGraph: Line momenta: ", lineMomenta, FCDoControl->lbtgVerbose];
 
+		FCPrint[2, "FCLoopIntegralToGraph: extEdgesList: ", extEdgesList, FCDoControl->lbtgVerbose];
+
 		(*
 			We need to enumerate the occurring momenta for the reconstruction of vertices.
 			However, as far as the external momenta are concerned, there is an additional momentum
@@ -306,6 +312,8 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 
 		FCPrint[1,"FCLoopIntegralToGraph: Done generating edges and vertices, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 
+		FCPrint[1, "FCLoopIntegralToGraph: Total number of vertices: ", numVertices, FCDoControl->lbtgVerbose];
+
 		(*	We start by reconstructing all internal vertices, i.e. those that are not connected to an external line	*)
 		FCPrint[1, "FCLoopIntegralToGraph: Number of internal vertices: ", numIntVertices, FCDoControl->lbtgVerbose];
 		FCPrint[1, "FCLoopIntegralToGraph: Number of external vertices: ", numExtVertices, FCDoControl->lbtgVerbose];
@@ -314,23 +322,12 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		FCPrint[1,"FCLoopIntegralToGraph: Calling reconstructAllVertices.", FCDoControl->lbtgVerbose];
 
 		timeLimit = TimeConstrained[
-		Which[
-			optFactoring === True || optFactoring === False,
-				factorizingIntegral = optFactoring;
-				res = reconstructAllVertices[intEdgesList,extEdgesList,auxExtEdgesList,numIntVertices,numExtVertices],
-
-			optFactoring === Automatic,
-				factorizingIntegral = False;
-				res = reconstructAllVertices[intEdgesList,extEdgesList,auxExtEdgesList,numIntVertices,numExtVertices];
+				nOfIntEdgeCopies = 0;
+				res = reconstructAllVertices[intEdgesList,extEdgesList,auxExtEdgesList,numIntVertices,numExtVertices,nOfIntEdgeCopies];
 				If[	res===False,
-					factorizingIntegral = True;
-					res = reconstructAllVertices[intEdgesList,extEdgesList,auxExtEdgesList,numIntVertices,numExtVertices];
-				],
-			True,
-			Message[FCLoopIntegralToGraph::failmsg, "Unknown value of the option Factoring. Only True, False or Auto are valid values."];
-			Abort[]
-
-		], OptionValue[TimeConstrained]];
+					FCPrint[1,"FCLoopIntegralToGraph: Redoing reconstruction with more vertex copies.", FCDoControl->lbtgVerbose];
+					res = reconstructAllVertices[intEdgesList,extEdgesList,auxExtEdgesList,numIntVertices,numExtVertices,nOfIntEdgeCopies+1];
+				], OptionValue[TimeConstrained]];
 
 		If[	timeLimit=!=Null,
 			Message[FCLoopIntegralToGraph::failmsg, "The time needed to reconstruct the graph of the given loop integral exceeded the value of the TimeConstrained options. \
@@ -341,7 +338,8 @@ Notice that not all loop integrals admit a graph representation."];
 		FCPrint[1,"FCLoopIntegralToGraph: reconstructAllVertices done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 
 		If[	res === False,
-			Message[FCLoopIntegralToGraph::failmsg, "Failed to reconstruct the graph of the given loop integral. If the integral factorizes, try increasing VertexDegree"];
+			Message[FCLoopIntegralToGraph::failmsg, "Failed to reconstruct the graph of the given loop integral. " <>
+				"If the momentum  routing is unusual, try to specify the external momenta via the Momentum option."];
 			Return[False]
 		];
 
@@ -471,7 +469,7 @@ findExternalVertices[extEdges_List/; extEdges =!= {},  candidates_List, signs_Li
 		];
 
 
-reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,numIntVertices_Integer,numExtVertices_Integer]:=
+reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,numIntVertices_Integer,numExtVertices_Integer,nOfIntEdgeCopies_Integer]:=
 	Block[{	fullyConnectedEdges, currentVertexDegree, intVerticesFound, extVerticesFound,
 			relEdgesList, numEdges, signs, candidates, numExtMoms, intVertexCandidateSets,
 			verticesRaw, fullyConnectedEdgesTest, auxExternalMoms, allVertices, verts,
@@ -500,11 +498,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 
 			signs = generateSigns[currentVertexDegree];
 
-
-			candidates = generateCandidates[If[factorizingIntegral,
-												Join[intEdgesList,intEdgesList],
-												intEdgesList
-											], currentVertexDegree];
+			candidates = generateCandidates[Join[intEdgesList, Sequence @@ ConstantArray[intEdgesList, nOfIntEdgeCopies]], currentVertexDegree];
 
 			If[candidates==={}, Break[]];
 			intVerticesFound = Join[intVerticesFound,findInternalVertices[intEdgesList, candidates, signs]];
@@ -585,10 +579,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 					FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Searching for external vertices with the vertex degree ", currentVertexDegree, FCDoControl->lbtgVerbose];
 					relEdgesList = Select[relEdgesList, FreeQ2[#[[1]], fullyConnectedEdges] &];
 					signs = generateSigns[currentVertexDegree];
-					candidates = generateCandidates[If[	factorizingIntegral,
-														Join[relEdgesList,relEdgesList], relEdgesList],
-														currentVertexDegree
-													];
+					candidates = generateCandidates[Join[relEdgesList, Sequence @@ ConstantArray[relEdgesList, nOfIntEdgeCopies]], currentVertexDegree];
 
 					If[	candidates==={},
 						Break[]
@@ -650,10 +641,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 					FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Searching for external vertices with the vertex degree ", currentVertexDegree, FCDoControl->lbtgVerbose];
 					relEdgesList = Select[relEdgesList, FreeQ2[#[[1]], fullyConnectedEdges] &];
 					signs = generateSigns[currentVertexDegree];
-					candidates = generateCandidates[If[	factorizingIntegral,
-															Join[relEdgesList,relEdgesList], relEdgesList],
-															currentVertexDegree
-														];
+					candidates = generateCandidates[Join[relEdgesList, Sequence @@ ConstantArray[relEdgesList, nOfIntEdgeCopies]], currentVertexDegree];
 					If[	candidates==={},
 							Break[]
 					];
@@ -688,7 +676,6 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			(* Possible ambiguities in the final vertex reconstruction: simply take the first candidate *)
 			(*	TODO Check isomorphy betwen different candidates ?*)
 
-
 			verticesRaw			= verticesRaw[[optSelect]];
 			lastExtEdge 		= verticesRaw[[4]];
 			intVerticesFound	= verticesRaw[[1]];
@@ -711,6 +698,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 		];
 
 		allVertices = Join[extVerticesFound, intVerticesFound];
+
 		FCPrint[2, "FCLoopIntegralToGraph: reconstructAllVertices: All reconstructed vertices: ", allVertices, FCDoControl->lbtgVerbose];
 
 
@@ -721,6 +709,9 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			If[lastExtEdge=!={},
 				rawExt = Map[Select[verts, Function[x, ! FreeQ[x[[2]], #]]] &, Transpose[Join[extEdgesList, lastExtEdge]][[1]]],
 				rawExt = Map[Select[verts, Function[x, ! FreeQ[x[[2]], #]]] &, Transpose[extEdgesList][[1]]];
+			];
+			If[MatchQ[rawExt,{a___,{},b___}/;{a,b}=!={}],
+				Return[False]
 			],
 			rawExt = {{}}
 		];

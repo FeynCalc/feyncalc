@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`InitialSubstitutions` is an option for `OneLoop` and `OneLoopSum` and `Write2`. All substitutions indicated hereby are done at the end of the calculation.*)
+(*`InitialSubstitutions` is an option for various functions. All substitutions indicated hereby are done before the calculation.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [OneLoop](OneLoop.md), [OneLoopSum](OneLoopSum.md), [Write2](Write2.md).*)
+(*[Overview](Extra/FeynCalc.md).*)
 
 
 (* ::Subsection:: *)

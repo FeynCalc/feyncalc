@@ -1,4 +1,4 @@
-(* Wolfram Language package *)
+(* ::Package:: *)
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -11,7 +11,10 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Compares definitions of scalar products between kernels	    *)
+(*	:Summary:	Compares definitions of scalar products between kernels
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 

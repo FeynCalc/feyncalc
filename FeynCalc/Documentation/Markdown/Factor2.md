@@ -4,7 +4,7 @@
 
 `Factor2` works sometimes better than Factor on polynomials involving rationals with sums in the denominator.
 
-`Factor2` uses `Factor` internally and is in general slower than `Factor`. There are four possible settings of the option `Method` (`0`,`1`,`2`,`3`). In general, `Factor` will work faster than `Factor2`.
+`Factor2` uses `Factor` internally and is in general slower than `Factor`. 
 
 ### See also
 
@@ -39,9 +39,3 @@ Factor2[ex]
 ```
 
 $$a^2-b^2$$
-
-```mathematica
-Factor2[ex, FactorFull -> True]
-```
-
-$$(a-b) (a+b)$$

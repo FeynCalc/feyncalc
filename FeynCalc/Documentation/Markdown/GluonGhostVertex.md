@@ -6,7 +6,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [GluonPropagator](GluonPropagator.md), [GluonSelfEnergy](GluonSelfEnergy.md), [GluonVertex](GluonVertex.md), [QCDFeynmanRuleConvention](QCDFeynmanRuleConvention.md), [GhostPropagator](GhostPropagator.md).
+[Overview](Extra/FeynCalc.md), [GluonPropagator](GluonPropagator.md), [GluonVertex](GluonVertex.md), [QCDFeynmanRuleConvention](QCDFeynmanRuleConvention.md), [GhostPropagator](GhostPropagator.md).
 
 ### Examples
 

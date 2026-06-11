@@ -6,7 +6,7 @@ The idea of having standard matrix elements stems from A. Denner's "Techniques f
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [DiracSubstitute5](DiracSubstitute5.md), [DiracGamma](DiracGamma.md), [ToDiracGamma67](ToDiracGamma67.md), [Spinor](Spinor.md).
+[Overview](Extra/FeynCalc.md), [DiracSubstitute5](DiracSubstitute5.md), [DiracGamma](DiracGamma.md), [ToDiracGamma67](ToDiracGamma67.md), [StandardMatrixElement](StandardMatrixElement.md), [Spinor](Spinor.md).
 
 ### Examples
 

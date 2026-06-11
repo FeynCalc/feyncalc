@@ -501,7 +501,15 @@ FeynAmpDenominator[StandardPropagatorDenominator[Momentum[l1, D], -(me*u0b*Pair[
 FeynAmpDenominator[StandardPropagatorDenominator[0, -(mb*Pair[Momentum[l1, D], Momentum[nm, D]]), 2*gammakin*mb*me, {1, 1}]]},
 {l1}, {np, nm}, {Hold[SPD][n, n] -> 0, Hold[SPD][nb, nb] -> 0, Hold[SPD][n, nb] -> 2}, {FCGV[\"BasisCompletion\"]}]"},
 {"fcstFCLoopBasisFindCompletion-ID26",
-"FCLoopBasisFindCompletion[{}]","{}"}
+"FCLoopBasisFindCompletion[{}]","{}"},
+{"fcstFCLoopBasisFindCompletion-ID27",
+"FCLoopBasisFindCompletion[
+FCTopology[
+tri2L, {FAD[p1 + k1], FAD[p2 - k1], FAD[k2 - k1], FAD[k2],
+FAD[-p2 + k2], FAD[p1 + k2]}, {k1, k2}, {p1,
+p2}, {Hold[SPD][p1] -> 0, Hold[SPD][p2] -> 0,
+Hold[SPD][p1, p2] -> pp}, {}], FCE -> True]","FCTopology[tri2LC, {FAD[k1 + p1], FAD[-k1 + p2], FAD[-k1 + k2], FAD[k2], FAD[k2 - p2], FAD[k2 + p1], SFAD[{{k1, 0}, {0, 1}, 1}]}, {k1, k2}, {p1, p2}, {Hold[SPD][p1] -> 0, Hold[SPD][p2] -> 0, Hold[SPD][p1, p2] -> pp},
+{FCGV[\"BasisCompletion\"]}]"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisSplit =

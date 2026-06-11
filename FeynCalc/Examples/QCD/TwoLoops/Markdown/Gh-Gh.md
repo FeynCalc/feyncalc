@@ -27,7 +27,7 @@ If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2,
  ]
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 14:09:14 +02:00, 9ab9d838). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -39,7 +39,7 @@ $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
 
-$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynHelpers }\;\text{2.0.0 (2026-02-05 17:03:01 +02:00, 5db84fbb). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
@@ -86,7 +86,7 @@ AbsoluteTiming[ampSimp = (ampRaw) // Contract[#, FCParallelize -> True] & //
       DiracSimplify[#, FCParallelize -> True] & // SUNSimplify[#, FCParallelize -> True] &;]
 ```
 
-$$\{3.49623,\text{Null}\}$$
+$$\{5.8781,\text{Null}\}$$
 
 ## Identify and minimize the topologies
 
@@ -101,6 +101,8 @@ $$\text{FCLoopFindTopologies: Number of the identified unique topologies: }3$$
 $$\text{FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: }0$$
 
 $$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of found topologies: }3$$
 
 ```mathematica
 subtopos = FCLoopFindSubtopologies[topos, FCParallelize -> True];
@@ -121,20 +123,20 @@ $$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topolog
 AbsoluteTiming[ampReduced = FCLoopTensorReduce[amp, topos, FCParallelize -> True];]
 ```
 
-$$\{1.75249,\text{Null}\}$$
+$$\{2.44003,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[ampPreFinal = FCLoopApplyTopologyMappings[ampReduced, mappings];]
 ```
 
-$$\{0.515368,\text{Null}\}$$
+$$\{0.729567,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[ampFinal = ampPreFinal // 
       DiracSimplify[#, FCParallelize -> True] & // SUNSimplify[#, FCParallelize -> True] &;]
 ```
 
-$$\{1.02903,\text{Null}\}$$
+$$\{1.17931,\text{Null}\}$$
 
 ```mathematica
 dir = FileNameJoin[{$TemporaryDirectory, "Reduction-GhToGh-2L"}];
@@ -253,4 +255,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001],
 
 $$\text{$\backslash $tCompare to Davydychev, Osland and Tarasov,     hep-ph/9801380, Eqs. 6.14-6.15:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }31.81\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }57.593\text{ s.}$$

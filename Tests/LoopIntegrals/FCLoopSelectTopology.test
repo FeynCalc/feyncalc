@@ -97,5 +97,9 @@ SFAD[{{I*p1, 0}, {-m3^2, -1}, 1}], SFAD[{{0, 2*p1 . q}, {0, -1}, 1}], SFAD[{{0, 
 {SFAD[{{(-I)*p3, 0}, {-m1^2, -1}, 1}], SFAD[{{I*p1, 0}, {-m3^2, -1}, 1}], SFAD[{{0, 2*p1 . q},
 {0, -1}, 1}],	SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3},
 {q}, {SPD[q, q] -> m1^2}, {}], FCTopology[tad1Ltopo1, {SFAD[{{I*p1, 0}, {-m1^2, -1}, 1}]},
-{p1}, {}, {SPD[q1, q1] -> m1^2}, {}]}}"}
+{p1}, {}, {SPD[q1, q1] -> m1^2}, {}]}}"},
+
+{"fcstFCLoopSelectTopology-ID9",
+"FCLoopSelectTopology[{},{FCTopology[a]}]","{}"}
+
 });

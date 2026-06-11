@@ -1,13 +1,17 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
-(* :Title: ToTFI *)
 
-(* :Author: Rolf Mertig *)
+(* :Title: ToTFI                                                       		*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 16 February '99 at 0:15 *)
-(* ------------------------------------------------------------------------ *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
 
-(* :Summary: introduce (modified Tarasov's) F - notation*)
+(* :Summary:	Converts FADs to Tarcer's TFIs								*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -37,7 +41,6 @@ c2::usage="";
 c3::usage="";
 c4::usage="";
 c5::usage="";
-c6::usage="";
 dq1::usage="";
 dq2::usage="";
 pq1::usage="";
@@ -234,14 +237,6 @@ ToTFI[expr_, q1_/;Head[q1]=!=List,q2_/;Head[q2]=!=List,p_/;Head[p]=!=List,opts:O
 	]/; (q1=!=q2) && (q1=!=p) && (q2=!=p) && (q1=!=0) && (q2=!=0) && (p=!=0);
 
 
-(*
-ToTFI[z_Times, q1_,q2_,p_,opts___Rule] :=
-	FeynCalcExternal[SelectFree[z, {q1, q2}] saveToTFI[SelectNotFree[z, {q1, q2}], q1, q2, p, opts]];
-
-ToTFI[h_/;!MemberQ[{Plus,Times},Head[h]],m__] :=
-	saveToTFI[h, m];
-*)
-
 saveToTFI[z_Times, q1_, q2_, p_, opts___Rule] :=
 	(saveToTFI[SelectNotFree[z,{q1,q2}], q1,q2, p, opts] SelectFree[z,{q1,q2}] )/;
 		SelectFree[z,{q1,q2}] =!= 1;
@@ -256,7 +251,6 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 		dim = Dimension /. {opts} /. Options[ToTFI];
 		met = Method /. {opts} /. Options[ToTFI];
 		pp  = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[p,dim]]];
-		deltap = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[OPEDelta,dim]]];
 		t0 = If[ FreeQ2[z, {FeynAmpDenominator,FAD}],
 				result = z,
 				If[ met =!= Automatic,
@@ -318,14 +312,11 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 						];
 					t1 = t0 /. FeynAmpDenominator[a__] :> Apply[Times, {a}] /. PropagatorDenominator -> prtoci /.
 								{
-								Pair[Momentum[OPEDelta,___], Momentum[q1, ___]] :> dq1,
-								Pair[Momentum[OPEDelta,___], Momentum[q2, ___]] :> dq2,
 								Pair[Momentum[p,___], Momentum[q1, ___]] :> pq1,
 								Pair[Momentum[p,___], Momentum[q2, ___]] :> pq2,
 								Pair[Momentum[q1,___], Momentum[q1, ___]] :> q1q1,
 								Pair[Momentum[q1,___], Momentum[q2, ___]] :> q1q2,
-								Pair[Momentum[q2,___], Momentum[q2, ___]] :> q2q2,
-								Pair[Momentum[OPEDelta,___], Momentum[p, ___]] :> deltap };
+								Pair[Momentum[q2,___], Momentum[q2, ___]] :> q2q2};
 					If[ FreeQ[t1, c1],
 						t1 = t1 c1[FakeMass]
 					];

@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [PD](PD.md), [Calc](Calc.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md).*)
+(*[Overview](Extra/FeynCalc.md), [SFAD](SFAD.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md).*)
 
 
 (* ::Subsection:: *)
@@ -37,7 +37,7 @@ SPD[p,q] + SPD[q]
 SPD[p-q,q+2p]
 
 
-Calc[ SPD[p-q,q+2p] ]
+ExpandScalarProduct[ SPD[p-q,q+2p] ]
 
 
 ExpandScalarProduct[SPD[p-q]]

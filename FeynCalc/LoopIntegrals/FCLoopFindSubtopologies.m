@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopFindSubtopologies										*)
+(* :Title: FCLoopFindSubtopologies											*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -44,10 +44,12 @@ Options[FCLoopFindSubtopologies] = {
 	FCParallelize				-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
+	Flatten						-> True,
 	LightPak					-> False,
 	MaxIterations				-> Infinity,
 	Names						-> "R",
 	"Separator"					-> "x",
+	Remove						-> True,
 	SubtopologyMarker			-> FCGV["SubtopologyOf"],
 	ToSFAD						-> True
 };
@@ -82,13 +84,17 @@ FCLoopFindSubtopologies[topos:{__FCTopology},  opts:OptionsPattern[]] :=
 				res = (FCLoopFindSubtopologies[#, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ topos)
 		];
 
+		If[	OptionValue[Flatten],
+			res = Flatten[res]
+		];
+
 		FCPrint[1,"FCLoopFindSubtopologies: Function done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclfsVerbose];
 		res
 	];
 
 FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 	Block[{	topo, pakPoly, pakForm, res, time, x, tmp, counter=0, optNames,
-			optFinalSubstitutions, optSubtopologyMarker, fclfsVerbose, optSeparator},
+			optFinalSubstitutions, optSubtopologyMarker, fclfsVerbose, optSeparator, origTopoNames},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclfsVerbose = $VeryVerbose,
@@ -174,6 +180,10 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
+		];
+
+		If[	OptionValue[Remove],
+			res = Select[res,FreeQ[#[[1]],topo[[1]]]&]
 		];
 
 		FCPrint[3, "FCLoopFindSubtopologies: Leaving.", FCDoControl -> fclfsVerbose];

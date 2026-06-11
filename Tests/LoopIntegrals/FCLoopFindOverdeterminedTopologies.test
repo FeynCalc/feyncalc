@@ -1,0 +1,33 @@
+
+
+(* :Title: FCLoopFindOverdeterminedTopologies.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopFindOverdeterminedTopologies				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopFindOverdeterminedTopologies =
+({{"fcstFCLoopFindOverdeterminedTopologies-ID1",
+"FCLoopFindOverdeterminedTopologies[{}]",
+"{{}, {}}"}, {"fcstFCLoopFindOverdeterminedTopologies-ID2",
+"FCLoopFindOverdeterminedTopologies[{FCTopology[topo1,{FAD[p1],FAD[p\
+2],FAD[p1-q],FAD[p2-q],FAD[p1-p2],FAD[p1+p2+q]},{p1,p2},{q},{},{}]},FC\
+E->True]",
+"{{FCTopology[topo1, {FAD[p1], FAD[p2], FAD[p1 - q], FAD[p2 - q], \
+FAD[p1 - p2], FAD[p1 + p2 + q]}, {p1, p2}, {q}, {}, {}]}, {}}"}, \
+{"fcstFCLoopFindOverdeterminedTopologies-ID3",
+"FCLoopFindOverdeterminedTopologies[{FCTopology[topo1,{FAD[p1],FAD[p\
+2],FAD[p1-q],FAD[p2-q],FAD[p1-p2],FAD[p1+p2+q]},{p1,p2},{q},{},{}],FCT\
+opology[topo2,{FAD[p1],FAD[p2],FAD[p1-q],FAD[p2-q],FAD[p1-p2]},{p1,p2},{q\
+},{},{}]},FCE->True]",
+"{{FCTopology[topo1, {FAD[p1], FAD[p2], FAD[p1 - q], FAD[p2 - q], \
+FAD[p1 - p2], FAD[p1 + p2 + q]}, {p1, p2}, {q}, {}, {}]}, \
+{FCTopology[topo2, {FAD[p1], FAD[p2], FAD[p1 - q], FAD[p2 - q], \
+FAD[p1 - p2]}, {p1, p2}, {q}, {}, {}]}}"}});

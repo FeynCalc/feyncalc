@@ -47,21 +47,6 @@ LeftRightNablaD[i] . QuantumField[A,LorentzIndex[\[Nu]]]
 ExpandPartialD[%]
 
 
-QuantumField[A,LorentzIndex[\[Mu]]] . (LeftRightPartialD[OPEDelta]^2) . QuantumField[A,
-LorentzIndex[\[Rho]]]
-
-ExpandPartialD[%]
-
-
-8 LeftRightPartialD[OPEDelta]^3
-
-
-ExplicitPartialD[%]
-
-
-ExpandPartialD[%]
-
-
 LC[\[Mu],\[Nu],\[Rho],\[Tau]] RightPartialD[\[Alpha],\[Mu],\[Beta],\[Nu]]
 
 ExpandPartialD[%]
@@ -96,7 +81,7 @@ ExpandPartialD[RightPartialD[\[Mu]] . QuantumField[A,LorentzIndex[\[Mu]]] . Quan
 (*The same applies also to `LeftPartialD`*)
 
 
-ExpandPartialD[QuantumField[A,LorentzIndex[\[Nu]]].LeftNablaD[i]]
+ExpandPartialD[QuantumField[A,LorentzIndex[\[Nu]]] . LeftNablaD[i]]
 
 
-ExpandPartialD[QuantumField[A,LorentzIndex[\[Nu]]].LeftNablaD[i],LeftPartialD->True]
+ExpandPartialD[QuantumField[A,LorentzIndex[\[Nu]]] . LeftNablaD[i],LeftPartialD->True]

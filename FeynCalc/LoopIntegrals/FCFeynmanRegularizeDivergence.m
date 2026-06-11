@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCFeynmanRegularizeDivergence											*)
+(* :Title: FCFeynmanRegularizeDivergence									*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary: Performs analytic regularization using ideas of Erik Panzer					*)
+(* :Summary: Performs analytic regularization using ideas of Erik Panzer	*)
 
 (* ------------------------------------------------------------------------ *)
 

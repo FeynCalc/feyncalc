@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: ToFCPartialFractionForm															*)
+(* :Title: ToFCPartialFractionForm											*)
 
 (*
 	This software is covered by the GNU General Public License 3.

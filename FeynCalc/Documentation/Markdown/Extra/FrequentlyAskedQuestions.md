@@ -119,7 +119,7 @@ By default `DiracTrace` isn't immediately applied. This is because in practical 
 
 ### Can I use FeynCalc's tensors together with Mathematica's tensors (e.g. `KroneckerDelta`, `LeviCivitaTensor`)  and tensor functions (e.g. `TensorContract`, `TensorTranspose`, `TensorProduct`)?
 
-No, you cannot mix those objects. FeynCalc's tensor functions like `Contract` can work properly only with tensors that are defined in FeynCalc (i.e. `FV`, `MTD`, `TensorFunction`). The same goes for Mathematica's `TensorContract` applied to FeynCalc's tensors. Trying to combine tensors from Mathematica and FeynCalc will either not evaluate at all or produce wrong results.
+No, you cannot mix those objects. FeynCalc's tensor functions like `Contract` can work properly only with tensors that are defined in FeynCalc (i.e. `FV`, `MTD`, `LC`). The same goes for Mathematica's `TensorContract` applied to FeynCalc's tensors. Trying to combine tensors from Mathematica and FeynCalc will either not evaluate at all or produce wrong results.
 
 ### Why there is no Kronecker delta in FeynCalc?
 FeynCalc doesn't really distinguish between upper and lower Lorentz indices. This is perfectly fine as long as you're working with manifestly Lorentz covariant expressions where Einstein summation convention is understood (which is normally the case in relativistic, manifestly Lorentz covariant QFTs like QED, QCD etc.). Hence, instead of Kronecker's delta you would use the metric tensor `MT[mu,nu]` (in 4-dimensions) or `MTD[mu,nu]` (in D-dimensions). This is not surprising since the Minkowskian Kronecker delta is just the metric tensor with one index up and the other down. If one of those indices is a dummy index, you can always pull it upstairs or downstairs, thus converting your Kronecker delta into a metric tensor with both indices up or down.
@@ -135,7 +135,7 @@ It is just a convention (also used e.g. in FORM) to denote contractions between 
 FeynCalc contains several objects that represent loop integrals: `FAD` (and its varieties such as `SFAD`, `CFAD` and `GFAD`), `PaVe` and `GLI`. `FAD`is the denominator of a general loop integral and does not imply any normalization factors. E.g.
 `FAD[{p,m}]` stands for $\int d^D p \frac{1}{p^2-m^2}$. `PaVe` stands (depending on its arguments) for a Passarino-Veltman coefficient or scalar function. In FeynCalc they are normalized differently as compared to the literature,
 such that `PaVe[0, {}, {m}]` (1-point scalar function) denotes $\frac{1}{i Pi^2} \int d^D p \frac{1}{p^2-m^2}$.
-The same normalization holds also for all the other PaVe functions. This normalization is used also e.g. in the OneLoop package.
+The same normalization holds also for all the other PaVe functions.
 
 To sum it up, if we denote $\int \frac{d^D p}{(2 \pi)^4} \frac{1}{p^2-m^2}$ (1-loop tadpole integral with the standard
 normalization) as $I_0$ and $-i (16 \pi^2) I_0$ (1-point PaVe scalar function with the standard
@@ -245,10 +245,6 @@ $BreitMaison=False
 ```
 
 Notice that FeynCalc merely evaluates the user expressions according to the scheme setting.  Since $\gamma^5$ in $D$ dimensions is always a problematic topic, it is up to you to make sure that what you are calculating makes sense from the physics point of view. Moreover, in case of the BMHV scheme, it is your task to workout the additional counter terms (which is often very nontrivial) and ensure that the axial current conservation is restored.
-
-### Why should I avoid using OneLoop?
-
-`OneLoop` is a legacy function that was originally introduced to completely handle the evaluation of 1-loop amplitudes in FeynCalc. Over the years, we realized that this approach is not very flexible and that it is often better to tackle the evaluation of the amplitude by applying lower level functions such as `TID`, `DiracSimplify`, `SUNSimplify` etc. in the order determined by the type of the given amplitude. Moreover, it was observed that in some cases `OneLoop` may return inconsistent results,  especially when calculating diagrams that involve $\gamma^5$. Unfortunately, the enormous complexity of the `OneLoop` source code makes it unlikely that it can be fixed and debugged in the near future. This is why we recommend the FeynCalc users to avoid calling `OneLoop` altogether and use other (simpler) functions instead. In particular, as far as the tensor reduction of 1-loop integrals is concerned, `TID` can do everything (and even more) than is offered by `OneLoop`.
 
 ### Tensor reduction with TID is very slow, is there a way to accelerate it?
 By default `TID` attempts to reduce all the occurring tensor integrals to scalar ones (tadpole, bubble, triangle and box). For integrals that are of a high rank and/or depend on many complicated invariants, such a reduction will

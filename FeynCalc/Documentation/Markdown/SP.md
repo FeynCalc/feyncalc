@@ -6,7 +6,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md).
+[Overview](Extra/FeynCalc.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md).
 
 ### Examples
 
@@ -23,7 +23,7 @@ SP[p - q, q + 2 p]
 $$(\overline{p}-\overline{q})\cdot (2 \overline{p}+\overline{q})$$
 
 ```mathematica
-Calc[ SP[p - q, q + 2 p] ]
+ExpandScalarProduct[ SP[p - q, q + 2 p] ]
 ```
 
 $$-\overline{p}\cdot \overline{q}+2 \overline{p}^2-\overline{q}^2$$

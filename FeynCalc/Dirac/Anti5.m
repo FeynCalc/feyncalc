@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: Anti5															*)
 
@@ -48,10 +48,13 @@ gamma5MoveBMHVLeft 					= FeynCalc`DiracTrick`Private`gamma5MoveBMHVLeft;
 holdDOT 							= commonGamma5Properties;
 
 Options[Anti5] = {
+	Collecting		-> True,
+	Factoring		-> {Factor2, 5000},
 	FCDiracIsolate	-> True,
 	FCE				-> False,
 	FCI				-> False,
-	FCVerbose		-> False
+	FCVerbose		-> False,
+	TimeConstrained	-> 3
 };
 
 Anti5[a_ == b_, rest___] :=
@@ -95,7 +98,7 @@ Anti5[expr_/; !MemberQ[{List,Equal},expr], n_/; !OptionQ[n] && MatchQ[n, Infinit
 			FCPrint[1, "Anti5: Normal mode.", FCDoControl->a5Verbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "Anti5: Extracting Dirac objects.", FCDoControl->a5Verbose];
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->True, LorentzIndex->False, DiracChain->True];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->True, LorentzIndex->False, DiracChain->True,"ExpandNestedDOTs"->True];
 			ex = ex /. h_dsHead/; FreeQ2[h,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] :> Identity@@h;
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
@@ -108,14 +111,16 @@ Anti5[expr_/; !MemberQ[{List,Equal},expr], n_/; !OptionQ[n] && MatchQ[n, Infinit
 			dsPart = dsHead[ex];
 			diracObjects = {dsPart}
 		];
-		FCPrint[3,"Anti5: dsPart: ",dsPart , FCDoControl->a5Verbose];
-		FCPrint[3,"Anti5: freePart: ",freePart , FCDoControl->a5Verbose];
-		FCPrint[3,"Anti5: diracObjects: ",diracObjects , FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: dsPart: ",dsPart , FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: freePart: ",freePart , FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: diracObjects: ",diracObjects , FCDoControl->a5Verbose];
 
 		FCPrint[1, "Anti5: Moving g^5.", FCDoControl->a5Verbose];
 		time=AbsoluteTime[];
 
-		diracObjectsEval = (diracObjects /. DOT->holdDOT /. dsHead->Identity);
+		diracObjectsEval = Map[Distribute[DotSimplify[#,Expanding->True]]&,diracObjects];
+
+		diracObjectsEval = (diracObjectsEval /. DOT->holdDOT /. dsHead->Identity);
 		Switch[n,
 
 			_Integer?Positive,
@@ -138,14 +143,16 @@ Anti5[expr_/; !MemberQ[{List,Equal},expr], n_/; !OptionQ[n] && MatchQ[n, Infinit
 		time=AbsoluteTime[];
 		FCPrint[1, "Anti5: Inserting Dirac objects back.", FCDoControl->a5Verbose];
 
-		diracObjectsEval = diracObjectsEval /. {
-			holdDOT->DOT
-		} /. (anti5MoveLeft|anti5MoveRight)[z_,_]-> z;
+		diracObjectsEval = diracObjectsEval /. holdDOT->DOT /. (anti5MoveLeft|anti5MoveRight)[z_,_]-> z;
 		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
-		FCPrint[3,"Anti5: repRule: ", repRule, FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: repRule: ", repRule, FCDoControl->a5Verbose];
 		res = freePart + ( dsPart/. Dispatch[repRule]);
 		FCPrint[1, "Anti5: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->a5Verbose];
-		FCPrint[3,"Anti5: Intermediate result: ", res, FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: Intermediate result: ", res, FCDoControl->a5Verbose];
+
+		If[ OptionValue[Collecting],
+			res = Collect2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]},TimeConstrained->OptionValue[TimeConstrained],Factoring->OptionValue[Factoring]]
+		];
 
 		If[ OptionValue[FCE],
 			res = FCE[res]
@@ -171,7 +178,7 @@ anti5MoveRight[0, _]:=
 anti5MoveRight[DiracChain[ex_, i_, j_], c_]:=
 	DiracChain[anti5MoveRight[ex, c],i,j];
 
-anti5MoveRight[c1_. a_holdDOT + c2_. b_holdDOT + c3_:0, i_]:=
+anti5MoveRight[c1_. a_ + c2_. b_ + c3_:0, i_]:=
 	anti5MoveRight[c1 a,i] + anti5MoveRight[c2 b,i] + anti5MoveRight[c3,i];
 
 (*	4-dimensions, any scheme, move to the right	*)
@@ -234,7 +241,7 @@ anti5MoveLeft[0, _]:=
 anti5MoveLeft[DiracChain[ex_, i_, j_], c_]:=
 	DiracChain[anti5MoveLeft[ex, c],i,j];
 
-anti5MoveLeft[c1_. a_holdDOT + c2_. b_holdDOT + c3_:0, i_]:=
+anti5MoveLeft[c1_. a_ + c2_. b_ + c3_:0, i_]:=
 	anti5MoveLeft[c1 a,i] + anti5MoveLeft[c2 b,i] + anti5MoveLeft[c3,i];
 
 (*	4-dimensions, any scheme, move to the left	*)

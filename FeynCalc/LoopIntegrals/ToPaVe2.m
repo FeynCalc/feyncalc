@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: ToPaVe2                                                       	*)
 
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Converts scalar direct Passarino Veltman to PaVe functions	*)
+(* :Summary:	Converts scalar direct Passarino-Veltman to PaVe functions	*)
 
 (* ------------------------------------------------------------------------ *)
 

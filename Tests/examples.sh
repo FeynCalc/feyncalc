@@ -21,7 +21,6 @@ MATH=$1
 
 
 ##Misc Examples
-#$MATH -nopromt -script ../FeynCalc/Examples/Misc/Integrate2.m &&
 
 ##Tdec Examples
 #$MATH -nopromt -script ../FeynCalc/Examples/Tdec/GrossNeveuMultiloopTID.m &&

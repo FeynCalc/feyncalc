@@ -275,6 +275,14 @@ FCE -> True]; $ParallelizeFeynCalc = False; tmp",
 	k3 . (-2 k1 - 2 k2 + k3) - 2 gkin meta k3 . n +
 	2 gkin meta u0b k3 . n +
 	meta u0b (-k1 - k2 + k3) . nb}, {2 gkin meta^2 u0b -
-	2 gkin meta^2 u0b^2, 1}, 1}] SFAD[{{k3, 0}, {0, 1}, 1}]"}
-});
+	2 gkin meta^2 u0b^2, 1}, 1}] SFAD[{{k3, 0}, {0, 1}, 1}]"},
+
+{"fcstFCLoopFromGLI-ID30",
+"FCLoopFromGLI[
+GLI[fctopology1, {0, 0, 0}], {FCTopology[
+fctopology1, {SFAD[{{l, 0}, {0, 1}, 1}],
+SFAD[{{l - p, 0}, {0, 1}, 1}],
+SFAD[{{l, 0}, {auxm^2, 1}, 1}]}, {l}, {p}, {Hold[Pair][
+Momentum[p, D], Momentum[p, D]] -> pp}, {}]}]",
+"0"}});
 

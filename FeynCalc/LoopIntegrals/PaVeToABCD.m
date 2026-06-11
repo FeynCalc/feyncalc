@@ -11,8 +11,8 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Converts suitable PaVe functions to direct Passarino Veltman
-				functions													*)
+(* :Summary:	Converts suitable PaVe functions to direct Passarino-
+				Veltman functions											*)
 
 (* ------------------------------------------------------------------------ *)
 

@@ -45,13 +45,13 @@ I*DiracSigma[GA[mu], GA[nu]]*MT[rho, sigma] + MT[mu, nu]*MT[rho, sigma]"},
 	Pair[LorentzIndex[rho], LorentzIndex[sigma]]"},
 {"fcstDiracReduce-ID7",
 	"MatchQ[DiracReduce[(SpinorUBar[p, m].DiracMatrix[i].DiracMatrix[j].DiracMatrix[k].SpinorU[p, m]) *
-	(SpinorUBar[k, m].DiracMatrix[i].DiracMatrix[j].DiracMatrix[k].SpinorU[k, m]),DiracSimplify->True,FCE->True],
+	(SpinorUBar[k, m].DiracMatrix[i].DiracMatrix[j].DiracMatrix[k].SpinorU[k, m]),DiracSimplify->True,FCE->True]//ExpandAll,
 	10*Spinor[Momentum[k], m, 1].GA[a_].Spinor[Momentum[k], m, 1]*
 	Spinor[Momentum[p], m, 1].GA[a_].Spinor[Momentum[p], m, 1] +
 	6*Spinor[Momentum[k], m, 1].GA[a_].GA[5].Spinor[Momentum[k], m, 1]*
 	Spinor[Momentum[p], m, 1].GA[a_].GA[5].Spinor[Momentum[p], m, 1]]","True"},
 {"fcstDiracReduce-ID8",
-	"MatchQ[$LeviCivitaSign = -I; \n tmp = DiracReduce[GA[i1, i2, 5],FCE->True]; \n $LeviCivitaSign = -1; \n
+	"MatchQ[$LeviCivitaSign = -I; \n tmp = DiracReduce[GA[i1, i2, 5],FCE->True]//ExpandAll; \n $LeviCivitaSign = -1; \n
 	tmp, 1/2 I DiracSigma[GA[a_], GA[b_]] LC[i1, i2, a_, b_] + GA[5] MT[i1, i2]]","True"},
 {"fcstDiracReduce-ID9",
 	"GA[i0, i, j] // DiracReduce // FCI // EpsChisholm //
@@ -77,25 +77,7 @@ DiracReduce[(I*EL^3*
 	PropagatorDenominator[Momentum[kp] + Momentum[p2], QMass]]*
 	SUNTF[{SUNIndex[cg]}, SUNFIndex[cq], SUNFIndex[cqbar]])/s],
 LorentzIndexNames -> {mu}]//FCE",
-"(I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[Polarization[kg, -I, Transversality -> True]] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*
-(SP[kg, Polarization[kp, -I]]*SP[kp, {L, I}] + SP[kg, {L, I}]*SP[kp, Polarization[kp, -I]] - SP[kg, kp]*SP[{L, I}, Polarization[kp, -I]])*SUNTF[{cg}, cq, cqbar])/s +
-(I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[Polarization[kp, -I]] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*
-(SP[kg, {L, I}]*SP[kp, Polarization[kg, -I, Transversality -> True]] - SP[kg, kp]*SP[{L, I}, Polarization[kg, -I, Transversality -> True]])*SUNTF[{cg}, cq, cqbar])/s -
-(I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[{L, I}] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*
-(SP[kg, Polarization[kp, -I]]*SP[kp, Polarization[kg, -I, Transversality -> True]] - SP[kg, kp]*SP[Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]])*SUNTF[{cg}, cq, cqbar])/s +
-(I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[kp] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*
-(SP[kg, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I, Transversality -> True]] - SP[kg, {L, I}]*SP[Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]])*SUNTF[{cg}, cq, cqbar])/s +
-(I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[kg] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*
-(SP[kp, Polarization[kg, -I, Transversality -> True]]*SP[{L, I}, Polarization[kp, -I]] - SP[kp, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I, Transversality -> True]] -
-	SP[kp, {L, I}]*SP[Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]])*SUNTF[{cg}, cq, cqbar])/s -
-(EL^3*Spinor[Momentum[p1], QMass, 1] . GS[Polarization[kg, -I, Transversality -> True]] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SUNTF[{cg}, cq, cqbar]*
-LC[][kg, kp, {L, I}, Polarization[kp, -I]])/s - (EL^3*Spinor[Momentum[p1], QMass, 1] . GS[kg] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*
-SUNTF[{cg}, cq, cqbar]*LC[][kp, {L, I}, Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]])/s -
-(EL^3*Spinor[Momentum[p1], QMass, 1] . GA[mu] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[{L, I}, Polarization[kp, -I]]*SUNTF[{cg}, cq, cqbar]*
-LC[mu][kg, kp, Polarization[kg, -I, Transversality -> True]])/s + (EL^3*Spinor[Momentum[p1], QMass, 1] . GA[mu] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*
-SP[kp, Polarization[kp, -I]]*SUNTF[{cg}, cq, cqbar]*LC[mu][kg, {L, I}, Polarization[kg, -I, Transversality -> True]])/s +
-(EL^3*Spinor[Momentum[p1], QMass, 1] . GA[mu] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kp, {L, I}]*SUNTF[{cg}, cq, cqbar]*
-LC[mu][kg, Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]])/s"},
+"(I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[Polarization[kg, -I, Transversality -> True]] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kg, Polarization[kp, -I]]*SP[kp, {L, I}]*SUNTF[{cg}, cq, cqbar])/s + (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[Polarization[kg, -I, Transversality -> True]] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kg, {L, I}]*SP[kp, Polarization[kp, -I]]*SUNTF[{cg}, cq, cqbar])/s + (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[Polarization[kp, -I]] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kg, {L, I}]*SP[kp, Polarization[kg, -I, Transversality -> True]]*SUNTF[{cg}, cq, cqbar])/s - (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[{L, I}] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kg, Polarization[kp, -I]]*SP[kp, Polarization[kg, -I, Transversality -> True]]*SUNTF[{cg}, cq, cqbar])/s - (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[Polarization[kg, -I, Transversality -> True]] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kg, kp]*SP[{L, I}, Polarization[kp, -I]]*SUNTF[{cg}, cq, cqbar])/s + (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[kg] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kp, Polarization[kg, -I, Transversality -> True]]*SP[{L, I}, Polarization[kp, -I]]*SUNTF[{cg}, cq, cqbar])/s - (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[Polarization[kp, -I]] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kg, kp]*SP[{L, I}, Polarization[kg, -I, Transversality -> True]]*SUNTF[{cg}, cq, cqbar])/s + (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[kp] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kg, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I, Transversality -> True]]*SUNTF[{cg}, cq, cqbar])/s - (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[kg] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kp, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I, Transversality -> True]]*SUNTF[{cg}, cq, cqbar])/s + (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[{L, I}] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kg, kp]*SP[Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]]*SUNTF[{cg}, cq, cqbar])/s - (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[kp] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kg, {L, I}]*SP[Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]]*SUNTF[{cg}, cq, cqbar])/s - (I*EL^3*Spinor[Momentum[p1], QMass, 1] . GS[kg] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kp, {L, I}]*SP[Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]]*SUNTF[{cg}, cq, cqbar])/s - (EL^3*Spinor[Momentum[p1], QMass, 1] . GS[Polarization[kg, -I, Transversality -> True]] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SUNTF[{cg}, cq, cqbar]*LC[][kg, kp, {L, I}, Polarization[kp, -I]])/s - (EL^3*Spinor[Momentum[p1], QMass, 1] . GS[kg] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SUNTF[{cg}, cq, cqbar]*LC[][kp, {L, I}, Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]])/s - (EL^3*Spinor[Momentum[p1], QMass, 1] . GA[mu] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[{L, I}, Polarization[kp, -I]]*SUNTF[{cg}, cq, cqbar]*LC[mu][kg, kp, Polarization[kg, -I, Transversality -> True]])/s + (EL^3*Spinor[Momentum[p1], QMass, 1] . GA[mu] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kp, Polarization[kp, -I]]*SUNTF[{cg}, cq, cqbar]*LC[mu][kg, {L, I}, Polarization[kg, -I, Transversality -> True]])/s + (EL^3*Spinor[Momentum[p1], QMass, 1] . GA[mu] . GA[5] . Spinor[-Momentum[p2], QMass, 1]*FAD[{-kg - p1, QMass}, {kp + p2, QMass}, Dimension -> 4]*SP[kp, {L, I}]*SUNTF[{cg}, cq, cqbar]*LC[mu][kg, Polarization[kp, -I], Polarization[kg, -I, Transversality -> True]])/s"},
 {"fcstDiracReduce-ID12",
 	"FCCanonicalizeDummyIndices[
 DiracReduce[
@@ -105,24 +87,87 @@ DiracGamma[
 	Momentum[{L, I}]].(m + DiracGamma[Momentum[p2]]).DiracGamma[
 	Momentum[Polarization[kp, -I]]], FCVerbose -> 0],
 LorentzIndexNames -> {mu}] // FCE",
-"(-I)*m*DiracSigma[GS[Polarization[kg, -I]], GS[Polarization[kp, -I]]]*(SP[p1, {L, I}] + SP[p2, {L, I}]) + DiracSigma[GS[{L, I}], GS[Polarization[kp, -I]]]*
-((-I)*m*SP[p1, Polarization[kg, -I]] + I*m*SP[p2, Polarization[kg, -I]]) - I*m*DiracSigma[GS[{L, I}], GS[Polarization[kg, -I]]]*(SP[p1, Polarization[kp, -I]] - SP[p2, Polarization[kp, -I]]) +
-I*m*DiracSigma[GS[p1], GS[Polarization[kp, -I]]]*SP[{L, I}, Polarization[kg, -I]] - I*m*DiracSigma[GS[p2], GS[Polarization[kp, -I]]]*SP[{L, I}, Polarization[kg, -I]] -
-m*SP[p1, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] + m*SP[p2, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] +
-GS[Polarization[kp, -I]]*(SP[p1, Polarization[kg, -I]]*SP[p2, {L, I}] + SP[p1, {L, I}]*SP[p2, Polarization[kg, -I]] + m^2*SP[{L, I}, Polarization[kg, -I]] - SP[p1, p2]*SP[{L, I}, Polarization[kg, -I]]) +
-I*m*DiracSigma[GS[p1], GS[Polarization[kg, -I]]]*SP[{L, I}, Polarization[kp, -I]] - I*m*DiracSigma[GS[p2], GS[Polarization[kg, -I]]]*SP[{L, I}, Polarization[kp, -I]] +
-m*SP[p1, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] - m*SP[p2, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] +
-GS[Polarization[kg, -I]]*(SP[p1, Polarization[kp, -I]]*SP[p2, {L, I}] + SP[p1, {L, I}]*SP[p2, Polarization[kp, -I]] + m^2*SP[{L, I}, Polarization[kp, -I]] - SP[p1, p2]*SP[{L, I}, Polarization[kp, -I]]) -
-I*m*DiracSigma[GS[p1], GS[{L, I}]]*SP[Polarization[kg, -I], Polarization[kp, -I]] + I*m*DiracSigma[GS[p2], GS[{L, I}]]*SP[Polarization[kg, -I], Polarization[kp, -I]] +
-m*SP[p1, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] + m*SP[p2, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] +
-GS[{L, I}]*(-(SP[p1, Polarization[kp, -I]]*SP[p2, Polarization[kg, -I]]) + SP[p1, Polarization[kg, -I]]*SP[p2, Polarization[kp, -I]] - m^2*SP[Polarization[kg, -I], Polarization[kp, -I]] +
-SP[p1, p2]*SP[Polarization[kg, -I], Polarization[kp, -I]]) + GS[p2]*(SP[p1, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] - SP[p1, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] -
-SP[p1, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]]) + GS[p1]*(-(SP[p2, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]]) + SP[p2, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] -
-SP[p2, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]]) + I*GS[Polarization[kg, -I]] . GA[5]*LC[][p1, p2, {L, I}, Polarization[kp, -I]] -
-I*m*GA[5]*LC[][p1, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] - I*GS[p1] . GA[5]*LC[][p2, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] +
-I*m*GA[5]*LC[][p2, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] + I*GA[mu] . GA[5]*SP[{L, I}, Polarization[kp, -I]]*LC[mu][p1, p2, Polarization[kg, -I]] -
-I*GA[mu] . GA[5]*SP[p2, Polarization[kp, -I]]*LC[mu][p1, {L, I}, Polarization[kg, -I]] + I*GA[mu] . GA[5]*SP[p2, {L, I}]*LC[mu][p1, Polarization[kg, -I], Polarization[kp, -I]] +
-I*GA[mu] . GA[5]*SP[p1, Polarization[kg, -I]]*LC[mu][p2, {L, I}, Polarization[kp, -I]] + I*m^2*GA[mu] . GA[5]*LC[mu][{L, I}, Polarization[kg, -I], Polarization[kp, -I]]"},
+"(-I)*m*DiracSigma[GS[Polarization[kg, -I]], GS[Polarization[kp, -I]]]*
+SP[p1, {L, I}] -
+I*m*DiracSigma[GS[{L, I}], GS[Polarization[kp, -I]]]*
+SP[p1, Polarization[kg, -I]] -
+I*m*DiracSigma[GS[{L, I}], GS[Polarization[kg, -I]]]*
+SP[p1, Polarization[kp, -I]] -
+I*m*DiracSigma[GS[Polarization[kg, -I]], GS[Polarization[kp, -I]]]*
+SP[p2, {L, I}] +
+GS[Polarization[kp, -I]]*SP[p1, Polarization[kg, -I]]*
+SP[p2, {L, I}] +
+GS[Polarization[kg, -I]]*SP[p1, Polarization[kp, -I]]*
+SP[p2, {L, I}] +
+I*m*DiracSigma[GS[{L, I}], GS[Polarization[kp, -I]]]*
+SP[p2, Polarization[kg, -I]] +
+GS[Polarization[kp, -I]]*SP[p1, {L, I}]*
+SP[p2, Polarization[kg, -I]] -
+GS[{L, I}]*SP[p1, Polarization[kp, -I]]*
+SP[p2, Polarization[kg, -I]] +
+I*m*DiracSigma[GS[{L, I}], GS[Polarization[kg, -I]]]*
+SP[p2, Polarization[kp, -I]] +
+GS[Polarization[kg, -I]]*SP[p1, {L, I}]*
+SP[p2, Polarization[kp, -I]] +
+GS[{L, I}]*SP[p1, Polarization[kg, -I]]*
+SP[p2, Polarization[kp, -I]] +
+I*m*DiracSigma[GS[p1], GS[Polarization[kp, -I]]]*
+SP[{L, I}, Polarization[kg, -I]] -
+I*m*DiracSigma[GS[p2], GS[Polarization[kp, -I]]]*
+SP[{L, I}, Polarization[kg, -I]] +
+m^2*GS[Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] -
+GS[Polarization[kp, -I]]*SP[p1, p2]*
+SP[{L, I}, Polarization[kg, -I]] -
+m*SP[p1, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] +
+GS[p2]*SP[p1, Polarization[kp, -I]]*
+SP[{L, I}, Polarization[kg, -I]] +
+m*SP[p2, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] -
+GS[p1]*SP[p2, Polarization[kp, -I]]*
+SP[{L, I}, Polarization[kg, -I]] +
+I*m*DiracSigma[GS[p1], GS[Polarization[kg, -I]]]*
+SP[{L, I}, Polarization[kp, -I]] -
+I*m*DiracSigma[GS[p2], GS[Polarization[kg, -I]]]*
+SP[{L, I}, Polarization[kp, -I]] +
+m^2*GS[Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] -
+GS[Polarization[kg, -I]]*SP[p1, p2]*
+SP[{L, I}, Polarization[kp, -I]] +
+m*SP[p1, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] -
+GS[p2]*SP[p1, Polarization[kg, -I]]*
+SP[{L, I}, Polarization[kp, -I]] -
+m*SP[p2, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] +
+GS[p1]*SP[p2, Polarization[kg, -I]]*
+SP[{L, I}, Polarization[kp, -I]] -
+I*m*DiracSigma[GS[p1], GS[{L, I}]]*
+SP[Polarization[kg, -I], Polarization[kp, -I]] +
+I*m*DiracSigma[GS[p2], GS[{L, I}]]*
+SP[Polarization[kg, -I], Polarization[kp, -I]] -
+m^2*GS[{L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] +
+GS[{L, I}]*SP[p1, p2]*
+SP[Polarization[kg, -I], Polarization[kp, -I]] +
+m*SP[p1, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] -
+GS[p2]*SP[p1, {L, I}]*
+SP[Polarization[kg, -I], Polarization[kp, -I]] +
+m*SP[p2, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] -
+GS[p1]*SP[p2, {L, I}]*
+SP[Polarization[kg, -I], Polarization[kp, -I]] +
+I*GS[Polarization[kg, -I]] . GA[5]*
+LC[][p1, p2, {L, I}, Polarization[kp, -I]] -
+I*m*GA[5]*
+LC[][p1, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] -
+I*GS[p1] . GA[5]*
+LC[][p2, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] +
+I*m*GA[5]*
+LC[][p2, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] +
+I*GA[mu] . GA[5]*SP[{L, I}, Polarization[kp, -I]]*
+LC[mu][p1, p2, Polarization[kg, -I]] -
+I*GA[mu] . GA[5]*SP[p2, Polarization[kp, -I]]*
+LC[mu][p1, {L, I}, Polarization[kg, -I]] +
+I*GA[mu] . GA[5]*SP[p2, {L, I}]*
+LC[mu][p1, Polarization[kg, -I], Polarization[kp, -I]] +
+I*GA[mu] . GA[5]*SP[p1, Polarization[kg, -I]]*
+LC[mu][p2, {L, I}, Polarization[kp, -I]] +
+I*m^2*GA[mu] . GA[5]*
+LC[mu][{L, I}, Polarization[kg, -I], Polarization[kp, -I]]"},
 {"fcstDiracReduce-ID13","DiracReduce[
 DiracGamma[
 	Momentum[Polarization[kg, -I]]].(QMass +
@@ -131,62 +176,73 @@ DiracGamma[
 	DiracGamma[Momentum[-kp - p2]]).DiracGamma[
 	Momentum[Polarization[kp, -I]]]] //
 FCCanonicalizeDummyIndices[#, LorentzIndexNames -> {mu},
-FCE -> True] &","(-I)*QMass*DiracSigma[GS[Polarization[kg, -I]], GS[Polarization[kp, -I]]]*(SP[kg, {L, I}] - SP[kp, {L, I}] +
-SP[p1, {L, I}] - SP[p2, {L, I}]) + DiracSigma[GS[{L, I}], GS[Polarization[kp, -I]]]*((-I)*QMass*SP[kg, Polarization[kg, -I]] -
-I*QMass*SP[kp, Polarization[kg, -I]] - I*QMass*SP[p1, Polarization[kg, -I]] - I*QMass*SP[p2, Polarization[kg, -I]]) -
-I*QMass*DiracSigma[GS[{L, I}], GS[Polarization[kg, -I]]]*(SP[kg, Polarization[kp, -I]] + SP[kp, Polarization[kp, -I]] +
-SP[p1, Polarization[kp, -I]] + SP[p2, Polarization[kp, -I]]) + I*QMass*DiracSigma[GS[kg], GS[Polarization[kp, -I]]]*SP[{L, I},
-Polarization[kg, -I]] + I*QMass*DiracSigma[GS[kp], GS[Polarization[kp, -I]]]*SP[{L, I}, Polarization[kg, -I]] +
-I*QMass*DiracSigma[GS[p1], GS[Polarization[kp, -I]]]*SP[{L, I}, Polarization[kg, -I]] + I*QMass*DiracSigma[GS[p2],
-GS[Polarization[kp, -I]]]*SP[{L, I}, Polarization[kg, -I]] - QMass*SP[kg, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] -
-QMass*SP[kp, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] - QMass*SP[p1, Polarization[kp, -I]]*SP[{L, I},
-Polarization[kg, -I]] - QMass*SP[p2, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] +
-GS[Polarization[kp, -I]]*(-(SP[kg, Polarization[kg, -I]]*SP[kp, {L, I}]) - SP[kg, {L, I}]*SP[kp, Polarization[kg, -I]] -
-SP[kp, Polarization[kg, -I]]*SP[p1, {L, I}] - SP[kp, {L, I}]*SP[p1, Polarization[kg, -I]] - SP[kg, Polarization[kg, -I]]*SP[p2, {L, I}] -
-SP[p1, Polarization[kg, -I]]*SP[p2, {L, I}] - SP[kg, {L, I}]*SP[p2, Polarization[kg, -I]] - SP[p1, {L, I}]*SP[p2, Polarization[kg, -I]] +
-QMass^2*SP[{L, I}, Polarization[kg, -I]] + SP[kg, kp]*SP[{L, I}, Polarization[kg, -I]] + SP[kg, p2]*SP[{L, I}, Polarization[kg, -I]] +
-SP[kp, p1]*SP[{L, I}, Polarization[kg, -I]] + SP[p1, p2]*SP[{L, I}, Polarization[kg, -I]]) + I*QMass*DiracSigma[GS[kg + p1],
-GS[Polarization[kg, -I]]]*SP[{L, I}, Polarization[kp, -I]] - I*QMass*DiracSigma[GS[-kp - p2], GS[Polarization[kg, -I]]]*SP[{L, I},
-Polarization[kp, -I]] - GS[-kp - p2]*(SP[kg, Polarization[kg, -I]] + SP[p1, Polarization[kg, -I]])*SP[{L, I}, Polarization[kp, -I]] +
-QMass*SP[kg + p1, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] + QMass*SP[-kp - p2, Polarization[kg, -I]]*SP[{L, I},
-Polarization[kp, -I]] + 2*QMass*SP[kp + p2, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] +
-GS[Polarization[kg, -I]]*(-(SP[kg, Polarization[kp, -I]]*SP[kp, {L, I}]) - SP[kg, {L, I}]*SP[kp, Polarization[kp, -I]] -
-SP[kp, Polarization[kp, -I]]*SP[p1, {L, I}] - SP[kp, {L, I}]*SP[p1, Polarization[kp, -I]] - SP[kg, Polarization[kp, -I]]*SP[p2, {L, I}] -
-SP[p1, Polarization[kp, -I]]*SP[p2, {L, I}] - SP[kg, {L, I}]*SP[p2, Polarization[kp, -I]] - SP[p1, {L, I}]*SP[p2, Polarization[kp, -I]] +
-QMass^2*SP[{L, I}, Polarization[kp, -I]] + SP[kg, kp]*SP[{L, I}, Polarization[kp, -I]] + SP[kg, p2]*SP[{L, I}, Polarization[kp, -I]] +
-SP[kp, p1]*SP[{L, I}, Polarization[kp, -I]] + SP[p1, p2]*SP[{L, I}, Polarization[kp, -I]]) - I*QMass*DiracSigma[GS[kg], GS[{L, I}]]*SP[Polarization[kg, -I],
-Polarization[kp, -I]] - I*QMass*DiracSigma[GS[kp], GS[{L, I}]]*SP[Polarization[kg, -I], Polarization[kp, -I]] - I*QMass*DiracSigma[GS[p1],
-GS[{L, I}]]*SP[Polarization[kg, -I], Polarization[kp, -I]] - I*QMass*DiracSigma[GS[p2], GS[{L, I}]]*SP[Polarization[kg, -I],
-Polarization[kp, -I]] + QMass*SP[kg, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] - QMass*SP[kp, {L, I}]*SP[Polarization[kg, -I],
-Polarization[kp, -I]] + QMass*SP[p1, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] - QMass*SP[p2, {L, I}]*SP[Polarization[kg, -I],
-Polarization[kp, -I]] + GS[{L, I}]*(SP[kg, Polarization[kp, -I]]*SP[kp, Polarization[kg, -I]] - SP[kg, Polarization[kg, -I]]*SP[kp, Polarization[kp, -I]] -
-SP[kp, Polarization[kp, -I]]*SP[p1, Polarization[kg, -I]] + SP[kp, Polarization[kg, -I]]*SP[p1, Polarization[kp, -I]] +
-SP[kg, Polarization[kp, -I]]*SP[p2, Polarization[kg, -I]] + SP[p1, Polarization[kp, -I]]*SP[p2, Polarization[kg, -I]] -
-SP[kg, Polarization[kg, -I]]*SP[p2, Polarization[kp, -I]] - SP[p1, Polarization[kg, -I]]*SP[p2, Polarization[kp, -I]] -
-QMass^2*SP[Polarization[kg, -I], Polarization[kp, -I]] - SP[kg, kp]*SP[Polarization[kg, -I], Polarization[kp, -I]] -
-SP[kg, p2]*SP[Polarization[kg, -I], Polarization[kp, -I]] - SP[kp, p1]*SP[Polarization[kg, -I], Polarization[kp, -I]] -
-SP[p1, p2]*SP[Polarization[kg, -I], Polarization[kp, -I]]) + GS[kp]*(-(SP[kg, Polarization[kp, -I]]*SP[{L, I},
-Polarization[kg, -I]]) - SP[p1, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] + SP[kg, {L, I}]*SP[Polarization[kg, -I],
-Polarization[kp, -I]] + SP[p1, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]]) + GS[p2]*(-(SP[kg, Polarization[kp, -I]]*SP[{L, I},
-Polarization[kg, -I]]) - SP[p1, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] + SP[kg, {L, I}]*SP[Polarization[kg, -I],
-Polarization[kp, -I]] + SP[p1, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]]) + GS[kg + p1]*(SP[kp, Polarization[kp, -I]]*SP[{L, I},
-Polarization[kg, -I]] + SP[p2, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] - SP[kp, Polarization[kg, -I]]*SP[{L, I},
-Polarization[kp, -I]] - SP[p2, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] + SP[kp, {L, I}]*SP[Polarization[kg, -I],
-Polarization[kp, -I]] + SP[p2, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]]) - I*GS[Polarization[kg, -I]] . GA[5]*LC[][kg, kp, {L, I},
-Polarization[kp, -I]] - I*GS[Polarization[kg, -I]] . GA[5]*LC[][kg, p2, {L, I}, Polarization[kp, -I]] - I*QMass*GA[5]*LC[][kg, {L, I},
-Polarization[kg, -I], Polarization[kp, -I]] + I*GS[Polarization[kg, -I]] . GA[5]*LC[][kp, p1, {L, I}, Polarization[kp, -I]] +
-I*GS[kg + p1] . GA[5]*LC[][kp, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] - I*QMass*GA[5]*LC[][kp, {L, I}, Polarization[kg, -I],
-Polarization[kp, -I]] - I*GS[Polarization[kg, -I]] . GA[5]*LC[][p1, p2, {L, I}, Polarization[kp, -I]] - I*QMass*GA[5]*LC[][p1, {L, I},
-Polarization[kg, -I], Polarization[kp, -I]] + I*GS[kg + p1] . GA[5]*LC[][p2, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] -
-I*QMass*GA[5]*LC[][p2, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] - I*GA[mu] . GA[5]*SP[{L, I}, Polarization[kp, -I]]*LC[mu][kg,
-kp, Polarization[kg, -I]] - I*GA[mu] . GA[5]*SP[{L, I}, Polarization[kp, -I]]*LC[mu][kg, p2, Polarization[kg, -I]] +
-I*GA[mu] . GA[5]*(SP[kp, Polarization[kp, -I]] + SP[p2, Polarization[kp, -I]])*LC[mu][kg, {L, I}, Polarization[kg, -I]] -
-I*GA[mu] . GA[5]*(SP[kp, {L, I}] + SP[p2, {L, I}])*LC[mu][kg, Polarization[kg, -I], Polarization[kp, -I]] + I*GA[mu] . GA[5]*SP[{L, I},
-Polarization[kp, -I]]*LC[mu][kp, p1, Polarization[kg, -I]] - I*GA[mu] . GA[5]*(SP[kg, Polarization[kg, -I]] + SP[p1,
-Polarization[kg, -I]])*LC[mu][kp, {L, I}, Polarization[kp, -I]] - I*GA[mu] . GA[5]*SP[{L, I}, Polarization[kp, -I]]*LC[mu][p1, p2,
-Polarization[kg, -I]] + I*GA[mu] . GA[5]*(SP[kp, Polarization[kp, -I]] + SP[p2, Polarization[kp, -I]])*LC[mu][p1, {L, I},
-Polarization[kg, -I]] - I*GA[mu] . GA[5]*(SP[kp, {L, I}] + SP[p2, {L, I}])*LC[mu][p1, Polarization[kg, -I], Polarization[kp, -I]] -
-I*GA[mu] . GA[5]*(SP[kg, Polarization[kg, -I]] + SP[p1, Polarization[kg, -I]])*LC[mu][p2, {L, I}, Polarization[kp, -I]] +
+FCE -> True] &","(-I)*QMass*DiracSigma[GS[Polarization[kg, -I]], GS[Polarization[kp, -I]]]*SP[kg, {L, I}] - I*QMass*DiracSigma[GS[{L, I}], GS[Polarization[kp, -I]]]*
+SP[kg, Polarization[kg, -I]] - I*QMass*DiracSigma[GS[{L, I}], GS[Polarization[kg, -I]]]*SP[kg, Polarization[kp, -I]] +
+I*QMass*DiracSigma[GS[Polarization[kg, -I]], GS[Polarization[kp, -I]]]*SP[kp, {L, I}] - GS[Polarization[kp, -I]]*SP[kg, Polarization[kg, -I]]*
+SP[kp, {L, I}] - GS[Polarization[kg, -I]]*SP[kg, Polarization[kp, -I]]*SP[kp, {L, I}] - I*QMass*DiracSigma[GS[{L, I}], GS[Polarization[kp, -I]]]*
+SP[kp, Polarization[kg, -I]] - GS[Polarization[kp, -I]]*SP[kg, {L, I}]*SP[kp, Polarization[kg, -I]] +
+GS[{L, I}]*SP[kg, Polarization[kp, -I]]*SP[kp, Polarization[kg, -I]] - I*QMass*DiracSigma[GS[{L, I}], GS[Polarization[kg, -I]]]*
+SP[kp, Polarization[kp, -I]] - GS[Polarization[kg, -I]]*SP[kg, {L, I}]*SP[kp, Polarization[kp, -I]] -
+GS[{L, I}]*SP[kg, Polarization[kg, -I]]*SP[kp, Polarization[kp, -I]] - I*QMass*DiracSigma[GS[Polarization[kg, -I]], GS[Polarization[kp, -I]]]*
+SP[p1, {L, I}] - GS[Polarization[kp, -I]]*SP[kp, Polarization[kg, -I]]*SP[p1, {L, I}] - GS[Polarization[kg, -I]]*SP[kp, Polarization[kp, -I]]*
+SP[p1, {L, I}] - I*QMass*DiracSigma[GS[{L, I}], GS[Polarization[kp, -I]]]*SP[p1, Polarization[kg, -I]] -
+GS[Polarization[kp, -I]]*SP[kp, {L, I}]*SP[p1, Polarization[kg, -I]] - GS[{L, I}]*SP[kp, Polarization[kp, -I]]*SP[p1, Polarization[kg, -I]] -
+I*QMass*DiracSigma[GS[{L, I}], GS[Polarization[kg, -I]]]*SP[p1, Polarization[kp, -I]] -
+GS[Polarization[kg, -I]]*SP[kp, {L, I}]*SP[p1, Polarization[kp, -I]] + GS[{L, I}]*SP[kp, Polarization[kg, -I]]*SP[p1, Polarization[kp, -I]] +
+I*QMass*DiracSigma[GS[Polarization[kg, -I]], GS[Polarization[kp, -I]]]*SP[p2, {L, I}] - GS[Polarization[kp, -I]]*SP[kg, Polarization[kg, -I]]*
+SP[p2, {L, I}] - GS[Polarization[kg, -I]]*SP[kg, Polarization[kp, -I]]*SP[p2, {L, I}] - GS[Polarization[kp, -I]]*SP[p1, Polarization[kg, -I]]*
+SP[p2, {L, I}] - GS[Polarization[kg, -I]]*SP[p1, Polarization[kp, -I]]*SP[p2, {L, I}] - I*QMass*DiracSigma[GS[{L, I}], GS[Polarization[kp, -I]]]*
+SP[p2, Polarization[kg, -I]] - GS[Polarization[kp, -I]]*SP[kg, {L, I}]*SP[p2, Polarization[kg, -I]] +
+GS[{L, I}]*SP[kg, Polarization[kp, -I]]*SP[p2, Polarization[kg, -I]] - GS[Polarization[kp, -I]]*SP[p1, {L, I}]*SP[p2, Polarization[kg, -I]] +
+GS[{L, I}]*SP[p1, Polarization[kp, -I]]*SP[p2, Polarization[kg, -I]] - I*QMass*DiracSigma[GS[{L, I}], GS[Polarization[kg, -I]]]*
+SP[p2, Polarization[kp, -I]] - GS[Polarization[kg, -I]]*SP[kg, {L, I}]*SP[p2, Polarization[kp, -I]] -
+GS[{L, I}]*SP[kg, Polarization[kg, -I]]*SP[p2, Polarization[kp, -I]] - GS[Polarization[kg, -I]]*SP[p1, {L, I}]*SP[p2, Polarization[kp, -I]] -
+GS[{L, I}]*SP[p1, Polarization[kg, -I]]*SP[p2, Polarization[kp, -I]] + I*QMass*DiracSigma[GS[kg], GS[Polarization[kp, -I]]]*
+SP[{L, I}, Polarization[kg, -I]] + I*QMass*DiracSigma[GS[kp], GS[Polarization[kp, -I]]]*SP[{L, I}, Polarization[kg, -I]] +
+I*QMass*DiracSigma[GS[p1], GS[Polarization[kp, -I]]]*SP[{L, I}, Polarization[kg, -I]] + I*QMass*DiracSigma[GS[p2], GS[Polarization[kp, -I]]]*
+SP[{L, I}, Polarization[kg, -I]] + QMass^2*GS[Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] +
+GS[Polarization[kp, -I]]*SP[kg, kp]*SP[{L, I}, Polarization[kg, -I]] + GS[Polarization[kp, -I]]*SP[kg, p2]*SP[{L, I}, Polarization[kg, -I]] -
+QMass*SP[kg, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] - GS[kp]*SP[kg, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] -
+GS[p2]*SP[kg, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] + GS[Polarization[kp, -I]]*SP[kp, p1]*SP[{L, I}, Polarization[kg, -I]] -
+QMass*SP[kp, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] + GS[kg + p1]*SP[kp, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] +
+GS[Polarization[kp, -I]]*SP[p1, p2]*SP[{L, I}, Polarization[kg, -I]] - QMass*SP[p1, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] -
+GS[kp]*SP[p1, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] - GS[p2]*SP[p1, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] -
+QMass*SP[p2, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] + GS[kg + p1]*SP[p2, Polarization[kp, -I]]*SP[{L, I}, Polarization[kg, -I]] +
+I*QMass*DiracSigma[GS[kg + p1], GS[Polarization[kg, -I]]]*SP[{L, I}, Polarization[kp, -I]] +
+I*QMass*DiracSigma[GS[kp + p2], GS[Polarization[kg, -I]]]*SP[{L, I}, Polarization[kp, -I]] +
+QMass^2*GS[Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] + GS[Polarization[kg, -I]]*SP[kg, kp]*SP[{L, I}, Polarization[kp, -I]] +
+GS[Polarization[kg, -I]]*SP[kg, p2]*SP[{L, I}, Polarization[kp, -I]] + GS[kp + p2]*SP[kg, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] +
+GS[Polarization[kg, -I]]*SP[kp, p1]*SP[{L, I}, Polarization[kp, -I]] - GS[kg + p1]*SP[kp, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] +
+GS[Polarization[kg, -I]]*SP[p1, p2]*SP[{L, I}, Polarization[kp, -I]] + GS[kp + p2]*SP[p1, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] +
+QMass*SP[kg + p1, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] - GS[kg + p1]*SP[p2, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] +
+QMass*SP[kp + p2, Polarization[kg, -I]]*SP[{L, I}, Polarization[kp, -I]] - I*QMass*DiracSigma[GS[kg], GS[{L, I}]]*
+SP[Polarization[kg, -I], Polarization[kp, -I]] - I*QMass*DiracSigma[GS[kp], GS[{L, I}]]*SP[Polarization[kg, -I], Polarization[kp, -I]] -
+I*QMass*DiracSigma[GS[p1], GS[{L, I}]]*SP[Polarization[kg, -I], Polarization[kp, -I]] -
+I*QMass*DiracSigma[GS[p2], GS[{L, I}]]*SP[Polarization[kg, -I], Polarization[kp, -I]] -
+QMass^2*GS[{L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] - GS[{L, I}]*SP[kg, kp]*SP[Polarization[kg, -I], Polarization[kp, -I]] -
+GS[{L, I}]*SP[kg, p2]*SP[Polarization[kg, -I], Polarization[kp, -I]] + QMass*SP[kg, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] +
+GS[kp]*SP[kg, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] + GS[p2]*SP[kg, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] -
+GS[{L, I}]*SP[kp, p1]*SP[Polarization[kg, -I], Polarization[kp, -I]] - QMass*SP[kp, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] +
+GS[kg + p1]*SP[kp, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] - GS[{L, I}]*SP[p1, p2]*SP[Polarization[kg, -I], Polarization[kp, -I]] +
+QMass*SP[p1, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] + GS[kp]*SP[p1, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] +
+GS[p2]*SP[p1, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] - QMass*SP[p2, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] +
+GS[kg + p1]*SP[p2, {L, I}]*SP[Polarization[kg, -I], Polarization[kp, -I]] - I*GS[Polarization[kg, -I]] . GA[5]*
+LC[][kg, kp, {L, I}, Polarization[kp, -I]] - I*GS[Polarization[kg, -I]] . GA[5]*LC[][kg, p2, {L, I}, Polarization[kp, -I]] -
+I*QMass*GA[5]*LC[][kg, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] + I*GS[Polarization[kg, -I]] . GA[5]*
+LC[][kp, p1, {L, I}, Polarization[kp, -I]] + I*GS[kg + p1] . GA[5]*LC[][kp, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] -
+I*QMass*GA[5]*LC[][kp, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] - I*GS[Polarization[kg, -I]] . GA[5]*
+LC[][p1, p2, {L, I}, Polarization[kp, -I]] - I*QMass*GA[5]*LC[][p1, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] +
+I*GS[kg + p1] . GA[5]*LC[][p2, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] -
+I*QMass*GA[5]*LC[][p2, {L, I}, Polarization[kg, -I], Polarization[kp, -I]] - I*GA[mu] . GA[5]*SP[{L, I}, Polarization[kp, -I]]*
+LC[mu][kg, kp, Polarization[kg, -I]] - I*GA[mu] . GA[5]*SP[{L, I}, Polarization[kp, -I]]*LC[mu][kg, p2, Polarization[kg, -I]] +
+GA[mu] . GA[5]*(I*SP[kp, Polarization[kp, -I]] + I*SP[p2, Polarization[kp, -I]])*LC[mu][kg, {L, I}, Polarization[kg, -I]] +
+GA[mu] . GA[5]*((-I)*SP[kp, {L, I}] - I*SP[p2, {L, I}])*LC[mu][kg, Polarization[kg, -I], Polarization[kp, -I]] +
+I*GA[mu] . GA[5]*SP[{L, I}, Polarization[kp, -I]]*LC[mu][kp, p1, Polarization[kg, -I]] +
+GA[mu] . GA[5]*((-I)*SP[kg, Polarization[kg, -I]] - I*SP[p1, Polarization[kg, -I]])*LC[mu][kp, {L, I}, Polarization[kp, -I]] -
+I*GA[mu] . GA[5]*SP[{L, I}, Polarization[kp, -I]]*LC[mu][p1, p2, Polarization[kg, -I]] +
+GA[mu] . GA[5]*(I*SP[kp, Polarization[kp, -I]] + I*SP[p2, Polarization[kp, -I]])*LC[mu][p1, {L, I}, Polarization[kg, -I]] +
+GA[mu] . GA[5]*((-I)*SP[kp, {L, I}] - I*SP[p2, {L, I}])*LC[mu][p1, Polarization[kg, -I], Polarization[kp, -I]] +
+GA[mu] . GA[5]*((-I)*SP[kg, Polarization[kg, -I]] - I*SP[p1, Polarization[kg, -I]])*LC[mu][p2, {L, I}, Polarization[kp, -I]] +
 I*QMass^2*GA[mu] . GA[5]*LC[mu][{L, I}, Polarization[kg, -I], Polarization[kp, -I]]"},
 {"fcstDiracReduce-ID14","DiracReduce[DCHN[GA[i, j, k], a, b]] //
 FCCanonicalizeDummyIndices[#, LorentzIndexNames -> {mu},

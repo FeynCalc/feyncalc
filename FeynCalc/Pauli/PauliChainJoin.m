@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2018 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Joins chains of Pauli matrices with explicit Pauli
+(* :Summary:	Joins chains of Pauli matrices with explicit Pauli
 				indices into index free chains								*)
 
 (* ------------------------------------------------------------------------ *)

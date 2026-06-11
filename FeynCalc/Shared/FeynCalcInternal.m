@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: FeynCalcInternal													*)
 
@@ -136,9 +136,6 @@ FeynCalcInternal[x_, opts___Rule] :=
 			SP 					:> sp,
 			SPD 				:> spd,
 			SPE				 	:> spe,
-
-			SO 					:> so,
-			SOD 				:> sod,
 
 			TC 					:> tc,
 			CV 					:> cv,
@@ -593,11 +590,6 @@ cspd[a_,b_] :=
 	CartesianPair[CartesianMomentum[a, D-1], CartesianMomentum[b,D-1]];
 cspe[a_,b_] :=
 	CartesianPair[CartesianMomentum[a, D-4], CartesianMomentum[b,D-4]];
-
-so[a_] :=
-	Pair[Momentum[a], Momentum[OPEDelta]];
-sod[a_] :=
-	Pair[Momentum[a,D], Momentum[OPEDelta,D]];
 
 fvd[a_,b_] :=
 	Pair[Momentum[a, D], LorentzIndex[b,D]];

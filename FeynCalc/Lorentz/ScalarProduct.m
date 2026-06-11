@@ -12,7 +12,7 @@
 *)
 
 (*
-	:Summary:  Scalar products
+	:Summary:	Scalar products
 
 				Supports parallel evaluation [X]
 *)

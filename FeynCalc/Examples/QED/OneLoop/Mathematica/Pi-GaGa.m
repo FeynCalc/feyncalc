@@ -149,7 +149,7 @@ KiraCreateConfigFiles[toposFinal, ints, dir, KiraMassDimensions -> {kp -> 2}];
 
 
 KiraRunReduction[dir, toposFinal, 
- KiraBinaryPath -> FileNameJoin[{$HomeDirectory, "bin", "kira"}],
+ KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local","bin", "kira"}],
  KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
 
 
@@ -183,6 +183,7 @@ Text->{"\tCompare to Peskin and Schroeder, An Introduction to QFT, \
 Eq 19.59:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
 
 
 

@@ -73,25 +73,9 @@ Tests`Dirac`fcstAnti5ToTheRight = {
 	DiracGamma[LorentzIndex[rho, D], D] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] .
 	DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] "},
 {"fcstAnti5ToTheRight-ID24","Anti5[GA[5].GAD[mu, nu, rho], 2]",
-	"2*(2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] .
-	DiracGamma[LorentzIndex[rho, D], D] - DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]) -
-	2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] .
-	DiracGamma[LorentzIndex[rho, D], D] + DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
-	DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
+	"4*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D] - 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D] - 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D] + DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstAnti5ToTheRight-ID25","Anti5[GA[5].GAD[mu, nu, rho], Infinity]",
-	"2*(2*(2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]) -
-	2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, D], D] .
-	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] + DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]) -
-	2*(2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] .
-	DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]) +
-	2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
-	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] .
-	DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
+	"8*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] - 4*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5] - 4*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] + 2*DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5] - 4*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] + 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5] + 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] . DiracGamma[5]"},
 {"fcstAnti5ToTheRight-ID26","Anti5[GA[5].GAE[i]]",
 	"DiracGamma[LorentzIndex[i, -4 + D], -4 + D] . DiracGamma[5]"},
 {"fcstAnti5ToTheRight-ID27","Anti5[GA[5].GAE[i], 1]",
@@ -107,17 +91,14 @@ Tests`Dirac`fcstAnti5ToTheRight = {
 	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
 {"fcstAnti5ToTheRight-ID30.1","Anti5[GA[5].CGAD[i], 1] // FCE", "-CGAD[i].GA[5] + 2 CGAE[i].GA[5]"},
 {"fcstAnti5ToTheRight-ID30.2","Anti5[GA[5].CGAD[i, j, k]] // FCE", "-CGAD[i].GA[5].CGAD[j].CGAD[k] + 2 CGAE[i].GA[5].CGAD[j].CGAD[k]"},
-{"fcstAnti5ToTheRight-ID30.3","Anti5[GA[5].CGAD[i, j, k], Infinity] // FCE", "-CGAD[i].CGAD[j].CGAD[k].GA[5] + 2 CGAD[i].CGAD[j].CGAE[k].GA[5] -
-2 (-CGAD[i].CGAE[j].CGAD[k].GA[5] +
-	2 CGAD[i].CGAE[j].CGAE[k].GA[5]) +
-2 (CGAE[i].CGAD[j].CGAD[k].GA[5] - 2 CGAE[i].CGAD[j].CGAE[k].GA[5] +
-	2 (-CGAE[i].CGAE[j].CGAD[k].GA[5] +
-	2 CGAE[i].CGAE[j].CGAE[k].GA[5]))"},
+{"fcstAnti5ToTheRight-ID30.3","Anti5[GA[5].CGAD[i, j, k], Infinity] // FCE", "-CGAD[i] . CGAD[j] . CGAD[k] . GA[5] + 2*CGAD[i] . CGAD[j] . CGAE[k] . GA[5] + 2*CGAD[i] . CGAE[j] . CGAD[k] . GA[5] - 4*CGAD[i] . CGAE[j] . CGAE[k] . GA[5] + 2*CGAE[i] . CGAD[j] . CGAD[k] . GA[5] - 4*CGAE[i] . CGAD[j] . CGAE[k] . GA[5] - 4*CGAE[i] . CGAE[j] . CGAD[k] . GA[5] + 8*CGAE[i] . CGAE[j] . CGAE[k] . GA[5]"},
 {"fcstAnti5ToTheRight-ID30.4","Anti5[GA[5].CGAE[i], 1] // FCE", "CGAE[i].GA[5]"},
 {"fcstAnti5ToTheRight-ID30.5","Anti5[GA[5].CGAE[i, j, k]] // FCE", "CGAE[i].GA[5].CGAE[j].CGAE[k]"},
 {"fcstAnti5ToTheRight-ID30.6","Anti5[GA[5].CGAE[i, j, k], Infinity] // FCE", "CGAE[i].CGAE[j].CGAE[k].GA[5]"},
 {"fcstAnti5ToTheRight-ID31","Anti5[{GA[5, mu, nu], GA[6, rho]}, FCE -> True]", "{-GA[mu].GA[5].GA[nu], GA[rho].GA[7]}"},
-{"fcstAnti5ToTheRight-ID32","Anti5[GA[5, mu, nu] == x, FCE -> True]", "-GA[mu].GA[5].GA[nu] == x"}
+{"fcstAnti5ToTheRight-ID32","Anti5[GA[5, mu, nu] == x, FCE -> True]", "-GA[mu].GA[5].GA[nu] == x"},
+{"fcstAnti5ToTheRight-ID33","FCSetDiracGammaScheme[\"NDR\"]; Anti5[GAD[5] . (a + GSD[p]) . (b + GSD[p]), Infinity, FCE -> True]",
+"-((a + b)*GSD[p] . GA[5]) + GSD[p] . GSD[p] . GA[5] + a*b*GA[5]"}
 };
 
 
@@ -198,29 +179,17 @@ DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] . DiracGamma[5]"},
 	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] - DiracGamma[LorentzIndex[mu, D], D] .
 	DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstAnti5ToTheLeft-ID24","Anti5[GAD[mu, nu, rho].GA[5], -2]",
-	"-2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] .
-	DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[rho, D], D] +
-	2*(2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] .
-	DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] - DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] .
-	DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]) +
-	DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] .
-	DiracGamma[LorentzIndex[rho, D], D]"},
+	"4*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] - 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D] - 2*DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] + DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[5] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstAnti5ToTheLeft-ID25","Anti5[GAD[mu, nu, rho].GA[5], -Infinity]",
-	"2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[nu, D], D].DiracGamma[LorentzIndex[rho, D], D] -
-	2*(2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[rho, D], D] - DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] .
-	DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D]) +
-	2*(-2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, D], D] .
-	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] +
-	2*(2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
-	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] - DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] .
-	DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]) +
-	DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] .
-	DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]) - DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] .
-	DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
+	"8*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho,
+	-4 + D], -4 + D] - 4*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu,
+	-4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, D], D] - 4*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D],
+	-4 + D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, -4 + D], -4 + D] +
+	2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D] -
+	4*DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho, -4 + D],
+	-4 + D] + 2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] . DiracGamma[LorentzIndex[rho,
+	D], D] + 2*DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, -4 + D],
+	-4 + D] - DiracGamma[5] . DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[LorentzIndex[nu, D], D] . DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstAnti5ToTheLeft-ID26","Anti5[GAE[i].GA[5]]",
 	"DiracGamma[LorentzIndex[i, -4 + D], -4 + D] . DiracGamma[5]"},
 {"fcstAnti5ToTheLeft-ID27","Anti5[GAE[i].GA[5], -1]",
@@ -238,18 +207,23 @@ DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
 	DiracGamma[LorentzIndex[nu, -4 + D], -4 + D] .
 DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
 {"fcstAnti5ToTheLeft-ID30.1","Anti5[CGAD[i].GA[5], -1] // FCE", "-GA[5].CGAD[i] + 2 GA[5].CGAE[i]"},
-{"fcstAnti5ToTheLeft-ID30.2","Anti5[CGAD[i, j, k].GA[5],-2] // FCE", "CGAD[i].GA[5].CGAD[j].CGAD[k] - 2 CGAD[i].GA[5].CGAE[j].CGAD[k] +
-2 (-CGAD[i].GA[5].CGAD[j].CGAE[k] + 2 CGAD[i].GA[5].CGAE[j].CGAE[k])"},
+{"fcstAnti5ToTheLeft-ID30.2","Anti5[CGAD[i, j, k].GA[5],-2] // FCE", "CGAD[i] . GA[5] . CGAD[j] . CGAD[k] -
+2*CGAD[i] . GA[5] . CGAD[j] . CGAE[k] - 2*CGAD[i] . GA[5] . CGAE[j] . CGAD[k] + 4*CGAD[i] . GA[5] . CGAE[j] . CGAE[k]"},
 {"fcstAnti5ToTheLeft-ID30.3","Anti5[CGAD[i, j, k].GA[5], -Infinity] // FCE",
-"-GA[5].CGAD[i].CGAD[j].CGAD[k] + 2 GA[5].CGAE[i].CGAD[j].CGAD[k] -
-2 (-GA[5].CGAD[i].CGAE[j].CGAD[k] +
-	2 GA[5].CGAE[i].CGAE[j].CGAD[k]) +
-2 (GA[5].CGAD[i].CGAD[j].CGAE[k] - 2 GA[5].CGAE[i].CGAD[j].CGAE[k] +
-	2 (-GA[5].CGAD[i].CGAE[j].CGAE[k] +
-	2 GA[5].CGAE[i].CGAE[j].CGAE[k]))"},
+"-GA[5] . CGAD[i] . CGAD[j] . CGAD[k] + 2*GA[5] . CGAD[i] . CGAD[j] . CGAE[k] + 2*GA[5] . CGAD[i] . CGAE[j] . CGAD[k] -
+4*GA[5] . CGAD[i] . CGAE[j] . CGAE[k] + 2*GA[5] . CGAE[i] . CGAD[j] . CGAD[k] - 4*GA[5] . CGAE[i] . CGAD[j] . CGAE[k] -
+4*GA[5] . CGAE[i] . CGAE[j] . CGAD[k] + 8*GA[5] . CGAE[i] . CGAE[j] . CGAE[k]"},
 {"fcstAnti5ToTheLeft-ID30.4","Anti5[CGAE[i].GA[5], -1] // FCE", "GA[5].CGAE[i]"},
 {"fcstAnti5ToTheLeft-ID30.5","Anti5[CGAE[i, j, k].GA[5],-2] // FCE", "CGAE[i].GA[5].CGAE[j].CGAE[k]"},
-{"fcstAnti5ToTheLeft-ID30.6","Anti5[CGAE[i, j, k].GA[5], -Infinity] // FCE", "GA[5].CGAE[i].CGAE[j].CGAE[k]"}
+{"fcstAnti5ToTheLeft-ID30.6","Anti5[CGAE[i, j, k].GA[5], -Infinity] // FCE", "GA[5].CGAE[i].CGAE[j].CGAE[k]"},
+{"fcstAnti5ToTheLeft-ID30.7","FCSetDiracGammaScheme[\"NDR\"]; Anti5[GAD[
+5] . (a GAD[u] + b GAD[u] . GSD[p] +
+	c GSD[p] . GAD[u] . GSD[q]), Infinity, FCE -> True]",
+	"-(a*GAD[u] . GA[5]) + b*GAD[u] . GSD[p] . GA[5] - c*GSD[p] . GAD[u] . GSD[q] . GA[5]"},
+{"fcstAnti5ToTheLeft-ID30.8","Anti5[GAD[5] . (a GSD[p] + b GSD[q]) . GAD[u], Infinity, FCE -> True]",
+	"a*GSD[p] . GAD[u] . GA[5] + b*GSD[q] . GAD[u] . GA[5]"},
+{"fcstAnti5ToTheLeft-ID30.9","GAD[5] . (a + GSD[p]) . (b + GSD[p]) // Anti5[#, Infinity] & //Anti5[#, Infinity, FCE -> True] &",
+	"-((a + b) GSD[p] . GA[5]) + GSD[p] . GSD[p] . GA[5] + a b GA[5]"}
 };
 
 Tests`Dirac`fcstAnti5EvenGamma5 = {

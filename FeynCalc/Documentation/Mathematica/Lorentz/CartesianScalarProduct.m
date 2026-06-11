@@ -71,9 +71,6 @@ CartesianScalarProduct[Subscript[p, 1],Subscript[p, 2]] = s/2
 ExpandScalarProduct[ CartesianScalarProduct[Subscript[p, 1]-q,Subscript[p, 2]-k]]
 
 
-Calc[ CartesianScalarProduct[Subscript[p, 1]-q,Subscript[p, 2]-k]]
-
-
 CartesianScalarProduct[q1]=qq;
 
 

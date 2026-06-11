@@ -33,16 +33,6 @@ LeftRightPartialD2[\[Mu]]
 ExplicitPartialD[%]
 
 
-LeftRightPartialD[OPEDelta]
-
-ExplicitPartialD[%]
-
-
-16 LeftRightPartialD[OPEDelta]^4
-
-ExplicitPartialD[%]
-
-
 (* ::Text:: *)
 (*Notice that by definition $\nabla^i = \partial_i = - \partial^i$, where the last equality depends on the metric signature.*)
 

@@ -22,7 +22,7 @@ $ParallelizeFeynCalc = True;
 FCCheckVersion[10, 2, 0];
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 15:58:48 +02:00, 1a8e687c). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -95,6 +95,8 @@ $$\text{FCLoopFindTopologies: Number of the preferred topologies among the uniqu
 
 $$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
 
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of found topologies: }1$$
+
 $$\text{FCLoopFindTopologies: }\;\text{Your topologies depend on the follwing kinematic invariants that are not all entirely lowercase: }\{\text{Pair[Momentum[k2, D], Momentum[k2, D]]},\text{Pair[Momentum[k2, D], Momentum[k3, D]]},\text{Pair[Momentum[k3, D], Momentum[k3, D]]},\text{SMP[m$\_$e]}\}$$
 
 $$\text{FCLoopFindTopologies: }\;\text{This may lead to issues if these topologies are meant to be processed using tools such as FIRE, KIRA or Fermat.}$$
@@ -113,7 +115,7 @@ $$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topolog
 AbsoluteTiming[ampReduced = FCLoopTensorReduce[amp[2], topos, FCParallelize -> True];]
 ```
 
-$$\{0.512657,\text{Null}\}$$
+$$\{1.00801,\text{Null}\}$$
 
 The sum vanishes because the contribution of the first diagram cancels the contribution of the second diagram.
 
@@ -135,4 +137,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
 $$\text{$\backslash $tVerify Furry's theorem for 3-photons at 1-loop:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }19.259\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }29.644\text{ s.}$$

@@ -1,4 +1,4 @@
-(* Wolfram Language package *)
+(* ::Package:: *)
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -32,17 +32,6 @@ power in formi, write it as {var,pow}.
 To keep the prefactor whose coefficient you extracted you need to set the
 option Prefactor to True.";
 
-Combine::usage=
-"Combine[expr] puts terms in a sum over a common denominator and cancels
-factors in the result. Combine is similar to Together, but accepts the option
-Expanding and works usually better than Together for polynomials involving
-rationals with sums in the denominator.";
-
-Complement1::usage=
-"Complement1[l1, l2] where l1 and l2 are lists returns a list of elements from
-l1 not inl2. Multiple occurrences of an element in l1 are kept and multiple
-occurrences of an element in l2 are dropped if present in l1.";
-
 Expand2::usage=
 "Expand2[exp, x] expands all sums containing x.
 
@@ -50,6 +39,28 @@ Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 
 ExpandAll2::usage=
 "ExpandAll2[exp] is similar to ExpandAll, but much faster on simple structures.";
+
+Factor2::usage =
+"Factor2[poly] factors a polynomial in a standard way.
+
+Factor2 works sometimes better than Factor on polynomials involving rationals
+with sums in the denominator.
+
+Factor2 uses Factor internally and is in general slower than Factor.";
+
+Factor3::usage=
+"Factor3[exp] factors a rational function exp over the field of complex
+numbers.
+
+Factor3 is primarily meant to be used on matrices from differential equations
+and Feynman parametric
+representations of loop integrals. Its main goal is to rewrite all
+denominators such, that they can be integrated in terms of HPLs or GPLs (when
+possible).
+
+To avoid performance bottlenecks, in the case of rational functions only the
+denominator will be factored by default. This can be changed by setting the
+option Numerator to True.";
 
 FactorList2::usage=
 "FactorList2[exp] is similar to FactorList except that it correctly handles
@@ -191,16 +202,21 @@ FreeQ2[expr, form] is the same as FreeQ[expr, form].";
 
 FRH::usage =
 "FRH[exp_] corresponds to FixedPoint[ReleaseHold, exp],  i.e. FRH removes all
-HoldForm and Hold in exp.";
+HoldForm and Hold in exp.
 
-FunctionLimits::usage =
-"FunctionLimits is an option of ILimit, specifying which functions should be
-checked for finiteness.";
+Notice that FRH will not be able to reinsert abbreviations if they were
+introduced by Collect2 running in parallel mode. For that you need to use FRH2";
 
-ILimit::usage =
-"ILimit[exp, a -> b] checks functions specified by the option FunctionLimits
-and takes the limit a->b of these functions only if it is finite.  For the
-rest of the expression exp, the limit is taken.";
+FRH2::usage =
+"FRH2[exp_, isoNames_] is similar FRH but is specifically designed to reinsert
+abbreviations introduced by Collect2 running in parallel mode.
+
+In such cases the user needs to set the IsolateNames option to a list
+containing  as many elements as there are parallel kernels. Then, each
+parallel kernel introduces its own set of abbreviations that are not known to
+other kernels. FRH2 takes the value of the IsolateNames option as its second
+arguments, fetches abbreviation definitions from each parallel kernel and
+finally substitutes them back into exp.";
 
 Map2::usage=
 "Map2[f, exp] is equivalent to Map if Nterms[exp] > 0, otherwise Map2[f, exp]
@@ -218,40 +234,12 @@ FCMemoryAvailable::usage =
 n is the available amount of main memory in MiB. The default setting is
 $FCMemoryAvailable.";
 
-MLimit::usage=
-"MLimit[expr, lims] takes multiple limits of expr using the limits lims.";
-
 NTerms::usage=
 "NTerms[x] is equivalent to Length if x is a sum; otherwise NTerms[x] returns
 1, except NTerms[0] -> 0.";
 
 NumericalFactor::usage =
 "NumericalFactor[expr] gives the overall numerical factor of expr.";
-
-NumericQ1::usage=
-"NumericQ1[x, {a, b, ..}] is like NumericQ, but assumes that {a,b,..} are
-numeric quantities.";
-
-PartitHead::usage=
-"PartitHead[expr, h] returns a list {ex1, h[ex2]} with ex1 free of expressions
-with head h, and h[ex2] having head h.";
-
-Power2::usage=
-"Power2[x, y] represents x^y.  Sometimes Power2 is more useful than the
-Mathematica Power. Power2[-a,b] simplifies to (-1)^b Power2[a,b] (if no
-Epsilon is in b ...).";
-
-PowerFactor::usage=
-"PowerFactor[exp] replaces x^a y^a with (x y)^a.";
-
-PowerSimplify::usage=
-"PowerSimplify[exp] simplifies (-x)^a to (-1)^a x^a and (y-x)^n to (-1)^n
-(x-y)^n thus assuming that the exponent is an integer (even if it is
-symbolic).
-
-Furthermore, (-1)^(a+n) and I^(a+n) are expanded and (I)^(2 m) -> (-1)^m and
-(-1)^(n_Integer?EvenQ m) -> 1 and (-1)^(n_Integer?OddQ m) -> (-1)^m for n even
-and odd respectively and (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
 
 SelectFree2::usage=
 "SelectFree2[expr, a, b, ...] is similar to SelectFree but it also differs from
@@ -294,19 +282,11 @@ Furthermore, SelectNotFree2[a,b] returns 0. This differs from the behavior of
 SelectFree but is consistent with the naive expectations when applying the
 function to a sum of terms.";
 
-SelectSplit::usage=
-"SelectSplit[l, p] constructs list of mutually exclusive subsets from l in
-which every element li satisfies a criterion pj[li] with pj from p and appends
-the subset of remaining unmatched elements.";
-
 Variables2::usage=
 "Variables2[expr] is like Variables, but it also works on rules and equalities
 as well as lists thereof.
 
 Variables2 always applies Union to the output.";
-
-XYT::usage=
-"XYT[exp, x, y] transforms  (x y)^m away.";
 
 FactorList2::failmsg =
 "Error! FactorList2 has encountered a fatal problem and must abort the computation. \n
@@ -328,6 +308,15 @@ FCMakeSymbols::failmsg =
 "Error! FCMakeSymbols has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
+FRH2::failmsg =
+"Error! FRH2 has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
+Factor3::failmsg = "Error! Factor3 has encountered a fatal problem and must \
+abort the computation. The problem reads: `1`";
+
+Factor3::nonfact = "Factor3 failed to factor `1`";
+
 Begin["`Package`"];
 End[]
 
@@ -345,12 +334,16 @@ Options[Coefficient2] = {
 	Prefactor -> False
 };
 
-Options[Combine] = {
-	Expanding -> False
+Options[Factor2] = {
 };
 
-Options[SelectSplit] = {
-	Heads -> None
+
+Options[Factor3] = {
+	Check 		-> True,
+	FCVerbose 	-> False,
+	Numerator	-> False,
+	RandomPrime	-> 10^8,
+	Variables 	-> Automatic
 };
 
 Options[FactorList2] = {
@@ -363,16 +356,8 @@ Options[FCFactorOut] = {
 	Head 		-> Identity
 };
 
-Options[ILimit] = {
-	FunctionLimits -> {Log -> Log}
-};
-
 Options[MemSet] = {
 	FCMemoryAvailable :> $FCMemoryAvailable
-};
-
-Options[MLimit] = {
-	Limit -> Limit
 };
 
 Options[NTerms] = {
@@ -391,18 +376,14 @@ Options[FCProductSplit] = {
 	Abort -> False
 };
 
+Options[FRH2] = {
+	IsolateNames -> All
+};
+
 Options[FRH] = {
 	IsolateNames -> All
 };
 
-Options[PowerSimplify] = {
-	Assumptions	-> True,
-	PowerExpand	-> True
-};
-
-Options[Power2] = {
-	Assumptions	-> True
-};
 
 Options[Variables2] = {
 };
@@ -446,60 +427,6 @@ Coefficient2[ex_, form1_, form2_, rest___, opts:OptionsPattern[]] :=
 	Coefficient2[Coefficient2[ex,{form1,1},opts],form2,rest,opts]/;
 		Head[form2]=!=Integer && Head[form1]=!=List;
 
-Combine[x_, OptionsPattern[]] :=
-	Block[{combinet1, combinet2, expanding, num, le},
-		expanding = OptionValue[Expanding];
-		combinet2 = Together[ x /. Plus ->
-		(If[FreeQ[{##}, _^_?Negative] && FreeQ[{##}, Rational],
-				combinet1[##],
-				Plus[##]
-		]&)] /. combinet1 -> Plus;
-		Which[	expanding === All,
-				combinet2 = ExpandNumerator[combinet2 // ExpandDenominator] ,
-				expanding === True,
-				num = Numerator[combinet2];
-				If[Head[num] =!= Plus,
-					combinet2 = Expand[num]/Denominator[combinet2],
-					If[LeafCount[num]<1000,
-							combinet2 = Expand[num]/Denominator[combinet2],
-							le = Length[num];
-							combinet2 = Sum[FCPrint[2,"expanding ", i," out of ",le];
-							Expand[num[[i]]],{i,Length[num]}]/ Denominator[combinet2]
-					]
-				],
-				True,
-				combinet2
-		];
-		combinet2
-	];
-
-(*
-If one does not need MatchQ, but just SameQ, then
-Complement1[x_List, y__List] :=
-Replace[x, Dispatch[(# :> Sequence[]) & /@ Union[y]], 1]
-would be sufficient
-*)
-
-Complement1[a_List, b_List] :=
-	Block[{len, len1, i, alt, p, drp, ii, go}, p = 0; i = 0; drp = {};
-		len = Length[a]; len1 = Length[b]; alt = b;
-		While[i < len && p < len1, ++i;
-			If[ii = 0; go = True;
-				While[ii < Length[alt] && go,
-					++ii;
-					If[MatchQ[a[[i]],
-						alt[[ii]]],
-						alt = Drop[alt, {ii}];
-						go = False
-					]
-				];
-				Not[go],
-				p = p + 1;
-				drp = Append[drp, i]
-			]
-		];
-		Part[a, Complement[Range[len], drp]]
-	];
 
 Expand2[x_] :=
 	Block[{pow},
@@ -569,6 +496,173 @@ FactorList2[poly_, OptionsPattern[]]:=
 
 		res
 	];
+
+
+
+Factor2[ex_, OptionsPattern[]] :=
+	Block[{mi,m1,mp1,num,den,iI,holdPlus,tmp,factorPre},
+
+
+		factorPre[x_Times]:=
+			Map[factorPre, x];
+
+		factorPre[Power[x_,n_]]:=
+			factorPre[x]^n;
+
+		factorPre[x_]:=
+			Factor[Expand[x]]/; !MemberQ[{Times,Power},Head[x]];
+
+		mi[y_, z__] :=
+			(m1 mp1[y,z] )/; (	If[Head[#] === Complex,
+									False,
+									If[ # < 0,
+										True,
+										False
+									]
+								]& @ NumericalFactor[y]);
+
+		If[FreeQ[ex,Complex],
+			tmp = ex,
+			tmp = ex /. Complex[0,in_] :> iI in
+		];
+
+		tmp = tmp /. Plus -> (If[FreeQ[{##}, _^_?Negative] && FreeQ[{##}, Rational],
+				holdPlus[##],
+				Plus[##]
+		]&);
+
+		tmp = Together[tmp] /. holdPlus -> Plus;
+
+		tmp = factorPre[Numerator[tmp]]/factorPre[Denominator[tmp]];
+
+		{num,den} = {Numerator[tmp],Denominator[tmp]};
+
+		{num,den} = {num,den} /. Plus -> holdPlus //. {
+			fa_. holdPlus[a_, b_]^n_. holdPlus[a_, c_]^n_. :>
+				(fa holdPlus[a^2, -b^2]^n) /; (((b + c) === 0) && IntegerQ[n]),
+			fa_. holdPlus[a_, b_]^n_. holdPlus[c_, b_]^n_. :>
+				(fa holdPlus[b^2, -a^2]^n) /; (((a + c) === 0) && IntegerQ[n])
+		} /. holdPlus -> Plus;
+
+		tmp = num/den;
+
+		tmp = tmp /. Plus -> mi /. mi -> Plus /. m1 -> (-1) /. mp1 -> (-Plus[##]&);
+
+		tmp/.iI->I
+	];
+
+
+Factor3[poly_/;Head[poly] =!= List, opts:OptionsPattern[]] :=
+	Factor3[Numerator[poly], opts]/Factor3[Denominator[poly], opts]/; Denominator[poly] =!= 1 && poly=!=0 && OptionValue[Numerator];
+
+Factor3[poly_/;Head[poly] =!= List, opts:OptionsPattern[]] :=
+	Numerator[poly]/Factor3[Denominator[poly], opts]/; Denominator[poly] =!= 1 && poly=!=0 && !OptionValue[Numerator];
+
+Factor3[ex_List, opts:OptionsPattern[]] :=
+	Factor3[#,opts]& /@ ex;
+
+Factor3[0, OptionsPattern[]]:=
+	0;
+
+Factor3[poly_/;Head[poly] =!= List, OptionsPattern[]] :=
+	Block[{	factors, vars, polyNew, termsList, pref, res, dummy,
+			optVariables, optRandomPrime, varsNum, repRule, allVars,
+			f3Verbose, test},
+
+		If [OptionValue[FCVerbose]===False,
+			f3Verbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				f3Verbose=OptionValue[FCVerbose]
+			];
+		];
+
+		optVariables = OptionValue[Variables];
+		optRandomPrime = OptionValue[RandomPrime];
+
+		If[	TrueQ[optVariables===Automatic],
+			vars = Variables[poly],
+			If[	Head[optVariables]===List,
+				vars = optVariables,
+				Message[Factor3::failmsg, "Incorrection value of the Variables option."];
+				Abort[]
+			]
+		];
+
+		FCPrint[1, "Factor3: Variables: ", vars, FCDoControl->f3Verbose];
+
+		If[	vars==={} || FreeQ2[poly,vars] || !PolynomialQ[poly,vars],
+			(*Nothing to do*)
+			FCPrint[1, "Factor3: Leaving.", FCDoControl->f3Verbose];
+			Return[poly]
+		];
+
+		allVars = Variables2[poly];
+
+		FCPrint[1, "Factor3: All variables: ", allVars, FCDoControl->f3Verbose];
+
+	(*
+		Using the idea from
+		https://mathematica.stackexchange.com/questions/256129/how-to-factor-real-polynomials-over-complex-field/
+	*)
+
+
+		Quiet[factors = Solve[poly == 0, #, Complexes]&/@vars, Solve::svars];
+
+		If[!FreeQ[factors,Root],
+			factors = ToRadicals[factors]
+		];
+
+		FCPrint[1, "Factor3: Factors: ", factors, FCDoControl->f3Verbose];
+
+		If[	factors==={},
+			Message[Factor3::nonfact,ToString[poly,InputForm]];
+			Return[poly](*,
+			factors = First[factors]*)
+		];
+
+		varsNum	= Table[RandomPrime[optRandomPrime],{i,1,Length[vars]}];
+		repRule = Thread[Rule[vars, varsNum]];
+
+		FCPrint[2, "Factor3: First numerical replacement rule: ", repRule, FCDoControl->f3Verbose];
+
+		(*For cases such as (4*(5-2*(4-2*eps))*x-2*eps+2) *)
+		If[	!FreeQ2[Last/@Flatten[factors],vars],
+			Return[poly]
+		];
+
+		res = (Times @@ Flatten[factors /. Rule -> Subtract]);
+
+		FCPrint[2, "Factor3: Raw result: ", res, FCDoControl->f3Verbose];
+
+		pref = (poly/res)/.repRule;
+
+		FCPrint[1, "Factor3: Intermediate prefactor: ", pref, FCDoControl->f3Verbose];
+
+		pref = Simplify[pref];
+
+		res = pref res;
+
+		FCPrint[1, "Factor3: Overall prefactor: ", pref, FCDoControl->f3Verbose];
+		FCPrint[3, "Factor3: Preliminary result: ", res, FCDoControl->f3Verbose];
+
+		varsNum	= Table[RandomPrime[optRandomPrime],{i,1,Length[allVars]}];
+		repRule = Thread[Rule[allVars, varsNum]];
+
+		FCPrint[2, "Factor3: Second numerical replacement rule: ", repRule, FCDoControl->f3Verbose];
+
+
+		If[	OptionValue[Check],
+			test = Simplify[(poly - res) /. repRule];
+			FCPrint[3, "Factor3: Check: ", test, FCDoControl->f3Verbose];
+			If[	test=!=0,
+				Message[Factor3::failmsg, "Something went wrong when factoring the input expression."];
+				Abort[]
+			];
+		];
+
+		res
+
+	]/; Denominator[poly] === 1 && poly=!=0;
 
 
 
@@ -663,10 +757,6 @@ FCFactorOut[x_List, y__] :=
 
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
 	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];/; !MemberQ[{Equal,Rule,RuleDelayed,List}, Head[expr]];
-
-
-
-
 
 FCGetNotebookDirectory[]:=
 	Block[{dir},
@@ -869,16 +959,7 @@ FreeQ2[x_, y_]	:=
 
 FreeQ2[x_, {y_}] :=
 	FreeQ[x, y];
-(*
-This recursive option is not compatible with parallelized calculations involving very long (>5K elements) lists
-FreeQ2[x_, {y_, z__}] :=
-	Block[{$IterationLimit=Infinity, $RecursionLimit=Infinity},
-		If[FreeQ[x, y],
-			FreeQ2[x, {z}],
-			False
-		]
-	];
-*)
+
 FreeQ2[x_, {y_, z__}] :=
 	FreeQ[x, Alternatives@@{y,z}];
 
@@ -889,17 +970,26 @@ FRH[x_, OptionsPattern[]] :=
 FRH[x_, OptionsPattern[]] :=
 	FixedPoint[ReplaceRepeated[x, HoldForm[y_[z___]] /; ! FreeQ2[HoldForm[y], Flatten[{OptionValue[IsolateNames]}]] :> y[z]] &, x]/; OptionValue[IsolateNames]=!=All;
 
-ILimit[exp_, lim_Rule, OptionsPattern[]] :=
-	Block[{limruls, m, ff, fff, out,res},
-		limruls = MapAt[(((If[FreeQ[ff[##], lim[[1]]] ||
-		!FreeQ[out = Limit[Limit[ff[##] /. SmallVariable[_?((!MatchQ[#, lim[[1]]])&)] -> 0,
-		SmallVariable[lim[[1]]] -> lim[[2]]], lim], DirectedInfinity[___] | Indeterminate | _Limit],
-		fff[##], out]&))&) /. {ff -> #[[2]], fff -> #[[1]]}, #, 2]& /@ (OptionValue[FunctionLimits]);
-		FCPrint[1, "limruls: ", limruls];
-		res = exp /. limruls;
-		FCPrint[1, "res: ", res];
-		Limit[Limit[res, SmallVariable[lim[[1]]] -> lim[[2]]], lim]
+FRH2[ex_, isoSymbols_List/;!OptionQ[isoSymbols], OptionsPattern[]]:=
+Block[{allHolds,holdsSorted,repRules,res},
+
+	If[!$ParallelizeFeynCalc,
+		Message[FRH2::failmsg,"FRH2 only works in parallel mode."];
+		Abort[]
 	];
+
+	If[	Length[isoSymbols]=!=$KernelCount,
+		Message[FRH2::failmsg,"The number of abbreviation symbols must match the number of parallel kernels."];
+		Abort[]
+
+	];
+
+	allHolds=SelectNotFree[Cases2[ex,HoldForm],isoSymbols];
+	holdsSorted=Map[SelectNotFree[allHolds,#]&,isoSymbols];
+	repRules=Table[With[{exp=holdsSorted[[i]],isoName=isoSymbols[[i]]},ParallelEvaluate[Thread[Rule[exp,FRH[exp,IsolateNames->isoName]]],i,DistributedContexts->None]],{i,1,$KernelCount}];
+	res = ex/.Dispatch[Flatten[repRules]];
+	res
+];
 
 Map2[f_, exp_] :=
 	If[
@@ -919,10 +1009,6 @@ MemSet[_,_, OptionsPattern[]]:=
 	Message[FeynCalc::failmsg,"The value of $FCMemoryAvailable must be a nonnegative integer."];
 	Abort[]
 	)/; !MatchQ[OptionValue[FCMemoryAvailable],_Integer?NonNegative];
-
-MLimit[x_, l_List, OptionsPattern[]] :=
-	Fold[OptionValue[Limit][#1, Flatten[{##2}][[1]]]&, x, l];
-
 
 NTerms[x_Plus, OptionsPattern[]] :=
 	Length[x];
@@ -957,105 +1043,6 @@ NumericalFactor[x_]:=
 			If[NumberQ[First[x]], First[x], 1],
 			1
 		]
-	];
-
-
-NumericQ1[x_, nums_List] :=
-	Block[{r, syms, res, ii=0, tag},
-		SetAttributes[tag, {NumericFunction,NHoldAll}];
-		Off[$MaxExtraPrecision::"meprec"];
-		syms = (++ii; tag[ii])& /@ nums;
-		Off[$MaxExtraPrecision::"meprec"];
-		res = NumericQ[x /. ((Rule @@ #) & /@ Transpose[{nums, syms}])];
-		On[$MaxExtraPrecision::"meprec"];
-		res
-	];
-
-PartitHead[x_, y_] :=
-	{1, x} /; Head[x] === y;
-
-PartitHead[x_Times, y_] :=
-	{x, 1} /; FreeQ[x, y];
-
-PartitHead[x_, y_] :=
-	{x, 0} /; FreeQ[x, y];
-
-PartitHead[x_Plus, y_] :=
-	{#, x - #}& @ Select[x, FreeQ[#, y[___]]&];
-
-PartitHead[x_Times,y_] :=
-	{x/#, #}& @ Select[x,If[Head[#]===y,True]&];
-
-Power2 /:
-	Power2[-1,OPEm, OptionsPattern[]]^2 :=
-		1;
-Power2[n_Integer?Positive, em_, OptionsPattern[]] :=
-	n^em;
-Power2[n_, em_Integer, OptionsPattern[]] :=
-	n^em;
-Power2[-1,OPEm-2, opts:OptionsPattern[]] =
-	Power2[-1,OPEm, opts];
-Power2[-a_,b_/;FreeQ2[b, {Epsilon,Epsilon2}], opts:OptionsPattern[]] :=
-	PowerSimplify[(-1)^b,Assumptions->OptionValue[Assumptions]] Power2[a,b,opts];
-
-Format[Power2[a_, b_ /; b, OptionsPattern[]]] :=
-	a^b;
-
-Power2 /:
-	MakeBoxes[Power2[a_, b_, OptionsPattern[]] , TraditionalForm] :=
-		ToBoxes[a^b, TraditionalForm];
-
-PowerFactor[exp_Plus] :=
-	PowerFactor /@ exp;
-
-PowerFactor[exp_] :=
-	If[Head[exp] =!= Times,
-		exp //. {x_^a_ y_^a_ :> (x y)^a},
-		SelectFree[exp, Power] (SelectNotFree[exp,
-		Power] //. {x_^a_ y_^a_ :> (x y)^a})
-	];
-
-PowerSimplify[x_, OptionsPattern[]] :=
-	Block[{nx, qcdsub = False, power3, assumpts,usePowerExpand},
-		assumpts = OptionValue[Assumptions];
-		usePowerExpand = OptionValue[PowerExpand];
-		If[!FreeQ[x, ScaleMu],
-			qcdsub = True;
-			nx = x /. pow_[any_ /ScaleMu^2,exp_]:> power3[pow][any/ScaleMu^2,exp],
-			nx = x
-		];
-		nx = nx /.
-			{	(a_/;Head[a]===Plus || Head[a] === Times)^(w_)/;usePowerExpand :>
-					(PowerExpand[Factor2[one*a]^w, Assumptions->assumpts] /. one -> 1),
-				Power2[(a_/;Head[a]===Plus || Head[a] === Times),(w_)]/;usePowerExpand :>
-					(PowerExpand[Factor2[one*a]^w, Assumptions->assumpts] /.
-						(ab_Plus)^v_ :> Power2[ab, v] /. one -> 1)/.(-1)^vv_ :> Power2[-1,vv]	} /.
-			{	(-1)^(a_Plus) :> Expand[(-1)^a]	}/.
-			{(n_Integer?Negative)^m_ :> (-1)^m (-n)^m}/.
-			{	((-1)^OPEm (1+(-1)^OPEm)) :> (1+(-1)^OPEm),
-				((1-(-1)^OPEm)(1+(-1)^OPEm)) :> 0,
-				((1+(-1)^OPEm)(1+(-1)^OPEm)) :> (2(1+(-1)^OPEm)),
-				(-1)^OPEm (1-(-1)^OPEm) :> (-1+(-1)^OPEm),
-				bbb_^(c_/;!FreeQ[c,Plus]) :> bbb^Expand[c]	}//.
-			{	(-1)^(_Integer?EvenQ _) :> 1,
-				(-1)^(_Integer?OddQ m_) :> (-1)^m,
-				(-1)^(_Integer?EvenQ _. + i_) :> (-1)^i,
-				(-1)^(n_Integer?OddQ m_. + i_) :> (-1)^(m+i) /; n=!=(-1),
-				(-1)^(-n_) :> (-1)^n,
-				I^(2 m_+i_.) :> (I)^i (-1)^m,
-				(I/2)^(m_) I^m_ :> (-1)^m/2^m,
-				I^(a_Plus) :> Expand[I^a],
-				Exp[I Pi OPEi] :> (-1)^OPEi,
-				Exp[I Pi OPEj] :> (-1)^OPEj,
-				Exp[I Pi OPEm] :> (-1)^OPEm,
-				HoldPattern[E^(em_ + Complex[0,n_] Pi)]  :> (-1)^n Exp[em],
-				Power2[I, 2 m_ + i_.] :> I^i (-1)^m,
-				Power2[I,(a_Plus)] :> Expand[I^a],
-				Power2[(-1),(a_Plus)] :> Expand[(-1)^a]	};
-			If[	qcdsub === True,
-				nx = nx /. power3[poww_] :> poww
-			];
-		nx
 	];
 
 SelectFree[0,__] :=
@@ -1127,23 +1114,6 @@ SelectNotFree2[x_,args__] :=
 		res
 	]/; Head[x]=!=List && x=!=0;
 
-SelectSplit[ex_, p_List, opts___Rule] :=
-	Block[{ii, jj, aa, res, exp = List @@ ex, h = Head[ex],
-		hh = Heads /. Flatten[{opts}] /. Options[SelectSplit]},
-		ii = 0;
-		res = (++ii; Select[#, (aa = #;	And @@
-		((#[aa]=!=True)& /@ Drop[p, {ii}])) &])& /@ (Select[exp, #]& /@ p);
-		If[hh =!= None && hh =!= False && hh =!= {},
-			If[Length[hh] < Length[#] - 1,
-				hh = Join[hh, Table[hh[[-1]], {Length[#] - 1 - Length[hh]}]]
-			];
-		Append[Table[hh[[jj]][#[[jj]]], {jj, Length[#] - 1}],
-		If[Length[hh] === Length[#],
-			hh[[-1]][#[[-1]]], #[[-1]]
-		]], #
-		] &[(h @@ #) & /@ Append[res, Complement[exp, Join @@ res]]]
-	];
-
 Variables2[expr_Plus, opts : OptionsPattern[]] :=
 	Union[Flatten[Variables2[#, opts] & /@ List@@expr]];
 
@@ -1158,13 +1128,6 @@ Variables2[(Equal | Rule | RuleDelayed)[a_, b_], OptionsPattern[]] :=
 
 Variables2[(Re | Im)[a_], OptionsPattern[]] :=
 	Variables[a];
-
-(* integral transformation only valid if nonsingular in x, y = 0,1 *)
-XYT[exp_, x_, y_] :=
-	Block[{z, t, u},
-		t = 1/x Factor2[PowerSimplify[Factor2[exp] /. y -> (z/x)]];
-		Factor2[PowerSimplify[(1-z) (t /. x :> (1-z) u + z)]/.{u:>y,z:>x}]
-	];
 
 FCPrint[1, "SharedTools loaded."];
 End[]

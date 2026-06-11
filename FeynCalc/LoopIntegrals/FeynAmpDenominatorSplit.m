@@ -32,18 +32,31 @@ Begin["`FeynAmpDenominatorSplit`Private`"]
 Options[FeynAmpDenominatorSplit] = {
 	FCE				-> False,
 	FCI				-> False,
+	FCVerbose		-> False,
 	List			-> False,
 	Momentum 		-> All,
 	MomentumExpand	-> True
 };
 
 FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
-	Block[{res,momList,fad,head, allFads, allFadsEval,repRule},
+	Block[{res,momList,fad,head, allFads, allFadsEval,repRule,optVerbose},
+
+		If [OptionValue[FCVerbose]===False,
+			optVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				optVerbose=OptionValue[FCVerbose]
+			];
+		];
 
 		If[ !OptionValue[FCI],
 			res = FCI[expr],
 			res = expr
 		];
+
+		FCPrint[1, "FeynAmpDenominatorSplit: Entering.", FCDoControl->optVerbose];
+		FCPrint[3, "FeynAmpDenominatorSplit Entering with: ", res, FCDoControl->optVerbose];
+
+
 		If[	TrueQ[OptionValue[List]],
 			head = List,
 			head = Times
@@ -54,9 +67,11 @@ FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
 		allFads = Cases2[res,FeynAmpDenominator];
 		allFadsEval = allFads;
 
+		FCPrint[1, "FeynAmpDenominatorSplit: Relevant denominators: ",allFadsEval, FCDoControl->optVerbose];
 
 		If[	OptionValue[MomentumExpand],
-			allFadsEval = MomentumExpand[allFadsEval]
+			allFadsEval = MomentumExpand[allFadsEval];
+			FCPrint[1, "FeynAmpDenominatorSplit: After MomentumExpand: ",allFadsEval, FCDoControl->optVerbose];
 		];
 
 		If[ momList=!=All && Head[momList]===List,
@@ -65,12 +80,17 @@ FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
 			allFadsEval = allFadsEval /. FeynAmpDenominator[a__] :> head@@Map[FeynAmpDenominator, {a}]
 		];
 
+		FCPrint[1, "FeynAmpDenominatorSplit: After splitting: ",allFadsEval, FCDoControl->optVerbose];
+
 		repRule = Thread[Rule[allFads,allFadsEval]];
 		res = res/. Dispatch[repRule];
 
 		If [OptionValue[FCE],
 			res=FCE[res]
 		];
+
+		FCPrint[1, "FeynAmpDenominatorSplit: Leaving.", FCDoControl->optVerbose];
+		FCPrint[3, "FFeynAmpDenominatorSplit Leaving with: ", res, FCDoControl->optVerbose];
 
 		res
 	];

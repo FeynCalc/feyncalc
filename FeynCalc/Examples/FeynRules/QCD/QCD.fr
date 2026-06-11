@@ -1,0 +1,149 @@
+M$ModelName = "QCD";
+
+FeynmanGauge=False;
+
+M$Information = {
+  Authors      -> {"Vladyslav Shtabovenko"},
+  Institutions -> {"FeynCalc project"},
+  Emails       -> {""},
+  Date         -> "07.01.2026"
+};
+
+IndexRange[Index[Gluon     ]] = NoUnfold[Range[8]];
+IndexRange[Index[Colour    ]] = NoUnfold[Range[3]];
+IndexRange[Index[Generation]] = Range[3];
+
+IndexStyle[Gluon,      a];
+IndexStyle[Colour,     m];
+IndexStyle[Generation, f];
+
+GaugeXi[V[5]] = GaugeXi["G"];
+GaugeXi[U[5]] = GaugeXi["G"];
+
+M$Parameters =
+Join[{gs == {ParameterType ->
+    Internal}}, (# == {ParameterType -> External}) & /@ {Zmxt,mxt, Zm, ZA,
+  Zpsi, Zxi, Zg, Zu}]
+
+M$GaugeGroups = {
+SU3C == {
+  Abelian           -> False,
+  CouplingConstant  -> gs,
+  GaugeBoson        -> G,
+  StructureConstant -> f,
+  Representations   -> {T,Colour},
+  SymmetricTensor   -> dSUN
+}
+
+};
+
+
+
+M$ClassesDescription = {
+
+V[5] == {
+  ClassName        -> G,
+  SelfConjugate    -> True,
+  Indices          -> {Index[Gluon]},
+  Mass             -> 0,
+  PropagatorLabel  -> "g",
+  PropagatorType   -> C,
+  PropagatorArrow  -> None
+},
+
+U[5] == {
+  ClassName       -> ghG,
+  SelfConjugate   -> False,
+  Indices         -> {Index[Gluon]},
+  Ghost           -> G,
+  QuantumNumbers  ->{GhostNumber -> 1},
+  Mass            -> 0,
+  PropagatorLabel -> "uG",
+  PropagatorType  -> GhostDash,
+  PropagatorArrow -> Forward
+},
+
+F[3] == {
+  ClassName        -> uq,
+  ClassMembers     -> {u, c, t},
+  Indices          -> {Index[Generation], Index[Colour]},
+  FlavorIndex      -> Generation,
+  SelfConjugate    -> False,
+  Mass             -> {Mu, {MU, 2.55*^-3}, {MC,1.27}, {MT,172}},
+  Width            -> 0,
+  PropagatorLabel  -> {"uq", "u", "c", "t"},
+  PropagatorType   -> Straight,
+  PropagatorArrow  -> Forward
+},
+F[4] == {
+  ClassName        -> dq,
+  ClassMembers     -> {d, s, b},
+  Indices          -> {Index[Generation], Index[Colour]},
+  FlavorIndex      -> Generation,
+  SelfConjugate    -> False,
+  Mass             -> {Md, {MD,5.04*^-3}, {MS,0.101}, {MB,4.7}},
+  Width            -> 0,
+  PropagatorLabel  -> {"dq", "d", "s", "b"},
+  PropagatorType   -> Straight,
+  PropagatorArrow  -> Forward
+}
+};
+
+(* Matches FeynArts' convention *)
+FR$DSign = -1;
+
+LQCD = LQCDR + LQCDCT;
+
+LQCDR = (
+	-1/4 FS[G,mu,nu,a]*FS[G,mu,nu,a]
+	+ I*uqbar.Ga[mu].DC[uq,mu] + I*dqbar.Ga[mu].DC[dq,mu]
+	- Mu[fi] uqbar[s,fi,nn].uq[s,fi,nn] - Md[fi] dqbar[s,fi,nn].dq[s,fi,nn]
+	+del[ghGbar[ii],mu].DC[ghG[ii],mu]
+);
+
+
+LQCDCT = FR$CT (
+
+	(*
+	ExpandAll[I*uqbar . Ga[mu] . DC[uq,mu]+I*dqbar . Ga[mu] . DC[dq,mu]/.{
+	x:(uqbar|dqbar|uq|dq)-> Sqrt[Zpsi] x,
+	gs->Zg gs,x_G-> Sqrt[ZA] x }/.Dot->FR$Dot]/.FR$Dot->Dot//ToString[#,InputForm]&//StringReplace[#," . "->"."]&
+	*)
+
+      	+ I*(Zpsi-1)*dqbar.Ga[mu].del[dq, mu] + I*(Zpsi-1)*uqbar.Ga[mu].del[uq, mu] 
+      	- gs*(Sqrt[ZA]*Zg*Zpsi-1)*uqbar.T[a].Ga[mu].uq*G[mu, a] 
+      	- gs*(Sqrt[ZA]*Zg*Zpsi-1)*dqbar.T[a].Ga[mu].dq*G[mu, a]
+
+      	- (Zpsi Zm -1) (Mu[fi] uqbar[s,fi,nn].uq[s,fi,nn] + Md[fi] dqbar[s,fi,nn].dq[s,fi,nn])
+      
+	(*
+      	ExpandAll[-1/4 FS[G,mu,nu,a]*FS[G,mu,nu,a]/.{
+	x:(uqbar|dqbar|uq|dq)-> Sqrt[Zpsi] x,
+	gs->Zg gs,x_G-> Sqrt[ZA] x }/.Dot->FR$Dot]/.FR$Dot->Dot//ToString[#,InputForm]&//StringReplace[#," . "->"."]&
+	*)
+
+	-1/4*((ZA-1)*del[G[mu, a], nu]^2) + ((ZA-1)*del[G[mu, a], nu]*del[G[nu, a], mu])/2 - ((ZA-1)*del[G[nu, a], mu]^2)/4 
+	- (gs*(ZA^(3/2)*Zg-1)*del[G[mu, a], nu]*f[a, bb, cc]*G[mu, bb]*G[nu, cc])/4 
+	+ (gs*(ZA^(3/2)*Zg-1)*del[G[nu, a], mu]*f[a, bb, cc]*G[mu, bb]*G[nu, cc])/4 
+	- (gs*(ZA^(3/2)*Zg-1)*del[G[mu, a], nu]*f[a, bb, cc]*G[mu, bb]*G[nu, cc])/4 
+	+ (gs*(ZA^(3/2)*Zg-1)*del[G[nu, a], mu]*f[a, bb, cc]*G[mu, bb]*G[nu, cc])/4 
+	- (gs^2*(ZA^2*Zg^2-1)*f[a, bb, cc]*f[a, bb, cc]*G[mu, bb]*G[mu, bb]*G[nu, cc]*G[nu, cc])/4
+	
+	(*
+	ExpandAll[del[ghGbar[ii],mu] . DC[ghG[ii],mu]/.{x:(ghG|ghGbar)-> Sqrt[Zu] x,
+	gs->Zg gs,x_G-> Sqrt[ZA] x }/.Dot->FR$Dot]/.FR$Dot->Dot//ToString[#,InputForm]&//StringReplace[#," . "->"."]&
+	*)
+
+	+ (Zu-1)*del[(ghGbar)[ii], mu].del[(ghG)[ii], mu] 
+	+ I*gs*(Sqrt[ZA]*Zg*Zu-1)*del[(ghGbar)[b], mu].(ghG)[c]*FSU3C[a, b, c]*G[mu, a]
+
+
+      	-1/(2 GaugeXi[V[5]])(ZA/Zxi-1) del[G[imu,aa],imu] del[G[inu,aa],inu]
+      	
+      	(*
+      	Counter-terms for the tadpole expansion.       	
+      	*)
+      	+(Zumxt^2-1)*mxt^2/2*ghGbar[ii].ghG[ii] 
+      	+(ZAmxt^2-1)*mxt^2/2*G[mu, a]^2
+      
+      );

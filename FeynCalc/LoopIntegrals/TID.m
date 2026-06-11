@@ -1,8 +1,8 @@
 (* ::Package:: *)
 
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-
-(* :Title: TID                                                       *)
+(* :Title: TID                                                       		*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,11 +11,9 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:	Tensor reduction of 1-loop integrals
+(*	:Summary:	Tensor reduction of 1-loop integrals
 
 				Supports parallel evaluation [X]
-
 *)
 
 (* ------------------------------------------------------------------------ *)
@@ -132,7 +130,7 @@ TID[am_ , {q_}, opts:OptionsPattern[]] :=
 
 (* TID[{..., ...}, q] *)
 TID[expr_List, q_/; Head[q]=!=List, opts:OptionsPattern[]] :=
-	Block[{tidVerbose, res, optFCParallelize, time},
+	Block[{tidVerbose, res, time},
 
 		If [OptionValue[FCVerbose]===False,
 			tidVerbose=$VeryVerbose,
@@ -140,6 +138,8 @@ TID[expr_List, q_/; Head[q]=!=List, opts:OptionsPattern[]] :=
 				tidVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		time=AbsoluteTime[];
 
 		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
 			FCPrint[1,"TID: Applying TID in parallel.", FCDoControl->tidVerbose];
@@ -487,7 +487,8 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 					Abort[]
 				];
 
-				gramCheckList = (FCLoopPropagatorsToLineMomenta[FeynAmpDenominatorSplit[#,FCI->True,List->True], FCI->True]&/@gramCheckList)/.q->0;
+				gramCheckList = DeleteDuplicates[FeynAmpDenominatorSplit[#,FCI->True,List->True]]&/@gramCheckList;
+				gramCheckList = (FCLoopPropagatorsToLineMomenta[#, FCI->True]&/@gramCheckList)/.q->0;
 				gramCheckList = Union[First/@gramCheckList]//.{x___,0,y___}:>{x,y};
 
 				gramDetValues = Map[FCGramDeterminant[#]&,gramCheckList];
@@ -981,12 +982,7 @@ tidConvert[expr_, q_, optTensorReductionBasisChange_]:=
 
 		(* get the momenta on which the integral depends *)
 		qQQprepare[FeynAmpDenominator[a__] f_ /; (!FreeQ[f, Momentum[q,___]])] :=
-			(FeynAmpDenominator[a] qQQ[getfdp[a] f]) /; FreeQ[f, OPEDelta];
-
-		qQQprepare[FeynAmpDenominator[a__] f_ /; (!FreeQ[f, Momentum[q,___]])] :=
-			(FeynAmpDenominator[a] SelectNotFree[SelectNotFree[f,q],OPEDelta]*
-			qQQ[Append[getfdp[a],OPEDelta] f/SelectNotFree[SelectNotFree[f,q],OPEDelta]])/;
-			!FreeQ[SelectNotFree[f,q], OPEDelta] && (getfdp[a]=!=1); (* avoid tadpoles *)
+			(FeynAmpDenominator[a] qQQ[getfdp[a] f]);
 
 		temp = qQQprepare[ex];
 		res = temp/. ffdp[0,r___]:>ffdp[r]/.repRule;
@@ -1021,7 +1017,7 @@ tidConvert[expr_, q_, _]:=
 		];
 
 		res
-	]/; Head[expr]=!=Plus && FreeQ[expr,OPEDelta] && MatchQ[expr,(FeynAmpDenominator[(x : CartesianPropagatorDenominator[__] ..)]/;
+	]/; Head[expr]=!=Plus && MatchQ[expr,(FeynAmpDenominator[(x : CartesianPropagatorDenominator[__] ..)]/;
 		!FreeQ[{x}, q]) Times[CartesianPair[CartesianMomentum[q, ___], CartesianIndex[_, ___]] ..]];
 
 (* 	Integrals that have no FeynAmpDenominator correspond to the scaleless integrals and are

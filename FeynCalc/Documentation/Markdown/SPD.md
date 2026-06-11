@@ -8,7 +8,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [PD](PD.md), [Calc](Calc.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md).
+[Overview](Extra/FeynCalc.md), [SFAD](SFAD.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md).
 
 ### Examples
 
@@ -25,7 +25,7 @@ SPD[p - q, q + 2 p]
 $$(p-q)\cdot (2 p+q)$$
 
 ```mathematica
-Calc[ SPD[p - q, q + 2 p] ]
+ExpandScalarProduct[ SPD[p - q, q + 2 p] ]
 ```
 
 $$-p\cdot q+2 p^2-q^2$$

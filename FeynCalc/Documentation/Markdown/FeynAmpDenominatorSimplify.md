@@ -55,9 +55,3 @@ $$\frac{2 \left(k\cdot p_2\right)+k^2+p_2{}^2}{k^2.(k-p_1+p_2){}^2}$$
 $$\frac{2 \left(k\cdot p_2\right)+p_2{}^2}{k^2.(k-p_1+p_2){}^2}$$
 
 $$\frac{p_1\cdot p_2}{k^2.(k-p_1+p_2){}^2}$$
-
-```mathematica
-FDS[FAD[k - p1, k - p2] SPD[k, OPEDelta]^2, k]
-```
-
-$$\frac{(k\cdot \Delta +\Delta \cdot \;\text{p2})^2}{k^2.(k-\text{p1}+\text{p2})^2}$$

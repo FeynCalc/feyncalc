@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: FCLoopGLIRaiseDimension											*)
@@ -9,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Raising dimension shift									*)
+(* :Summary:	Raising dimension shift										*)
 
 (* ------------------------------------------------------------------------ *)
 

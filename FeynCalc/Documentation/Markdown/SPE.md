@@ -6,7 +6,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [PD](PD.md), [Calc](Calc.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md), [SPD](SPD.md).
+[Overview](Extra/FeynCalc.md), [PD](PD.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md), [SPD](SPD.md).
 
 ### Examples
 
@@ -23,7 +23,7 @@ SPE[p - q, q + 2 p]
 $$(\hat{p}-\hat{q})\cdot (2 \hat{p}+\hat{q})$$
 
 ```mathematica
-Calc[ SPE[p - q, q + 2 p] ]
+ExpandScalarProduct[ SPE[p - q, q + 2 p] ]
 ```
 
 $$-\hat{p}\cdot \hat{q}+2 \hat{p}^2-\hat{q}^2$$

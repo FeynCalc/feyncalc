@@ -1,17 +1,19 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DotExpand *)
+(* :Title: DotExpand														*)
 
-(* :Author: Frederik Orellana *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Expand DOT products   										*)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: created February 26th 2003 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: Expand DOT products *)
-
-(* ------------------------------------------------------------------------ *)
-
 
 DotExpand::usage =
 "DotExpand[exp] expands dot products in exp.";

@@ -33,7 +33,7 @@ CSP[p,q] + CSP[q]
 CSP[p-q,q+2p]
 
 
-Calc[ CSP[p-q,q+2p] ]
+ExpandScalarProduct[ CSP[p-q,q+2p] ]
 
 
 ExpandScalarProduct[CSP[p-q]]
