@@ -161,7 +161,6 @@ Numbering -> Simple, ImageSize->128{4, 1}];
 
 (* ::Text:: *)
 (*The only required masters are 1-loop tadpoles*)
-(**)
 
 
 tadpoleMaster=Get[FileNameJoin[{$FeynCalcDirectory,"Examples","MasterIntegrals","Tadpoles","tad1LxFx1x1xxEp999x.m"}]];
@@ -233,10 +232,6 @@ AbsoluteTiming[quarkSE$Amp=(aux1[[1]]/.aux2)//Contract[#,FCParallelize->True]&//
 SUNSimplify[#,FCParallelize->True]&//DiracSimplify[#,FCParallelize->True]&;]
 
 
-(* ::Text:: *)
-(*flagCheck is a safety flag to ensure that higher order terms in p (higher than the divergence degree) do not  contribute to the poles*)
-
-
 AbsoluteTiming[quarkSE$Amp1=Collect2[quarkSE$Amp,p,IsolateNames->KK];]
 AbsoluteTiming[quarkSE$Amp2=FourSeries[quarkSE$Amp1,{p,0,divDegree},FCParallelize->True];]
 AbsoluteTiming[quarkSE$Amp3=Collect2[FRH[quarkSE$Amp2],FeynAmpDenominator,FCParallelize->True];]
@@ -293,7 +288,7 @@ quarkSE$ReductionTables=KiraImportResults[quarkSE$FinalTopos, quarkSE$dir]//Flat
 
 
 quarkSE$resPreFinal=Collect2[Total[quarkSE$AmpGLI/.Dispatch[quarkSE$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
-GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+GaugeXi,D,DiracGamma,FCParallelize->True];
 
 
 quarkSE$masters=Cases2[quarkSE$resPreFinal,GLI];
@@ -340,10 +335,6 @@ gluonSE$StrName=StringReplace[ToString[Hold[gluonSE$Amp]],{"Hold["->"","]"->""}]
 
 AbsoluteTiming[gluonSE$Amp=(aux1[[1]]/.aux2)//Contract[#,FCParallelize->True]&//
 SUNSimplify[#,FCParallelize->True]&//DiracSimplify[#,FCParallelize->True]&;]
-
-
-(* ::Text:: *)
-(*flagCheck is a safety flag to ensure that higher order terms in p (higher than the divergence degree) do not  contribute to the poles*)
 
 
 AbsoluteTiming[gluonSE$Amp1=Collect2[gluonSE$Amp,p,IsolateNames->KK];]
@@ -402,7 +393,7 @@ gluonSE$ReductionTables=KiraImportResults[gluonSE$FinalTopos, gluonSE$dir]//Flat
 
 
 gluonSE$resPreFinal=Collect2[Total[gluonSE$AmpGLI/.Dispatch[gluonSE$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
-GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+GaugeXi,D,DiracGamma,FCParallelize->True];
 
 
 gluonSE$masters=Cases2[gluonSE$resPreFinal,GLI];
@@ -506,7 +497,7 @@ ghostSE$ReductionTables=KiraImportResults[ghostSE$FinalTopos, ghostSE$dir]//Flat
 
 
 ghostSE$resPreFinal=Collect2[Total[ghostSE$AmpGLI/.Dispatch[ghostSE$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
-GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+GaugeXi,D,DiracGamma,FCParallelize->True];
 
 
 ghostSE$masters=Cases2[ghostSE$resPreFinal,GLI];
@@ -614,7 +605,7 @@ quarkGluonVTX$ReductionTables=KiraImportResults[quarkGluonVTX$FinalTopos, quarkG
 
 
 quarkGluonVTX$resPreFinal=Collect2[Total[quarkGluonVTX$AmpGLI/.Dispatch[quarkGluonVTX$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
-GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+GaugeXi,D,DiracGamma,FCParallelize->True];
 
 
 quarkGluonVTX$masters=Cases2[quarkGluonVTX$resPreFinal,GLI];
@@ -670,7 +661,5 @@ ghostSE$RenConstants,quarkGluonVTX$RenConstants]/.Rule->Equal,knownResult/.Rule-
 Text->{"\tCompare to Muta, Foundations of QCD, Eqs 2.5.131-2.5.147:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
 
 
