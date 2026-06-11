@@ -20,7 +20,9 @@ The PDF version of the manual can be found [here](https://github.com/FeynCalc/fe
 
 Development of FeynCalc costs a lot of effort and is done on a largely voluntarily basis. To support the developers and increase their academic visibility, please acknowledge our work when you use FeynCalc in your research. You can do so by citing the following FeynCalc papers:
 
-* V. Shtabovenko, R. Mertig and F. Orellana, TTP23-056, P3H-23-089, SI-HEP-2023-27, Comput. Phys. Commun., 306, 109357, 2024, arXiv:1601.01167.
+* V. Shtabovenko, P3H-25-112, SI-HEP-2025-31, arXiv:2512.19858.
+
+* V. Shtabovenko, R. Mertig and F. Orellana, TTP23-056, P3H-23-089, SI-HEP-2023-27, Comput. Phys. Commun., 306, 109357, 2024, arXiv:2312.14089.
 
 * V. Shtabovenko, R. Mertig and F. Orellana, P3H-20-002, TTP19-020, TUM-EFT 130/19, Comput. Phys. Commun., 256, 107478, 2020, arXiv:2001.04407.
 
