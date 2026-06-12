@@ -278,38 +278,6 @@ Contract[expr_/; Head[expr]=!=List, opts:OptionsPattern[]] :=
 			]
 		];
 
-		If[ !DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}],
-
-			If[ MemberQ[{Plus, Times}, Head[tmp]] && !FreeQ2[tmp,{Pair,CartesianPair}],
-				time=AbsoluteTime[];
-				FCPrint[1, "Contract: mainContract: Applying prepareProductContractions.", FCDoControl->cnVerbose];
-				tmp = prepareProductContractions[tmp];
-				FCPrint[1,"Contract: mainContract: prepareProductContractions done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-				FCPrint[3,"Contract: mainContract: After prepareProductContractions: ", tmp , FCDoControl->cnVerbose];
-				If[	!FreeQ2[tmp,{prepareProductContractions,reduceSumsToProducts,contractWithProductOfPairs,contractWithSinglePair}],
-					Message[Contract::fail,"Something went wrong during prepareProductContractions."];
-					Abort[]
-				]
-			]
-		];
-
-		(*
-		(* optimization *)
-		If[ Head[tmp === Plus] && Length[tmp > 47],
-			If[ !FreeQ[tmp, Eps],
-				time=AbsoluteTime[];
-				FCPrint[1, "Contract: mainContract: Applying optimization.", FCDoControl->cnVerbose];
-				tmp = tmp //. {
-						Pair[LorentzIndex[a_, D], b_] Eps[c___,LorentzIndex[a_],d___] :> Eps[c,b,d],
-						Pair[LorentzIndex[a_, D], b_] Eps[c___,LorentzIndex[a_, D],d___] :> Eps[c,b,d]
-				};
-				FCPrint[1,"Contract: mainContract: Optimization done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-				FCPrint[3,"Contract: mainContract: After optimization: ", tmp , FCDoControl->cnVerbose]
-
-			]
-		];*)
-
-
 		If[	!FreeQ[tmp,CartesianIndex],
 			FCPrint[1,"Contract: Applying cartesianContract.", FCDoControl->optVerbose];
 			Which[ 	Head[tmp]===Plus,
