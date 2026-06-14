@@ -190,6 +190,10 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 				FCPrint[1, "FCLoopFindIntegralMappings: Done creating mapping rules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
 		];
 
+
+		FCPrint[0, "FCLoopFindIntegralMappings: ", FeynCalc`Package`FCStyle["Final number of found mappings: ", {Darker[Green,0.55], Bold}], Length[res[[1]]], FCDoControl->fcfpmVerbose];
+
+
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];

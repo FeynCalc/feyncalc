@@ -88,6 +88,8 @@ FCLoopFindSubtopologies[topos:{__FCTopology},  opts:OptionsPattern[]] :=
 			res = Flatten[res]
 		];
 
+		FCPrint[0, "FCLoopFindSubtopologies: ", FeynCalc`Package`FCStyle["Final number of found subtopologies: ", {Darker[Green,0.55], Bold}], Length[Flatten[res]], FCDoControl->fclfsVerbose];
+
 		FCPrint[1,"FCLoopFindSubtopologies: Function done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclfsVerbose];
 		res
 	];
@@ -185,6 +187,7 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 		If[	OptionValue[Remove],
 			res = Select[res,FreeQ[#[[1]],topo[[1]]]&]
 		];
+
 
 		FCPrint[3, "FCLoopFindSubtopologies: Leaving.", FCDoControl -> fclfsVerbose];
 		FCPrint[3, "FCLoopFindSubtopologies: Leaving with: ", res, FCDoControl -> fclfsVerbose];
