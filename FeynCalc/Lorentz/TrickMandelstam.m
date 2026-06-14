@@ -47,7 +47,7 @@ TrickMandelstam[ex_List,y__] :=
 	Map[TrickMandelstam[#,y]&, ex];
 
 
-TrickMandelstam[expr_List, {s,t,u,mm}/;!OptionQ[{s,t,u,mm}], opts:OptionsPattern[]] :=
+TrickMandelstam[expr_List, {s_,t_,u_,mm_}/;!OptionQ[{s,t,u,mm}], opts:OptionsPattern[]] :=
 	Block[{optVerbose, res, time},
 
 		If [OptionValue[FCVerbose]===False,
