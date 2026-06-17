@@ -177,7 +177,7 @@ FCCompareResults[{limit1, limit2},
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 3], 0.001], " s."];
 
-```
+```mathematica
 
 $$\text{$\backslash $tCompare to Peskin and Schroeder,An Introduction to QFT, Final Project III, part (c):} \;\text{CORRECT.}$$
 
