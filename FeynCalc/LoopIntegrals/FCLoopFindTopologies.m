@@ -436,6 +436,8 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 				emoms = SelectFree[momenta,lmoms];
 				spsFromDownValues = SelectFree[FCGetScalarProducts[emoms,SetDimensions->optSetDimensions],{TemporalMomentum,Polarization}];
 
+				spsFromDownValues = spsFromDownValues/.Dispatch[optFinalSubstitutions];
+
 				FCTopology[topoTempName <> ToString[First[#2]], #1[[1]], Intersection[momenta,lmoms], emoms, Join[optFinalSubstitutions,spsFromDownValues], {}]
 				)&,
 				topoList];
@@ -714,7 +716,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			exFinal=First[exFinal]
 		];
 
-		FCPrint[0, "FCLoopFindTopologyMappings: ", FeynCalc`Package`FCStyle["Final number of found topologies: ", {Darker[Green,0.55], Bold}], Length[finalTopologies], FCDoControl->optVerbose];
+		FCPrint[0, "FCLoopFindTopologies: ", FeynCalc`Package`FCStyle["Final number of found topologies: ", {Darker[Green,0.55], Bold}], Length[finalTopologies], FCDoControl->optVerbose];
 
 		res = {exFinal,finalTopologies}  /. topoName->Identity;
 
