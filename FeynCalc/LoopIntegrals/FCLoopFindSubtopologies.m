@@ -106,7 +106,7 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 
 
 		optNames 				= OptionValue[Names];
-		optSeparator			= OptionValue[Separator];
+		optSeparator			= OptionValue["Separator"];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
 		optSubtopologyMarker 	= OptionValue[SubtopologyMarker];
 
@@ -159,7 +159,7 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 			_String,
 				res = Map[FCTopology[ToString[topo[[1]]] <> ToString[optNames] <> optSeparator <> StringRiffle[ToString /@ (Flatten[#]), optSeparator],Delete[topo[[2]], #]] &, tmp],
 			_Symbol,
-				res = Map[FCTopology[ToExpression[ToString[topo[[1]]] <> ToString[optNames] <> optSeparator <> StringRiffle[ToString /@ (Flatten[#])], optSeparator],Delete[topo[[2]], #]] &, tmp],
+				res = Map[FCTopology[ToExpression[ToString[topo[[1]]] <> ToString[optNames] <> optSeparator <> StringRiffle[ToString /@ (Flatten[#]), optSeparator]],Delete[topo[[2]], #]] &, tmp],
 			_Function,
 				res = Map[FCTopology[optNames[topo[[1]],#], Delete[topo[[2]], #]] &, tmp],
 			_,
