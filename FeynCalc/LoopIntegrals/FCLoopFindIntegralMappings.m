@@ -83,6 +83,9 @@ Options[FCLoopFindIntegralMappings] = {
 FCLoopFindIntegralMappings[expr: {__FCTopology}, opts:OptionsPattern[]] :=
 	FCLoopFindIntegralMappings[expr, {FCGV["dummy"]}, opts];
 
+FCLoopFindIntegralMappings[a_, {(*mappings*)_List, topos: {__FCTopology}}, rest__] :=
+	FCLoopFindIntegralMappings[a,topos,rest];
+
 FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	expr, pakFormInts, lmoms, res, time, x, pakHead, powerMark,
 			topoidMode, optPreferredIntegrals, finalMasters, fcfpmVerbose,
