@@ -77,7 +77,8 @@ Options[FCLoopFindIntegralMappings] = {
 										{head[int, Transpose[pows]], head[ExpandAll[U], ExpandAll[F],Transpose[pows][[3]]]}],
 	List						-> False,
 	LightPak					-> False,
-	PreferredIntegrals			-> {}
+	PreferredIntegrals			-> {},
+	Select						-> First
 };
 
 FCLoopFindIntegralMappings[expr: {__FCTopology}, opts:OptionsPattern[]] :=
@@ -132,7 +133,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 
 		pakFormInts = FCLoopToPakForm[expr, lmoms, FCI->OptionValue[FCI], FinalSubstitutions->OptionValue[FinalSubstitutions],
 			Check->False, Collecting->False, Names->x, CharacteristicPolynomial->OptionValue[CharacteristicPolynomial],
-			Function->OptionValue[Function], Head->pakHead, Power->powerMark, LightPak->OptionValue[LightPak], FCParallelize->optFCParallelize];
+			Function->OptionValue[Function], Head->pakHead, Power->powerMark, LightPak->OptionValue[LightPak], FCParallelize->optFCParallelize, Select->OptionValue[Select]];
 		FCPrint[1, "FCLoopFindIntegralMappings: FCLoopToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
 
 		FCPrint[3, "FCLoopFindIntegralMappings: Output of FCLoopToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];

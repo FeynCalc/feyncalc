@@ -46,6 +46,7 @@ Begin["`FCLoopToPakForm`Private`"]
 
 fctpfVerbose::usage = "";
 optLightPak::usage = "";
+optSelect::usage = "";
 
 Options[FCLoopToPakForm] = {
 	CharacteristicPolynomial	-> Function[{U,F}, U+F],
@@ -63,7 +64,8 @@ Options[FCLoopToPakForm] = {
 	Indexed						-> True,
 	LightPak					-> False,
 	Names						-> FCGV["x"],
-	Power						-> FCGV["PowerMark"]
+	Power						-> FCGV["PowerMark"],
+	Select						-> First
 };
 
 
@@ -90,6 +92,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		optFinalSubstitutions 		= OptionValue[FinalSubstitutions];
 		optFCLoopPakOrder 			= OptionValue[FCLoopPakOrder];
 		optLightPak 				= OptionValue[LightPak];
+		optSelect 					= OptionValue[Select];
 		optFCParallelize			= OptionValue[FCParallelize];
 
 		FCPrint[1, "FCLoopToPakForm: Entering.", FCDoControl -> fctpfVerbose];
@@ -235,14 +238,19 @@ pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, t
 				time=AbsoluteTime[];
 				FCPrint[2, "FCLoopToPakForm: pakProcess: Calling FCPakOrder.", FCDoControl -> fctpfVerbose];
 
-				sigma = FCLoopPakOrder[pPoly, pVars, LightPak->optLightPak] // First;
+				sigma = FCLoopPakOrder[pPoly, pVars, LightPak->optLightPak];
+
+				FCPrint[3, "FCLoopToPakForm: All sigmas: ", sigma, FCDoControl->fctpfVerbose];
+
+				sigma = optSelect[sigma];
+
 				FCPrint[2, "FCLoopToPakForm: pakProcess: FCPakOrder done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
 
 				If[ !MatchQ[sigma,{__Integer}],
 					Message[FCLoopToPakForm::failmsg,"Failed to determine a unique ordering for this polynomial"];
 					Abort[]
 				];
-				FCPrint[3, "FCLoopToPakForm: sigma: ", sigma, FCDoControl->fctpfVerbose];
+				FCPrint[3, "FCLoopToPakForm: Selected sigma: ", sigma, FCDoControl->fctpfVerbose];
 
 
 				pVarsRepRule =  Thread[Rule[Extract[pVars, List /@ sigma], pVars]];
