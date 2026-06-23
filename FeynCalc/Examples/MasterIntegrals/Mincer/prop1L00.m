@@ -3,4 +3,4 @@
  {FCTopology[prop1L00, {FeynAmpDenominator[StandardPropagatorDenominator[
       Momentum[l, D], 0, 0, {1, 1}]], FeynAmpDenominator[
      StandardPropagatorDenominator[Momentum[l - q, D], 0, 0, {1, 1}]]}, {l}, 
-   {q}, {Pair[Momentum[q, D], Momentum[q, D]] -> qq}, {}]}}
+   {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> qq}, {}]}}
