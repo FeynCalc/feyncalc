@@ -1,0 +1,52 @@
+(* ::Package:: *)
+
+(* :Title: GenerateModelQCD													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Generates FeynArts model for QCD with photon-quark interactions *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+(* ::Section:: *)
+(*QCD model for FeynArts with photon-quark interactions*)
+
+
+(* ::Subsection:: *)
+(*Load FeynRules*)
+
+
+FR$Parallel=False;
+$FeynRulesPath=FileNameJoin[{$UserBaseDirectory,"Applications","FeynRules"}]
+<<FeynRules`;
+
+
+(* ::Subsection:: *)
+(*Load FeynRules model*)
+
+
+If[$FrontEnd===Null,
+nbDir=DirectoryName[$InputFileName],
+nbDir=NotebookDirectory[]
+];
+
+
+frModelPath=FileNameJoin[{nbDir,"QCD-EPEM.fr"}];
+LoadModel[frModelPath];
+
+
+FR$Loop=True;
+SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","Examples","Models"}]];
+WriteFeynArtsOutput[LQCD,Output->"QCD-EPEM",CouplingRename->False];
+
+
+input=FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","Examples","Models","QCD","QCD.gen"}];
+tmp = Import[input, "Text"] <> "\n";
+res=StringJoin[{tmp,"GaugeXi[V[5,___]]=GaugeXi[\"G\"]; \n GaugeXi[U[5,___]]=GaugeXi[\"G\"]; \n"}];
+Export[input, res, "Text"];
