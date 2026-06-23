@@ -44,10 +44,6 @@ End[]
 
 Begin["`FCLoopToPakForm`Private`"]
 
-fctpfVerbose::usage = "";
-optLightPak::usage = "";
-optSelect::usage = "";
-
 Options[FCLoopToPakForm] = {
 	CharacteristicPolynomial	-> Function[{U,F}, U+F],
 	Check						-> True,
@@ -76,14 +72,14 @@ FCLoopToPakForm[expr_FCTopology, opts:OptionsPattern[]] :=
 	FCLoopToPakForm[expr, {FCGV["dummy"]}, opts];
 
 FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
-	Block[{	lmoms, res, time, optFinalSubstitutions, ex, tmp,
-			optFactoring,optPowerMark, optCharacteristicPolynomial,
+	Block[{	lmoms, res, time, optFinalSubstitutions, ex, tmp, optSelect, optVerbose,
+			optFactoring,optPowerMark, optCharacteristicPolynomial, optLightPak,
 			optFCLoopPakOrder, notList=False, optFCParallelize},
 
 		If[	OptionValue[FCVerbose] === False,
-			fctpfVerbose = $VeryVerbose,
+			optVerbose = $VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-			fctpfVerbose = OptionValue[FCVerbose]];
+			optVerbose = OptionValue[FCVerbose]];
 		];
 
 		optFactoring 				= OptionValue[Factoring];
@@ -95,9 +91,9 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		optSelect 					= OptionValue[Select];
 		optFCParallelize			= OptionValue[FCParallelize];
 
-		FCPrint[1, "FCLoopToPakForm: Entering.", FCDoControl -> fctpfVerbose];
-		FCPrint[3, "FCLoopToPakForm: Entering with: ", expr, FCDoControl -> fctpfVerbose];
-		FCPrint[3, "FCLoopToPakForm: and: ", lmomsRaw, FCDoControl -> fctpfVerbose];
+		FCPrint[1, "FCLoopToPakForm: Entering.", FCDoControl -> optVerbose];
+		FCPrint[3, "FCLoopToPakForm: Entering with: ", expr, FCDoControl -> optVerbose];
+		FCPrint[3, "FCLoopToPakForm: and: ", lmomsRaw, FCDoControl -> optVerbose];
 
 
 		If[	OptionValue[FCI],
@@ -106,7 +102,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FCLoopToPakForm: Calling FCFeynmanPrepare.", FCDoControl -> fctpfVerbose];
+		FCPrint[1, "FCLoopToPakForm: Calling FCFeynmanPrepare.", FCDoControl -> optVerbose];
 
 		(*{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} =*)
 		If[	lmoms==={FCGV["dummy"]},
@@ -116,14 +112,14 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		Which[
 			(*List of integrals, the first condition avoids the "Recursion limit exceeded; positive match might be missed" error *)
 			MatchQ[ex, {__GLI}] || MatchQ[ex, {(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..} | {__FCTopology}],
-				FCPrint[1, "FCLoopToPakForm: We are dealing with a list of GLIs.", FCDoControl -> fctpfVerbose];
+				FCPrint[1, "FCLoopToPakForm: We are dealing with a list of GLIs.", FCDoControl -> optVerbose];
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
 				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False, FCParallelize -> optFCParallelize],
 			(*Single integral *)
 			MatchQ[ex,_. _FeynAmpDenominator] || MatchQ[ex, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) | _FCTopology],
 				notList = True;
-				FCPrint[1, "FCLoopToPakForm: We are dealing with a single integral.", FCDoControl -> fctpfVerbose];
+				FCPrint[1, "FCLoopToPakForm: We are dealing with a single integral.", FCDoControl -> optVerbose];
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
 				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False, FCParallelize -> optFCParallelize];
@@ -131,7 +127,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				ex = {ex},
 			(*List of integrals *)
 			MatchQ[ex, {_. _FeynAmpDenominator ..}],
-				FCPrint[1, "FCLoopToPakForm: We are dealing with a list of integrals.", FCDoControl -> fctpfVerbose];
+				FCPrint[1, "FCLoopToPakForm: We are dealing with a list of integrals.", FCDoControl -> optVerbose];
 				tmp =	FCFeynmanPrepare[#, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
 				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False, FCParallelize -> optFCParallelize]&/@ex,
@@ -140,9 +136,9 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				Abort[]
 		];
 
-		FCPrint[1, "FCLoopToPakForm: FCFeynmanPrepare done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
+		FCPrint[1, "FCLoopToPakForm: FCFeynmanPrepare done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
-		FCPrint[3, "FCLoopToPakForm: Output of FCFeynmanPrepare: ", tmp, FCDoControl->fctpfVerbose];
+		FCPrint[3, "FCLoopToPakForm: Output of FCFeynmanPrepare: ", tmp, FCDoControl->optVerbose];
 
 
 		time=AbsoluteTime[];
@@ -150,15 +146,15 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 
 		If[	$ParallelizeFeynCalc && optFCParallelize,
 
-			FCPrint[1, "FCLoopToPakForm: Calling pakProcess in parallel.", FCDoControl -> fctpfVerbose];
-			With[{xxx = {optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder}},
+			FCPrint[1, "FCLoopToPakForm: Calling pakProcess in parallel.", FCDoControl -> optVerbose];
+			With[{xxx = {optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder,optSelect,optLightPak,optVerbose}},
 				ParallelEvaluate[FCParallelContext`FCLoopToPakForm`pakProcessOptions = xxx;, DistributedContexts -> None]];
 			tmp = ParallelMap[pakProcess[#,FCParallelContext`FCLoopToPakForm`pakProcessOptions]&,tmp, DistributedContexts -> None, Method -> "CoarsestGrained"],
 
-			FCPrint[1, "FCLoopToPakForm: Calling pakProcess.", FCDoControl -> fctpfVerbose];
-			tmp = pakProcess[#,{optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder}]&/@tmp
+			FCPrint[1, "FCLoopToPakForm: Calling pakProcess.", FCDoControl -> optVerbose];
+			tmp = pakProcess[#,{optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder,optSelect,optLightPak,optVerbose}]&/@tmp
 		];
-		FCPrint[1, "FCLoopToPakForm: pakProcess done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
+		FCPrint[1, "FCLoopToPakForm: pakProcess done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		If[	!FreeQ[tmp,pakProcess],
 			Message[FCLoopToPakForm::failmsg,"Failed to process the output of FCFeynmanPrepare."];
@@ -170,7 +166,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 
 		If[	$ParallelizeFeynCalc,
 
-			FCPrint[1, "FCLoopToPakForm: Building up the final result in parallel.", FCDoControl -> fctpfVerbose];
+			FCPrint[1, "FCLoopToPakForm: Building up the final result in parallel.", FCDoControl -> optVerbose];
 			With[{xxx = OptionValue[Function], yyy= OptionValue[Head]},
 				ParallelEvaluate[(	FCParallelContext`FCLoopToPakForm`optValFunction = xxx;
 									FCParallelContext`FCLoopToPakForm`optValHead = yyy;), DistributedContexts -> None]];
@@ -179,12 +175,12 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				#[[2]], #[[1]][[5]]]&,Transpose[{tmp,ex}],
 				DistributedContexts -> None, Method -> "CoarsestGrained"],
 
-			FCPrint[1, "FCLoopToPakForm: Building up the final result.", FCDoControl -> fctpfVerbose];
+			FCPrint[1, "FCLoopToPakForm: Building up the final result.", FCDoControl -> optVerbose];
 			(* Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[charPoly], Transpose[pows]]}]*)
 			res = MapThread[OptionValue[Function][Sequence@@(#1[[1;;4]]), OptionValue[Head], #2, #1[[5]]]&,{tmp,ex}];
 		];
 
-		FCPrint[1, "FCLoopToPakForm: Done building up the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
+		FCPrint[1, "FCLoopToPakForm: Done building up the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		If[	notList,
 			res = First[res]
@@ -194,14 +190,14 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 			res = FCE[res]
 		];
 
-		FCPrint[3, "FCLoopToPakForm: Leaving.", FCDoControl -> fctpfVerbose];
-		FCPrint[3, "FCLoopToPakForm: Leaving with: ", res, FCDoControl -> fctpfVerbose];
+		FCPrint[3, "FCLoopToPakForm: Leaving.", FCDoControl -> optVerbose];
+		FCPrint[3, "FCLoopToPakForm: Leaving with: ", res, FCDoControl -> optVerbose];
 
 		res
 	];
 
 pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, tensorPartRaw_, tensorRankRaw_},
-	{optFactoring_, optPowerMark_, optCharacteristicPolynomial_, optFCLoopPakOrder_}]:=
+	{optFactoring_, optPowerMark_, optCharacteristicPolynomial_, optFCLoopPakOrder_, optSelect_, optLightPak_, optVerbose_}]:=
 		Block[	{time, uPoly, fPoly, pows, mat, Q, J, tensorPart,
 			tensorRank, rulePowers, pVarsRepRule, pPoly, pVars,
 			sigma, powsReordered},
@@ -210,10 +206,10 @@ pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, t
 				{uPolyRaw, fPolyRaw, powsRaw, matRaw, QRaw, JRaw, tensorPartRaw, tensorRankRaw};
 			If[optFactoring=!=False,
 				time=AbsoluteTime[];
-				FCPrint[2, "FCLoopToPakForm: pakProcess: Factoring U and F polynomials.", FCDoControl -> fctpfVerbose];
+				FCPrint[2, "FCLoopToPakForm: pakProcess: Factoring U and F polynomials.", FCDoControl -> optVerbose];
 				uPoly = optFactoring[uPoly];
 				fPoly = optFactoring[fPoly];
-				FCPrint[2, "FCLoopToPakForm: pakProcess: Factoring done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
+				FCPrint[2, "FCLoopToPakForm: pakProcess: Factoring done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 			];
 
@@ -224,46 +220,46 @@ pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, t
 
 			rulePowers = Map[Rule[#[[1]], optPowerMark[#[[3]]] #[[1]]] &, pows] /. optPowerMark[1]->1;
 
-			FCPrint[2, "FCLoopToPakForm: pakProcess: rulePowers: ", rulePowers, FCDoControl -> fctpfVerbose];
+			FCPrint[2, "FCLoopToPakForm: pakProcess: rulePowers: ", rulePowers, FCDoControl -> optVerbose];
 
 			{uPoly, fPoly} = {uPoly, fPoly} /. rulePowers;
 
 			pPoly = optCharacteristicPolynomial[uPoly,fPoly];
 
-			FCPrint[2, "FCLoopToPakForm: pakProcess: pPoly: ", pPoly, FCDoControl -> fctpfVerbose];
+			FCPrint[2, "FCLoopToPakForm: pakProcess: pPoly: ", pPoly, FCDoControl -> optVerbose];
 
 			If[	optFCLoopPakOrder && (pPoly=!=0),
 				pVars = First[Transpose[pows]];
 
 				time=AbsoluteTime[];
-				FCPrint[2, "FCLoopToPakForm: pakProcess: Calling FCPakOrder.", FCDoControl -> fctpfVerbose];
+				FCPrint[2, "FCLoopToPakForm: pakProcess: Calling FCPakOrder.", FCDoControl -> optVerbose];
 
 				sigma = FCLoopPakOrder[pPoly, pVars, LightPak->optLightPak];
 
-				FCPrint[3, "FCLoopToPakForm: All sigmas: ", sigma, FCDoControl->fctpfVerbose];
+				FCPrint[3, "FCLoopToPakForm: All sigmas: ", sigma, FCDoControl->optVerbose];
 
 				sigma = optSelect[sigma];
 
-				FCPrint[2, "FCLoopToPakForm: pakProcess: FCPakOrder done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
+				FCPrint[2, "FCLoopToPakForm: pakProcess: FCPakOrder done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 				If[ !MatchQ[sigma,{__Integer}],
 					Message[FCLoopToPakForm::failmsg,"Failed to determine a unique ordering for this polynomial"];
 					Abort[]
 				];
-				FCPrint[3, "FCLoopToPakForm: Selected sigma: ", sigma, FCDoControl->fctpfVerbose];
+				FCPrint[3, "FCLoopToPakForm: Selected sigma: ", sigma, FCDoControl->optVerbose];
 
 
 				pVarsRepRule =  Thread[Rule[Extract[pVars, List /@ sigma], pVars]];
 
-				FCPrint[3, "FCLoopToPakForm: Reordering rule: ", pVarsRepRule, FCDoControl -> fctpfVerbose];
+				FCPrint[3, "FCLoopToPakForm: Reordering rule: ", pVarsRepRule, FCDoControl -> optVerbose];
 				powsReordered = Extract[pows, List /@ sigma] /. pVarsRepRule;
 				uPoly = uPoly /. pVarsRepRule;
 				fPoly = fPoly /. pVarsRepRule;
 				pPoly = pPoly /. pVarsRepRule;
 
-				FCPrint[3, "FCLoopToPakForm: Reordered propagators: ", powsReordered, FCDoControl -> fctpfVerbose];
-				FCPrint[3, "FCLoopToPakForm: Reordered U polynomial: ", uPoly, FCDoControl -> fctpfVerbose];
-				FCPrint[3, "FCLoopToPakForm: Reordered F polynomial: ", fPoly, FCDoControl -> fctpfVerbose],
+				FCPrint[3, "FCLoopToPakForm: Reordered propagators: ", powsReordered, FCDoControl -> optVerbose];
+				FCPrint[3, "FCLoopToPakForm: Reordered U polynomial: ", uPoly, FCDoControl -> optVerbose];
+				FCPrint[3, "FCLoopToPakForm: Reordered F polynomial: ", fPoly, FCDoControl -> optVerbose],
 
 				powsReordered = pows
 			];
