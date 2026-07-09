@@ -185,7 +185,7 @@ B0[mm_,0,mm_,OptionsPattern[]] :=
 (* further B0 reduction *)
 B0[pp_,mm1_,mm2_,OptionsPattern[]] :=
 	PaVeReduce[PaVe[0,{pp},{mm1,mm2}],BReduce->True,PaVeAutoReduce->True]/; OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}] &&
-	(pp/.SmallVariable[_]->0)===0;
+	((pp/.SmallVariable[_]->0)===0)  && !$KeepLogDivergentScalelessIntegrals;
 
 B0 /:
 	MakeBoxes[B0[p10_,m02_,m12_, OptionsPattern[]]  ,TraditionalForm] :=
@@ -198,7 +198,7 @@ B00[pp_,mm1_,mm2_, OptionsPattern[]] :=
 	b00[pp,mm1,mm2] /; $LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}] && !MatchQ[{pp,mm1,mm2},{0,0,0}];
 
 B00[pp_,mm1_,mm2_, OptionsPattern[]] :=
-	PaVeReduce[PaVe[0,0,{pp},{mm1,mm2}],PaVeAutoReduce->True] /; !$LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}];
+	PaVeReduce[PaVe[0,0,{pp},{mm1,mm2}],PaVeAutoReduce->True] /; !$LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}] && !$KeepLogDivergentScalelessIntegrals;
 
 b00[0, SmallVariable[mm_], SmallVariable[mm_]] :=
 	0;
@@ -221,7 +221,7 @@ B00 /:
 		ToBoxes[HoldForm[PaVe[0,0,{p10},{m02,m12}]],TraditionalForm];
 
 B1[pp_,mm1_,mm2_, OptionsPattern[]] :=
-	b1[pp,mm1,mm2] /; $LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}] && !MatchQ[{pp,mm1,mm2},{0,0,0}];
+	b1[pp,mm1,mm2] /; $LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}] && !MatchQ[{pp,mm1,mm2},{0,0,0}] && !$KeepLogDivergentScalelessIntegrals;
 
 B1[0,0,0, OptionsPattern[]] :=
 	0/; !$KeepLogDivergentScalelessIntegrals;
@@ -229,7 +229,7 @@ B1[0,0,0, OptionsPattern[]] :=
 (* General case for $LimitTo4=False; The case with zero momentum and different masses is exluded *)
 B1[pp_,mm1_,mm2_, OptionsPattern[]] :=
 	PaVeReduce[PaVe[1,{pp},{mm1,mm2}],PaVeAutoReduce->True] /;
-		!$LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}] && !(pp===0 && (mm1=!=mm2));
+		!$LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}] && !(pp===0 && (mm1=!=mm2)) && !$KeepLogDivergentScalelessIntegrals;
 
 (* Special cases, valid for $LimitTo4=True; *)
 
@@ -281,12 +281,12 @@ B11[0,0,0, OptionsPattern[]] :=
 	0/; !$KeepLogDivergentScalelessIntegrals;
 
 B11[pp_,mm1_,mm2_, OptionsPattern[]] :=
-	b11[pp,mm1,mm2] /; $LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}]  && !MatchQ[{pp,mm1,mm2},{0,0,0}];
+	b11[pp,mm1,mm2] /; $LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}]  && !MatchQ[{pp,mm1,mm2},{0,0,0}] && !$KeepLogDivergentScalelessIntegrals;
 
 (* General case for $LimitTo4=True; The case with zero momentum and different masses is exluded *)
 B11[pp_,mm1_,mm2_, OptionsPattern[]] :=
 	PaVeReduce[PaVe[1,1,{pp},{mm1,mm2}],PaVeAutoReduce->True] /;
-		!$LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}] && !(pp===0 && (mm1=!=mm2));
+		!$LimitTo4 && OptionValue[BReduce] && FCPatternFreeQ[{pp,mm1,mm2}] && !(pp===0 && (mm1=!=mm2)) && !$KeepLogDivergentScalelessIntegrals;
 
 (* Special cases, valid for $LimitTo4=True; *)
 b11[ 0,mm1_,mm1_ ] :=
