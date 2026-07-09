@@ -56,6 +56,7 @@ fcflsVerbose::usage = "";
 
 Options[FCLoopFindMomentumShifts] = {
 	Abort						-> True,
+	Check						-> True,
 	FCI 						-> False,
 	FCVerbose 					-> False,
 	"Kinematics"				-> {},
@@ -74,14 +75,18 @@ FCLoopFindMomentumShifts[fromRaw:{__FCTopology}, toRaw_FCTopology/;!OptionQ[toRa
 			{from, to, optKinematics} = FCI[{fromRaw, toRaw, FRH[optKinematics]}]
 		];
 
-		If[	!FCLoopValidTopologyQ[from],
-			Message[FCLoopFindMomentumShifts::failmsg, "The list of source topologie is incorrect."];
-			Abort[]
+		If[	OptionValue[Check],
+			If[	!FCLoopValidTopologyQ[from],
+				Message[FCLoopFindMomentumShifts::failmsg, "The list of source topologie is incorrect."];
+				Abort[]
+			];
 		];
 
-		If[	!FCLoopValidTopologyQ[to],
-			Message[FCLoopFindMomentumShifts::failmsg, "The target topology is incorrect."];
-			Abort[]
+		If[	OptionValue[Check],
+			If[	!FCLoopValidTopologyQ[to],
+				Message[FCLoopFindMomentumShifts::failmsg, "The target topology is incorrect."];
+				Abort[]
+			];
 		];
 
 		optMomentum = OptionValue[Momentum];
