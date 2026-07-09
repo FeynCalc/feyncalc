@@ -193,7 +193,7 @@ FCLoopIntegralToPropagators[expr_, lmoms_List/; FreeQ[lmoms, OptionQ], OptionsPa
 
 		tmp = auxIntegralToPropagators[#,lmoms]&/@tmp;
 
-		FCPrint[1, "FCLoopToPakForm: auxIntegralToPropagators done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->itpVerbose];
+		FCPrint[1, "FCLoopIntegralToPropagators: auxIntegralToPropagators done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->itpVerbose];
 		FCPrint[3,"FCLoopIntegralToPropagators: After auxIntegralToPropagators: ", tmp, FCDoControl->itpVerbose];
 
 		(*
