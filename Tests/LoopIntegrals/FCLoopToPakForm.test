@@ -247,5 +247,129 @@ SFAD[{{I*(FCGV[\"lmom\"][3, 1] - FCGV[\"lmom\"][3, 2]), 0}, {-m1^2, \
 -1}, 1}], SFAD[{{I*FCGV[\"lmom\"][4, 1], 0}, {-m1^2, -1}, 1}], \
 SFAD[{{I*(FCGV[\"lmom\"][4, 1] - FCGV[\"lmom\"][4, 2]), 0}, {-m1^2, \
 -1}, 1}], SFAD[{{I*FCGV[\"lmom\"][4, 2], 0}, {-m3^2, -1}, 1}]}, {1, \
-1, 1, 1, 1, 1, 1}}]}}"}
+1, 1, 1, 1, 1, 1}}]}}"},
+{"fcstFCLoopToPakForm-ID18",
+"FCLoopToPakForm[FAD[{p1,m1}],{p1},Names\[Rule]x,Head\[Rule]ph,FCE->T\
+rue,Select->All]",
+"{FAD[{p1, m1}], {ph[x[1] + m1^2*x[1]^2, {{x[1]}, {FAD[{p1, m1}]}, \
+{1}}]}}"}, {"fcstFCLoopToPakForm-ID19",
+"FCLoopToPakForm[FCTopology[T1,{FAD[p1],FAD[p2],FAD[p1-Q],FAD[p1+p2\
++Q],FAD[p1+p2]},{p1,p2},{Q},{},{}],Names->x,FCE->True,Head->ph,Select->A\
+ll]", "{FCTopology[T1, {FAD[p1], FAD[p2], FAD[p1 - Q], FAD[p1 + p2 + \
+Q], FAD[p1 + p2]}, {p1, p2}, {Q}, {}, {}], {ph[x[1]*x[2] + x[1]*x[3] - \
+SPD[Q, Q]*x[1]*x[2]*x[3] + x[1]*x[4] + x[2]*x[4] - 4*SPD[Q, \
+Q]*x[1]*x[2]*x[4] + x[3]*x[4] - SPD[Q, Q]*x[1]*x[3]*x[4] - SPD[Q, \
+Q]*x[2]*x[3]*x[4] + x[1]*x[5] + x[2]*x[5] - SPD[Q, Q]*x[1]*x[2]*x[5] + \
+x[3]*x[5] - SPD[Q, Q]*x[2]*x[3]*x[5] - SPD[Q, Q]*x[1]*x[4]*x[5] - \
+SPD[Q, Q]*x[2]*x[4]*x[5] - SPD[Q, Q]*x[3]*x[4]*x[5], {{x[1], x[2], \
+x[3], x[4], x[5]}, {FAD[p2], FAD[p1 - Q], FAD[p1], FAD[p1 + p2 + Q], \
+FAD[p1 + p2]}, {1, 1, 1, 1, 1}}], ph[x[1]*x[2] + x[1]*x[3] - SPD[Q, \
+Q]*x[1]*x[2]*x[3] + x[1]*x[4] + x[2]*x[4] - 4*SPD[Q, Q]*x[1]*x[2]*x[4] \
++ x[3]*x[4] - SPD[Q, Q]*x[1]*x[3]*x[4] - SPD[Q, Q]*x[2]*x[3]*x[4] + \
+x[1]*x[5] + x[2]*x[5] - SPD[Q, Q]*x[1]*x[2]*x[5] + x[3]*x[5] - SPD[Q, \
+Q]*x[2]*x[3]*x[5] - SPD[Q, Q]*x[1]*x[4]*x[5] - SPD[Q, \
+Q]*x[2]*x[4]*x[5] - SPD[Q, Q]*x[3]*x[4]*x[5], {{x[1], x[2], x[3], x[4], \
+x[5]}, {FAD[p2], FAD[p1 + p2 + Q], FAD[p1 + p2], FAD[p1 - Q], FAD[p1]}, \
+{1, 1, 1, 1, 1}}]}}"}, {"fcstFCLoopToPakForm-ID20",
+"FCLoopToPakForm[{GLI[topo1,{1,1}],GLI[topo1,{1,2}]},{FCTopology[to\
+po1,{SFAD[p1],SFAD[p2]},{p1,p2},{},{},{}]},Names->x,Head->ph,Power->pm\
+,FCE->True,Select->All]",
+"{{GLI[topo1, {1, 1}], {ph[x[1]*x[2], {{x[1], x[2]}, {SFAD[{{p1, 0}, \
+{0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}]}, {1, 1}}], ph[x[1]*x[2], \
+{{x[1], x[2]}, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}]}, \
+{1, 1}}]}}, {GLI[topo1, {1, 2}], {ph[pm[2]*x[1]*x[2], {{x[1], x[2]}, \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}]}, {1, 2}}], \
+ph[pm[2]*x[1]*x[2], {{x[1], x[2]}, {SFAD[{{p2, 0}, {0, 1}, 1}], \
+SFAD[{{p1, 0}, {0, 1}, 1}]}, {2, 1}}]}}}"}, \
+{"fcstFCLoopToPakForm-ID21",
+"FCLoopToPakForm[GLI[topo1,{1,1}],FCTopology[topo1,{SFAD[p1],SFAD[p\
+2]},{p1,p2},{},{},{}],Names->x,Head->ph,Power->pm,FCE->True,Select->Al\
+l]", "{GLI[topo1, {1, 1}], {ph[x[1]*x[2], {{x[1], x[2]}, {SFAD[{{p1, \
+0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}]}, {1, 1}}], ph[x[1]*x[2], \
+{{x[1], x[2]}, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}]}, \
+{1, 1}}]}}"}, {"fcstFCLoopToPakForm-ID22",
+"FCLoopToPakForm[{GLI[topo1,{1,1}],GLI[topo1,{1,2}]},{FCTopology[to\
+po1,{SFAD[p1],SFAD[p2]},{p1,p2},{},{},{}]},Names->x,Head->ph,Power->pm\
+,FCE->True,Select->All]",
+"{{GLI[topo1, {1, 1}], {ph[x[1]*x[2], {{x[1], x[2]}, {SFAD[{{p1, 0}, \
+{0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}]}, {1, 1}}], ph[x[1]*x[2], \
+{{x[1], x[2]}, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}]}, \
+{1, 1}}]}}, {GLI[topo1, {1, 2}], {ph[pm[2]*x[1]*x[2], {{x[1], x[2]}, \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}]}, {1, 2}}], \
+ph[pm[2]*x[1]*x[2], {{x[1], x[2]}, {SFAD[{{p2, 0}, {0, 1}, 1}], \
+SFAD[{{p1, 0}, {0, 1}, 1}]}, {2, 1}}]}}}"}, \
+{"fcstFCLoopToPakForm-ID23",
+"FCLoopToPakForm[{FCTopology[topo1,{SFAD[p1],SFAD[p2]},{p1,p2},{},{},{}],F\
+CTopology[topo2,{SFAD[p3],SFAD[p4]},{p3,p4},{},{},{}]},Names->x,Head->p\
+h,Power->pm,FCE->True,Select->All]",
+"{{FCTopology[topo1, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {}, {}, {}], {ph[x[1]*x[2], {{x[1], x[2]}, \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}]}, {1, 1}}], \
+ph[x[1]*x[2], {{x[1], x[2]}, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, \
+0}, {0, 1}, 1}]}, {1, 1}}]}}, {FCTopology[topo2, {SFAD[{{p3, 0}, {0, \
+1}, 1}], SFAD[{{p4, 0}, {0, 1}, 1}]}, {p3, p4}, {}, {}, {}], \
+{ph[x[1]*x[2], {{x[1], x[2]}, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p4, \
+0}, {0, 1}, 1}]}, {1, 1}}], ph[x[1]*x[2], {{x[1], x[2]}, {SFAD[{{p4, \
+0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}]}, {1, 1}}]}}}"}, \
+{"fcstFCLoopToPakForm-ID24",
+"FCLoopToPakForm[FCTopology[topo1,{SFAD[p1],SFAD[p2]},{p1,p2},{},{},{}],N\
+ames->x,Head->ph,Power->pm,\[IndentingNewLine]FCE->True,Select->All]",
+	"{FCTopology[topo1, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {}, {}, {}], {ph[x[1]*x[2], {{x[1], x[2]}, \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}]}, {1, 1}}], \
+ph[x[1]*x[2], {{x[1], x[2]}, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, \
+0}, {0, 1}, 1}]}, {1, 1}}]}}"}, {"fcstFCLoopToPakForm-ID25",
+"FCLoopToPakForm[{SFAD[{{I p1,0},{-m2^2,-1},1}] SFAD[{{I \
+p3,0},{-m2^2,-1},1}],SFAD[{{I tmom1,0},{-m2^2,-1},1}] SFAD[{{I \
+tmom2,0},{-m2^2,-1},1}]},{p1,p3,tmom1,tmom2},Names->x,FCE->True,Head->p\
+k,Select->All]",
+"{{SFAD[{{I*p1, 0}, {-m2^2, -1}, 1}]*SFAD[{{I*p3, 0}, {-m2^2, -1}, \
+1}], {pk[x[1]*x[2] - m2^2*x[1]^2*x[2] - m2^2*x[1]*x[2]^2, {{x[1], x[2]}, \
+{SFAD[{{I*p1, 0}, {-m2^2, -1}, 1}], SFAD[{{I*p3, 0}, {-m2^2, -1}, 1}]}, \
+{1, 1}}], pk[x[1]*x[2] - m2^2*x[1]^2*x[2] - m2^2*x[1]*x[2]^2, {{x[1], \
+x[2]}, {SFAD[{{I*p3, 0}, {-m2^2, -1}, 1}], SFAD[{{I*p1, 0}, {-m2^2, \
+-1}, 1}]}, {1, 1}}]}}, {SFAD[{{I*tmom1, 0}, {-m2^2, -1}, \
+1}]*SFAD[{{I*tmom2, 0}, {-m2^2, -1}, 1}], {pk[x[1]*x[2] - \
+m2^2*x[1]^2*x[2] - m2^2*x[1]*x[2]^2, {{x[1], x[2]}, {SFAD[{{I*tmom1, \
+0}, {-m2^2, -1}, 1}], SFAD[{{I*tmom2, 0}, {-m2^2, -1}, 1}]}, {1, 1}}], \
+pk[x[1]*x[2] - m2^2*x[1]^2*x[2] - m2^2*x[1]*x[2]^2, {{x[1], x[2]}, \
+{SFAD[{{I*tmom2, 0}, {-m2^2, -1}, 1}], SFAD[{{I*tmom1, 0}, {-m2^2, -1}, \
+1}]}, {1, 1}}]}}}"}, {"fcstFCLoopToPakForm-ID26",
+"FCLoopToPakForm[FCTopology[fctopology1Rx7,{SFAD[{{p6,0},{0,1},1}],S\
+FAD[{{p5,0},{0,1},1}],SFAD[{{p5-p6,0},{0,1},1}],SFAD[{{p3-p6,0},{0,1},1\
+}],SFAD[{{p2+p3-p6,0},{0,1},1}],SFAD[{{p2+p3-p5,0},{0,1},1}]},{p5,p6},{p\
+2,p3},{Hold[Pair][Momentum[p2,D],Momentum[p2,D]]->0,Hold[Pair][Momentu\
+m[p3,D],Momentum[p3,D]]->0,Hold[Pair][Momentum[p4,D],Momentum[p4,D]]->0\
+,Hold[Pair][Momentum[p2,D],Momentum[p4,D]]->s24/2,Hold[Pair][Momentum[p\
+3,D],Momentum[p4,D]]->s34/2,Hold[Pair][Momentum[p2,D],Momentum[p3,D]]->s\
+23/2},{}],Names->x,Select->All,FCE->True]",
+"{FCTopology[fctopology1Rx7, {SFAD[{{p6, 0}, {0, 1}, 1}], \
+SFAD[{{p5, 0}, {0, 1}, 1}], SFAD[{{p5 - p6, 0}, {0, 1}, 1}], \
+SFAD[{{p3 - p6, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - p6, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - p5, 0}, {0, 1}, 1}]}, {p5, p6}, {p2, p3}, \
+{Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 0, \
+Hold[Pair][Momentum[p3, D], Momentum[p3, D]] -> 0, \
+Hold[Pair][Momentum[p4, D], Momentum[p4, D]] -> 0, \
+Hold[Pair][Momentum[p2, D], Momentum[p4, D]] -> s24/2, \
+Hold[Pair][Momentum[p3, D], Momentum[p4, D]] -> s34/2, \
+Hold[Pair][Momentum[p2, D], Momentum[p3, D]] -> s23/2}, {}], \
+{FCGV[\"PakFormHead\"][x[1]*x[2] + x[1]*x[3] - s23*x[1]*x[2]*x[3] + \
+x[1]*x[4] + x[2]*x[4] + x[3]*x[4] - s23*x[1]*x[3]*x[4] - \
+s23*x[2]*x[3]*x[4] + x[1]*x[5] + x[2]*x[5] - s23*x[1]*x[2]*x[5] + \
+x[3]*x[5] - s23*x[2]*x[3]*x[5] - s23*x[1]*x[4]*x[5] - \
+s23*x[2]*x[4]*x[5] - s23*x[3]*x[4]*x[5] + x[1]*x[6] + x[2]*x[6] + \
+x[3]*x[6] - s23*x[2]*x[3]*x[6], {{x[1], x[2], x[3], x[4], x[5], x[6]}, \
+{SFAD[{{p5 - p6, 0}, {0, 1}, 1}], SFAD[{{p5, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - p5, 0}, {0, 1}, 1}], SFAD[{{p6, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - p6, 0}, {0, 1}, 1}], SFAD[{{p3 - p6, 0}, {0, 1}, 1}]}, \
+{1, 1, 1, 1, 1, 1}}], FCGV[\"PakFormHead\"][x[1]*x[2] + x[1]*x[3] - \
+s23*x[1]*x[2]*x[3] + x[1]*x[4] + x[2]*x[4] + x[3]*x[4] - \
+s23*x[1]*x[3]*x[4] - s23*x[2]*x[3]*x[4] + x[1]*x[5] + x[2]*x[5] - \
+s23*x[1]*x[2]*x[5] + x[3]*x[5] - s23*x[2]*x[3]*x[5] - \
+s23*x[1]*x[4]*x[5] - s23*x[2]*x[4]*x[5] - s23*x[3]*x[4]*x[5] + \
+x[1]*x[6] + x[2]*x[6] + x[3]*x[6] - s23*x[2]*x[3]*x[6], {{x[1], x[2], \
+x[3], x[4], x[5], x[6]}, {SFAD[{{p5 - p6, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3 - p5, 0}, {0, 1}, 1}], SFAD[{{p5, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - \
+p6, 0}, {0, 1}, 1}], SFAD[{{p6, 0}, {0, 1}, 1}], SFAD[{{p3 - p6, 0}, \
+{0, 1}, 1}]}, {1, 1, 1, 1, 1, 1}}]}}"}
 })

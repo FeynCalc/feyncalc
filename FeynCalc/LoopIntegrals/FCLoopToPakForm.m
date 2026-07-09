@@ -56,6 +56,12 @@ Options[FCLoopToPakForm] = {
 	Factoring					-> Factor,
 	FinalSubstitutions			-> {},
 	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[charPoly], Transpose[pows]]}],
+	"FunctionForAllSigmas"		-> Function[{func,head,listOfLists, int},
+									Block[{tmp,aux},
+										tmp = Map[func[Sequence@@(#[[1;;4]]), head, int, #[[5]]]&,listOfLists];
+										tmp=Transpose[tmp][[2]];
+										{int,tmp}
+										]],
 	Head						-> FCGV["PakFormHead"],
 	Indexed						-> True,
 	LightPak					-> False,
@@ -64,6 +70,15 @@ Options[FCLoopToPakForm] = {
 	Select						-> First
 };
 
+
+
+
+buildFinalResult[func_,head_,{li__List},int_]:=
+	Block[{tmp,aux},
+		tmp = Map[func[Sequence@@(#[[1;;4]]), head, int, #[[5]]]&,{li}];
+		tmp=Transpose[tmp][[2]];
+		{int,tmp}
+	];
 
 FCLoopToPakForm[expr: {__FCTopology}, opts:OptionsPattern[]] :=
 	FCLoopToPakForm[expr, {FCGV["dummy"]}, opts];
@@ -74,7 +89,7 @@ FCLoopToPakForm[expr_FCTopology, opts:OptionsPattern[]] :=
 FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	lmoms, res, time, optFinalSubstitutions, ex, tmp, optSelect, optVerbose,
 			optFactoring,optPowerMark, optCharacteristicPolynomial, optLightPak,
-			optFCLoopPakOrder, notList=False, optFCParallelize},
+			optFCLoopPakOrder, notList=False, optFCParallelize, optFunctionForAllSigmas},
 
 		If[	OptionValue[FCVerbose] === False,
 			optVerbose = $VeryVerbose,
@@ -90,6 +105,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		optLightPak 				= OptionValue[LightPak];
 		optSelect 					= OptionValue[Select];
 		optFCParallelize			= OptionValue[FCParallelize];
+		optFunctionForAllSigmas		= OptionValue["FunctionForAllSigmas"];
 
 		FCPrint[1, "FCLoopToPakForm: Entering.", FCDoControl -> optVerbose];
 		FCPrint[3, "FCLoopToPakForm: Entering with: ", expr, FCDoControl -> optVerbose];
@@ -145,7 +161,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 
 
 		If[	$ParallelizeFeynCalc && optFCParallelize,
-
+			(*TODO: Don't use "CoarsestGrained" *)
 			FCPrint[1, "FCLoopToPakForm: Calling pakProcess in parallel.", FCDoControl -> optVerbose];
 			With[{xxx = {optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder,optSelect,optLightPak,optVerbose}},
 				ParallelEvaluate[FCParallelContext`FCLoopToPakForm`pakProcessOptions = xxx;, DistributedContexts -> None]];
@@ -164,20 +180,25 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 
+		(*We need to process the output differently depending on the value of the select option*)
+
 		If[	$ParallelizeFeynCalc,
 
 			FCPrint[1, "FCLoopToPakForm: Building up the final result in parallel.", FCDoControl -> optVerbose];
-			With[{xxx = OptionValue[Function], yyy= OptionValue[Head]},
+			With[{xxx = OptionValue[Function], yyy= OptionValue[Head], zzz = optFunctionForAllSigmas},
 				ParallelEvaluate[(	FCParallelContext`FCLoopToPakForm`optValFunction = xxx;
-									FCParallelContext`FCLoopToPakForm`optValHead = yyy;), DistributedContexts -> None]];
+									FCParallelContext`FCLoopToPakForm`optValHead = yyy;
+									FCParallelContext`FCLoopToPakForm`optFunctionForAllSigmas = zzz;
+									), DistributedContexts -> None]];
 
-			res = ParallelMap[FCParallelContext`FCLoopToPakForm`optValFunction[Sequence@@(#[[1]][[1;;4]]), FCParallelContext`FCLoopToPakForm`optValHead,
-				#[[2]], #[[1]][[5]]]&,Transpose[{tmp,ex}],
+			res = ParallelMap[buildFinalResult[FCParallelContext`FCLoopToPakForm`optValFunction,
+				FCParallelContext`FCLoopToPakForm`optValHead, #[[1]], #[[2]],
+					FCParallelContext`FCLoopToPakForm`optFunctionForAllSigmas]&,Transpose[{tmp,ex}],
 				DistributedContexts -> None, Method -> "CoarsestGrained"],
 
 			FCPrint[1, "FCLoopToPakForm: Building up the final result.", FCDoControl -> optVerbose];
-			(* Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[charPoly], Transpose[pows]]}]*)
-			res = MapThread[OptionValue[Function][Sequence@@(#1[[1;;4]]), OptionValue[Head], #2, #1[[5]]]&,{tmp,ex}];
+
+			res = MapThread[buildFinalResult[OptionValue[Function], OptionValue[Head], #1, #2, optFunctionForAllSigmas]&,{tmp,ex}];
 		];
 
 		FCPrint[1, "FCLoopToPakForm: Done building up the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
@@ -196,11 +217,17 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		res
 	];
 
+buildFinalResult[func_,head_,{uPoly_/;Head[uPoly]=!=List, fPoly_, pPoly_, pows_, sigma_},int_, (*funcForAllSigmas*)_]:=
+	func[uPoly, fPoly, pPoly, pows, head, int, sigma];
+
+buildFinalResult[func_,head_,{li__List},int_, funcForAllSigmas_]:=
+	funcForAllSigmas[func,head,{li}, int];
+
 pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, tensorPartRaw_, tensorRankRaw_},
 	{optFactoring_, optPowerMark_, optCharacteristicPolynomial_, optFCLoopPakOrder_, optSelect_, optLightPak_, optVerbose_}]:=
 		Block[	{time, uPoly, fPoly, pows, mat, Q, J, tensorPart,
 			tensorRank, rulePowers, pVarsRepRule, pPoly, pVars,
-			sigma, powsReordered},
+			sigma, powsReordered,res},
 
 			{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} =
 				{uPolyRaw, fPolyRaw, powsRaw, matRaw, QRaw, JRaw, tensorPartRaw, tensorRankRaw};
@@ -229,6 +256,7 @@ pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, t
 			FCPrint[2, "FCLoopToPakForm: pakProcess: pPoly: ", pPoly, FCDoControl -> optVerbose];
 
 			If[	optFCLoopPakOrder && (pPoly=!=0),
+
 				pVars = First[Transpose[pows]];
 
 				time=AbsoluteTime[];
@@ -236,35 +264,43 @@ pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, t
 
 				sigma = FCLoopPakOrder[pPoly, pVars, LightPak->optLightPak];
 
-				FCPrint[3, "FCLoopToPakForm: All sigmas: ", sigma, FCDoControl->optVerbose];
-
-				sigma = optSelect[sigma];
-
 				FCPrint[2, "FCLoopToPakForm: pakProcess: FCPakOrder done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
-				If[ !MatchQ[sigma,{__Integer}],
-					Message[FCLoopToPakForm::failmsg,"Failed to determine a unique ordering for this polynomial"];
-					Abort[]
-				];
-				FCPrint[3, "FCLoopToPakForm: Selected sigma: ", sigma, FCDoControl->optVerbose];
+				FCPrint[3, "FCLoopToPakForm: All sigmas: ", sigma, FCDoControl->optVerbose];
 
+				If[	!TrueQ[optSelect===All],
 
-				pVarsRepRule =  Thread[Rule[Extract[pVars, List /@ sigma], pVars]];
+					(*Only one sigma is selected*)
+					sigma = optSelect[sigma];
+					FCPrint[3, "FCLoopToPakForm: Selected sigma: ", sigma, FCDoControl->optVerbose];
+					res = reorderVariables[uPoly,fPoly,pPoly,pows,pVars,sigma];
 
-				FCPrint[3, "FCLoopToPakForm: Reordering rule: ", pVarsRepRule, FCDoControl -> optVerbose];
-				powsReordered = Extract[pows, List /@ sigma] /. pVarsRepRule;
-				uPoly = uPoly /. pVarsRepRule;
-				fPoly = fPoly /. pVarsRepRule;
-				pPoly = pPoly /. pVarsRepRule;
+					FCPrint[3, "FCLoopToPakForm: Reordered propagators: ", powsReordered, FCDoControl -> optVerbose];
+					FCPrint[3, "FCLoopToPakForm: Reordered U polynomial: ", uPoly, FCDoControl -> optVerbose];
+					FCPrint[3, "FCLoopToPakForm: Reordered F polynomial: ", fPoly, FCDoControl -> optVerbose],
 
-				FCPrint[3, "FCLoopToPakForm: Reordered propagators: ", powsReordered, FCDoControl -> optVerbose];
-				FCPrint[3, "FCLoopToPakForm: Reordered U polynomial: ", uPoly, FCDoControl -> optVerbose];
-				FCPrint[3, "FCLoopToPakForm: Reordered F polynomial: ", fPoly, FCDoControl -> optVerbose],
-
-				powsReordered = pows
+					(*All sigmas are taken*)
+					res = Map[reorderVariables[uPoly,fPoly,pPoly,pows,pVars,#]&,sigma]
+				],
+				res = {uPoly, fPoly, pPoly, pows, sigma}
 			];
-			{uPoly, fPoly, pPoly, powsReordered, sigma}
+			res
 		];
+
+reorderVariables[uRaw_,fRaw_,pRaw_,pows_,pVars_,sigma_]:=
+	Block[{uPoly, fPoly, pPoly, pVarsRepRule, powsReordered},
+		If[ !MatchQ[sigma,{__Integer}],
+			Message[FCLoopToPakForm::failmsg,"Failed to determine a unique ordering for this polynomial"];
+			Abort[]
+		];
+		pVarsRepRule =  Thread[Rule[Extract[pVars, List /@ sigma], pVars]];
+		powsReordered = Extract[pows, List /@ sigma] /. Dispatch[pVarsRepRule];
+
+		{uPoly,fPoly,pPoly} = {uRaw,fRaw,pRaw} /. Dispatch[pVarsRepRule];
+
+		{uPoly, fPoly, pPoly, powsReordered, sigma}
+
+	];
 
 FCPrint[1,"FCLoopToPakForm.m loaded."];
 End[]

@@ -72,9 +72,15 @@ Options[FCLoopFindIntegralMappings] = {
 	FCParallelize				-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
-
 	Function					-> Function[{U, F, charPoly, pows, head, int, sigma},
 										{head[int, Transpose[pows]], head[ExpandAll[U], ExpandAll[F],Transpose[pows][[3]]]}],
+
+	"FunctionForAllSigmas"		-> Function[{func,head,listOfLists, int},
+									Block[{tmp,aux,arg},
+										arg = listOfLists[[1]];
+										tmp = func[Sequence@@(arg[[1;;4]]), head, int, arg[[5]]][[2]];
+										{head[int, Map[Transpose[#[[4]] ]&,listOfLists]],tmp}
+										]],
 	List						-> False,
 	LightPak					-> False,
 	PreferredIntegrals			-> {},
@@ -90,7 +96,7 @@ FCLoopFindIntegralMappings[a_, {(*mappings*)_List, topos: {__FCTopology}}, rest_
 FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	expr, pakFormInts, lmoms, res, time, x, pakHead, powerMark,
 			topoidMode, optPreferredIntegrals, finalMasters, fcfpmVerbose,
-			optFCParallelize},
+			optFCParallelize, optSelect},
 
 		If[	OptionValue[FCVerbose] === False,
 			fcfpmVerbose = $VeryVerbose,
@@ -100,6 +106,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 
 		optPreferredIntegrals	= OptionValue[PreferredIntegrals];
 		optFCParallelize		= OptionValue[FCParallelize];
+		optSelect				= OptionValue[Select];
 
 		FCPrint[1, "FCLoopFindIntegralMappings: Entering.", FCDoControl -> fcfpmVerbose];
 		FCPrint[3, "FCLoopFindIntegralMappings: Entering with: ", exprRaw, FCDoControl -> fcfpmVerbose];
@@ -133,25 +140,37 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 
 		pakFormInts = FCLoopToPakForm[expr, lmoms, FCI->OptionValue[FCI], FinalSubstitutions->OptionValue[FinalSubstitutions],
 			Check->False, Collecting->False, Names->x, CharacteristicPolynomial->OptionValue[CharacteristicPolynomial],
-			Function->OptionValue[Function], Head->pakHead, Power->powerMark, LightPak->OptionValue[LightPak], FCParallelize->optFCParallelize, Select->OptionValue[Select]];
+			"FunctionForAllSigmas" -> OptionValue["FunctionForAllSigmas"],
+			Function->OptionValue[Function], Head->pakHead, Power->powerMark, LightPak->OptionValue[LightPak], FCParallelize->optFCParallelize, Select->optSelect];
 		FCPrint[1, "FCLoopFindIntegralMappings: FCLoopToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
 
 		FCPrint[3, "FCLoopFindIntegralMappings: Output of FCLoopToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];
 
 
+		(*
+			Even if we are extracting all sigmas, first Pak-ordered form is enough to decide whether a mapping exists or not.
+			The other orderings become important only when searching for loop momentum shifts.
+		*)
+
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindIntegralMappings: Extracting the mappings.", FCDoControl -> fcfpmVerbose];
 		(* 2nd element are the grouped mappings *)
-
 		res = Reap[(Sow[Sequence @@ #] & /@ pakFormInts), _][[2]];
 
 		(*
 			Every FCTopology is converted to a two-elements list, where the first element is the original topology,
-			while the second element is the reordered Pak-reordered topology
+			while the second element is the Pak-reordered topology
 		*)
 		If[	!FreeQ[expr,FCTopology],
+			If[TrueQ[optSelect=!=All],
 			res = res /. pakHead[FCTopology[id_, props_List, rest__], {_List, propsReordered_List, _List}] :>
 				List[FCTopology[id, props, rest], FCTopology[id, propsReordered, rest]],
+
+			(*	For Select->All we return all variations of canonical propagator orderings. *)
+			res = res /. pakHead[FCTopology[id_, props_List, rest__], listOfLists_List] :>
+				List[FCTopology[id, props, rest], Map[FCTopology[id, #[[2]], rest]&,listOfLists]]
+
+			],
 
 			res = res /. FeynCalc`FCLoopFindIntegralMappings`Private`pakHead[zz_, __] :> zz
 		];
