@@ -62,7 +62,8 @@ Options[FCLoopFindMomentumShifts] = {
 	"Kinematics"				-> {},
 	"TopologyNames"				-> {},
 	InitialSubstitutions		-> {},
-	Momentum					-> {}
+	Momentum					-> {},
+	"SuppressFailures"			-> False
 };
 
 FCLoopFindMomentumShifts[fromRaw:{__FCTopology}, toRaw_FCTopology/;!OptionQ[toRaw], opts:OptionsPattern[]] :=
@@ -103,7 +104,7 @@ FCLoopFindMomentumShifts[fromRaw:{__FCTopology}, toRaw_FCTopology/;!OptionQ[toRa
 
 
 FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[toRaw,FCTopology], lmoms_List, OptionsPattern[]] :=
-	Block[	{from, to, res, time, shifts, optInitialSubstitutions, optKinematics, optTopologyNames, optMomentum},
+	Block[	{from, to, res, time, shifts, optInitialSubstitutions, optKinematics, optTopologyNames, optMomentum,optSuppressFailures},
 
 		If[	OptionValue[FCVerbose] === False,
 			fcflsVerbose = $VeryVerbose,
@@ -114,6 +115,7 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 		optInitialSubstitutions = OptionValue[InitialSubstitutions];
 		optKinematics 			= OptionValue["Kinematics"];
 		optTopologyNames		= OptionValue["TopologyNames"];
+		optSuppressFailures 	= OptionValue["SuppressFailures"];
 
 		FCPrint[1, "FCLoopFindMomentumShifts: Entering.", FCDoControl -> fcflsVerbose];
 		FCPrint[2, "FCLoopFindMomentumShifts: Kinematics:", optKinematics, " ", FCDoControl -> fcflsVerbose];
@@ -164,7 +166,7 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindMomentumShifts: Finding loop momentum shifts.", FCDoControl -> fcflsVerbose];
-		shifts = MapThread[findShiftsBranching[#1,to,lmoms,#2,optKinematics[[2]],#3,optTopologyNames[[2]],optMomentum, OptionValue[Abort]]&,
+		shifts = MapThread[findShiftsBranching[#1,to,lmoms,#2,optKinematics[[2]],#3,optTopologyNames[[2]],optMomentum, OptionValue[Abort], optSuppressFailures]&,
 				{from, optKinematics[[1]], optTopologyNames[[1]]}];
 		FCPrint[1, "FCLoopFindMomentumShifts: Done finding loop momentum shifts, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcflsVerbose];
 
@@ -181,16 +183,16 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 	];
 
 
-findShiftsBranching[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List, fromKininematis_List, toKinematics_List, topoNamesFrom_, topoNamesTo_, momentumOpt_, abortOpt_]:=
-	findShifts[from,to, lmomsRaw, fromKininematis, toKinematics, topoNamesFrom, topoNamesTo, momentumOpt, False, abortOpt]/; momentumOpt==={};
+findShiftsBranching[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List, fromKininematis_List, toKinematics_List, topoNamesFrom_, topoNamesTo_, momentumOpt_, abortOpt_, optSuppressFailures_]:=
+	findShifts[from,to, lmomsRaw, fromKininematis, toKinematics, topoNamesFrom, topoNamesTo, momentumOpt, optSuppressFailures, abortOpt]/; momentumOpt==={};
 
-findShiftsBranching[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List, fromKininematis_List, toKinematics_List, topoNamesFrom_, topoNamesTo_, momentumOpt_, abortOpt_]:=
+findShiftsBranching[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List, fromKininematis_List, toKinematics_List, topoNamesFrom_, topoNamesTo_, momentumOpt_, abortOpt_, optSuppressFailures_]:=
 	Block[{tmp},
 		(*First try to find shifts that don't involve changing external momenta *)
 		tmp = findShifts[from,to, lmomsRaw, fromKininematis, toKinematics, topoNamesFrom, topoNamesTo, {}, True, False];
 		(*If there are no such shifts, allow for shifts in external momenta *)
 		If[tmp==={},
-			tmp = findShifts[from,to, lmomsRaw, fromKininematis, toKinematics, topoNamesFrom, topoNamesTo, momentumOpt, False, abortOpt]
+			tmp = findShifts[from,to, lmomsRaw, fromKininematis, toKinematics, topoNamesFrom, topoNamesTo, momentumOpt, optSuppressFailures, abortOpt]
 		];
 		tmp
 	]/; momentumOpt=!={};
