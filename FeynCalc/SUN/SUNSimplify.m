@@ -702,12 +702,12 @@ colorSimplifyGeneric[rest_. sunf2[b_SUNIndex, a_SUNIndex, c_, d_] sunf[r1___,a_S
 	SUNN (-1)^(Length[{r2}]+1) colorSimplifyGeneric[rest sunf[r2,r3,r1,c,d]];
 
 (* f_2^abcd f^cde = N f^eab *)
-colorSimplifyGeneric[rest_. sunf2[c_, d_, a_SUNIndex, b_SUNIndex] sunf[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___]] :=
-	SUNN (-1)^(Length[{r2}]) colorSimplifyGeneric[rest sunf[r2,r3,r1,c,d]];
+colorSimplifyGeneric[rest_. sunf2[a_, b_, c_SUNIndex, d_SUNIndex] sunf[r1___,c_SUNIndex,r2___,d_SUNIndex,r3___]] :=
+	SUNN (-1)^(Length[{r2}]) colorSimplifyGeneric[rest sunf[r2,r3,r1,a,b]];
 
 (* f_2^abdc f^cde = - N f^eab *)
-colorSimplifyGeneric[rest_. sunf2[c_, d_, b_SUNIndex, a_SUNIndex] sunf[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___]] :=
-	SUNN (-1)^(Length[{r2}]+1) colorSimplifyGeneric[rest sunf[r2,r3,r1,c,d]];
+colorSimplifyGeneric[rest_. sunf2[a_, b_, d_SUNIndex, c_SUNIndex] sunf[r1___,c_SUNIndex,r2___,d_SUNIndex,r3___]] :=
+	SUNN (-1)^(Length[{r2}]+1) colorSimplifyGeneric[rest sunf[r2,r3,r1,a,b]];
 
 (* f_2^abcd f^ace = N/2 f^bde *)
 colorSimplifyGeneric[rest_. sunf2[a_SUNIndex, b_, c_SUNIndex, d_] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___]] :=
@@ -721,7 +721,7 @@ colorSimplifyGeneric[rest_. sunf2[c_SUNIndex, b_, a_SUNIndex, d_] sunf[r1___,a_S
 colorSimplifyGeneric[rest_. sunf2[a_SUNIndex, b_, d_, c_SUNIndex] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___]] :=
 	SUNN/2 (-1)^(Length[{r2}]+1) colorSimplifyGeneric[rest sunf[b,d,r2,r3,r1]];
 
-(* f_2^cbda f^ace = - N/2 f^bde *)
+(* f_2^cbda f^ace = N/2 f^bde *)
 colorSimplifyGeneric[rest_. sunf2[c_SUNIndex, b_, d_, a_SUNIndex] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___]] :=
 	SUNN/2 (-1)^(Length[{r2}]) colorSimplifyGeneric[rest sunf[b,d,r2,r3,r1]];
 
@@ -729,11 +729,11 @@ colorSimplifyGeneric[rest_. sunf2[c_SUNIndex, b_, d_, a_SUNIndex] sunf[r1___,a_S
 colorSimplifyGeneric[rest_. sunf2[b_, a_SUNIndex, c_SUNIndex, d_] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___]] :=
 	SUNN/2 (-1)^(Length[{r2}]+1) colorSimplifyGeneric[rest sunf[b,d,r2,r3,r1]];
 
-(* f_2^bcad f^ace = - N/2 f^bde *)
-colorSimplifyGeneric[rest_. sunf2[b_, a_SUNIndex, c_SUNIndex, d_] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___]] :=
+(* f_2^bcad f^ace = N/2 f^bde *)
+colorSimplifyGeneric[rest_. sunf2[b_, c_SUNIndex, a_SUNIndex, d_] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___]] :=
 	SUNN/2 (-1)^(Length[{r2}]) colorSimplifyGeneric[rest sunf[b,d,r2,r3,r1]];
 
-(* f_2^badc f^ace = - N/2 f^bde *)
+(* f_2^badc f^ace = N/2 f^bde *)
 colorSimplifyGeneric[rest_. sunf2[b_, a_SUNIndex, d_, c_SUNIndex] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___]] :=
 	SUNN/2 (-1)^(Length[{r2}]) colorSimplifyGeneric[rest sunf[b,d,r2,r3,r1]];
 

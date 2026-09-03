@@ -279,6 +279,12 @@ SUNFIndex[k], SUNFIndex[l]])/2"},
 "(I/2)*CA^2*CF"},
 {"fcstSUNSimplify-ID75",
 "SUNSimplify[SUNF[a,b,c]SUNTF[{b,c},i,j]]",
-"(I/2)*CA*SUNTF[{SUNIndex[a]}, SUNFIndex[i], SUNFIndex[j]]"}
+"(I/2)*CA*SUNTF[{SUNIndex[a]}, SUNFIndex[i], SUNFIndex[j]]"},
+{"fcstSUNSimplify-ID76",
+"SUNSimplify[SUNF[g2,b,c] SUNF[b,e,d] SUNF[e,g1,h] SUNF[h,c,d]]",
+"(1/2)*CA^2*SUNDelta[SUNIndex[g2], SUNIndex[g1]]"},
+{"fcstSUNSimplify-ID77",
+"SUNSimplify[SUNF[g0,b,c] SUNF[b,e,d] SUNF[e,g1,h] SUNF[h,c,d]]",
+"(1/2)*CA^2*SUNDelta[SUNIndex[g0], SUNIndex[g1]]"}
 };
 
