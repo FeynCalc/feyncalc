@@ -279,6 +279,48 @@ SUNFIndex[k], SUNFIndex[l]])/2"},
 "(I/2)*CA^2*CF"},
 {"fcstSUNSimplify-ID75",
 "SUNSimplify[SUNF[a,b,c]SUNTF[{b,c},i,j]]",
-"(I/2)*CA*SUNTF[{SUNIndex[a]}, SUNFIndex[i], SUNFIndex[j]]"}
+"(I/2)*CA*SUNTF[{SUNIndex[a]}, SUNFIndex[i], SUNFIndex[j]]"},
+{"fcstSUNSimplify-ID76",
+"SUNSimplify[SUNF[g2,b,c] SUNF[b,e,d] SUNF[e,g1,h] SUNF[h,c,d]]",
+"(1/2)*CA^2*SUNDelta[SUNIndex[g2], SUNIndex[g1]]"},
+{"fcstSUNSimplify-ID77",
+"SUNSimplify[SUNF[g0,b,c] SUNF[b,e,d] SUNF[e,g1,h] SUNF[h,c,d]]",
+"(1/2)*CA^2*SUNDelta[SUNIndex[g0], SUNIndex[g1]]"},
+{"fcstSUNSimplify-ID78",
+"SUNSimplify[SUNF[a0,b,c] SUNF[b,e,d] SUNF[e,a1,h] SUNF[h,c,d]]",
+"(1/2)*CA^2*SUNDelta[SUNIndex[a0], SUNIndex[a1]]"},
+{"fcstSUNSimplify-ID79",
+"SUNSimplify[SUNF[g0,b,d] SUNF[b,e,c] SUNF[e,g1,h] SUNF[h,d,c]]",
+"(1/2)*CA^2*SUNDelta[SUNIndex[g0], SUNIndex[g1]]"},
+{"fcstSUNSimplify-ID80",
+"SUNSimplify[SUNF[g1,b,d] SUNF[b,e,c] SUNF[e,g1,h] SUNF[h,d,c]]",
+"CA^3*CF"},
+{"fcstSUNSimplify-ID81",
+"SUNSimplify[SUNF[g1,b,c] SUNF[b,e,d] SUNF[e,g2,h] SUNF[h,c,d] SUNF[g2,i,j]]",
+"1/2*CA^2*SUNF[SUNIndex[g1],SUNIndex[i],SUNIndex[j]]"},
+{"fcstSUNSimplify-ID82",
+"SUNSimplify[SUNF[g,b,c] SUNF[b,e,d] SUNF[e,a,d0] SUNF[d0,c,d] SUNF[g,i,j]]",
+"1/2*CA^2*SUNF[SUNIndex[a],SUNIndex[i],SUNIndex[j]]"},
+{"fcstSUNSimplify-ID83",
+"SUNSimplify[SUNF[x03, x07, x01] SUNF[x06, x02, x11] SUNF[x06, x12, x04] SUNF[x08, \
+  x04, x05] SUNF[x08, x10, x01] SUNF[x10, x07, x09] SUNF[x11, x03, \
+  x05] SUNF[x12, x02, x09]]",
+"-1/4*CA^5*CF"},
+{"fcstSUNSimplify-ID84",
+"SUNSimplify[SUNF[x01, x06, x09] SUNF[x01, x10, x08] SUNF[x05, x11, x03] SUNF[x06, \
+  x08, x05] SUNF[x07, x12, x04] SUNF[x09, x03, x12] SUNF[x10, x02, \
+  x04] SUNF[x11, x02, x07]]",
+"1/4*CA^5*CF"},
+{"fcstSUNSimplify-ID85",
+"SUNSimplify[SUNF[x08, x12, x05] SUNF[x01, x10, x06] SUNF[x09, x10, x02] SUNF[x03, \
+  x11, x02] SUNF[x07, x12, x04] SUNF[x01, x05, x04] SUNF[x09, x11, \
+  x06] SUNF[x03, x07, x08]]",
+"-1/2*CA^5*CF"},
+{"fcstSUNSimplify-ID86",
+"SUNSimplify[SUNF[x08, x14, x05] SUNF[x01, x12, x06] SUNF[x09, x12, x02] SUNF[x03, \
+    x13, x02] SUNF[x07, x14, x04] SUNF[x01, x10, x11] SUNF[x09, x13, \
+   x06] SUNF[x03, x07, x08], SUNIndexNames -> {z}]",
+"1/4*CA^3*SUNF[SUNIndex[x04], SUNIndex[x05], SUNIndex[z]] SUNF[SUNIndex[x10], \
+  SUNIndex[x11], SUNIndex[z]]"}
 };
 
