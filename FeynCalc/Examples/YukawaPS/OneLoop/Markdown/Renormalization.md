@@ -1033,7 +1033,7 @@ FCCompareResults[{rc[delZx$SRQFT, 1], rc[delZphi$SRQFT, 1], rc[delZmx$SRQFT, 1],
     "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCheck the final result:} \;\text{CORRECT.}$$
 

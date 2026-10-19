@@ -139,7 +139,7 @@ $$\{\mu ,\nu \}$$
 FCI[FV[p, \[Mu]] FV[q, \[Mu]]] 
 FCGetDummyIndices[%, {LorentzIndex}]
 
-```mathematica
+```
 
 $$\overline{p}^{\mu } \overline{q}^{\mu }$$
 

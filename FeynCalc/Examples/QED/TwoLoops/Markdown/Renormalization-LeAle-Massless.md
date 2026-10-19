@@ -696,7 +696,7 @@ FCCompareResults[leptonSE$RenConstants2L, knownResult,
     "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Grozing, Lectures on QED and QCD, Eq 5.52 hep-ph/0508242:} \;\text{CORRECT.}$$
 

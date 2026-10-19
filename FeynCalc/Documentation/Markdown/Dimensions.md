@@ -141,7 +141,7 @@ $$(6-2 \varepsilon ) g_{\{4-2 \varepsilon ,4-2 \varepsilon \}}{}^{\mu \nu }$$
 (D + 2) MTD[\[Mu], \[Nu]]
 FCReplaceD[%, D -> 4 - 2 Epsilon] 
 
-```mathematica
+```
 
 $$(D+2) g^{\mu \nu }$$
 

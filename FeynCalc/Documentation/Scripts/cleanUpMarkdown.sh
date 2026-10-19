@@ -41,7 +41,11 @@ if [[ -f $1 ]]; then
     sed -i -e "s|, \[\\$|, [\\\\$|g" $1;
     sed -i -e "s|\](\\$|](\\\\$|g" $1;
     sed -z -i -e 's|```mathematica\n \n```\n\n||g' $1;
-    sed -z -i -e 's|\n\n```\n|\n\n```mathematica\n|g' $1;    
+    # Label unlabelled code cells as Mathematica. Only an opening fence may be
+    # labelled: a closing fence after an empty line matched the old pattern
+    # (\n\n```\n) as well, turned into ```mathematica and opened a new cell
+    # instead of closing the old one.
+    awk '/^```/ { if (!inCode) { inCode = 1; if ($0 == "```" && prev == "") $0 = "```mathematica" } else inCode = 0 } { print; prev = $0 }' $1 > $1.tmp && mv $1.tmp $1;
 elif [[ -d $1 ]]; then
  
 allFilesRaw=$(find $1 -type f -name '*.md' -print)

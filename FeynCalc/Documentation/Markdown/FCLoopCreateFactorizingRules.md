@@ -23,7 +23,7 @@ topos = Get@FileNameJoin[{$FeynCalcDirectory, "Documentation", "Examples", "Mast
 ```mathematica
 FCLoopCreateFactorizingRules[masters[[1 ;; 50]], topos]
 
-```mathematica
+```
 
 $$\text{FCLoopCreateFactorizingRules: }\;\text{Number of factorizing integrals: }11$$
 

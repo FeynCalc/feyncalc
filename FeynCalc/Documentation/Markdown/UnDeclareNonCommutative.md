@@ -35,7 +35,7 @@ DeclareNonCommutative[y, z]
  
 DataType[y, z, NonCommutative]
 
-```mathematica
+```
 
 $$\{\text{True},\text{True}\}$$
 

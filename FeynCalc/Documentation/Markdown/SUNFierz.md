@@ -13,7 +13,7 @@ SUNFDelta[i, j] SUNFDelta[k, l]
  
 SUNFierz[%, {i, j, k, l}, SUNIndexNames -> {a}]
 
-```mathematica
+```
 
 $$\delta _{ij} \delta _{kl}$$
 

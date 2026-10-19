@@ -201,7 +201,7 @@ SUNTF[{a}, i, j] SUNTrace[SUNT[b, a, c]]
  
 SUNSimplify[%]
 
-```mathematica
+```
 
 $$T_{ij}^a \;\text{tr}\left(T^b.T^a.T^c\right)$$
 

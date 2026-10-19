@@ -57,7 +57,7 @@ GA[\[Mu], \[Nu]] SUNT[b] . SUNT[c] SUNDelta[c, b]
  
 TR[%]
 
-```mathematica
+```
 
 $$\delta ^{bc} T^b.T^c \bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }$$
 

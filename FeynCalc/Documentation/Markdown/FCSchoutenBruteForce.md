@@ -63,7 +63,7 @@ $$(\overline{\text{q1}}\cdot \overline{\text{q2}})^2 \bar{\epsilon }^{abjk}+\bar
 ```mathematica
 FixedPoint[FCSchoutenBruteForce[#, {}, {}] &, res1]
 
-```mathematica
+```
 
 $$\text{FCSchoutenBruteForce: The following rule was applied: }\bar{\epsilon }^{aj\overline{\text{q1}}\;\overline{\text{q2}}} \bar{g}^{bk}:\to \bar{\epsilon }^{bj\overline{\text{q1}}\;\overline{\text{q2}}} \bar{g}^{ak}+\bar{\epsilon }^{ab\overline{\text{q1}}\;\overline{\text{q2}}} \bar{g}^{jk}-\bar{\epsilon }^{abj\overline{\text{q2}}} \overline{\text{q1}}^k+\bar{\epsilon }^{abj\overline{\text{q1}}} \overline{\text{q2}}^k$$
 
