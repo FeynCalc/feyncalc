@@ -332,7 +332,7 @@ FCCompareResults[{amp1Div[2], amp2Div[2], amp3Div[2]}, knownResult,
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Pascual and Tarrach, QCD: Renormalization for the Practitioner, Eq III.46:} \;\text{CORRECT.}$$
 

@@ -490,7 +490,7 @@ FCCompareResults[diff, 0,
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], 
        " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Anastasiou, Beerli, Bucherer, Daleo, Kunszt,     arXiv:hep-ph/0611236, A.3:} \;\text{CORRECT.}$$
 

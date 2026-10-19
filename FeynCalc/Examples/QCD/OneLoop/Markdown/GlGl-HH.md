@@ -391,7 +391,7 @@ FCCompareResults[diff, knownResult,
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Glover and van Der Bij, CERN-TH-4934/87, Eqs. 2-3:} \;\text{CORRECT.}$$
 

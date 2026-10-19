@@ -25,7 +25,7 @@ PauliEtaC[-I] . SIS[p] . PauliXi[I]
  
 % // ComplexConjugate
 
-```mathematica
+```
 
 $$\eta _c^{\dagger }.\left(\bar{\sigma }\cdot \overline{p}\right).\xi$$
 

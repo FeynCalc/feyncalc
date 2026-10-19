@@ -1005,7 +1005,7 @@ FCCompareResults[Join[gluonSE$RenConstants, quarkSE$RenConstants,
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."]; 
  
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Muta, Foundations of QCD, Eqs 2.5.131-2.5.147:} \;\text{CORRECT.}$$
 

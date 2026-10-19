@@ -126,7 +126,7 @@ FCCompareResults[Total[ampReduced], 0,
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tVerify Furry's theorem for 1-photon at 1-loop:} \;\text{CORRECT.}$$
 

@@ -333,7 +333,7 @@ FCCompareResults[adlerFunctionNLO, knownResult,
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to K. Chetyrkin, arXiv:2206.12948, Eq. (1):} \;\text{CORRECT.}$$
 

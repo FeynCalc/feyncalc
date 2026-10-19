@@ -132,7 +132,7 @@ FCCompareResults[ampDiv[1] /. GaugeXi[G] -> 1, knownResult,
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Abbott, Nucl. Phys. B 185 (1981) 189-203, Eqs 5.11-5.12:} \;\text{CORRECT.}$$
 

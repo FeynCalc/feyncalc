@@ -217,7 +217,7 @@ ExpandScalarProduct[SP[P, Q] /. P -> a P1 + b P2]
  
 StandardForm[%]
 
-```mathematica
+```
 
 $$a \left(\overline{\text{P1}}\cdot \overline{Q}\right)+b \left(\overline{\text{P2}}\cdot \overline{Q}\right)$$
 

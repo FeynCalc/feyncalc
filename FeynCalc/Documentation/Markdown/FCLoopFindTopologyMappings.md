@@ -323,7 +323,7 @@ toposNew = FCLoopReplaceQuadraticEikonalPropagators[{topoEik1, topoEik2},
 ```mathematica
 eikMappings = FCLoopFindTopologyMappings[toposNew];
 
-```mathematica
+```
 
 $$\text{FCLoopFindTopologyMappings: }\;\text{Found }1\text{ mapping relations }$$
 

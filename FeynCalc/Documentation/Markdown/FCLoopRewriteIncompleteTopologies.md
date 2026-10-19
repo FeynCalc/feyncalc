@@ -38,7 +38,7 @@ $$\left\{\text{FCGV}(\text{GLIProduct})\left(\text{k1}\cdot \;\text{k2},G^{\text
 ```mathematica
 FCLoopRewriteIncompleteTopologies[expr, topos, Method -> ScalarProduct]
 
-```mathematica
+```
 
 $$\text{FCLoopRewriteIncompleteTopologies: }\;\text{Found }1\text{ incomplete topologies.}$$
 

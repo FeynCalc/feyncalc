@@ -437,7 +437,7 @@ FCCompareResults[Join[solMS1, solMSbar1, solMS2, solMSbar2, solMS3, solMSbar3, s
     "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Muta, Foundations of QCD, Eqs 2.5.131-2.5.147:} \;\text{CORRECT.}$$
 

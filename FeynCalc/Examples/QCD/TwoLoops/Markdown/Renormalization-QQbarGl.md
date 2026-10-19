@@ -675,7 +675,7 @@ FCCompareResults[quarkGluonVTX$RenConstants2L, knownResult,
     "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Chetyrkin, Four-loop renormalization of QCD: full set of renormalization constants and anomalous dimensions, arXiv:hep-ph/0405193:} \;\text{CORRECT.}$$
 

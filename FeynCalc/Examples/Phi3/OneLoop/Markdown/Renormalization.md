@@ -584,7 +584,7 @@ FCCompareResults[Join[scalarSE$RenConstants, scalar3VTX$RenConstants] /. Rule ->
     "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Cheng and Li, Gauge theory of elementary particle physics, Problems and Solutions, Eq. 2.120:} \;\text{CORRECT.}$$
 

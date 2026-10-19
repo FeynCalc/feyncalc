@@ -24,7 +24,7 @@ $$\frac{4 m^2 (k\cdot p)^2}{\left(k^2\right)^4}-\frac{m^2 p^2}{\left(k^2\right)^
  
 FourSeries[%, {p, 0, 2}]
 
-```mathematica
+```
 
 $$(p\cdot q) \;\text{tr}\left(\gamma ^{\text{mu}}.(\gamma \cdot (p+q)).\gamma ^{\text{nu}}\right)$$
 

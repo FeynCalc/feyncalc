@@ -417,7 +417,7 @@ FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True}, Labeled
     {"InternalLine", x_, pow_, _} :> x^pow, 
     {"ExternalLine", _} :> {}}]
 
-```mathematica
+```
 
 $$\left\{\{1\to 2,1\to 3,1\to 3,2\to 3,2\to 3\},\left(
 \begin{array}{ccc}
